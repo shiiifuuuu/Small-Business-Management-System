@@ -2,7 +2,9 @@
 # BITM Project 1
 
 Type of application: Windows Application
+
 Technology Stack: C#, MVC, MS SQL Server, Layer Architecture
+
 
 Description of Project: 
 
