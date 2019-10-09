@@ -11,24 +11,39 @@ namespace Small_Business_Management_System.MANAGER
     public class CategoryManager
     {
         CategoryRepository _categoryRepository = new CategoryRepository();
-        internal bool IsUnique(string code)
+        internal bool IsUnique(Category _category)
         {
-            return _categoryRepository.IsUnique(code);
+            return _categoryRepository.IsUnique(_category);
         }
 
-        internal bool AddCategory(string code, string name)
+        internal bool AddCategory(Category _category)
         {
-            return _categoryRepository.AddCategory(code, name);
+            return _categoryRepository.AddCategory(_category);
         }
 
-        internal List<Category> DisplayCategories()
+        internal List<Category> GetRecords()
         {
-            return _categoryRepository.DisplayCategories();
+            return _categoryRepository.GetRecords();
         }
 
-        internal bool ModifyCategory(string code, string name, int id)
+        internal bool ModifyCategory(Category _category)
         {
-            return _categoryRepository.ModifyCategory(code, name, id);
+            return _categoryRepository.ModifyCategory(_category);
+        }
+
+        internal void CloseConnection()
+        {
+            _categoryRepository.CloseConnection();
+        }
+
+        internal bool DeleteCategory(Category _category)
+        {
+            return _categoryRepository.DeleteCategory(_category);
+        }
+
+        internal List<Category> SearchCategory(string searchText)
+        {
+            return _categoryRepository.SearchCategory(searchText);
         }
     }
 }

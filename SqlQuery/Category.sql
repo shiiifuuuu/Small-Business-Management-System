@@ -16,3 +16,5 @@ VALUES
 ('0001', 'Electronics');
 
 SELECT Code FROM Category WHERE Code = 0001;
+
+SELECT * FROM Category WHERE Code LIKE '10%' OR Name LIKE 'Cam%'

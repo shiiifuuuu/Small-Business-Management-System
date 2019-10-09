@@ -20,10 +20,10 @@ namespace Small_Business_Management_System.REPOSITORY
             sqlConnection = new SqlConnection(connectionString);
         }
 
-        internal bool AddCategory(string code, string name)
+        internal bool AddCategory(Category _category)
         {
             bool isAdded = false;
-            String commandString = @"INSERT INTO Category(Code,Name) VALUES ('" + code + "', '" + name + "')";
+            String commandString = @"INSERT INTO Category(Code,Name) VALUES ('" + _category.Code + "', '" + _category.Name + "')";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
             if (sqlCommand.ExecuteNonQuery() > 0)
@@ -34,11 +34,52 @@ namespace Small_Business_Management_System.REPOSITORY
             return isAdded;
         }
 
-        internal bool ModifyCategory(string code, string name, int id)
+        internal bool DeleteCategory(Category _category)
+        {
+            bool isDeleted = false;
+            String commandString = @"DELETE FROM Category WHERE Id = " + _category.Id + "";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            if (sqlCommand.ExecuteNonQuery() > 0)
+            {
+                isDeleted = true;
+            }
+            sqlConnection.Close();
+            return isDeleted;
+        }
+
+        internal List<Category> SearchCategory(string searchText)
+        {
+            string commandString = @"SELECT * FROM Category WHERE Code LIKE '%" + searchText + "%' OR Name LIKE '%" + searchText + "%'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            List<Category> categories = new List<Category>();
+            while (dataReader.Read())
+            {
+                Category category = new Category();
+                category.Code = dataReader["Code"].ToString();
+                category.Name = dataReader["Name"].ToString();
+
+                categories.Add(category);
+            }
+            sqlConnection.Close();
+            return categories;
+        }
+
+        internal void CloseConnection()
+        {
+            try
+            {
+                sqlConnection.Close();
+            }catch(SqlException) { }
+        }
+
+        internal bool ModifyCategory(Category _category)
         {
             bool isModified = false;
-            String commandString = @"UPDATE Category SET Code = '" + code + "', Name = '" + name + "'" +
-                "WHERE Id = "+id+"";
+            String commandString = @"UPDATE Category SET Code = '" + _category.Code + "', Name = '" + _category.Name + "'" +
+                "WHERE Id = "+ _category.Id + "";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
             if (sqlCommand.ExecuteNonQuery() > 0)
@@ -49,7 +90,7 @@ namespace Small_Business_Management_System.REPOSITORY
             return isModified;
         }
 
-        internal List<Category> DisplayCategories()
+        internal List<Category> GetRecords()
         {
             String commandString = @"SELECT * FROM Category";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
@@ -69,11 +110,11 @@ namespace Small_Business_Management_System.REPOSITORY
             return categories;
         }
 
-        internal bool IsUnique(string code)
+        internal bool IsUnique(Category _category)
         {
             bool isUnique = false;
             String searchString = null;
-            String commandString = "SELECT Code FROM Category WHERE Code = '"+code+"'";
+            String commandString = "SELECT Code FROM Category WHERE Code = '"+ _category.Code + "'";
             SqlCommand sqlCommand = new SqlCommand(commandString,sqlConnection);
             sqlConnection.Open();
             SqlDataReader dataReader = sqlCommand.ExecuteReader();

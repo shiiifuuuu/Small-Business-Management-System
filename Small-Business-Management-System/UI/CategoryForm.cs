@@ -17,6 +17,7 @@ namespace Small_Business_Management_System
         CategoryManager _categoryManager = new CategoryManager();
 
         private Category _category = new Category();
+
         public CategoryForm()
         {
             InitializeComponent();
@@ -24,9 +25,12 @@ namespace Small_Business_Management_System
 
         private void CategoryForm_Load(object sender, EventArgs e)
         {
-            DisplayCategories();
+            DisplayCategories(GetRecords());
+            deleteButton.Visible = false;
+            cancelButton.Visible = false;
         }
 
+        //BUTTONS
         private void saveButton_Click(object sender, EventArgs e)
         {
             try
@@ -36,63 +40,123 @@ namespace Small_Business_Management_System
 
                 if (IsValid(_category.Code, _category.Name))
                 {
-
                     if (saveButton.Text == "Save")
                     {
-                        if (AddCategory(_category.Code, _category.Name)) //ADDED SUCCESSFULLY
+                        if (AddCategory(_category)) //ADDED SUCCESSFULLY
                         {
                             confirmLabel.Text = "Category Saved Successfully!";
-                            DisplayCategories();
+                            DisplayCategories(GetRecords());
+                            CleanAll();
                         }
                     }
                     else if (saveButton.Text == "Modify")
                     {
-                        if(ModifyCategory(_category.Code, _category.Name, _category.Id))
+                        if(ModifyCategory(_category)) //MODIFIED SUCCESSFULLY
                         {
                             confirmLabel.Text = "Category Modified Successfully!";
-                            DisplayCategories();
+                            DisplayCategories(GetRecords());
+                            CleanAll();
                         }
                     }
                 }
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                ExceptionMessage(error);
             }
         }
 
-        private bool AddCategory(string code, string name)
+        private void deleteButton_Click(object sender, EventArgs e)
         {
-            return _categoryManager.AddCategory(code, name);
+            try
+            {
+                if (DeleteCategory(_category)) //DELETED SUCCESSFULLY
+                {
+                    confirmLabel.Text = "Category Deleted Successfully!";
+                    DisplayCategories(GetRecords());
+                    CleanAll();
+                }
+            }catch(Exception error)
+            {
+                ExceptionMessage(error);
+            }
         }
 
-        private bool ModifyCategory(string code, string name, int id)
+        private void searchButton_Click(object sender, EventArgs e)
         {
-            return _categoryManager.ModifyCategory(code, name, id);
+            if (String.IsNullOrEmpty(searchTextBox.Text))
+            {
+                searchErrorLabel.Text = "Search box is empty!!";
+                return;
+            }
+            try
+            {
+                string searchText = searchTextBox.Text;
+                List<Category> searchList = SearchCategory(searchText);
+
+                if (searchList != null) //SEARCH SUCCESSFULL
+                {
+                    DisplayCategories(searchList);
+
+                    confirmLabel.Text = searchList.Count.ToString() + " Result Found!";
+                }
+            }catch(Exception error)
+            {
+                ExceptionMessage(error);
+            }
         }
 
-        private void DisplayCategories()
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            CleanAll();
+        }
+
+
+        //CRUD FUNCTIONS
+        private bool AddCategory(Category _category)
+        {
+            return _categoryManager.AddCategory(_category);
+        }
+
+        private bool ModifyCategory(Category _category)
+        {
+            return _categoryManager.ModifyCategory(_category);
+        }
+
+        private bool DeleteCategory(Category _category)
+        {
+            return _categoryManager.DeleteCategory(_category);
+        }
+
+        private List<Category> SearchCategory(string searchText)
+        {
+            return _categoryManager.SearchCategory(searchText);
+        }
+
+        private List<Category> GetRecords()
+        {
+            return _categoryManager.GetRecords();
+        }
+
+        private void DisplayCategories(List<Category> categories)
         {
             try
             {
                 showCategoriesGridView.ReadOnly = true;
-                showCategoriesGridView.DataSource = _categoryManager.DisplayCategories();
+                showCategoriesGridView.DataSource = categories;
 
                 showCategoriesGridView.Columns["idColumn"].Visible = false;
                 SetSerialNumber(showCategoriesGridView);
                 SetActionColumn(showCategoriesGridView);
             }
-            catch(Exception error)
+            catch (Exception error)
             {
-                MessageBox.Show(error.Message);
-            }
-            finally
-            {
-
+                ExceptionMessage(error);
             }
         }
 
 
+        //VALIDATION
         private bool IsValid(string code, string name)
         {
             bool isValid = true;
@@ -100,6 +164,9 @@ namespace Small_Business_Management_System
             if (String.IsNullOrEmpty(_category.Code))
             {
                 codeErrorLabel.Text = "code field can not be empty!";
+                isValid = false;
+            }else if (!CodeLengthValidation())
+            {
                 isValid = false;
             }
             if (String.IsNullOrEmpty(_category.Name))
@@ -110,11 +177,8 @@ namespace Small_Business_Management_System
             {
                 nameErrorLabel.Text = null;
             }
-            if (!CodeLengthValidation())
-            {
-                isValid = false;
-            }
-            if (!IsUnique(code))
+            
+            if (!IsUnique(_category))
             {
                 isValid = false;
                 codeErrorLabel.Text = "This Code already Exist!";
@@ -123,9 +187,9 @@ namespace Small_Business_Management_System
             return isValid;
         }
 
-        private bool IsUnique(string code)
+        private bool IsUnique(Category _category)
         {
-            return _categoryManager.IsUnique(code);
+            return _categoryManager.IsUnique(_category);
         }
 
         private void codeTextBox_TextChanged(object sender, EventArgs e)
@@ -142,13 +206,14 @@ namespace Small_Business_Management_System
                 codeTextBox.MaxLength = 4;
                 valid = true ;
             }
-            if (codeTextBox.TextLength < 4)
+            if (codeTextBox.TextLength < 4 && !String.IsNullOrEmpty(codeTextBox.Text))
             {
                 codeErrorLabel.Text = "Length must be 4 character!!";
             }
             return valid;
         }
 
+        //GRID CLICK FUNCTION
         private void showCategoriesGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -163,13 +228,14 @@ namespace Small_Business_Management_System
                         _category.Id = int.Parse(showCategoriesGridView.Rows[e.RowIndex].Cells["idColumn"].Value.ToString());
 
                         saveButton.Text = "Modify";
-                        //MessageBox.Show(_category.Id + "");
+                        deleteButton.Visible = true;
+                        cancelButton.Visible = true;
                     }
                 }
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                ExceptionMessage(error);
             }
         }
 
@@ -193,5 +259,22 @@ namespace Small_Business_Management_System
                 i++;
             }
         }
+
+        //COMMON
+        private void CleanAll()
+        {
+            codeTextBox.Text = null;
+            nameTextBox.Text = null;
+
+            saveButton.Text = "Save";
+            deleteButton.Visible = false;
+            cancelButton.Visible = false;
+        }
+        private void ExceptionMessage(Exception error)
+        {
+            MessageBox.Show(error.Message);
+            _categoryManager.CloseConnection();
+        }
+
     }
 }
