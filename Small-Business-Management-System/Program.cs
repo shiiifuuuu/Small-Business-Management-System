@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Small_Business_Management_System.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace Small_Business_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CategoryForm());
+            //            Application.Run(new CategoryForm());
+            Application.Run(new SupplierForm());
         }
     }
 }

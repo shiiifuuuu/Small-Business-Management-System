@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,29 @@ namespace Small_Business_Management_System.MODEL
 {
     public static class Helper
     {
+
+        public static void SetActionColumn(DataGridView dgv)
+        {
+            foreach (DataGridViewRow rows in dgv.Rows)
+            {
+                rows.Cells["actionColumn"].Value = "Edit";
+            }
+
+            dgv.Columns["actionColumn"].DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
+            dgv.Columns["actionColumn"].DefaultCellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Underline);
+        }
+
+        public static void SetSerialNumber(DataGridView dgv)
+        {
+            int i = 1;
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                row.Cells["snColumn"].Value = i;
+                i++;
+            }
+        }
+
+
         public static bool IsInputLetter(KeyPressEventArgs e)
         {
             bool isLetter = false;

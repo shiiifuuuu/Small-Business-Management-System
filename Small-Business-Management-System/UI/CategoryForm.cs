@@ -15,8 +15,7 @@ namespace Small_Business_Management_System
     public partial class CategoryForm : Form
     {
         CategoryManager _categoryManager = new CategoryManager();
-
-        private Category _category = new Category();
+        Category _category = new Category();
 
         public CategoryForm()
         {
@@ -25,7 +24,7 @@ namespace Small_Business_Management_System
 
         private void CategoryForm_Load(object sender, EventArgs e)
         {
-            DisplayCategories(GetRecords());
+            DisplayRecords(GetRecords());
             deleteButton.Visible = false;
             cancelButton.Visible = false;
         }
@@ -38,14 +37,14 @@ namespace Small_Business_Management_System
                 _category.Code = codeTextBox.Text;
                 _category.Name = nameTextBox.Text;
 
-                if (IsValid(_category.Code, _category.Name))
+                if (IsValid(_category))
                 {
                     if (saveButton.Text == "Save")
                     {
                         if (AddCategory(_category)) //ADDED SUCCESSFULLY
                         {
                             confirmLabel.Text = "Category Saved Successfully!";
-                            DisplayCategories(GetRecords());
+                            DisplayRecords(GetRecords());
                             CleanAll();
                         }
                     }
@@ -54,7 +53,7 @@ namespace Small_Business_Management_System
                         if(ModifyCategory(_category)) //MODIFIED SUCCESSFULLY
                         {
                             confirmLabel.Text = "Category Modified Successfully!";
-                            DisplayCategories(GetRecords());
+                            DisplayRecords(GetRecords());
                             CleanAll();
                         }
                     }
@@ -73,7 +72,7 @@ namespace Small_Business_Management_System
                 if (DeleteCategory(_category)) //DELETED SUCCESSFULLY
                 {
                     confirmLabel.Text = "Category Deleted Successfully!";
-                    DisplayCategories(GetRecords());
+                    DisplayRecords(GetRecords());
                     CleanAll();
                 }
             }catch(Exception error)
@@ -96,7 +95,7 @@ namespace Small_Business_Management_System
 
                 if (searchList != null) //SEARCH SUCCESSFULL
                 {
-                    DisplayCategories(searchList);
+                    DisplayRecords(searchList);
 
                     confirmLabel.Text = searchList.Count.ToString() + " Result Found!";
                 }
@@ -138,7 +137,7 @@ namespace Small_Business_Management_System
             return _categoryManager.GetRecords();
         }
 
-        private void DisplayCategories(List<Category> categories)
+        private void DisplayRecords(List<Category> categories)
         {
             try
             {
@@ -146,8 +145,8 @@ namespace Small_Business_Management_System
                 showCategoriesGridView.DataSource = categories;
 
                 showCategoriesGridView.Columns["idColumn"].Visible = false;
-                SetSerialNumber(showCategoriesGridView);
-                SetActionColumn(showCategoriesGridView);
+                Helper.SetSerialNumber(showCategoriesGridView);
+                Helper.SetActionColumn(showCategoriesGridView);
             }
             catch (Exception error)
             {
@@ -157,7 +156,7 @@ namespace Small_Business_Management_System
 
 
         //VALIDATION
-        private bool IsValid(string code, string name)
+        private bool IsValid(Category _category)
         {
             bool isValid = true;
 
@@ -236,27 +235,6 @@ namespace Small_Business_Management_System
             catch (Exception error)
             {
                 ExceptionMessage(error);
-            }
-        }
-
-        private void SetActionColumn(DataGridView dgv)
-        {
-            foreach (DataGridViewRow rows in dgv.Rows)
-            {
-                rows.Cells["actionColumn"].Value = "Edit";
-            }
-
-            dgv.Columns["actionColumn"].DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
-            dgv.Columns["actionColumn"].DefaultCellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Underline);
-        }
-
-        private void SetSerialNumber(DataGridView dgv)
-        {
-            int i = 1;
-            foreach (DataGridViewRow row in dgv.Rows)
-            {
-                row.Cells["snColumn"].Value = i;
-                i++;
             }
         }
 
