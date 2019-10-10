@@ -96,13 +96,33 @@ namespace Small_Business_Management_System.UI
                 showDataGridView.ReadOnly = true;
                 showDataGridView.DataSource = suppliers;
 
-                showDataGridView.Columns[""].Visible = false;
-                Helper.SetSerialNumber(showDataGridView);
-                Helper.SetActionColumn(showDataGridView);
+                showDataGridView.Columns["IdColumn"].Visible = false;
+                SetSerialNumber(showDataGridView);
+                SetActionColumn(showDataGridView);
             }
             catch (Exception error)
             {
                 ExceptionMessage(error);
+            }
+        }
+        private void SetActionColumn(DataGridView dgv)
+        {
+            foreach (DataGridViewRow rows in dgv.Rows)
+            {
+                rows.Cells["ActionColumn"].Value = "Edit";
+            }
+
+            dgv.Columns["ActionColumn"].DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
+            dgv.Columns["ActionColumn"].DefaultCellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Underline);
+        }
+
+        private void SetSerialNumber(DataGridView dgv)
+        {
+            int i = 1;
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                row.Cells["SIColumn"].Value = i;
+                i++;
             }
         }
 

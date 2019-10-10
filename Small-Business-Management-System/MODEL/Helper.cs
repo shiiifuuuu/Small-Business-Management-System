@@ -10,16 +10,15 @@ namespace Small_Business_Management_System.MODEL
 {
     public static class Helper
     {
-
         public static void SetActionColumn(DataGridView dgv)
         {
             foreach (DataGridViewRow rows in dgv.Rows)
             {
-                rows.Cells["actionColumn"].Value = "Edit";
+                rows.Cells["Action_Column"].Value = "Edit";
             }
 
-            dgv.Columns["actionColumn"].DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
-            dgv.Columns["actionColumn"].DefaultCellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Underline);
+            dgv.Columns["Action_Column"].DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
+            dgv.Columns["Action_Column"].DefaultCellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Underline);
         }
 
         public static void SetSerialNumber(DataGridView dgv)
@@ -27,7 +26,7 @@ namespace Small_Business_Management_System.MODEL
             int i = 1;
             foreach (DataGridViewRow row in dgv.Rows)
             {
-                row.Cells["snColumn"].Value = i;
+                row.Cells["SI_Column"].Value = i;
                 i++;
             }
         }
