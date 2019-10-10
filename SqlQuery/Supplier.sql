@@ -1,3 +1,4 @@
+CREATE DATABASE SmallBusinessManagementSystem;
 USE SmallBusinessManagementSystem;
 
 CREATE TABLE Supplier
