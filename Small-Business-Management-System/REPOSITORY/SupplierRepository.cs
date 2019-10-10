@@ -11,7 +11,9 @@ namespace Small_Business_Management_System.REPOSITORY
     public class SupplierRepository
     {
         SqlConnection sqlConnection;
-        string serverName = @"SHIIIFUUUU";
+        //string serverName = @"SHIIIFUUUU";
+        //string databaseName = @"SmallBusinessManagementSystem";
+        string serverName = @"PC-301-21\SQLEXPRESS";
         string databaseName = @"SmallBusinessManagementSystem";
 
         public SupplierRepository()
@@ -42,6 +44,69 @@ namespace Small_Business_Management_System.REPOSITORY
             }
             sqlConnection.Close();
             return suppliers;
+        }
+
+        internal bool IsEmailUnique(Supplier supplier)
+        {
+            bool isUnique = false;
+            string searchString = null;
+            String commandString = "SELECT Email FROM Supplier " +
+                "WHERE Email = '" + supplier.Email + "'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                searchString = dataReader["Email"].ToString();
+            }
+            if (String.IsNullOrEmpty(searchString))
+            {
+                isUnique = true;
+            }
+            sqlConnection.Close();
+            return isUnique;
+        }
+
+        internal bool IsContactUnique(Supplier supplier)
+        {
+            bool isUnique = false;
+            string searchString = null;
+            String commandString = "SELECT Contact FROM Supplier " +
+                "WHERE Contact = '" + supplier.Contact + "'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                searchString = dataReader["Contact"].ToString();
+            }
+            if (String.IsNullOrEmpty(searchString))
+            {
+                isUnique = true;
+            }
+            sqlConnection.Close();
+            return isUnique;
+        }
+
+        internal bool IsCodeUnique(Supplier supplier)
+        {
+            bool isUnique = false;
+            string searchString = null;
+            String commandString = "SELECT Code FROM Supplier " +
+                "WHERE Code = '" + supplier.Code + "'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                searchString = dataReader["Code"].ToString();
+            }
+            if (String.IsNullOrEmpty(searchString))
+            {
+                isUnique = true;
+            }
+            sqlConnection.Close();
+            return isUnique;
         }
 
         internal void CloseConnection()

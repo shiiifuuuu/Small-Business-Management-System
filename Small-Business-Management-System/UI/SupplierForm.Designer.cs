@@ -55,16 +55,16 @@
             this.confirmationLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.snColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactPersonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.snColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactPersonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -93,13 +93,13 @@
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.snColumn,
-            this.idColumn,
-            this.codeColumn,
-            this.nameColumn,
-            this.addressColumn,
-            this.emailColumn,
-            this.contactColumn,
-            this.contactPersonColumn,
+            this.idDataGridViewTextBoxColumn,
+            this.codeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.addressDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.contactDataGridViewTextBoxColumn,
+            this.contactPersonDataGridViewTextBoxColumn,
             this.actionColumn});
             this.showDataGridView.DataSource = this.supplierBindingSource;
             this.showDataGridView.Location = new System.Drawing.Point(12, 402);
@@ -113,6 +113,7 @@
             this.codeTextBox.Name = "codeTextBox";
             this.codeTextBox.Size = new System.Drawing.Size(192, 20);
             this.codeTextBox.TabIndex = 1;
+            this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
             // nameTextBox
             // 
@@ -310,63 +311,63 @@
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Supplier);
+            // 
             // snColumn
             // 
             this.snColumn.HeaderText = "SI";
             this.snColumn.Name = "snColumn";
             this.snColumn.ReadOnly = true;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            // 
+            // contactDataGridViewTextBoxColumn
+            // 
+            this.contactDataGridViewTextBoxColumn.DataPropertyName = "Contact";
+            this.contactDataGridViewTextBoxColumn.HeaderText = "Contact";
+            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
+            // 
+            // contactPersonDataGridViewTextBoxColumn
+            // 
+            this.contactPersonDataGridViewTextBoxColumn.DataPropertyName = "ContactPerson";
+            this.contactPersonDataGridViewTextBoxColumn.HeaderText = "ContactPerson";
+            this.contactPersonDataGridViewTextBoxColumn.Name = "contactPersonDataGridViewTextBoxColumn";
+            // 
             // actionColumn
             // 
             this.actionColumn.HeaderText = "Action";
             this.actionColumn.Name = "actionColumn";
             this.actionColumn.ReadOnly = true;
-            // 
-            // idColumn
-            // 
-            this.idColumn.DataPropertyName = "Id";
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            // 
-            // codeColumn
-            // 
-            this.codeColumn.DataPropertyName = "Code";
-            this.codeColumn.HeaderText = "Code";
-            this.codeColumn.Name = "codeColumn";
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.DataPropertyName = "Name";
-            this.nameColumn.HeaderText = "Name";
-            this.nameColumn.Name = "nameColumn";
-            // 
-            // addressColumn
-            // 
-            this.addressColumn.DataPropertyName = "Address";
-            this.addressColumn.HeaderText = "Address";
-            this.addressColumn.Name = "addressColumn";
-            // 
-            // emailColumn
-            // 
-            this.emailColumn.DataPropertyName = "Email";
-            this.emailColumn.HeaderText = "Email";
-            this.emailColumn.Name = "emailColumn";
-            // 
-            // contactColumn
-            // 
-            this.contactColumn.DataPropertyName = "Contact";
-            this.contactColumn.HeaderText = "Contact";
-            this.contactColumn.Name = "contactColumn";
-            // 
-            // contactPersonColumn
-            // 
-            this.contactPersonColumn.DataPropertyName = "ContactPerson";
-            this.contactPersonColumn.HeaderText = "ContactPerson";
-            this.contactPersonColumn.Name = "contactPersonColumn";
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Supplier);
             // 
             // SupplierForm
             // 
@@ -437,8 +438,6 @@
         private System.Windows.Forms.Label confirmationLabel;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn snColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
@@ -446,6 +445,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactPersonColumn;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn snColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactPersonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn actionColumn;
     }
 }

@@ -23,9 +23,16 @@ namespace Small_Business_Management_System.UI
         }
         private void SupplierForm_Load(object sender, EventArgs e)
         {
-            DisplayRecords(GetRecords());
-            deleteButton.Visible = false;
-            cancelButton.Visible = false;
+            try
+            {
+                DisplayRecords(GetRecords());
+                deleteButton.Visible = false;
+                cancelButton.Visible = false;
+            }catch(Exception error)
+            {
+                ExceptionMessage(error);
+            }
+            
         }
 
         //BUTTONS
@@ -89,7 +96,7 @@ namespace Small_Business_Management_System.UI
                 showDataGridView.ReadOnly = true;
                 showDataGridView.DataSource = suppliers;
 
-                showDataGridView.Columns["idColumn"].Visible = false;
+                showDataGridView.Columns[""].Visible = false;
                 Helper.SetSerialNumber(showDataGridView);
                 Helper.SetActionColumn(showDataGridView);
             }
@@ -101,7 +108,75 @@ namespace Small_Business_Management_System.UI
 
         private bool IsValid(Supplier supplier)
         {
-            throw new NotImplementedException();
+            bool isValid = true;
+
+            if (String.IsNullOrEmpty(supplier.Code))
+            {
+                codeErrorLabel.Text = "code field can not be empty!";
+                isValid = false;
+            }
+            else if (!CodeLengthValidation())
+            {
+                isValid = false;
+            }
+            if (String.IsNullOrEmpty(supplier.Email))
+            {
+                emailErrorLabel.Text = "Email field can not be empty!";
+                isValid = false;
+            }
+            if (String.IsNullOrEmpty(supplier.Contact))
+            {
+                contactErrorLabel.Text = "Contact field can not be empty!";
+                isValid = false;
+            }
+
+            if (!IsCodeUnique(supplier))
+            {
+                codeErrorLabel.Text = "This Code already Exist!";
+                isValid = false;
+            }
+            if (!IsEmailUnique(supplier))
+            {
+                emailErrorLabel.Text = "This Email already Exist!";
+                isValid = false;
+            }
+            if (!IsContactUnique(supplier))
+            {
+                contactErrorLabel.Text = "This Contact already Exist!";
+            }
+
+            return isValid;
+        }
+
+        private bool IsEmailUnique(Supplier supplier)
+        {
+            return _supplierManager.IsEmailUnique(supplier);
+        }
+
+        private bool IsContactUnique(Supplier supplier)
+        {
+            return _supplierManager.IsContactUnique(supplier);
+        }
+
+        private bool IsCodeUnique(Supplier supplier)
+        {
+            return _supplierManager.IsCodeUnique(supplier);
+        }
+
+        private bool CodeLengthValidation()
+        {
+            bool valid = false;
+            if (codeTextBox.TextLength.Equals(4))
+            {
+                codeErrorLabel.Text = null;
+                codeTextBox.MaxLength = 4;
+                valid = true;
+            }
+            if (codeTextBox.TextLength < 4 && !String.IsNullOrEmpty(codeTextBox.Text))
+            {
+                codeErrorLabel.Text = "Length must be 4 character!!";
+            }
+            return valid;
         }
 
 
@@ -110,6 +185,11 @@ namespace Small_Business_Management_System.UI
         {
             codeTextBox.Text = null;
             nameTextBox.Text = null;
+            nameTextBox.Text = null;
+            addressTextBox.Text = null;
+            emailTextBox.Text = null;
+            contactTextBox.Text = null;
+            contactPersonTextBox.Text = null;
 
             saveButton.Text = "Save";
             deleteButton.Visible = false;
@@ -119,6 +199,11 @@ namespace Small_Business_Management_System.UI
         {
             MessageBox.Show(error.Message);
             _supplierManager.CloseConnection();
+        }
+
+        private void codeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CodeLengthValidation();
         }
     }
 }
