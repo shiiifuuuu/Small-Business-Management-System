@@ -46,6 +46,44 @@ namespace Small_Business_Management_System.REPOSITORY
             return suppliers;
         }
 
+        internal List<Supplier> SearchSupplier(string searchText)
+        {
+            string commandString = @"SELECT * FROM Supplier WHERE Code LIKE '%" + searchText + "%' OR Name LIKE '%" + searchText + "%' " +
+                "OR Email LIKE '%"+searchText+"%' OR Contact LIKE '%"+searchText+"%'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            List<Supplier> suppliers = new List<Supplier>();
+            while (dataReader.Read())
+            {
+                Supplier supplier = new Supplier();
+                supplier.Code = dataReader["Code"].ToString();
+                supplier.Name = dataReader["Name"].ToString();
+                supplier.Address = dataReader["Address"].ToString();
+                supplier.Email = dataReader["Email"].ToString();
+                supplier.Contact = dataReader["Contact"].ToString();
+                supplier.ContactPerson = dataReader["ContactPerson"].ToString();
+
+                suppliers.Add(supplier);
+            }
+            sqlConnection.Close();
+            return suppliers;
+        }
+
+        internal bool DeleteSupplier(Supplier supplier)
+        {
+            bool isDeleted = false;
+            String commandString = @"DELETE FROM Supplier WHERE Id = " + supplier.Id + "";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            if (sqlCommand.ExecuteNonQuery() > 0)
+            {
+                isDeleted = true;
+            }
+            sqlConnection.Close();
+            return isDeleted;
+        }
+
         internal bool IsUnique(string inputString, string columnName)
         {
             bool isUnique = false;
@@ -89,6 +127,23 @@ namespace Small_Business_Management_System.REPOSITORY
             }
             sqlConnection.Close();
             return isAdded;
+        }
+
+        internal bool ModifySupplier(Supplier supplier)
+        {
+            bool isModified = false;
+            String commandString = @"UPDATE Supplier SET Code = '" + supplier.Code + "', Name = '" + supplier.Name + "', " +
+                "Email = '"+supplier.Email+"', Address = '"+supplier.Address+"', " +
+                "Contact = '"+supplier.Contact+"', ContactPerson = '"+supplier.ContactPerson+"'" +
+                "WHERE Id = " + supplier.Id + "";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            if (sqlCommand.ExecuteNonQuery() > 0)
+            {
+                isModified = true;
+            }
+            sqlConnection.Close();
+            return isModified;
         }
     }
 }

@@ -177,18 +177,18 @@ namespace Small_Business_Management_System
                 nameErrorLabel.Text = null;
             }
             
-            if (!IsUnique(_category))
+            if (!_categoryManager.IsUnique(_category.Code, "Code"))
             {
-                isValid = false;
                 codeErrorLabel.Text = "This Code already Exist!";
+                isValid = false;
+            }
+            if (!_categoryManager.IsUnique(_category.Name, "Name"))
+            {
+                codeErrorLabel.Text = "This Name already Exist!";
+                isValid = false;
             }
 
             return isValid;
-        }
-
-        private bool IsUnique(Category _category)
-        {
-            return _categoryManager.IsUnique(_category);
         }
 
         private void codeTextBox_TextChanged(object sender, EventArgs e)

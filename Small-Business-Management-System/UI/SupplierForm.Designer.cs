@@ -55,8 +55,8 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,7 +64,7 @@
             this.emailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactPersonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -261,6 +261,7 @@
             this.searchButton.TabIndex = 10;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // confirmationLabel
             // 
@@ -280,6 +281,7 @@
             this.deleteButton.TabIndex = 7;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // cancelButton
             // 
@@ -289,6 +291,7 @@
             this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // showDataGridView
             // 
@@ -310,18 +313,17 @@
             this.showDataGridView.Name = "showDataGridView";
             this.showDataGridView.Size = new System.Drawing.Size(715, 321);
             this.showDataGridView.TabIndex = 11;
+            this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDataGridView_CellContentClick);
+            // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Supplier);
             // 
             // siColumn
             // 
             this.siColumn.DataPropertyName = "SI";
             this.siColumn.HeaderText = "SI";
             this.siColumn.Name = "siColumn";
-            // 
-            // actionColumn
-            // 
-            this.actionColumn.DataPropertyName = "Action";
-            this.actionColumn.HeaderText = "Action";
-            this.actionColumn.Name = "actionColumn";
             // 
             // idColumn
             // 
@@ -362,12 +364,14 @@
             // contactPersonColumn
             // 
             this.contactPersonColumn.DataPropertyName = "ContactPerson";
-            this.contactPersonColumn.HeaderText = "ContactPerson";
+            this.contactPersonColumn.HeaderText = "Contact Person";
             this.contactPersonColumn.Name = "contactPersonColumn";
             // 
-            // supplierBindingSource
+            // actionColumn
             // 
-            this.supplierBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Supplier);
+            this.actionColumn.DataPropertyName = "Action";
+            this.actionColumn.HeaderText = "Action";
+            this.actionColumn.Name = "actionColumn";
             // 
             // SupplierForm
             // 

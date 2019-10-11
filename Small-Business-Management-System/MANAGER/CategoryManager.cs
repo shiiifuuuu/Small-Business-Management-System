@@ -11,10 +11,6 @@ namespace Small_Business_Management_System.MANAGER
     public class CategoryManager
     {
         CategoryRepository _categoryRepository = new CategoryRepository();
-        internal bool IsUnique(Category _category)
-        {
-            return _categoryRepository.IsUnique(_category);
-        }
 
         internal bool AddCategory(Category _category)
         {
@@ -44,6 +40,11 @@ namespace Small_Business_Management_System.MANAGER
         internal List<Category> SearchCategory(string searchText)
         {
             return _categoryRepository.SearchCategory(searchText);
+        }
+
+        internal bool IsUnique(string inputString, string columnName)
+        {
+            return _categoryRepository.IsUnique(inputString, columnName);
         }
     }
 }

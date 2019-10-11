@@ -31,5 +31,20 @@ namespace Small_Business_Management_System.MANAGER
         {
             return _supplierRepository.IsUnique(inputString, columnName);
         }
+
+        internal bool ModifySupplier(Supplier supplier)
+        {
+            return _supplierRepository.ModifySupplier(supplier);
+        }
+
+        internal bool DeleteSupplier(Supplier supplier)
+        {
+            return _supplierRepository.DeleteSupplier(supplier);
+        }
+
+        internal List<Supplier> SearchSupplier(string searchText)
+        {
+            return _supplierRepository.SearchSupplier(searchText);
+        }
     }
 }

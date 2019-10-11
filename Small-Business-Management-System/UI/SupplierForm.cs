@@ -35,6 +35,7 @@ namespace Small_Business_Management_System.UI
             }
         }
 
+
         //BUTTONS
         private void saveButton_Click(object sender, EventArgs e)
         {
@@ -60,7 +61,7 @@ namespace Small_Business_Management_System.UI
                     }
                     else if (saveButton.Text == "Modify")
                     {
-                        if (ModifyCategory(_supplier)) //MODIFIED SUCCESSFULLY
+                        if (ModifySupplier(_supplier)) //MODIFIED SUCCESSFULLY
                         {
                             confirmationLabel.Text = "Supplier Information Modified Successfully!";
                             DisplayRecords(GetRecords());
@@ -75,15 +76,76 @@ namespace Small_Business_Management_System.UI
             }
         }
 
-        //FUNCTIONS
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DeleteSupplier(_supplier)) //DELETED SUCCESSFULLY
+                {
+                    confirmationLabel.Text = "Supplier Deleted Successfully!";
+                    DisplayRecords(GetRecords());
+                    ClearInputs();
+                }
+            }
+            catch (Exception error)
+            {
+                ExceptionMessage(error);
+            }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            cancelButton.Visible = true;
+
+            if (String.IsNullOrEmpty(searchTextBox.Text))
+            {
+                searchErrorLabel.Text = "Search box is empty!!";
+                return;
+            }
+            try
+            {
+                string searchText = searchTextBox.Text;
+                List<Supplier> searchList = SearchSupplier(searchText);
+
+                if (searchList != null) //SEARCH SUCCESSFULL
+                {
+                    DisplayRecords(searchList);
+
+                    confirmationLabel.Text = searchList.Count.ToString() + " Result Found!";
+                }
+            }
+            catch (Exception error)
+            {
+                ExceptionMessage(error);
+            }
+        }
+
+        private List<Supplier> SearchSupplier(string searchText)
+        {
+            return _supplierManager.SearchSupplier(searchText);
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            ClearInputs();
+            ClearErrorLabels();
+        }
+
+
+        //CRUD FUNCTIONS
         private bool AddSupplier(Supplier supplier)
         {
             return _supplierManager.AddSupplier(supplier);
         }
 
-        private bool ModifyCategory(Supplier supplier)
+        private bool ModifySupplier(Supplier supplier)
         {
-            throw new NotImplementedException();
+            return _supplierManager.ModifySupplier(supplier);
+        }
+
+        private bool DeleteSupplier(Supplier supplier)
+        {
+            return _supplierManager.DeleteSupplier(supplier);
         }
 
         private List<Supplier> GetRecords()
@@ -107,6 +169,7 @@ namespace Small_Business_Management_System.UI
                 ExceptionMessage(error);
             }
         }
+
 
         //VALIDATION
         private bool IsValid(Supplier supplier)
@@ -193,7 +256,6 @@ namespace Small_Business_Management_System.UI
             return isValid;
         }
 
-
         private void codeTextBox_TextChanged(object sender, EventArgs e)
         {
             CodeLengthValidation(codeTextBox.Text);
@@ -225,6 +287,7 @@ namespace Small_Business_Management_System.UI
                 ClearErrorLabels();
             }
         }
+
 
         //COMMON
         private void ClearInputs()
@@ -259,5 +322,35 @@ namespace Small_Business_Management_System.UI
             MessageBox.Show(error.Message);
             _supplierManager.CloseConnection();
         }
+
+        private void showDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 8 && e.RowIndex != -1)
+                {
+                    if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                    {
+                        codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["codeColumn"].Value.ToString();
+                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["nameColumn"].Value.ToString();
+                        addressTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["addressColumn"].Value.ToString();
+                        emailTextBox.Text= showDataGridView.Rows[e.RowIndex].Cells["emailColumn"].Value.ToString();
+                        contactTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["contactColumn"].Value.ToString(); 
+                        contactPersonTextBox.Text= showDataGridView.Rows[e.RowIndex].Cells["contactPersonColumn"].Value.ToString();
+
+                        _supplier.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["idColumn"].Value.ToString());
+
+                        saveButton.Text = "Modify";
+                        deleteButton.Visible = true;
+                        cancelButton.Visible = true;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                ExceptionMessage(error);
+            }
+        }
+
     }
 }
