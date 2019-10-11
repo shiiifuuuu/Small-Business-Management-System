@@ -27,19 +27,9 @@ namespace Small_Business_Management_System.MANAGER
             _supplierRepository.CloseConnection();
         }
 
-        internal bool IsCodeUnique(Supplier supplier)
+        internal bool IsUnique(string inputString, string columnName)
         {
-            return _supplierRepository.IsCodeUnique(supplier);
-        }
-
-        internal bool IsEmailUnique(Supplier supplier)
-        {
-            return _supplierRepository.IsEmailUnique(supplier);
-        }
-
-        internal bool IsContactUnique(Supplier supplier)
-        {
-            return _supplierRepository.IsContactUnique(supplier);
+            return _supplierRepository.IsUnique(inputString, columnName);
         }
     }
 }

@@ -25,6 +25,7 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
+                ClearErrorLabels();
                 DisplayRecords(GetRecords());
                 deleteButton.Visible = false;
                 cancelButton.Visible = false;
@@ -32,7 +33,6 @@ namespace Small_Business_Management_System.UI
             {
                 ExceptionMessage(error);
             }
-            
         }
 
         //BUTTONS
@@ -55,7 +55,7 @@ namespace Small_Business_Management_System.UI
                         {
                             confirmationLabel.Text = "Supplier Information Saved Successfully!";
                             DisplayRecords(GetRecords());
-                            CleanAll();
+                            ClearInputs();
                         }
                     }
                     else if (saveButton.Text == "Modify")
@@ -64,7 +64,7 @@ namespace Small_Business_Management_System.UI
                         {
                             confirmationLabel.Text = "Supplier Information Modified Successfully!";
                             DisplayRecords(GetRecords());
-                            CleanAll();
+                            ClearInputs();
                         }
                     }
                 }
@@ -75,6 +75,7 @@ namespace Small_Business_Management_System.UI
             }
         }
 
+        //FUNCTIONS
         private bool AddSupplier(Supplier supplier)
         {
             return _supplierManager.AddSupplier(supplier);
@@ -84,6 +85,7 @@ namespace Small_Business_Management_System.UI
         {
             throw new NotImplementedException();
         }
+
         private List<Supplier> GetRecords()
         {
             return _supplierManager.GetRecords();
@@ -96,134 +98,166 @@ namespace Small_Business_Management_System.UI
                 showDataGridView.ReadOnly = true;
                 showDataGridView.DataSource = suppliers;
 
-                showDataGridView.Columns["IdColumn"].Visible = false;
-                SetSerialNumber(showDataGridView);
-                SetActionColumn(showDataGridView);
+                showDataGridView.Columns["idColumn"].Visible = false;
+                Helper.SetSerialNumber(showDataGridView);
+                Helper.SetActionColumn(showDataGridView);
             }
             catch (Exception error)
             {
                 ExceptionMessage(error);
             }
         }
-        private void SetActionColumn(DataGridView dgv)
-        {
-            foreach (DataGridViewRow rows in dgv.Rows)
-            {
-                rows.Cells["ActionColumn"].Value = "Edit";
-            }
 
-            dgv.Columns["ActionColumn"].DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
-            dgv.Columns["ActionColumn"].DefaultCellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Underline);
-        }
-
-        private void SetSerialNumber(DataGridView dgv)
-        {
-            int i = 1;
-            foreach (DataGridViewRow row in dgv.Rows)
-            {
-                row.Cells["SIColumn"].Value = i;
-                i++;
-            }
-        }
-
+        //VALIDATION
         private bool IsValid(Supplier supplier)
         {
             bool isValid = true;
-
             if (String.IsNullOrEmpty(supplier.Code))
             {
-                codeErrorLabel.Text = "code field can not be empty!";
+                codeErrorLabel.Text = "Code can not be empty!!";
                 isValid = false;
             }
-            else if (!CodeLengthValidation())
+            else if (!CodeLengthValidation(supplier.Code))
             {
                 isValid = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            if (String.IsNullOrEmpty(supplier.Name))
+            {
+                nameErrorLabel.Text = "Must provide supplier name";
+                isValid = false;
+            }
+            else
+            {
+                ClearErrorLabels();
             }
             if (String.IsNullOrEmpty(supplier.Email))
             {
-                emailErrorLabel.Text = "Email field can not be empty!";
+                emailErrorLabel.Text = "Email can not be empty!!";
                 isValid = false;
+            }
+            else
+            {
+                ClearErrorLabels();
             }
             if (String.IsNullOrEmpty(supplier.Contact))
             {
-                contactErrorLabel.Text = "Contact field can not be empty!";
+                contactErrorLabel.Text = "Contact can not be empty!!";
                 isValid = false;
+            }
+            else
+            {
+                ClearErrorLabels();
             }
 
-            if (!IsCodeUnique(supplier))
+            if (!_supplierManager.IsUnique(supplier.Code, "Code"))
             {
-                codeErrorLabel.Text = "This Code already Exist!";
+                codeErrorLabel.Text = "This code already exists!";
                 isValid = false;
             }
-            if (!IsEmailUnique(supplier))
+            else
             {
-                emailErrorLabel.Text = "This Email already Exist!";
+                ClearErrorLabels();
+            }
+            if (!_supplierManager.IsUnique(supplier.Name, "Name"))
+            {
+                nameErrorLabel.Text = "This name already exists!";
                 isValid = false;
             }
-            if (!IsContactUnique(supplier))
+            else
             {
-                contactErrorLabel.Text = "This Contact already Exist!";
+                ClearErrorLabels();
+            }
+            if (!_supplierManager.IsUnique(supplier.Email, "Email"))
+            {
+                emailErrorLabel.Text = "This email already exists!";
+                isValid = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            if (!_supplierManager.IsUnique(supplier.Contact, "Contact"))
+            {
+                contactErrorLabel.Text = "This contact already exists!";
+                isValid = false;
+            }
+            else
+            {
+                ClearErrorLabels();
             }
 
             return isValid;
         }
 
-        private bool IsEmailUnique(Supplier supplier)
+
+        private void codeTextBox_TextChanged(object sender, EventArgs e)
         {
-            return _supplierManager.IsEmailUnique(supplier);
+            CodeLengthValidation(codeTextBox.Text);
         }
 
-        private bool IsContactUnique(Supplier supplier)
+        private bool CodeLengthValidation(string codeText)
         {
-            return _supplierManager.IsContactUnique(supplier);
-        }
-
-        private bool IsCodeUnique(Supplier supplier)
-        {
-            return _supplierManager.IsCodeUnique(supplier);
-        }
-
-        private bool CodeLengthValidation()
-        {
-            bool valid = false;
-            if (codeTextBox.TextLength.Equals(4))
+            bool isValid = false;
+            if (codeText.Length == 4)
             {
                 codeErrorLabel.Text = null;
-                codeTextBox.MaxLength = 4;
-                valid = true;
+                isValid = true;
             }
-            if (codeTextBox.TextLength < 4 && !String.IsNullOrEmpty(codeTextBox.Text))
+            else if (codeText.Length < 4 && !String.IsNullOrEmpty(codeText))
             {
-                codeErrorLabel.Text = "Length must be 4 character!!";
+                codeErrorLabel.Text = "Code must contain 4 characters";
             }
-            return valid;
+            return isValid;
         }
 
+        private void contactTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Helper.IsInputDigit(e))
+            {
+                contactErrorLabel.Text = "Contact can be digits only!";
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+        }
 
         //COMMON
-        private void CleanAll()
+        private void ClearInputs()
         {
-            codeTextBox.Text = null;
-            nameTextBox.Text = null;
-            nameTextBox.Text = null;
-            addressTextBox.Text = null;
-            emailTextBox.Text = null;
-            contactTextBox.Text = null;
-            contactPersonTextBox.Text = null;
+            codeTextBox.Clear();
+            nameTextBox.Clear();
+            addressTextBox.Clear();
+            emailTextBox.Clear();
+            contactTextBox.Clear();
+            contactPersonTextBox.Clear();
 
             saveButton.Text = "Save";
             deleteButton.Visible = false;
             cancelButton.Visible = false;
         }
+
+        private void ClearErrorLabels()
+        {
+            codeErrorLabel.Text = null;
+            nameErrorLabel.Text = null;
+            addressErrorLabel.Text = null;
+            emailErrorLabel.Text = null;
+            contactErrorLabel.Text = null;
+            contactPersonErrorLabel.Text = null;
+
+            searchErrorLabel.Text = null;
+            confirmationLabel.Text = null;
+        }
+
         private void ExceptionMessage(Exception error)
         {
             MessageBox.Show(error.Message);
             _supplierManager.CloseConnection();
-        }
-
-        private void codeTextBox_TextChanged(object sender, EventArgs e)
-        {
-            CodeLengthValidation();
         }
     }
 }

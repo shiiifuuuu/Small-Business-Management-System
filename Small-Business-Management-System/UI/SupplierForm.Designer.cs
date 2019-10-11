@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
-            this.showDataGridView = new System.Windows.Forms.DataGridView();
             this.codeTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.addressTextBox = new System.Windows.Forms.TextBox();
@@ -55,16 +54,17 @@
             this.confirmationLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.showDataGridView = new System.Windows.Forms.DataGridView();
+            this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactPersonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.SIColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactPersonColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ActionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -74,45 +74,24 @@
             this.searchTextBox.Location = new System.Drawing.Point(212, 14);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(192, 20);
-            this.searchTextBox.TabIndex = 1;
+            this.searchTextBox.TabIndex = 9;
             // 
             // saveButton
             // 
             this.saveButton.Location = new System.Drawing.Point(306, 328);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(131, 23);
-            this.saveButton.TabIndex = 2;
+            this.saveButton.TabIndex = 6;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // showDataGridView
-            // 
-            this.showDataGridView.AutoGenerateColumns = false;
-            this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SIColumn,
-            this.IdColumn,
-            this.CodeColumn,
-            this.NameColumn,
-            this.AddressColumn,
-            this.EmailColumn,
-            this.ContactColumn,
-            this.ContactPersonColumn,
-            this.ActionColumn});
-            this.showDataGridView.DataSource = this.supplierBindingSource;
-            this.showDataGridView.Location = new System.Drawing.Point(12, 402);
-            this.showDataGridView.Name = "showDataGridView";
-            this.showDataGridView.Size = new System.Drawing.Size(699, 253);
-            this.showDataGridView.TabIndex = 3;
             // 
             // codeTextBox
             // 
             this.codeTextBox.Location = new System.Drawing.Point(273, 84);
             this.codeTextBox.Name = "codeTextBox";
             this.codeTextBox.Size = new System.Drawing.Size(192, 20);
-            this.codeTextBox.TabIndex = 1;
+            this.codeTextBox.TabIndex = 0;
             this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
             // nameTextBox
@@ -127,28 +106,28 @@
             this.addressTextBox.Location = new System.Drawing.Point(273, 162);
             this.addressTextBox.Name = "addressTextBox";
             this.addressTextBox.Size = new System.Drawing.Size(192, 20);
-            this.addressTextBox.TabIndex = 1;
+            this.addressTextBox.TabIndex = 2;
             // 
             // emailTextBox
             // 
             this.emailTextBox.Location = new System.Drawing.Point(273, 201);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(192, 20);
-            this.emailTextBox.TabIndex = 1;
+            this.emailTextBox.TabIndex = 3;
             // 
             // contactTextBox
             // 
             this.contactTextBox.Location = new System.Drawing.Point(273, 240);
             this.contactTextBox.Name = "contactTextBox";
             this.contactTextBox.Size = new System.Drawing.Size(192, 20);
-            this.contactTextBox.TabIndex = 1;
+            this.contactTextBox.TabIndex = 4;
             // 
             // contactPersonTextBox
             // 
             this.contactPersonTextBox.Location = new System.Drawing.Point(273, 279);
             this.contactPersonTextBox.Name = "contactPersonTextBox";
             this.contactPersonTextBox.Size = new System.Drawing.Size(192, 20);
-            this.contactPersonTextBox.TabIndex = 1;
+            this.contactPersonTextBox.TabIndex = 5;
             // 
             // label2
             // 
@@ -279,7 +258,7 @@
             this.searchButton.Location = new System.Drawing.Point(410, 12);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
-            this.searchButton.TabIndex = 2;
+            this.searchButton.TabIndex = 10;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             // 
@@ -298,7 +277,7 @@
             this.deleteButton.Location = new System.Drawing.Point(169, 328);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(131, 23);
-            this.deleteButton.TabIndex = 2;
+            this.deleteButton.TabIndex = 7;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
             // 
@@ -307,73 +286,94 @@
             this.cancelButton.Location = new System.Drawing.Point(443, 328);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(131, 23);
-            this.cancelButton.TabIndex = 2;
+            this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            // 
+            // showDataGridView
+            // 
+            this.showDataGridView.AutoGenerateColumns = false;
+            this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.siColumn,
+            this.idColumn,
+            this.codeColumn,
+            this.nameColumn,
+            this.addressColumn,
+            this.emailColumn,
+            this.contactColumn,
+            this.contactPersonColumn,
+            this.actionColumn});
+            this.showDataGridView.DataSource = this.supplierBindingSource;
+            this.showDataGridView.Location = new System.Drawing.Point(12, 415);
+            this.showDataGridView.Name = "showDataGridView";
+            this.showDataGridView.Size = new System.Drawing.Size(715, 321);
+            this.showDataGridView.TabIndex = 11;
+            // 
+            // siColumn
+            // 
+            this.siColumn.DataPropertyName = "SI";
+            this.siColumn.HeaderText = "SI";
+            this.siColumn.Name = "siColumn";
+            // 
+            // actionColumn
+            // 
+            this.actionColumn.DataPropertyName = "Action";
+            this.actionColumn.HeaderText = "Action";
+            this.actionColumn.Name = "actionColumn";
+            // 
+            // idColumn
+            // 
+            this.idColumn.DataPropertyName = "Id";
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            // 
+            // codeColumn
+            // 
+            this.codeColumn.DataPropertyName = "Code";
+            this.codeColumn.HeaderText = "Code";
+            this.codeColumn.Name = "codeColumn";
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.DataPropertyName = "Name";
+            this.nameColumn.HeaderText = "Name";
+            this.nameColumn.Name = "nameColumn";
+            // 
+            // addressColumn
+            // 
+            this.addressColumn.DataPropertyName = "Address";
+            this.addressColumn.HeaderText = "Address";
+            this.addressColumn.Name = "addressColumn";
+            // 
+            // emailColumn
+            // 
+            this.emailColumn.DataPropertyName = "Email";
+            this.emailColumn.HeaderText = "Email";
+            this.emailColumn.Name = "emailColumn";
+            // 
+            // contactColumn
+            // 
+            this.contactColumn.DataPropertyName = "Contact";
+            this.contactColumn.HeaderText = "Contact";
+            this.contactColumn.Name = "contactColumn";
+            // 
+            // contactPersonColumn
+            // 
+            this.contactPersonColumn.DataPropertyName = "ContactPerson";
+            this.contactPersonColumn.HeaderText = "ContactPerson";
+            this.contactPersonColumn.Name = "contactPersonColumn";
             // 
             // supplierBindingSource
             // 
             this.supplierBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Supplier);
             // 
-            // SIColumn
-            // 
-            this.SIColumn.HeaderText = "SI";
-            this.SIColumn.Name = "SIColumn";
-            this.SIColumn.ReadOnly = true;
-            // 
-            // IdColumn
-            // 
-            this.IdColumn.DataPropertyName = "Id";
-            this.IdColumn.HeaderText = "Id";
-            this.IdColumn.Name = "IdColumn";
-            // 
-            // CodeColumn
-            // 
-            this.CodeColumn.DataPropertyName = "Code";
-            this.CodeColumn.HeaderText = "Code";
-            this.CodeColumn.Name = "CodeColumn";
-            // 
-            // NameColumn
-            // 
-            this.NameColumn.DataPropertyName = "Name";
-            this.NameColumn.HeaderText = "Name";
-            this.NameColumn.Name = "NameColumn";
-            // 
-            // AddressColumn
-            // 
-            this.AddressColumn.DataPropertyName = "Address";
-            this.AddressColumn.HeaderText = "Address";
-            this.AddressColumn.Name = "AddressColumn";
-            // 
-            // EmailColumn
-            // 
-            this.EmailColumn.DataPropertyName = "Email";
-            this.EmailColumn.HeaderText = "Email";
-            this.EmailColumn.Name = "EmailColumn";
-            // 
-            // ContactColumn
-            // 
-            this.ContactColumn.DataPropertyName = "Contact";
-            this.ContactColumn.HeaderText = "Contact";
-            this.ContactColumn.Name = "ContactColumn";
-            // 
-            // ContactPersonColumn
-            // 
-            this.ContactPersonColumn.DataPropertyName = "ContactPerson";
-            this.ContactPersonColumn.HeaderText = "ContactPerson";
-            this.ContactPersonColumn.Name = "ContactPersonColumn";
-            // 
-            // ActionColumn
-            // 
-            this.ActionColumn.HeaderText = "Action";
-            this.ActionColumn.Name = "ActionColumn";
-            this.ActionColumn.ReadOnly = true;
-            // 
             // SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 664);
+            this.ClientSize = new System.Drawing.Size(739, 744);
             this.Controls.Add(this.showDataGridView);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.cancelButton);
@@ -414,7 +414,6 @@
 
         private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.DataGridView showDataGridView;
         private System.Windows.Forms.TextBox codeTextBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox addressTextBox;
@@ -438,15 +437,16 @@
         private System.Windows.Forms.Label confirmationLabel;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SIColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AddressColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmailColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContactColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ContactPersonColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ActionColumn;
+        private System.Windows.Forms.DataGridView showDataGridView;
         private System.Windows.Forms.BindingSource supplierBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn siColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn addressColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactPersonColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn actionColumn;
     }
 }
