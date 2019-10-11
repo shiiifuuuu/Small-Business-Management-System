@@ -120,10 +120,6 @@ namespace Small_Business_Management_System.UI
             }
         }
 
-        private List<Supplier> SearchSupplier(string searchText)
-        {
-            return _supplierManager.SearchSupplier(searchText);
-        }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
@@ -146,6 +142,11 @@ namespace Small_Business_Management_System.UI
         private bool DeleteSupplier(Supplier supplier)
         {
             return _supplierManager.DeleteSupplier(supplier);
+        }
+
+        private List<Supplier> SearchSupplier(string searchText)
+        {
+            return _supplierManager.SearchSupplier(searchText);
         }
 
         private List<Supplier> GetRecords()
