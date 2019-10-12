@@ -120,7 +120,6 @@ namespace Small_Business_Management_System.UI
             }
         }
 
-
         private void cancelButton_Click(object sender, EventArgs e)
         {
             ClearInputs();
