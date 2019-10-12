@@ -54,16 +54,23 @@ namespace Small_Business_Management_System
                     }
                     else if (saveButton.Text == "Modify")
                     {
-                        if (IsModifiedUnique(_category))
+                        DialogResult dialogResult = MessageBox.Show("Are you sure you want to modify?", "Confirm Modification", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
                         {
-                            if (ModifyCategory(_category)) //MODIFIED SUCCESSFULLY
+                            if (IsModifiedUnique(_category))
                             {
-                                confirmLabel.Text = "Category Modified Successfully!";
-                                DisplayRecords(GetRecords());
-                                CleanAll();
+                                if (ModifyCategory(_category)) //MODIFIED SUCCESSFULLY
+                                {
+                                    confirmLabel.Text = "Category Modified Successfully!";
+                                    DisplayRecords(GetRecords());
+                                    CleanAll();
+                                }
                             }
                         }
-                        
+                        else if (dialogResult == DialogResult.No)
+                        {
+                            //do something else
+                        }
                     }
                 }
             }
@@ -75,18 +82,28 @@ namespace Small_Business_Management_System
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete?", "Delete Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                if (DeleteCategory(_category)) //DELETED SUCCESSFULLY
+                try
                 {
-                    confirmLabel.Text = "Category Deleted Successfully!";
-                    DisplayRecords(GetRecords());
-                    CleanAll();
+                    if (DeleteCategory(_category)) //DELETED SUCCESSFULLY
+                    {
+                        confirmLabel.Text = "Category Deleted Successfully!";
+                        DisplayRecords(GetRecords());
+                        CleanAll();
+                    }
                 }
-            }catch(Exception error)
-            {
-                ExceptionMessage(error);
+                catch (Exception error)
+                {
+                    ExceptionMessage(error);
+                }
             }
+            else if (dialogResult == DialogResult.No)
+            {
+                
+            }
+            
         }
 
         private void searchButton_Click(object sender, EventArgs e)
