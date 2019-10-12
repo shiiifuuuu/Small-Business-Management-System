@@ -17,10 +17,7 @@ namespace Small_Business_Management_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CategoryForm());
-            Application.Run(new CustomerForm());
-            //Application.Run(new SupplierForm());
-
+            Application.Run(new IndexForm());
         }
     }
 }

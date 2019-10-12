@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IndexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndexForm.Designer.cs">
+      <DependentUpon>IndexForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MANAGER\CategoryManager.cs" />
     <Compile Include="MANAGER\CustomerManager.cs" />
     <Compile Include="MANAGER\SupplierManager.cs" />
@@ -76,6 +82,9 @@
     <Compile Include="UI\SupplierForm.Designer.cs">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="IndexForm.resx">
+      <DependentUpon>IndexForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
