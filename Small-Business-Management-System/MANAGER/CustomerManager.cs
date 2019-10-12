@@ -26,6 +26,10 @@ namespace Small_Business_Management_System.MANAGER
         {
             return _customerRepository.IsUnique(inputString, columnName);
         }
+        internal bool IsUnique(string inputString, string columnName, int id)
+        {
+            return _customerRepository.IsUnique(inputString, columnName, id);
+        }
 
         internal bool Add(Customer customer)
         {

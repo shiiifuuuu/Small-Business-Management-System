@@ -136,10 +136,8 @@
             // 
             this.loyaltyPointTextBox.Location = new System.Drawing.Point(273, 277);
             this.loyaltyPointTextBox.Name = "loyaltyPointTextBox";
-            this.loyaltyPointTextBox.ReadOnly = true;
             this.loyaltyPointTextBox.Size = new System.Drawing.Size(192, 20);
             this.loyaltyPointTextBox.TabIndex = 31;
-            this.loyaltyPointTextBox.Text = "0";
             // 
             // contactTextBox
             // 
@@ -147,6 +145,7 @@
             this.contactTextBox.Name = "contactTextBox";
             this.contactTextBox.Size = new System.Drawing.Size(192, 20);
             this.contactTextBox.TabIndex = 30;
+            this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
             this.contactTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.contactTextBox_KeyPress);
             // 
             // emailTextBox

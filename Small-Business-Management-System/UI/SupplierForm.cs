@@ -52,20 +52,27 @@ namespace Small_Business_Management_System.UI
                 {
                     if (saveButton.Text == "Save")
                     {
-                        if (AddSupplier(_supplier)) //ADDED SUCCESSFULLY
+                        if (IsUnique(_supplier))
                         {
-                            confirmationLabel.Text = "Supplier Information Saved Successfully!";
-                            DisplayRecords(GetRecords());
-                            ClearInputs();
+                            if (AddSupplier(_supplier)) //ADDED SUCCESSFULLY
+                            {
+                                confirmationLabel.Text = "Supplier Information Saved Successfully!";
+                                DisplayRecords(GetRecords());
+                                ClearInputs();
+                            }
                         }
+                        
                     }
                     else if (saveButton.Text == "Modify")
                     {
-                        if (ModifySupplier(_supplier)) //MODIFIED SUCCESSFULLY
+                        if (IsModifiedUnique(_supplier))
                         {
-                            confirmationLabel.Text = "Supplier Information Modified Successfully!";
-                            DisplayRecords(GetRecords());
-                            ClearInputs();
+                            if (ModifySupplier(_supplier)) //MODIFIED SUCCESSFULLY
+                            {
+                                confirmationLabel.Text = "Supplier Information Modified Successfully!";
+                                DisplayRecords(GetRecords());
+                                ClearInputs();
+                            }
                         }
                     }
                 }
@@ -216,10 +223,17 @@ namespace Small_Business_Management_System.UI
                 ClearErrorLabels();
             }
 
+            return isValid;
+        }
+
+        private bool IsUnique(Supplier supplier)
+        {
+            bool isUnique = true;
+
             if (!_supplierManager.IsUnique(supplier.Code, "Code"))
             {
                 codeErrorLabel.Text = "This code already exists!";
-                isValid = false;
+                isUnique = false;
             }
             else
             {
@@ -228,7 +242,7 @@ namespace Small_Business_Management_System.UI
             if (!_supplierManager.IsUnique(supplier.Name, "Name"))
             {
                 nameErrorLabel.Text = "This name already exists!";
-                isValid = false;
+                isUnique = false;
             }
             else
             {
@@ -237,7 +251,7 @@ namespace Small_Business_Management_System.UI
             if (!_supplierManager.IsUnique(supplier.Email, "Email"))
             {
                 emailErrorLabel.Text = "This email already exists!";
-                isValid = false;
+                isUnique = false;
             }
             else
             {
@@ -246,14 +260,57 @@ namespace Small_Business_Management_System.UI
             if (!_supplierManager.IsUnique(supplier.Contact, "Contact"))
             {
                 contactErrorLabel.Text = "This contact already exists!";
-                isValid = false;
+                isUnique = false;
             }
             else
             {
                 ClearErrorLabels();
             }
 
-            return isValid;
+            return isUnique;
+        }
+        private bool IsModifiedUnique(Supplier supplier)
+        {
+            bool isUnique = true;
+
+            if (!_supplierManager.IsUnique(supplier.Code, "Code", supplier.Id))
+            {
+                codeErrorLabel.Text = "This code already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            if (!_supplierManager.IsUnique(supplier.Name, "Name", supplier.Id))
+            {
+                nameErrorLabel.Text = "This name already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            if (!_supplierManager.IsUnique(supplier.Email, "Email", supplier.Id))
+            {
+                emailErrorLabel.Text = "This email already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            if (!_supplierManager.IsUnique(supplier.Contact, "Contact", supplier.Id))
+            {
+                contactErrorLabel.Text = "This contact already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+
+            return isUnique;
         }
 
         private void codeTextBox_TextChanged(object sender, EventArgs e)

@@ -26,6 +26,7 @@ namespace Small_Business_Management_System.UI
             try
             {
                 ClearErrorLabels();
+                loyaltyPointTextBox.Text = "0";
                 DisplayRecords(GetRecords());
                 deleteButton.Visible = false;
                 cancelButton.Visible = false;
@@ -53,21 +54,29 @@ namespace Small_Business_Management_System.UI
                 {
                     if (saveButton.Text == "Save")
                     {
-                        if (Add(_customer)) //ADDED SUCCESSFULLY
+                        if (IsUnique(_customer))
                         {
-                            confirmationLabel.Text = "Customer Information Saved Successfully!";
-                            DisplayRecords(GetRecords());
-                            ClearInputs();
+                            if (Add(_customer)) //ADDED SUCCESSFULLY
+                            {
+                                confirmationLabel.Text = "Customer Information Saved Successfully!";
+                                DisplayRecords(GetRecords());
+                                ClearInputs();
+                            }
                         }
+                        
                     }
                     else if (saveButton.Text == "Modify")
                     {
-                        if (Modify(_customer)) //MODIFIED SUCCESSFULLY
+                        if(IsModifiedUnique(_customer))
                         {
-                            confirmationLabel.Text = "Customer Information Modified Successfully!";
-                            DisplayRecords(GetRecords());
-                            ClearInputs();
+                            if (Modify(_customer)) //MODIFIED SUCCESSFULLY
+                            {
+                                confirmationLabel.Text = "Customer Information Modified Successfully!";
+                                DisplayRecords(GetRecords());
+                                ClearInputs();
+                            }
                         }
+                        
                     }
                 }
             }
@@ -158,7 +167,6 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
-                showDataGridView.ReadOnly = true;
                 showDataGridView.DataSource = customers;
 
                 showDataGridView.Columns["idColumn"].Visible = false;
@@ -172,12 +180,11 @@ namespace Small_Business_Management_System.UI
         }
 
 
-
-
         //VALIDATION
         private bool IsValid(Customer customer)
         {
             bool isValid = true;
+
             if (String.IsNullOrEmpty(customer.Code))
             {
                 codeErrorLabel.Text = "Code can not be empty!!";
@@ -213,33 +220,8 @@ namespace Small_Business_Management_System.UI
             {
                 contactErrorLabel.Text = "Contact can not be empty!!";
                 isValid = false;
-            }
-            else
+            }else if (!ContactLengthValidation(customer.Contact))
             {
-                ClearErrorLabels();
-            }
-
-            if (!_customerManager.IsUnique(customer.Code, "Code")) //(inputString, columnName)
-            {
-                codeErrorLabel.Text = "This code already exists!";
-                isValid = false;
-            }
-            else
-            {
-                ClearErrorLabels();
-            }
-            if (!_customerManager.IsUnique(customer.Email, "Email"))
-            {
-                emailErrorLabel.Text = "This email already exists!";
-                isValid = false;
-            }
-            else
-            {
-                ClearErrorLabels();
-            }
-            if (!_customerManager.IsUnique(customer.Contact, "Contact"))
-            {
-                contactErrorLabel.Text = "This contact already exists!";
                 isValid = false;
             }
             else
@@ -248,6 +230,70 @@ namespace Small_Business_Management_System.UI
             }
 
             return isValid;
+        }
+        private bool IsUnique(Customer customer)
+        {
+            bool isUnique = true;
+            if (!_customerManager.IsUnique(customer.Code, "Code")) //(inputString, columnName)
+            {
+                codeErrorLabel.Text = "This code already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            if (!_customerManager.IsUnique(customer.Email, "Email"))
+            {
+                emailErrorLabel.Text = "This email already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            if (!_customerManager.IsUnique(customer.Contact, "Contact"))
+            {
+                contactErrorLabel.Text = "This contact already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            return isUnique;
+        }
+        private bool IsModifiedUnique(Customer customer)
+        {
+            bool isUnique = true;
+            if (!_customerManager.IsUnique(customer.Code, "Code", customer.Id)) //(inputString, columnName)
+            {
+                codeErrorLabel.Text = "This code already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            if (!_customerManager.IsUnique(customer.Email, "Email", customer.Id))
+            {
+                emailErrorLabel.Text = "This email already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            if (!_customerManager.IsUnique(customer.Contact, "Contact", customer.Id))
+            {
+                contactErrorLabel.Text = "This contact already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                ClearErrorLabels();
+            }
+            return isUnique;
         }
 
         private void codeTextBox_TextChanged(object sender, EventArgs e)
@@ -276,10 +322,30 @@ namespace Small_Business_Management_System.UI
             {
                 contactErrorLabel.Text = "Contact can be digits only!";
             }
-            else
             {
                 ClearErrorLabels();
             }
+
+        }
+
+        private void contactTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ContactLengthValidation(contactTextBox.Text);
+        }
+
+        private bool ContactLengthValidation(string contactText)
+        {
+            bool isValid = false;
+            if (contactText.Length == 11)
+            {
+                contactErrorLabel.Text = null;
+                isValid = true;
+            }
+            else if (contactText.Length < 11 && !String.IsNullOrEmpty(contactText))
+            {
+                contactErrorLabel.Text = "Contact must contain 11 digits";
+            }
+            return isValid;
         }
 
 
@@ -321,7 +387,7 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
-                if (e.ColumnIndex == showDataGridView.Columns["Action"].Index && e.RowIndex != -1)
+                if (e.ColumnIndex == showDataGridView.Columns["actionColumn"].Index && e.RowIndex != -1)
                 {
                     if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {

@@ -41,21 +41,29 @@ namespace Small_Business_Management_System
                 {
                     if (saveButton.Text == "Save")
                     {
-                        if (AddCategory(_category)) //ADDED SUCCESSFULLY
+                        if (IsUnique(_category))
                         {
-                            confirmLabel.Text = "Category Saved Successfully!";
-                            DisplayRecords(GetRecords());
-                            CleanAll();
+                            if (AddCategory(_category)) //ADDED SUCCESSFULLY
+                            {
+                                confirmLabel.Text = "Category Saved Successfully!";
+                                DisplayRecords(GetRecords());
+                                CleanAll();
+                            }
                         }
+                        
                     }
                     else if (saveButton.Text == "Modify")
                     {
-                        if(ModifyCategory(_category)) //MODIFIED SUCCESSFULLY
+                        if (IsModifiedUnique(_category))
                         {
-                            confirmLabel.Text = "Category Modified Successfully!";
-                            DisplayRecords(GetRecords());
-                            CleanAll();
+                            if (ModifyCategory(_category)) //MODIFIED SUCCESSFULLY
+                            {
+                                confirmLabel.Text = "Category Modified Successfully!";
+                                DisplayRecords(GetRecords());
+                                CleanAll();
+                            }
                         }
+                        
                     }
                 }
             }
@@ -112,19 +120,19 @@ namespace Small_Business_Management_System
 
 
         //CRUD FUNCTIONS
-        private bool AddCategory(Category _category)
+        private bool AddCategory(Category category)
         {
-            return _categoryManager.AddCategory(_category);
+            return _categoryManager.AddCategory(category);
         }
 
-        private bool ModifyCategory(Category _category)
+        private bool ModifyCategory(Category category)
         {
-            return _categoryManager.ModifyCategory(_category);
+            return _categoryManager.ModifyCategory(category);
         }
 
-        private bool DeleteCategory(Category _category)
+        private bool DeleteCategory(Category category)
         {
-            return _categoryManager.DeleteCategory(_category);
+            return _categoryManager.DeleteCategory(category);
         }
 
         private List<Category> SearchCategory(string searchText)
@@ -141,7 +149,6 @@ namespace Small_Business_Management_System
         {
             try
             {
-                showCategoriesGridView.ReadOnly = true;
                 showCategoriesGridView.DataSource = categories;
 
                 showCategoriesGridView.Columns["idColumn"].Visible = false;
@@ -156,11 +163,11 @@ namespace Small_Business_Management_System
 
 
         //VALIDATION
-        private bool IsValid(Category _category)
+        private bool IsValid(Category category)
         {
             bool isValid = true;
 
-            if (String.IsNullOrEmpty(_category.Code))
+            if (String.IsNullOrEmpty(category.Code))
             {
                 codeErrorLabel.Text = "code field can not be empty!";
                 isValid = false;
@@ -168,7 +175,7 @@ namespace Small_Business_Management_System
             {
                 isValid = false;
             }
-            if (String.IsNullOrEmpty(_category.Name))
+            if (String.IsNullOrEmpty(category.Name))
             {
                 nameErrorLabel.Text = "name field can not be empty!";
                 isValid = false;
@@ -176,19 +183,42 @@ namespace Small_Business_Management_System
             {
                 nameErrorLabel.Text = null;
             }
-            
-            if (!_categoryManager.IsUnique(_category.Code, "Code"))
-            {
-                codeErrorLabel.Text = "This Code already Exist!";
-                isValid = false;
-            }
-            if (!_categoryManager.IsUnique(_category.Name, "Name"))
-            {
-                codeErrorLabel.Text = "This Name already Exist!";
-                isValid = false;
-            }
 
             return isValid;
+        }
+        private bool IsUnique(Category category)
+        {
+            bool isUnique = true;
+
+            if (!_categoryManager.IsUnique(category.Code, "Code"))
+            {
+                codeErrorLabel.Text = "This Code already Exist!";
+                isUnique = false;
+            }
+            if (!_categoryManager.IsUnique(category.Name, "Name"))
+            {
+                codeErrorLabel.Text = "This Name already Exist!";
+                isUnique = false;
+            }
+
+            return isUnique;
+        }
+        private bool IsModifiedUnique(Category category)
+        {
+            bool isUnique = true;
+
+            if (!_categoryManager.IsUnique(category.Code, "Code", category.Id))
+            {
+                codeErrorLabel.Text = "This Code already Exist!";
+                isUnique = false;
+            }
+            if (!_categoryManager.IsUnique(category.Name, "Name", category.Id))
+            {
+                codeErrorLabel.Text = "This Name already Exist!";
+                isUnique = false;
+            }
+
+            return isUnique;
         }
 
         private void codeTextBox_TextChanged(object sender, EventArgs e)

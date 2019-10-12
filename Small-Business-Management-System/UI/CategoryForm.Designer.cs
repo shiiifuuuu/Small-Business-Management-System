@@ -33,10 +33,7 @@
             this.codeTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.showCategoriesGridView = new System.Windows.Forms.DataGridView();
-            this.snColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.searchTextBox = new System.Windows.Forms.TextBox();
@@ -47,8 +44,11 @@
             this.confirmLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.showCategoriesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +85,7 @@
             this.showCategoriesGridView.AutoGenerateColumns = false;
             this.showCategoriesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showCategoriesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.snColumn,
+            this.siColumn,
             this.idColumn,
             this.codeColumn,
             this.nameColumn,
@@ -97,29 +97,9 @@
             this.showCategoriesGridView.TabIndex = 3;
             this.showCategoriesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showCategoriesGridView_CellContentClick);
             // 
-            // snColumn
+            // categoryBindingSource
             // 
-            this.snColumn.FillWeight = 20F;
-            this.snColumn.HeaderText = "SI";
-            this.snColumn.Name = "snColumn";
-            this.snColumn.ReadOnly = true;
-            // 
-            // idColumn
-            // 
-            this.idColumn.DataPropertyName = "Id";
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.DataPropertyName = "Name";
-            this.nameColumn.HeaderText = "Name";
-            this.nameColumn.Name = "nameColumn";
-            // 
-            // actionColumn
-            // 
-            this.actionColumn.HeaderText = "Action";
-            this.actionColumn.Name = "actionColumn";
+            this.categoryBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Category);
             // 
             // label2
             // 
@@ -211,15 +191,35 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // siColumn
+            // 
+            this.siColumn.FillWeight = 20F;
+            this.siColumn.HeaderText = "SI";
+            this.siColumn.Name = "siColumn";
+            this.siColumn.ReadOnly = true;
+            // 
+            // idColumn
+            // 
+            this.idColumn.DataPropertyName = "Id";
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            // 
             // codeColumn
             // 
             this.codeColumn.DataPropertyName = "Code";
             this.codeColumn.HeaderText = "Code";
             this.codeColumn.Name = "codeColumn";
             // 
-            // categoryBindingSource
+            // nameColumn
             // 
-            this.categoryBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Category);
+            this.nameColumn.DataPropertyName = "Name";
+            this.nameColumn.HeaderText = "Name";
+            this.nameColumn.Name = "nameColumn";
+            // 
+            // actionColumn
+            // 
+            this.actionColumn.HeaderText = "Action";
+            this.actionColumn.Name = "actionColumn";
             // 
             // CategoryForm
             // 
@@ -265,13 +265,13 @@
         private System.Windows.Forms.Label nameErrorLabel;
         private System.Windows.Forms.Label confirmLabel;
         private System.Windows.Forms.BindingSource categoryBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn snColumn;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn siColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn actionColumn;
-        private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.Button cancelButton;
     }
 }
 

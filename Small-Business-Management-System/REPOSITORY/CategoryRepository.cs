@@ -120,7 +120,7 @@ namespace Small_Business_Management_System.REPOSITORY
             SqlDataReader dataReader = sqlCommand.ExecuteReader();
             while (dataReader.Read())
             {
-                searchString = dataReader["columnName"].ToString();
+                searchString = dataReader[columnName].ToString();
             }
             if (String.IsNullOrEmpty(searchString))
             {
@@ -129,6 +129,24 @@ namespace Small_Business_Management_System.REPOSITORY
             sqlConnection.Close();
             return isUnique;
         }
-
+        internal bool IsUnique(string inputString, string columnName, int id)
+        {
+            bool isUnique = false;
+            String searchString = null;
+            String commandString = " SELECT Code FROM Category WHERE " + columnName + " = '" + inputString + "' AND Id <> "+id+" ";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                searchString = dataReader[columnName].ToString();
+            }
+            if (String.IsNullOrEmpty(searchString))
+            {
+                isUnique = true;
+            }
+            sqlConnection.Close();
+            return isUnique;
+        }
     }
 }

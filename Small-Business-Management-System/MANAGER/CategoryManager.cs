@@ -46,5 +46,9 @@ namespace Small_Business_Management_System.MANAGER
         {
             return _categoryRepository.IsUnique(inputString, columnName);
         }
+        internal bool IsUnique(string inputString, string columnName, int id)
+        {
+            return _categoryRepository.IsUnique(inputString, columnName, id);
+        }
     }
 }

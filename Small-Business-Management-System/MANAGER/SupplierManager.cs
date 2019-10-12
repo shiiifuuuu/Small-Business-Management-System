@@ -31,6 +31,10 @@ namespace Small_Business_Management_System.MANAGER
         {
             return _supplierRepository.IsUnique(inputString, columnName);
         }
+        internal bool IsUnique(string inputString, string columnName, int id)
+        {
+            return _supplierRepository.IsUnique(inputString, columnName, id);
+        }
 
         internal bool ModifySupplier(Supplier supplier)
         {
