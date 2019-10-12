@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Small_Business_Management_System.MODEL
 {
-    public class Supplier
+    public class Customer
     {
         public int Id { set; get; }
         public string Code { set; get; }
@@ -14,7 +14,6 @@ namespace Small_Business_Management_System.MODEL
         public string Address { set; get; }
         public string Email { set; get; }
         public string Contact { set; get; }
-        public string ContactPerson { set; get; }
-
+        public double LoyaltyPoint { set; get; }
     }
 }
