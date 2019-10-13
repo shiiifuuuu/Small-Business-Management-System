@@ -11,10 +11,10 @@ namespace Small_Business_Management_System.REPOSITORY
     class CustomerRepository
     {
         SqlConnection sqlConnection;
-        string serverName = @"SHIIIFUUUU";
-        string databaseName = @"SmallBusinessManagementSystem";
-        //string serverName = @"PC-301-21\SQLEXPRESS";
+        //string serverName = @"SHIIIFUUUU";
         //string databaseName = @"SmallBusinessManagementSystem";
+        string serverName = @"PC-301-21\SQLEXPRESS";
+        string databaseName = @"SmallBusinessManagementSystem";
         public CustomerRepository()
         {
             String connectionString = "Server=" + serverName + "; Database=" + databaseName + "; Integrated Security=true";
