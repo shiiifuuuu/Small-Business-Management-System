@@ -11,15 +11,10 @@ namespace Small_Business_Management_System.REPOSITORY
     class PurchaseRepository
     {
         SqlConnection sqlConnection;
-        //string serverName = @"SHIIIFUUUU";
-        //string databaseName = @"SmallBusinessManagementSystem";
-        string serverName = @"PC-301-21\SQLEXPRESS";
-        string databaseName = @"SmallBusinessManagementSystem";
 
         public PurchaseRepository()
         {
-            String connectionString = "Server=" + serverName + "; Database=" + databaseName + "; Integrated Security=true";
-            sqlConnection = new SqlConnection(connectionString);
+            sqlConnection = ServerConnection.Connect();
         }
 
         internal List<Supplier> SupplierComboLoad()

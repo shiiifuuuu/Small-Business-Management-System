@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServerConnection.cs" />
     <Compile Include="IndexForm.cs">
       <SubType>Form</SubType>
     </Compile>
