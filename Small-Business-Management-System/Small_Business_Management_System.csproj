@@ -54,13 +54,16 @@
     </Compile>
     <Compile Include="MANAGER\CategoryManager.cs" />
     <Compile Include="MANAGER\CustomerManager.cs" />
+    <Compile Include="MANAGER\PurchaseManager.cs" />
     <Compile Include="MANAGER\SupplierManager.cs" />
     <Compile Include="MODEL\Category.cs" />
     <Compile Include="MODEL\Customer.cs" />
     <Compile Include="MODEL\Helper.cs" />
+    <Compile Include="MODEL\Purchase.cs" />
     <Compile Include="MODEL\Supplier.cs" />
     <Compile Include="REPOSITORY\CategoryRepository.cs" />
     <Compile Include="REPOSITORY\CustomerRepository.cs" />
+    <Compile Include="REPOSITORY\PurchaseRepository.cs" />
     <Compile Include="REPOSITORY\SupplierRepository.cs" />
     <Compile Include="UI\CategoryForm.cs">
       <SubType>Form</SubType>
@@ -75,6 +78,12 @@
     </Compile>
     <Compile Include="UI\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PurchaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PurchaseForm.Designer.cs">
+      <DependentUpon>PurchaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SupplierForm.cs">
       <SubType>Form</SubType>
@@ -99,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PurchaseForm.resx">
+      <DependentUpon>PurchaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>

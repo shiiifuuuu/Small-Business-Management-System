@@ -41,5 +41,10 @@ namespace Small_Business_Management_System
             supplierForm.ShowDialog();
         }
 
+        private void purchaseFormLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            PurchaseForm purchaseForm = new PurchaseForm();
+            purchaseForm.ShowDialog();
+        }
     }
 }
