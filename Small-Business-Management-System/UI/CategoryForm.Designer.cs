@@ -99,7 +99,7 @@
             // 
             // categoryBindingSource
             // 
-            this.categoryBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Category);
+//            this.categoryBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Category);
             // 
             // label2
             // 

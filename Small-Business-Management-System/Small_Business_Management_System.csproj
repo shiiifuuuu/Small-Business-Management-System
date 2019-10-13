@@ -76,6 +76,18 @@
     <Compile Include="UI\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ReportingPurchaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportingPurchaseForm.Designer.cs">
+      <DependentUpon>ReportingPurchaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportingSalesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportingSalesForm.Designer.cs">
+      <DependentUpon>ReportingSalesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SupplierForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +111,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportingPurchaseForm.resx">
+      <DependentUpon>ReportingPurchaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportingSalesForm.resx">
+      <DependentUpon>ReportingSalesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
