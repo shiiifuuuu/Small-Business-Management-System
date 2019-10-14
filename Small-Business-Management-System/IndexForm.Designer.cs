@@ -32,7 +32,6 @@
             this.customerFormLink = new System.Windows.Forms.LinkLabel();
             this.supplierFormLink = new System.Windows.Forms.LinkLabel();
             this.productForm = new System.Windows.Forms.LinkLabel();
-            this.purchaseFormLink = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // categoryFormLink
@@ -79,23 +78,11 @@
             this.productForm.Text = "Product Form";
             this.productForm.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.productForm_LinkClicked);
             // 
-            // purchaseFormLink
-            // 
-            this.purchaseFormLink.AutoSize = true;
-            this.purchaseFormLink.Location = new System.Drawing.Point(203, 181);
-            this.purchaseFormLink.Name = "purchaseFormLink";
-            this.purchaseFormLink.Size = new System.Drawing.Size(78, 13);
-            this.purchaseFormLink.TabIndex = 4;
-            this.purchaseFormLink.TabStop = true;
-            this.purchaseFormLink.Text = "Purchase Form";
-            this.purchaseFormLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.purchaseFormLink_LinkClicked);
-            // 
             // IndexForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 386);
-            this.Controls.Add(this.purchaseFormLink);
             this.Controls.Add(this.productForm);
             this.Controls.Add(this.supplierFormLink);
             this.Controls.Add(this.customerFormLink);
@@ -113,6 +100,5 @@
         private System.Windows.Forms.LinkLabel customerFormLink;
         private System.Windows.Forms.LinkLabel supplierFormLink;
         private System.Windows.Forms.LinkLabel productForm;
-        private System.Windows.Forms.LinkLabel purchaseFormLink;
     }
 }
