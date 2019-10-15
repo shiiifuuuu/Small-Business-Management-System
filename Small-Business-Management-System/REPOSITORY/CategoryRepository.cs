@@ -11,7 +11,9 @@ namespace Small_Business_Management_System.REPOSITORY
     class CategoryRepository
     {
         SqlConnection sqlConnection;
-        string serverName = @"SHIIIFUUUU";
+        //string serverName = @"SHIIIFUUUU";
+        //string databaseName = @"SmallBusinessManagementSystem";
+        string serverName = @"DESKTOP-PGSVAVG\MSSQLSERVER2014";
         string databaseName = @"SmallBusinessManagementSystem";
 
         public CategoryRepository()
