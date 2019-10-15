@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServerConnection.cs" />
     <Compile Include="IndexForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,13 +55,16 @@
     </Compile>
     <Compile Include="MANAGER\CategoryManager.cs" />
     <Compile Include="MANAGER\CustomerManager.cs" />
+    <Compile Include="MANAGER\ProductManager.cs" />
     <Compile Include="MANAGER\SupplierManager.cs" />
     <Compile Include="MODEL\Category.cs" />
     <Compile Include="MODEL\Customer.cs" />
     <Compile Include="MODEL\Helper.cs" />
+    <Compile Include="MODEL\Product.cs" />
     <Compile Include="MODEL\Supplier.cs" />
     <Compile Include="REPOSITORY\CategoryRepository.cs" />
     <Compile Include="REPOSITORY\CustomerRepository.cs" />
+    <Compile Include="REPOSITORY\ProductRepository.cs" />
     <Compile Include="REPOSITORY\SupplierRepository.cs" />
     <Compile Include="UI\CategoryForm.cs">
       <SubType>Form</SubType>
@@ -76,11 +80,32 @@
     <Compile Include="UI\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
+
     <Compile Include="UI\Sales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Sales.Designer.cs">
       <DependentUpon>Sales.cs</DependentUpon>
+
+
+    <Compile Include="UI\ReportingPurchaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportingPurchaseForm.Designer.cs">
+      <DependentUpon>ReportingPurchaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ReportingSalesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReportingSalesForm.Designer.cs">
+      <DependentUpon>ReportingSalesForm.cs</DependentUpon>
+
+    <Compile Include="UI\ProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProductForm.Designer.cs">
+      <DependentUpon>ProductForm.cs</DependentUpon>
+
     </Compile>
     <Compile Include="UI\SupplierForm.cs">
       <SubType>Form</SubType>
@@ -106,14 +131,28 @@
     <EmbeddedResource Include="UI\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="UI\Sales.resx">
       <DependentUpon>Sales.cs</DependentUpon>
+
+
+    <EmbeddedResource Include="UI\ReportingPurchaseForm.resx">
+      <DependentUpon>ReportingPurchaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReportingSalesForm.resx">
+      <DependentUpon>ReportingSalesForm.cs</DependentUpon>
+
+    <EmbeddedResource Include="UI\ProductForm.resx">
+      <DependentUpon>ProductForm.cs</DependentUpon>
+
+
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Category.datasource" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Customer.datasource" />
+    <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Product.datasource" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Supplier.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -126,7 +165,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

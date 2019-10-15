@@ -11,15 +11,21 @@ namespace Small_Business_Management_System.REPOSITORY
     class CategoryRepository
     {
         SqlConnection sqlConnection;
+
         //string serverName = @"SHIIIFUUUU";
         //string databaseName = @"SmallBusinessManagementSystem";
         string serverName = @"DESKTOP-PGSVAVG\MSSQLSERVER2014";
+
+
+        //string serverName = @"SHIIIFUUUU";
+        //string databaseName = @"SmallBusinessManagementSystem";
+        string serverName = @"PC-301-20\SQLEXPRESS";
+
         string databaseName = @"SmallBusinessManagementSystem";
 
         public CategoryRepository()
         {
-            String connectionString = "Server="+serverName+"; Database="+databaseName+"; Integrated Security=true";
-            sqlConnection = new SqlConnection(connectionString);
+            sqlConnection = ServerConnection.Connect();
         }
 
         internal bool AddCategory(Category _category)
