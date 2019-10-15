@@ -46,6 +46,7 @@ namespace Small_Business_Management_System.MODEL
             }
             return isLetter;
         }
+
         public static bool IsInputDigit(KeyPressEventArgs e)
         {
             bool isDigit = false;
@@ -60,6 +61,7 @@ namespace Small_Business_Management_System.MODEL
             }
             return isDigit;
         }
+
         public static bool IsInputFloat(KeyPressEventArgs e)
         {
             bool isFloat = false;
@@ -74,6 +76,7 @@ namespace Small_Business_Management_System.MODEL
             }
             return isFloat;
         }
+
         public static bool IsInputLetterOrDigit(KeyPressEventArgs e)
         {
             bool isLetterOrDigit = false;

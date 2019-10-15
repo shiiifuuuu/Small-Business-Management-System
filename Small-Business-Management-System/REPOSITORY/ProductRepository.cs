@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Small_Business_Management_System.MODEL;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Small_Business_Management_System.REPOSITORY
 {
-    class CustomerRepository
+    class ProductRepository
     {
         SqlConnection sqlConnection;
-
-        public CustomerRepository()
+        string serverName = @"DESKTOP-DJ1I7TN\SQLEXPRESS";
+        string databaseName = @"SmallBusinessManagementSystem";
+        public ProductRepository()
         {
-            sqlConnection = ServerConnection.Connect();
+            String connectionString = "Server=" + serverName + "; Database=" + databaseName + "; Integrated Security=true";
+            sqlConnection = new SqlConnection(connectionString);
         }
 
         internal bool IsUnique(string inputString, string columnName)
@@ -59,68 +62,56 @@ namespace Small_Business_Management_System.REPOSITORY
             return isUnique;
         }
 
-        internal List<Customer> Search(string searchText)
+        internal List<Product> Search(string searchText)
         {
             string commandString = @"SELECT * FROM Customer WHERE Name LIKE '%" + searchText + "%' " +
                 "OR Email LIKE '%" + searchText + "%' OR Contact LIKE '%" + searchText + "%'";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
             SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            List<Customer> customers = new List<Customer>();
+            List<Product> products = new List<Product>();
             while (dataReader.Read())
             {
-                Customer customer = new Customer();
-                customer.Code = dataReader["Code"].ToString();
-                customer.Name = dataReader["Name"].ToString();
-                customer.Address = dataReader["Address"].ToString();
-                customer.Email = dataReader["Email"].ToString();
-                customer.Contact = dataReader["Contact"].ToString();
-                customer.LoyaltyPoint = double.Parse(dataReader["LoyaltyPoint"].ToString());
+                Product product = new Product();
+                product.Code = dataReader["Code"].ToString();
+                product.Name = dataReader["Name"].ToString();
+                product.ReorderLevel = dataReader["ReorderLevel"].ToString();
+                product.Description = dataReader["Description"].ToString();
+                //customer.Contact = dataReader["Contact"].ToString();
+                //customer.LoyaltyPoint = double.Parse(dataReader["LoyaltyPoint"].ToString());
 
-                customers.Add(customer);
+                products.Add(product);
             }
             sqlConnection.Close();
-            return customers;
+            return products
+;
         }
 
-        internal bool Delete(Customer customer)
-        {
-            bool isDeleted = false;
-            String commandString = @"DELETE FROM Customer WHERE Id = " + customer.Id + "";
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-            sqlConnection.Open();
-            if (sqlCommand.ExecuteNonQuery() > 0)
-            {
-                isDeleted = true;
-            }
-            sqlConnection.Close();
-            return isDeleted;
-        }
-
-        internal bool Modify(Customer customer)
+        internal bool Modify(Product product)
         {
             bool isModified = false;
-            String commandString = @"UPDATE Customer SET Code = '" + customer.Code + "', Name = '" + 
-                customer.Name + "', Email = '" + customer.Email + "', Address = '" + 
-                customer.Address + "', Contact = '" + customer.Contact + "', LoyaltyPoint = '" +
-                customer.LoyaltyPoint + "' WHERE Id = " + customer.Id + "";
+            String commandString = @"UPDATE Customer SET Code = '" + product.Code + "', Name = '" +
+                   product.Name + "', ReorderLevel = '" + product.ReorderLevel + "', Description = '" +
+                   product.Description +"' WHERE Id = " + product.Id + "";
+
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
             if (sqlCommand.ExecuteNonQuery() > 0)
             {
                 isModified = true;
+
             }
             sqlConnection.Close();
             return isModified;
         }
 
-        internal bool Add(Customer customer)
+        internal bool Add(Product product)
         {
             bool isAdded = false;
-            String commandString = @"INSERT INTO Customer (Code,Name,Address,Email,Contact,LoyaltyPoint) 
-                VALUES ('" + customer.Code + "', '" + customer.Name + "','" + 
-                customer.Address + "','" + customer.Email + "','" + 
-                customer.Contact + "', '"+customer.LoyaltyPoint+"')";
+            String commandString = @"INSERT INTO Customer (Code,Name,ReorderLevel,Description) 
+                                   VALUES ('" + product.Code + "', '" + product.Name + "','" +
+                                   product.ReorderLevel + "','" + product.Description +"')";
+
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
             if (sqlCommand.ExecuteNonQuery() > 0)
@@ -140,28 +131,32 @@ namespace Small_Business_Management_System.REPOSITORY
             catch (Exception) { }
         }
 
-        internal List<Customer> GetRecords()
+        internal List<Product> GetRecords()
         {
-            String commandString = @"SELECT * FROM Customer";
+            String commandString = @"SELECT * FROM Product";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
             SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            List<Customer> customers = new List<Customer>();
+            List<Product> products = new List<Product>();
             while (dataReader.Read())
             {
-                Customer customer = new Customer();
-                customer.Id = int.Parse(dataReader["Id"].ToString());
-                customer.Code = dataReader["Code"].ToString();
-                customer.Name = dataReader["Name"].ToString();
-                customer.Address = dataReader["Address"].ToString();
-                customer.Email = dataReader["Email"].ToString();
-                customer.Contact = dataReader["Contact"].ToString();
-                customer.LoyaltyPoint = double.Parse(dataReader["LoyaltyPoint"].ToString());
+                Product product = new Product();
+                product.Id = int.Parse(dataReader["Id"].ToString());
+                product.Code = dataReader["Code"].ToString();
+                product.Name = dataReader["Name"].ToString();
+                product.ReorderLevel= dataReader["ReorderLevel"].ToString();
+                product.Description=  dataReader["Description"].ToString();
+                //customer.Contact = dataReader["Contact"].ToString();
+                //customer.LoyaltyPoint = double.Parse(dataReader["LoyaltyPoint"].ToString());
 
-                customers.Add(customer);
+                products.Add(product);
             }
             sqlConnection.Close();
-            return customers;
+            return products;
         }
+
+
+
+
     }
 }

@@ -21,6 +21,7 @@ namespace Small_Business_Management_System.UI
         {
             InitializeComponent();
         }
+
         private void CustomerForm_Load(object sender, EventArgs e)
         {
             try
@@ -231,6 +232,7 @@ namespace Small_Business_Management_System.UI
 
             return isValid;
         }
+
         private bool IsUnique(Customer customer)
         {
             bool isUnique = true;
@@ -263,6 +265,7 @@ namespace Small_Business_Management_System.UI
             }
             return isUnique;
         }
+
         private bool IsModifiedUnique(Customer customer)
         {
             bool isUnique = true;
@@ -412,5 +415,6 @@ namespace Small_Business_Management_System.UI
             }
         }
 
+      
     }
 }
