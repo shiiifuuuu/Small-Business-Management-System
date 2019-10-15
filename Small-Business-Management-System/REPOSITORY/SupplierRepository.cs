@@ -14,9 +14,8 @@ namespace Small_Business_Management_System.REPOSITORY
 
         //string serverName = @"SHIIIFUUUU";
         //string databaseName = @"SmallBusinessManagementSystem";
-        string serverName = @"PC-301-20\SQLEXPRESS";
+        string serverName = @"DESKTOP-PGSVAVG\MSSQLSERVER2014";
         string databaseName = @"SmallBusinessManagementSystem";
-
 
         public SupplierRepository()
         {

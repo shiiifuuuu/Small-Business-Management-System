@@ -81,6 +81,13 @@
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
 
+    <Compile Include="UI\Sales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Sales.Designer.cs">
+      <DependentUpon>Sales.cs</DependentUpon>
+
+
     <Compile Include="UI\ReportingPurchaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +132,10 @@
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
 
+    <EmbeddedResource Include="UI\Sales.resx">
+      <DependentUpon>Sales.cs</DependentUpon>
+
+
     <EmbeddedResource Include="UI\ReportingPurchaseForm.resx">
       <DependentUpon>ReportingPurchaseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +144,7 @@
 
     <EmbeddedResource Include="UI\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
+
 
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SupplierForm.resx">
