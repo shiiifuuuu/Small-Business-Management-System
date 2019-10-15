@@ -20,14 +20,14 @@ namespace Small_Business_Management_System
 
         private void categoryFormLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ProductForm productForm = new ProductForm();
-            productForm.ShowDialog();
+            CategoryForm categoryForm = new CategoryForm();
+            categoryForm.ShowDialog();
         }
 
         private void productForm_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            CustomerForm customerForm = new CustomerForm();
-            customerForm.ShowDialog();
+            ProductForm productForm = new ProductForm();
+            productForm.ShowDialog();
         }
 
         private void customerFormLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

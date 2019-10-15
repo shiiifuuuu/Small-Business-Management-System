@@ -12,16 +12,6 @@ namespace Small_Business_Management_System.REPOSITORY
     {
         SqlConnection sqlConnection;
 
-        //string serverName = @"SHIIIFUUUU";
-        //string databaseName = @"SmallBusinessManagementSystem";
-        string serverName = @"DESKTOP-PGSVAVG\MSSQLSERVER2014";
-        string databaseName = @"SmallBusinessManagementSystem";
-
-        //string serverName = @"SHIIIFUUUU";
-        //string databaseName = @"SmallBusinessManagementSystem";
-        string serverName = @"PC-301-20\SQLEXPRESS";
-        string databaseName = @"SmallBusinessManagementSystem";
-
         public CustomerRepository()
         {
             sqlConnection = ServerConnection.Connect();

@@ -12,12 +12,10 @@ namespace Small_Business_Management_System.REPOSITORY
     class ProductRepository
     {
         SqlConnection sqlConnection;
-        string serverName = @"DESKTOP-DJ1I7TN\SQLEXPRESS";
-        string databaseName = @"SmallBusinessManagementSystem";
+       
         public ProductRepository()
         {
-            String connectionString = "Server=" + serverName + "; Database=" + databaseName + "; Integrated Security=true";
-            sqlConnection = new SqlConnection(connectionString);
+            sqlConnection = ServerConnection.Connect();
         }
 
         internal bool IsUnique(string inputString, string columnName)
