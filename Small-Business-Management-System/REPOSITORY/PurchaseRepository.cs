@@ -40,6 +40,52 @@ namespace Small_Business_Management_System.REPOSITORY
             return suppliers;
         }
 
+        internal List<Product> SearchProducts(string category)
+        {
+            List<Product> products = new List<Product>();
+            String commandString = @"SELECT Id, Name FROM Product WHERE Category = '"+category+"'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Product product = new Product();
+                product.Id = int.Parse(dataReader["Id"].ToString());
+                product.Name = dataReader["Name"].ToString();
+
+                products.Add(product);
+            }
+
+            sqlConnection.Close();
+
+            return products;
+        }
+
+        internal List<Product> ProductComboLoad()
+        {
+            List<Product> products = new List<Product>();
+            String commandString = @"SELECT Id, Name FROM Product";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Product product = new Product();
+                product.Id = int.Parse(dataReader["Id"].ToString());
+                product.Name = dataReader["Name"].ToString();
+
+                products.Add(product);
+            }
+
+            sqlConnection.Close();
+
+            return products;
+        }
+
         internal List<Category> CategoryComboLoad()
         {
             List<Category> categories = new List<Category>();

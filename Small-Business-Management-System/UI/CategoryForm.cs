@@ -103,7 +103,6 @@ namespace Small_Business_Management_System
             {
                 
             }
-            
         }
 
         private void searchButton_Click(object sender, EventArgs e)

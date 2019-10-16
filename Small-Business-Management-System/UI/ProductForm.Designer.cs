@@ -405,12 +405,6 @@
         private System.Windows.Forms.Label codeErrorLabel;
         private System.Windows.Forms.Label nameErrorLabel;
         private System.Windows.Forms.Label reorderErrorLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reorderLevelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.BindingSource productBindingSource;

@@ -20,5 +20,15 @@ namespace Small_Business_Management_System.MANAGER
         {
             return _purchaseRepository.CategoryComboLoad();
         }
+
+        internal List<Product> ProductComboLoad()
+        {
+            return _purchaseRepository.ProductComboLoad();
+        }
+
+        internal List<Product> SearchProducts(string category)
+        {
+            return _purchaseRepository.SearchProducts(category);
+        }
     }
 }

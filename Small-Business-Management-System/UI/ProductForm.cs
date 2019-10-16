@@ -72,11 +72,20 @@ namespace Small_Business_Management_System.UI
                     {
                         if (IsModifiedUnique(_product))
                         {
-                            if (Modify(_product)) //MODIFIED SUCCESSFULLY
+                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to modify?", "Modify Confirmation", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
                             {
-                                confirmationLabel.Text = "Product Information Modified Successfully!";
-                                DisplayRecords(GetRecords());
+                                if (Modify(_product)) //MODIFIED SUCCESSFULLY
+                                {
+                                    confirmationLabel.Text = "Product Information Modified Successfully!";
+                                    DisplayRecords(GetRecords());
+                                    ClearInputs();
+                                }
+                            }
+                            else if (dialogResult == DialogResult.No)
+                            {
                                 ClearInputs();
+                                ClearErrorLabels();
                             }
                         }
 
@@ -116,21 +125,29 @@ namespace Small_Business_Management_System.UI
             }
         }
 
-
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            try
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete?", "Delete Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                if (Delete(_product)) //DELETED SUCCESSFULLY
+                try
                 {
-                    confirmationLabel.Text = "Product Deleted Successfully!";
-                    DisplayRecords(GetRecords());
-                    ClearInputs();
+                    if (Delete(_product)) //DELETED SUCCESSFULLY
+                    {
+                        confirmationLabel.Text = "Product Deleted Successfully!";
+                        DisplayRecords(GetRecords());
+                        ClearInputs();
+                    }
+                }
+                catch (Exception error)
+                {
+                    ExceptionMessage(error);
                 }
             }
-            catch (Exception error)
+            else if (dialogResult == DialogResult.No)
             {
-                ExceptionMessage(error);
+                ClearInputs();
+                ClearErrorLabels();
             }
         }
 

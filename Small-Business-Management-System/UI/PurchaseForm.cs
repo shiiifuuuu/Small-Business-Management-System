@@ -15,7 +15,7 @@ namespace Small_Business_Management_System.UI
     public partial class PurchaseForm : Form
     {
         PurchaseManager _purchaseManager = new PurchaseManager();
-        //Purchase _purchase = new Purchase();
+        Purchase _purchase = new Purchase();
 
         public PurchaseForm()
         {
@@ -24,7 +24,6 @@ namespace Small_Business_Management_System.UI
 
         private void PurchaseForm_Load(object sender, EventArgs e)
         {
-            
             supplierComboBox.DataSource = _purchaseManager.SupplierComboLoad();
             supplierComboBox.Text = "-Select-";
 
@@ -32,12 +31,26 @@ namespace Small_Business_Management_System.UI
             categoryComboBox.Text = "-Select-";
 
             //productsComboBox.DataSource = _purchaseManager.ProductComboLoad();
-            //productsComboBox.Text = "-Select-";
+            productsComboBox.Text = "-Select-";
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Product> products = _purchaseManager.SearchProducts(categoryComboBox.Text);
+            if (products.Count <= 0)
+            {
+                productsComboBox.Text = "-Select-";
+            }
+            else
+            {
+                productsComboBox.DataSource = products;
+            }
+            
         }
     }
 }

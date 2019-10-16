@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MANAGER\PurchaseManager.cs" />
+    <Compile Include="MODEL\Purchase.cs" />
     <Compile Include="REPOSITORY\PurchaseRepository.cs" />
     <Compile Include="UI\PurchaseForm.cs">
       <SubType>Form</SubType>
