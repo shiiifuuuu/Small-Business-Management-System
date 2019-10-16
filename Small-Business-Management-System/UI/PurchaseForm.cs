@@ -15,7 +15,7 @@ namespace Small_Business_Management_System.UI
     public partial class PurchaseForm : Form
     {
         PurchaseManager _purchaseManager = new PurchaseManager();
-        Purchase _purchase = new Purchase();
+        //Purchase _purchase = new Purchase();
 
         public PurchaseForm()
         {
@@ -33,6 +33,11 @@ namespace Small_Business_Management_System.UI
 
             //productsComboBox.DataSource = _purchaseManager.ProductComboLoad();
             //productsComboBox.Text = "-Select-";
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

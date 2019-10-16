@@ -23,7 +23,7 @@ namespace Small_Business_Management_System.REPOSITORY
             bool isUnique = false;
             string searchString = null;
             //SELECT * FROM Supplier WHERE Code = '"+supplier.Code+"'
-            String commandString = "SELECT * FROM Customer WHERE " + columnName + " = '" + inputString + "'";
+            String commandString = "SELECT * FROM Product WHERE " + columnName + " = '" + inputString + "'";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
             SqlDataReader dataReader = sqlCommand.ExecuteReader();
@@ -39,12 +39,49 @@ namespace Small_Business_Management_System.REPOSITORY
             return isUnique;
         }
 
+        internal List<Category> CategoryComboLoad()
+        {
+            List<Category> categories = new List<Category>();
+            String commandString = @"SELECT Id, Name FROM Category";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Category category = new Category();
+                category.Id = int.Parse(dataReader["Id"].ToString());
+                category.Name = dataReader["Name"].ToString();
+
+                categories.Add(category);
+            }
+
+            sqlConnection.Close();
+
+            return categories;
+        }
+
+        internal bool Delete(Product product)
+        {
+            bool isDeleted = false;
+            String commandString = @"DELETE FROM Product WHERE Id = " + product.Id + "";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            if (sqlCommand.ExecuteNonQuery() > 0)
+            {
+                isDeleted = true;
+            }
+            sqlConnection.Close();
+            return isDeleted;
+        }
+
         internal bool IsUnique(string inputString, string columnName, int id)
         {
             bool isUnique = false;
             string searchString = null;
             //SELECT * FROM Supplier WHERE Code = '"+supplier.Code+"'
-            String commandString = "SELECT * FROM Customer WHERE " + columnName + " = '" + inputString + "' AND Id <> " + id + "";
+            String commandString = "SELECT * FROM Product WHERE " + columnName + " = '" + inputString + "' AND Id <> " + id + "";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
             SqlDataReader dataReader = sqlCommand.ExecuteReader();
@@ -62,35 +99,35 @@ namespace Small_Business_Management_System.REPOSITORY
 
         internal List<Product> Search(string searchText)
         {
-            string commandString = @"SELECT * FROM Customer WHERE Name LIKE '%" + searchText + "%' " +
-                "OR Email LIKE '%" + searchText + "%' OR Contact LIKE '%" + searchText + "%'";
+            string commandString = @"SELECT * FROM Product WHERE Name LIKE '%" + searchText + "%' " +
+                "OR Code LIKE '%" + searchText + "%' OR Category LIKE '%" + searchText + "%'";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
             sqlConnection.Open();
-            SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            List<Product> products = new List<Product>();
-            while (dataReader.Read())
-            {
-                Product product = new Product();
-                product.Code = dataReader["Code"].ToString();
-                product.Name = dataReader["Name"].ToString();
-                product.ReorderLevel = dataReader["ReorderLevel"].ToString();
-                product.Description = dataReader["Description"].ToString();
-                //customer.Contact = dataReader["Contact"].ToString();
-                //customer.LoyaltyPoint = double.Parse(dataReader["LoyaltyPoint"].ToString());
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+                List<Product> products = new List<Product>();
+                while (dataReader.Read())
+                {
+                    Product product = new Product();
+                    product.Code = dataReader["Code"].ToString();
+                    product.Name = dataReader["Name"].ToString();
+                    product.Category = dataReader["Category"].ToString();
+                    product.ReorderLevel = dataReader["ReorderLevel"].ToString();
+                    product.Description = dataReader["Description"].ToString();
 
                 products.Add(product);
-            }
+                }
             sqlConnection.Close();
-            return products
-;
+
+            return products;
         }
 
         internal bool Modify(Product product)
         {
             bool isModified = false;
-            String commandString = @"UPDATE Customer SET Code = '" + product.Code + "', Name = '" +
+            String commandString = @"UPDATE Product SET Code = '" + product.Code + "', Name = '" +
                    product.Name + "', ReorderLevel = '" + product.ReorderLevel + "', Description = '" +
-                   product.Description +"' WHERE Id = " + product.Id + "";
+                   product.Description +"', Category = '"+product.Category+"' WHERE Id = " + product.Id + "";
 
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
@@ -106,8 +143,8 @@ namespace Small_Business_Management_System.REPOSITORY
         internal bool Add(Product product)
         {
             bool isAdded = false;
-            String commandString = @"INSERT INTO Customer (Code,Name,ReorderLevel,Description) 
-                                   VALUES ('" + product.Code + "', '" + product.Name + "','" +
+            String commandString = @"INSERT INTO Product (Code,Name,Category,ReorderLevel,Description) 
+                                   VALUES ('" + product.Code + "', '" + product.Name + "', '"+product.Category+"','" +
                                    product.ReorderLevel + "','" + product.Description +"')";
 
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
@@ -142,10 +179,9 @@ namespace Small_Business_Management_System.REPOSITORY
                 product.Id = int.Parse(dataReader["Id"].ToString());
                 product.Code = dataReader["Code"].ToString();
                 product.Name = dataReader["Name"].ToString();
+                product.Category = dataReader["Category"].ToString();
                 product.ReorderLevel= dataReader["ReorderLevel"].ToString();
                 product.Description=  dataReader["Description"].ToString();
-                //customer.Contact = dataReader["Contact"].ToString();
-                //customer.LoyaltyPoint = double.Parse(dataReader["LoyaltyPoint"].ToString());
 
                 products.Add(product);
             }

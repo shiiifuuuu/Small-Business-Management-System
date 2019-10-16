@@ -34,6 +34,7 @@
             this.productForm = new System.Windows.Forms.LinkLabel();
             this.ReportSaleslinkLabel = new System.Windows.Forms.LinkLabel();
             this.ReportingPurchaseLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.purchaseFormLink = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // categoryFormLink
@@ -83,7 +84,7 @@
             // ReportSaleslinkLabel
             // 
             this.ReportSaleslinkLabel.AutoSize = true;
-            this.ReportSaleslinkLabel.Location = new System.Drawing.Point(203, 170);
+            this.ReportSaleslinkLabel.Location = new System.Drawing.Point(203, 216);
             this.ReportSaleslinkLabel.Name = "ReportSaleslinkLabel";
             this.ReportSaleslinkLabel.Size = new System.Drawing.Size(88, 13);
             this.ReportSaleslinkLabel.TabIndex = 4;
@@ -94,13 +95,24 @@
             // ReportingPurchaseLinkLabel
             // 
             this.ReportingPurchaseLinkLabel.AutoSize = true;
-            this.ReportingPurchaseLinkLabel.Location = new System.Drawing.Point(203, 199);
+            this.ReportingPurchaseLinkLabel.Location = new System.Drawing.Point(203, 245);
             this.ReportingPurchaseLinkLabel.Name = "ReportingPurchaseLinkLabel";
             this.ReportingPurchaseLinkLabel.Size = new System.Drawing.Size(107, 13);
             this.ReportingPurchaseLinkLabel.TabIndex = 4;
             this.ReportingPurchaseLinkLabel.TabStop = true;
             this.ReportingPurchaseLinkLabel.Text = "ReportPurchaseForm";
             this.ReportingPurchaseLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ReportingPurchaseForm);
+            // 
+            // purchaseFormLink
+            // 
+            this.purchaseFormLink.AutoSize = true;
+            this.purchaseFormLink.Location = new System.Drawing.Point(203, 173);
+            this.purchaseFormLink.Name = "purchaseFormLink";
+            this.purchaseFormLink.Size = new System.Drawing.Size(78, 13);
+            this.purchaseFormLink.TabIndex = 2;
+            this.purchaseFormLink.TabStop = true;
+            this.purchaseFormLink.Text = "Purchase Form";
+            this.purchaseFormLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.purchaseFormLink_LinkClicked);
             // 
             // IndexForm
             // 
@@ -110,6 +122,7 @@
             this.Controls.Add(this.ReportingPurchaseLinkLabel);
             this.Controls.Add(this.ReportSaleslinkLabel);
             this.Controls.Add(this.productForm);
+            this.Controls.Add(this.purchaseFormLink);
             this.Controls.Add(this.supplierFormLink);
             this.Controls.Add(this.customerFormLink);
             this.Controls.Add(this.categoryFormLink);
@@ -128,5 +141,6 @@
         private System.Windows.Forms.LinkLabel productForm;
         private System.Windows.Forms.LinkLabel ReportSaleslinkLabel;
         private System.Windows.Forms.LinkLabel ReportingPurchaseLinkLabel;
+        private System.Windows.Forms.LinkLabel purchaseFormLink;
     }
 }

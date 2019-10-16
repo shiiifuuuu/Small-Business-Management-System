@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.supplierComboBox = new System.Windows.Forms.ComboBox();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.billTextBox = new System.Windows.Forms.TextBox();
             this.dateTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,7 +41,6 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.manufacturedDate = new System.Windows.Forms.DateTimePicker();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productsComboBox = new System.Windows.Forms.ComboBox();
             this.mrpTextBox = new System.Windows.Forms.TextBox();
             this.previousMrpTextBox = new System.Windows.Forms.TextBox();
@@ -69,9 +66,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.submitButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,18 +87,13 @@
             // 
             // supplierComboBox
             // 
-            this.supplierComboBox.DataSource = this.supplierBindingSource;
-            this.supplierComboBox.DisplayMember = "Name";
+            this.supplierComboBox.DisplayMember = "Id";
             this.supplierComboBox.FormattingEnabled = true;
             this.supplierComboBox.Location = new System.Drawing.Point(101, 93);
             this.supplierComboBox.Name = "supplierComboBox";
             this.supplierComboBox.Size = new System.Drawing.Size(121, 21);
             this.supplierComboBox.TabIndex = 4;
             this.supplierComboBox.ValueMember = "Id";
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Supplier);
             // 
             // billTextBox
             // 
@@ -197,6 +187,7 @@
             this.addButton.TabIndex = 25;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // richTextBox1
             // 
@@ -215,18 +206,13 @@
             // 
             // categoryComboBox
             // 
-            this.categoryComboBox.DataSource = this.categoryBindingSource;
-            this.categoryComboBox.DisplayMember = "Name";
+            this.categoryComboBox.DisplayMember = "Id";
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(112, 22);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(156, 21);
             this.categoryComboBox.TabIndex = 5;
             this.categoryComboBox.ValueMember = "Id";
-            // 
-            // categoryBindingSource
-            // 
-            this.categoryBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Category);
             // 
             // productsComboBox
             // 
@@ -450,10 +436,8 @@
             this.Load += new System.EventHandler(this.PurchaseForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -496,8 +480,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
-        private System.Windows.Forms.BindingSource categoryBindingSource;
         private System.Windows.Forms.DateTimePicker manufacturedDate;
         private System.Windows.Forms.DateTimePicker expireDate;
     }

@@ -23,41 +23,58 @@ namespace Small_Business_Management_System.UI
             InitializeComponent();
         }
 
+        private void ProductForm_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                categoryComboBox.DataSource = _productManager.CategoryComboLoad();
+                categoryComboBox.Text = "-Select-";
+
+                ClearErrorLabels();
+
+                DisplayRecords(GetRecords());
+                deleteButton.Visible = false;
+                cancelButton.Visible = false;
+            }
+            catch (Exception error)
+            {
+                ExceptionMessage(error);
+            }
+        }
 
         //Button
         private void savebutton_Click(object sender, EventArgs e)
         {
             try
             {
-                _product.Category = categorycomboBox.Text;
-                _product.Code = codetextBox.Text;
-                _product.Name = nametextBox.Text;
-                _product.ReorderLevel = reordertextBox.Text;
-                _product.Description = descriptiontextBox.Text;
-               
+                _product.Code = codeTextBox.Text;
+                _product.Name = nameTextBox.Text;
+                _product.Category = categoryComboBox.Text;
+                _product.ReorderLevel = reorderTextBox.Text;
+                _product.Description = descriptionTextBox.Text;
 
                 if (IsValid(_product))
                 {
-                    if (savebutton.Text == "Save")
+                    if (saveButton.Text == "Save")
                     {
                         if (IsUnique(_product))
                         {
                             if (Add(_product)) //ADDED SUCCESSFULLY
                             {
-                                confirmationlabel.Text = "Customer Information Saved Successfully!";
+                                confirmationLabel.Text = "Product Information Saved Successfully!";
                                 DisplayRecords(GetRecords());
                                 ClearInputs();
                             }
                         }
 
                     }
-                    else if (savebutton.Text == "Modify")
+                    else if (saveButton.Text == "Modify")
                     {
                         if (IsModifiedUnique(_product))
                         {
                             if (Modify(_product)) //MODIFIED SUCCESSFULLY
                             {
-                                confirmationlabel.Text = "Customer Information Modified Successfully!";
+                                confirmationLabel.Text = "Product Information Modified Successfully!";
                                 DisplayRecords(GetRecords());
                                 ClearInputs();
                             }
@@ -74,24 +91,23 @@ namespace Small_Business_Management_System.UI
 
         private void searchbutton_Click(object sender, EventArgs e)
         {
-            //cancelButton.Visible = true;
+            cancelButton.Visible = true;
 
-            if (String.IsNullOrEmpty(searchtextBox.Text))
+            if (String.IsNullOrEmpty(searchTextBox.Text))
             {
-                //searchErrorLabel.Text = "Search box is empty!!";
+                searchErrorLabel.Text = "Search box is empty!!";
                 return;
             }
             try
             {
-                string product = searchtextBox.Text;
+                string product = searchTextBox.Text;
                 List<Product> searchList = Search(product);
 
                 if (searchList != null) //SEARCH SUCCESSFULL
                 {
                     DisplayRecords(searchList);
 
-                    confirmationlabel
-.Text = searchList.Count.ToString() + " Result Found!";
+                    confirmationLabel.Text = searchList.Count.ToString() + " Result Found!";
                 }
             }
             catch (Exception error)
@@ -100,8 +116,32 @@ namespace Small_Business_Management_System.UI
             }
         }
 
-        //crud Functions
 
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Delete(_product)) //DELETED SUCCESSFULLY
+                {
+                    confirmationLabel.Text = "Product Deleted Successfully!";
+                    DisplayRecords(GetRecords());
+                    ClearInputs();
+                }
+            }
+            catch (Exception error)
+            {
+                ExceptionMessage(error);
+            }
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            ClearInputs();
+            ClearErrorLabels();
+        }
+
+
+        //crud Functions
         private bool Add(Product product)
         {
             return _productManager.Add(product);
@@ -117,6 +157,11 @@ namespace Small_Business_Management_System.UI
             return _productManager.Search(product);
         }
 
+        private bool Delete(Product product)
+        {
+            return _productManager.Delete(product);
+        }
+
         private List<Product> GetRecords()
         {
             return _productManager.GetRecords();
@@ -126,17 +171,18 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
-                dataGridView.DataSource = products;
+                showDataGridView.DataSource = products;
 
-                dataGridView.Columns["idColumn"].Visible = false;
-                Helper.SetSerialNumber(dataGridView);
-                Helper.SetActionColumn(dataGridView);
+                showDataGridView.Columns["idColumn"].Visible = false;
+                Helper.SetSerialNumber(showDataGridView);
+                Helper.SetActionColumn(showDataGridView);
             }
             catch (Exception error)
             {
                 ExceptionMessage(error);
             }
         }
+
 
         //VALIDATION
         private bool IsValid(Product product)
@@ -145,7 +191,7 @@ namespace Small_Business_Management_System.UI
 
             if (String.IsNullOrEmpty(product.Code))
             {
-                codeerrorlabel.Text = "Code can not be empty!!";
+                codeErrorLabel.Text = "Code can not be empty!!";
                 isValid = false;
             }
             else if (!CodeLengthValidation(product.Code))
@@ -154,39 +200,34 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                codeErrorLabel.Text = null;
             }
             if (String.IsNullOrEmpty(product.Name))
             {
-                nameerrorlabel.Text = "Must provide supplier name";
+                nameErrorLabel.Text = "Must provide product name";
                 isValid = false;
             }
             else
             {
-                ClearErrorLabels();
+                nameErrorLabel.Text = null;
+            }
+            if (categoryComboBox.Text == "-Select-")
+            {
+                categoryErrorLabel.Text = "Select a category";
+            }
+            else
+            {
+                categoryErrorLabel.Text = null;
             }
             if (String.IsNullOrEmpty(product.ReorderLevel))
             {
-                reordererrorlabel.Text = "Re OrderLevel can not be empty!!";
+                reorderErrorLabel.Text = "ReOrderLevel can not be empty!!";
                 isValid = false;
             }
             else
             {
-                ClearErrorLabels();
+                reorderErrorLabel.Text = null;
             }
-            //if (String.IsNullOrEmpty(customer.Contact))
-            //{
-            //    contactErrorLabel.Text = "Contact can not be empty!!";
-            //    isValid = false;
-            //}
-            //else if (!ContactLengthValidation(customer.Contact))
-            //{
-            //    isValid = false;
-            //}
-            //else
-            //{
-            //    ClearErrorLabels();
-            //}
 
             return isValid;
         }
@@ -196,31 +237,23 @@ namespace Small_Business_Management_System.UI
             bool isUnique = true;
             if (!_productManager.IsUnique(product.Code, "Code")) //(inputString, columnName)
             {
-                codeerrorlabel.Text = "This code already exists!";
+                codeErrorLabel.Text = "This code already exists!";
                 isUnique = false;
             }
             else
             {
-                ClearErrorLabels();
+                codeErrorLabel.Text = null;
             }
-            //if (!_customerManager.IsUnique(customer.Email, "Email"))
-            //{
-            //    emailErrorLabel.Text = "This email already exists!";
-            //    isUnique = false;
-            //}
-            //else
-            //{
-            //    ClearErrorLabels();
-            //}
-            //if (!_customerManager.IsUnique(customer.Contact, "Contact"))
-            //{
-            //    contactErrorLabel.Text = "This contact already exists!";
-            //    isUnique = false;
-            //}
-            //else
-            //{
-            //    ClearErrorLabels();
-            //}
+            if (!_productManager.IsUnique(product.Name, "Name"))
+            {
+                nameErrorLabel.Text = "This Name already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                nameErrorLabel.Text = null;
+            }
+
             return isUnique;
         }
 
@@ -229,37 +262,29 @@ namespace Small_Business_Management_System.UI
             bool isUnique = true;
             if (!_productManager.IsUnique(product.Code, "Code", product.Id)) //(inputString, columnName)
             {
-                codeerrorlabel.Text = "This code already exists!";
+                codeErrorLabel.Text = "This code already exists!";
                 isUnique = false;
             }
             else
             {
-                ClearErrorLabels();
+                codeErrorLabel.Text = null;
             }
-            //if (!_customerManager.IsUnique(customer.Email, "Email", customer.Id))
-            //{
-            //    emailErrorLabel.Text = "This email already exists!";
-            //    isUnique = false;
-            //}
-            //else
-            //{
-            //    ClearErrorLabels();
-            //}
-            //if (!_customerManager.IsUnique(customer.Contact, "Contact", customer.Id))
-            //{
-            //    contactErrorLabel.Text = "This contact already exists!";
-            //    isUnique = false;
-            //}
-            //else
-            //{
-            //    ClearErrorLabels();
-            //}
+            if (!_productManager.IsUnique(product.Name, "Name", product.Id))
+            {
+                nameErrorLabel.Text = "This Name already exists!";
+                isUnique = false;
+            }
+            else
+            {
+                nameErrorLabel.Text = null;
+            }
+            
             return isUnique;
         }
 
-        private void codetextBox_TextChanged_1(object sender, EventArgs e)
+        private void codetextBox_TextChanged(object sender, EventArgs e)
         {
-            CodeLengthValidation(codetextBox.Text);
+            CodeLengthValidation(codeTextBox.Text);
         }
 
         private bool CodeLengthValidation(string codeText)
@@ -267,37 +292,49 @@ namespace Small_Business_Management_System.UI
             bool isValid = false;
             if (codeText.Length == 4)
             {
-                codeerrorlabel.Text = null;
+                codeErrorLabel.Text = null;
                 isValid = true;
+                codeTextBox.MaxLength = 4;
             }
             else if (codeText.Length < 4 && !String.IsNullOrEmpty(codeText))
             {
-                codeerrorlabel.Text = "Code must contain 4 characters";
+                codeErrorLabel.Text = "Code must contain 4 characters";
             }
             return isValid;
         }
 
+        private void reorderTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Helper.IsInputDigit(e))
+            {
+                reorderErrorLabel.Text = "Only number allowed!";
+            }
+        }
+
+
         //COMMON
         private void ClearInputs()
         {
-            codetextBox.Clear();
-            nametextBox.Clear();
-            reordertextBox.Clear();
-            descriptiontextBox.Clear();
+            categoryComboBox.Text = "-Select-";
+            codeTextBox.Clear();
+            nameTextBox.Clear();
+            reorderTextBox.Clear();
+            descriptionTextBox.Clear();
 
-            savebutton.Text = "Save";
-            //deleteButton.Visible = false;
-            //cancelButton.Visible = false;
+            saveButton.Text = "Save";
+            deleteButton.Visible = false;
+            cancelButton.Visible = false;
         }
 
         private void ClearErrorLabels()
         {
-            codeerrorlabel.Text = null;
-            nameerrorlabel.Text = null;
-            reordererrorlabel.Text = null;
+            categoryErrorLabel.Text = null;
+            codeErrorLabel.Text = null;
+            nameErrorLabel.Text = null;
+            reorderErrorLabel.Text = null;
 
-            searcherrorlabel.Text = null;
-            confirmationlabel.Text = null;
+            searchErrorLabel.Text = null;
+            confirmationLabel.Text = null;
         }
 
         private void ExceptionMessage(Exception error)
@@ -310,22 +347,21 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
-                if (e.ColumnIndex == dataGridView.Columns["actionColumn"].Index && e.RowIndex != -1)
+                if (e.ColumnIndex == showDataGridView.Columns["actionColumn"].Index && e.RowIndex != -1)
                 {
-                    if (dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                    if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
-                        codetextBox.Text = dataGridView.Rows[e.RowIndex].Cells["codeColumn"].Value.ToString();
-                        nametextBox.Text = dataGridView.Rows[e.RowIndex].Cells["nameColumn"].Value.ToString();
-                        reordertextBox.Text = dataGridView.Rows[e.RowIndex].Cells["addressColumn"].Value.ToString();
-                        descriptiontextBox.Text = dataGridView.Rows[e.RowIndex].Cells["emailColumn"].Value.ToString();
-                        //contactTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["contactColumn"].Value.ToString();
-                        //loyaltyPointTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["loyaltyPointColumn"].Value.ToString();
+                        categoryComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["categoryColumn"].Value.ToString();
+                        codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["codeColumn"].Value.ToString();
+                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["nameColumn"].Value.ToString();
+                        reorderTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["reorderColumn"].Value.ToString();
+                        descriptionTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["descriptionColumn"].Value.ToString();
 
-                        _product.Id = int.Parse(dataGridView.Rows[e.RowIndex].Cells["idColumn"].Value.ToString());
+                        _product.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["idColumn"].Value.ToString());
 
-                        savebutton.Text = "Modify";
-                        //deleteButton.Visible = true;
-                        //cancelButton.Visible = true;
+                        saveButton.Text = "Modify";
+                        deleteButton.Visible = true;
+                        cancelButton.Visible = true;
                     }
                 }
             }
@@ -335,18 +371,5 @@ namespace Small_Business_Management_System.UI
             }
         }
 
-        private void ProductForm_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                ClearErrorLabels();
-                DisplayRecords(GetRecords());
-                
-            }
-            catch (Exception error)
-            {
-                ExceptionMessage(error);
-            }
-        }
     }
 }

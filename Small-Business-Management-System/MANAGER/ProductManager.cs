@@ -28,6 +28,12 @@ namespace Small_Business_Management_System.MANAGER
         {
             return _productRepository.IsUnique(inputString, columnName);
         }
+
+        internal List<Category> CategoryComboLoad()
+        {
+            return _productRepository.CategoryComboLoad();
+        }
+
         internal bool IsUnique(string inputString, string columnName, int id)
         {
             return _productRepository.IsUnique(inputString, columnName, id);
@@ -46,6 +52,11 @@ namespace Small_Business_Management_System.MANAGER
         internal List<Product> Search(string product)
         {
             return _productRepository.Search(product);
+        }
+
+        internal bool Delete(Product product)
+        {
+            return _productRepository.Delete(product);
         }
     }
 }
