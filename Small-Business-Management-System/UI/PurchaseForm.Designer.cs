@@ -38,8 +38,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.expireDate = new System.Windows.Forms.DateTimePicker();
             this.addButton = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.manufacturedDate = new System.Windows.Forms.DateTimePicker();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productsComboBox = new System.Windows.Forms.ComboBox();
@@ -49,8 +51,6 @@
             this.totalPriceTextBox = new System.Windows.Forms.TextBox();
             this.unitPriceTextBox = new System.Windows.Forms.TextBox();
             this.quantityTextBox = new System.Windows.Forms.TextBox();
-            this.expireDateTextBox = new System.Windows.Forms.TextBox();
-            this.manufacturedDateTextBox = new System.Windows.Forms.TextBox();
             this.availableQuantityTextBox = new System.Windows.Forms.TextBox();
             this.codeTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -148,8 +148,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.expireDate);
             this.groupBox2.Controls.Add(this.addButton);
             this.groupBox2.Controls.Add(this.richTextBox1);
+            this.groupBox2.Controls.Add(this.manufacturedDate);
             this.groupBox2.Controls.Add(this.categoryComboBox);
             this.groupBox2.Controls.Add(this.productsComboBox);
             this.groupBox2.Controls.Add(this.mrpTextBox);
@@ -158,8 +160,6 @@
             this.groupBox2.Controls.Add(this.totalPriceTextBox);
             this.groupBox2.Controls.Add(this.unitPriceTextBox);
             this.groupBox2.Controls.Add(this.quantityTextBox);
-            this.groupBox2.Controls.Add(this.expireDateTextBox);
-            this.groupBox2.Controls.Add(this.manufacturedDateTextBox);
             this.groupBox2.Controls.Add(this.availableQuantityTextBox);
             this.groupBox2.Controls.Add(this.codeTextBox);
             this.groupBox2.Controls.Add(this.label16);
@@ -182,6 +182,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Products";
             // 
+            // expireDate
+            // 
+            this.expireDate.Location = new System.Drawing.Point(111, 152);
+            this.expireDate.Name = "expireDate";
+            this.expireDate.Size = new System.Drawing.Size(198, 20);
+            this.expireDate.TabIndex = 28;
+            // 
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(536, 280);
@@ -198,6 +205,13 @@
             this.richTextBox1.Size = new System.Drawing.Size(496, 96);
             this.richTextBox1.TabIndex = 24;
             this.richTextBox1.Text = "";
+            // 
+            // manufacturedDate
+            // 
+            this.manufacturedDate.Location = new System.Drawing.Point(111, 126);
+            this.manufacturedDate.Name = "manufacturedDate";
+            this.manufacturedDate.Size = new System.Drawing.Size(198, 20);
+            this.manufacturedDate.TabIndex = 27;
             // 
             // categoryComboBox
             // 
@@ -233,22 +247,28 @@
             // 
             this.previousMrpTextBox.Location = new System.Drawing.Point(453, 126);
             this.previousMrpTextBox.Name = "previousMrpTextBox";
+            this.previousMrpTextBox.ReadOnly = true;
             this.previousMrpTextBox.Size = new System.Drawing.Size(155, 20);
             this.previousMrpTextBox.TabIndex = 22;
+            this.previousMrpTextBox.Text = "<View>";
             // 
             // previousUnitPriceTextBox
             // 
             this.previousUnitPriceTextBox.Location = new System.Drawing.Point(453, 100);
             this.previousUnitPriceTextBox.Name = "previousUnitPriceTextBox";
+            this.previousUnitPriceTextBox.ReadOnly = true;
             this.previousUnitPriceTextBox.Size = new System.Drawing.Size(155, 20);
             this.previousUnitPriceTextBox.TabIndex = 21;
+            this.previousUnitPriceTextBox.Text = "<View>";
             // 
             // totalPriceTextBox
             // 
             this.totalPriceTextBox.Location = new System.Drawing.Point(453, 74);
             this.totalPriceTextBox.Name = "totalPriceTextBox";
+            this.totalPriceTextBox.ReadOnly = true;
             this.totalPriceTextBox.Size = new System.Drawing.Size(155, 20);
             this.totalPriceTextBox.TabIndex = 20;
+            this.totalPriceTextBox.Text = "<View>";
             // 
             // unitPriceTextBox
             // 
@@ -264,33 +284,23 @@
             this.quantityTextBox.Size = new System.Drawing.Size(155, 20);
             this.quantityTextBox.TabIndex = 18;
             // 
-            // expireDateTextBox
-            // 
-            this.expireDateTextBox.Location = new System.Drawing.Point(112, 152);
-            this.expireDateTextBox.Name = "expireDateTextBox";
-            this.expireDateTextBox.Size = new System.Drawing.Size(156, 20);
-            this.expireDateTextBox.TabIndex = 17;
-            // 
-            // manufacturedDateTextBox
-            // 
-            this.manufacturedDateTextBox.Location = new System.Drawing.Point(112, 126);
-            this.manufacturedDateTextBox.Name = "manufacturedDateTextBox";
-            this.manufacturedDateTextBox.Size = new System.Drawing.Size(156, 20);
-            this.manufacturedDateTextBox.TabIndex = 16;
-            // 
             // availableQuantityTextBox
             // 
             this.availableQuantityTextBox.Location = new System.Drawing.Point(112, 100);
             this.availableQuantityTextBox.Name = "availableQuantityTextBox";
+            this.availableQuantityTextBox.ReadOnly = true;
             this.availableQuantityTextBox.Size = new System.Drawing.Size(156, 20);
             this.availableQuantityTextBox.TabIndex = 15;
+            this.availableQuantityTextBox.Text = "<View>";
             // 
             // codeTextBox
             // 
             this.codeTextBox.Location = new System.Drawing.Point(112, 74);
             this.codeTextBox.Name = "codeTextBox";
+            this.codeTextBox.ReadOnly = true;
             this.codeTextBox.Size = new System.Drawing.Size(156, 20);
             this.codeTextBox.TabIndex = 14;
+            this.codeTextBox.Text = "<View>";
             // 
             // label16
             // 
@@ -465,8 +475,6 @@
         private System.Windows.Forms.TextBox totalPriceTextBox;
         private System.Windows.Forms.TextBox unitPriceTextBox;
         private System.Windows.Forms.TextBox quantityTextBox;
-        private System.Windows.Forms.TextBox expireDateTextBox;
-        private System.Windows.Forms.TextBox manufacturedDateTextBox;
         private System.Windows.Forms.TextBox availableQuantityTextBox;
         private System.Windows.Forms.TextBox codeTextBox;
         private System.Windows.Forms.Label label16;
@@ -490,5 +498,7 @@
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.BindingSource supplierBindingSource;
         private System.Windows.Forms.BindingSource categoryBindingSource;
+        private System.Windows.Forms.DateTimePicker manufacturedDate;
+        private System.Windows.Forms.DateTimePicker expireDate;
     }
 }

@@ -24,7 +24,15 @@ namespace Small_Business_Management_System.UI
 
         private void PurchaseForm_Load(object sender, EventArgs e)
         {
+            
             supplierComboBox.DataSource = _purchaseManager.SupplierComboLoad();
+            supplierComboBox.Text = "-Select-";
+
+            categoryComboBox.DataSource = _purchaseManager.CategoryComboLoad();
+            categoryComboBox.Text = "-Select-";
+
+            //productsComboBox.DataSource = _purchaseManager.ProductComboLoad();
+            //productsComboBox.Text = "-Select-";
         }
     }
 }

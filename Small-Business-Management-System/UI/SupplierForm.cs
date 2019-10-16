@@ -408,6 +408,5 @@ namespace Small_Business_Management_System.UI
                 ExceptionMessage(error);
             }
         }
-
     }
 }

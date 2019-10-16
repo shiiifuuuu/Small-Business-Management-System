@@ -39,5 +39,28 @@ namespace Small_Business_Management_System.REPOSITORY
 
             return suppliers;
         }
+
+        internal List<Category> CategoryComboLoad()
+        {
+            List<Category> categories = new List<Category>();
+            String commandString = @"SELECT Id, Name FROM Category";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Category category = new Category();
+                category.Id = int.Parse(dataReader["Id"].ToString());
+                category.Name = dataReader["Name"].ToString();
+
+                categories.Add(category);
+            }
+
+            sqlConnection.Close();
+
+            return categories;
+        }
     }
 }

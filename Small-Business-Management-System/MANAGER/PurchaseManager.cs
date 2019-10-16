@@ -1,4 +1,5 @@
-﻿using Small_Business_Management_System.REPOSITORY;
+﻿using Small_Business_Management_System.MODEL;
+using Small_Business_Management_System.REPOSITORY;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,14 @@ namespace Small_Business_Management_System.MANAGER
     class PurchaseManager
     {
         PurchaseRepository _purchaseRepository = new PurchaseRepository();
-        internal object SupplierComboLoad()
+        internal List<Supplier> SupplierComboLoad()
         {
             return _purchaseRepository.SupplierComboLoad();
+        }
+
+        internal List<Category> CategoryComboLoad()
+        {
+            return _purchaseRepository.CategoryComboLoad();
         }
     }
 }
