@@ -103,10 +103,6 @@
             this.supplierComboBox.TabIndex = 4;
             this.supplierComboBox.ValueMember = "Id";
             // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Supplier);
-            // 
             // billTextBox
             // 
             this.billTextBox.Location = new System.Drawing.Point(101, 64);
@@ -234,10 +230,6 @@
             this.categoryComboBox.ValueMember = "Id";
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
-            // categoryBindingSource
-            // 
-            this.categoryBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Category);
-            // 
             // productsComboBox
             // 
             this.productsComboBox.DataSource = this.productBindingSource;
@@ -248,10 +240,6 @@
             this.productsComboBox.Size = new System.Drawing.Size(156, 21);
             this.productsComboBox.TabIndex = 6;
             this.productsComboBox.ValueMember = "Id";
-            // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Product);
             // 
             // mrpTextBox
             // 
