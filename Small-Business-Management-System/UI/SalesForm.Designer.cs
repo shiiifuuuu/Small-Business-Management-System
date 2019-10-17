@@ -1,6 +1,6 @@
 ﻿namespace Small_Business_Management_System.UI
 {
-    partial class Sales
+    partial class SalesForm
     {
         /// <summary>
         /// Required designer variable.

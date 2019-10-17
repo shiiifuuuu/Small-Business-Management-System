@@ -89,11 +89,11 @@
     <Compile Include="UI\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Sales.cs">
+    <Compile Include="UI\SalesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Sales.Designer.cs">
-      <DependentUpon>Sales.cs</DependentUpon>
+    <Compile Include="UI\SalesForm.Designer.cs">
+      <DependentUpon>SalesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ReportingPurchaseForm.cs">
       <SubType>Form</SubType>
@@ -140,8 +140,8 @@
     <EmbeddedResource Include="UI\PurchaseForm.resx">
       <DependentUpon>PurchaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Sales.resx">
-      <DependentUpon>Sales.cs</DependentUpon>
+    <EmbeddedResource Include="UI\SalesForm.resx">
+      <DependentUpon>SalesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReportingPurchaseForm.resx">
       <DependentUpon>ReportingPurchaseForm.cs</DependentUpon>
