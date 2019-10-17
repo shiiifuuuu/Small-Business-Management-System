@@ -60,5 +60,10 @@ namespace Small_Business_Management_System
             reportingPurchaseForm.ShowDialog();
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            SalesForm salesForm = new SalesForm();
+            salesForm.ShowDialog();
+        }
     }
 }
