@@ -11,9 +11,10 @@ namespace Small_Business_Management_System
     {
         public static SqlConnection Connect()
         {
-            string serverName = @"SHIIIFUUUU";
+            //string serverName = @"SHIIIFUUUU";
             string databaseName = @"SmallBusinessManagementSystem";
             //string serverName = @"PC-301-21\SQLEXPRESS";
+            string serverName = @"DESKTOP-PGSVAVG\MSSQLSERVER2014";
 
             String connectionString = "Server=" + serverName + "; Database=" + databaseName + "; Integrated Security=true";
             return new SqlConnection(connectionString);
