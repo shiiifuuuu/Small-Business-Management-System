@@ -25,5 +25,4 @@ Remarks VARCHAR(100)
 SELECT * FROM Purchase
 DROP TABLE Purchase
 
-ALTER TABLE Purchase
-ALTER InvoidNo InvoiceNo VARCHAR(10);
+EXEC sp_rename 'Purchase.InvoidNo', 'InvoiceNo', 'COLUMN'
