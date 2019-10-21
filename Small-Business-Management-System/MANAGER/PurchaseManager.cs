@@ -30,5 +30,10 @@ namespace Small_Business_Management_System.MANAGER
         {
             return _purchaseRepository.SearchProducts(category);
         }
+
+        internal double GetPrevious(string columnName, Purchase purchase)
+        {
+            return _purchaseRepository.GetPrevious(columnName, purchase);
+        }
     }
 }

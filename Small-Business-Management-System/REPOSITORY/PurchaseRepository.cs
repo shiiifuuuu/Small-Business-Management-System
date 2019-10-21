@@ -40,10 +40,31 @@ namespace Small_Business_Management_System.REPOSITORY
             return suppliers;
         }
 
+        internal double GetPrevious(string columnName, Purchase purchase)
+        {
+            String commandString = @"SELECT * FROM Purchase WHERE Category = '" + purchase.Category + "' AND Product = '" +
+                purchase.Product + "' AND Code = '" + purchase.Code + "'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+
+            double previous = 0;
+            while (dataReader.Read())
+            {
+                previous = double.Parse(dataReader[columnName].ToString()); //UnitPrice or MRP
+            }
+
+            sqlConnection.Close();
+
+            return previous;
+        }
+
         internal List<Product> SearchProducts(string category)
         {
             List<Product> products = new List<Product>();
-            String commandString = @"SELECT Id, Name FROM Product WHERE Category = '"+category+"'";
+            String commandString = @"SELECT * FROM Product WHERE Category = '"+category+"'";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
 
             sqlConnection.Open();
@@ -54,6 +75,8 @@ namespace Small_Business_Management_System.REPOSITORY
                 Product product = new Product();
                 product.Id = int.Parse(dataReader["Id"].ToString());
                 product.Name = dataReader["Name"].ToString();
+                product.Code = dataReader["Code"].ToString();
+                product.ReorderLevel = dataReader["ReorderLevel"].ToString();
 
                 products.Add(product);
             }

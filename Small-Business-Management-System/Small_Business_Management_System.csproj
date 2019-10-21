@@ -160,6 +160,7 @@
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Customer.datasource" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Product.datasource" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Product1.datasource" />
+    <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Purchase.datasource" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Supplier.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
