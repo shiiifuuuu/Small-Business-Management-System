@@ -335,7 +335,7 @@ namespace Small_Business_Management_System.UI
             categoryComboBox.Text = "-Select-";
             codeTextBox.Clear();
             nameTextBox.Clear();
-            reorderTextBox.Clear();
+            reorderTextBox.Text = 10 + "";
             descriptionTextBox.Clear();
 
             saveButton.Text = "Save";

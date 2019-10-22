@@ -26,3 +26,5 @@ SELECT * FROM Purchase
 DROP TABLE Purchase
 
 EXEC sp_rename 'Purchase.InvoidNo', 'InvoiceNo', 'COLUMN'
+
+SELECT * FROM Product WHERE Category = 'Mobile'

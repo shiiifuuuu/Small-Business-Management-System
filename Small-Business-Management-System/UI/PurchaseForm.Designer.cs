@@ -32,7 +32,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.supplierComboBox = new System.Windows.Forms.ComboBox();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.billTextBox = new System.Windows.Forms.TextBox();
+            this.invoiceTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.supplierDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -102,12 +102,12 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.supplierComboBox);
-            this.groupBox1.Controls.Add(this.billTextBox);
+            this.groupBox1.Controls.Add(this.invoiceTextBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.supplierDate);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(416, 12);
+            this.groupBox1.Location = new System.Drawing.Point(346, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(279, 142);
             this.groupBox1.TabIndex = 0;
@@ -125,12 +125,16 @@
             this.supplierComboBox.TabIndex = 4;
             this.supplierComboBox.ValueMember = "Id";
             // 
-            // billTextBox
+            // supplierBindingSource
             // 
-            this.billTextBox.Location = new System.Drawing.Point(101, 64);
-            this.billTextBox.Name = "billTextBox";
-            this.billTextBox.Size = new System.Drawing.Size(121, 20);
-            this.billTextBox.TabIndex = 3;
+            this.supplierBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Supplier);
+            // 
+            // invoiceTextBox
+            // 
+            this.invoiceTextBox.Location = new System.Drawing.Point(101, 64);
+            this.invoiceTextBox.Name = "invoiceTextBox";
+            this.invoiceTextBox.Size = new System.Drawing.Size(121, 20);
+            this.invoiceTextBox.TabIndex = 3;
             // 
             // label3
             // 
@@ -200,7 +204,7 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(239, 160);
+            this.groupBox2.Location = new System.Drawing.Point(169, 160);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(617, 311);
             this.groupBox2.TabIndex = 1;
@@ -277,6 +281,10 @@
             this.categoryComboBox.ValueMember = "Id";
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Category);
+            // 
             // productsComboBox
             // 
             this.productsComboBox.DataSource = this.productBindingSource;
@@ -288,6 +296,10 @@
             this.productsComboBox.TabIndex = 6;
             this.productsComboBox.ValueMember = "Id";
             this.productsComboBox.TextChanged += new System.EventHandler(this.productsComboBox_TextChanged);
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Product);
             // 
             // mrpTextBox
             // 
@@ -501,7 +513,7 @@
             this.showDataGridView.DataSource = this.purchaseBindingSource;
             this.showDataGridView.Location = new System.Drawing.Point(12, 477);
             this.showDataGridView.Name = "showDataGridView";
-            this.showDataGridView.Size = new System.Drawing.Size(1080, 141);
+            this.showDataGridView.Size = new System.Drawing.Size(922, 141);
             this.showDataGridView.TabIndex = 2;
             // 
             // siColumn
@@ -616,7 +628,7 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(1017, 624);
+            this.submitButton.Location = new System.Drawing.Point(859, 624);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 26;
@@ -628,7 +640,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 653);
+            this.ClientSize = new System.Drawing.Size(947, 667);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.showDataGridView);
             this.Controls.Add(this.groupBox2);
@@ -657,7 +669,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox supplierComboBox;
-        private System.Windows.Forms.TextBox billTextBox;
+        private System.Windows.Forms.TextBox invoiceTextBox;
         private System.Windows.Forms.TextBox mrpTextBox;
         private System.Windows.Forms.TextBox previousMrpTextBox;
         private System.Windows.Forms.TextBox previousUnitPriceTextBox;
@@ -688,9 +700,6 @@
         private System.Windows.Forms.DateTimePicker manufacturedDate;
         private System.Windows.Forms.DateTimePicker expireDate;
         private System.Windows.Forms.DateTimePicker supplierDate;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
-        private System.Windows.Forms.BindingSource categoryBindingSource;
-        private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.BindingSource purchaseBindingSource;
@@ -713,5 +722,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn mrpColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn remarksColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn actionColumn;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
+        private System.Windows.Forms.BindingSource categoryBindingSource;
+        private System.Windows.Forms.BindingSource productBindingSource;
     }
 }

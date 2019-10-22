@@ -64,7 +64,7 @@ namespace Small_Business_Management_System.REPOSITORY
         internal List<Product> SearchProducts(string category)
         {
             List<Product> products = new List<Product>();
-            String commandString = @"SELECT * FROM Product WHERE Category = '"+category+"'";
+            String commandString = @"SELECT * FROM Product WHERE Category = '"+category+"' ";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
 
             sqlConnection.Open();
@@ -76,7 +76,6 @@ namespace Small_Business_Management_System.REPOSITORY
                 product.Id = int.Parse(dataReader["Id"].ToString());
                 product.Name = dataReader["Name"].ToString();
                 product.Code = dataReader["Code"].ToString();
-                product.ReorderLevel = dataReader["ReorderLevel"].ToString();
 
                 products.Add(product);
             }
@@ -130,6 +129,41 @@ namespace Small_Business_Management_System.REPOSITORY
             sqlConnection.Close();
 
             return categories;
+        }
+
+        public int GetAvailableQuantity(string code)
+        {
+            int availableQuantity = 0;
+            string commandString = @"SELECT AvailableQuantity FROM Purchase WHERE Code = '"+code+"'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                if (String.IsNullOrEmpty(dataReader["AvailableQuantity"].ToString()))
+                {
+                    availableQuantity = int.Parse(dataReader["AvailableQuantity"].ToString());
+                }
+            }
+
+            sqlConnection.Close();
+
+            return availableQuantity;
+        }
+
+        public void CloseConnection()
+        {
+            try
+            {
+                sqlConnection.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

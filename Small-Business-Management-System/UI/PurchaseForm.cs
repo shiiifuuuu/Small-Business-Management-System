@@ -15,7 +15,7 @@ namespace Small_Business_Management_System.UI
     public partial class PurchaseForm : Form
     {
         PurchaseManager _purchaseManager = new PurchaseManager();
-        Purchase _purchase = new Purchase();
+        
         Product _product = new Product();
 
         public PurchaseForm()
@@ -39,20 +39,26 @@ namespace Small_Business_Management_System.UI
         List<Product> products = new List<Product>();
         private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            products = _purchaseManager.SearchProducts(categoryComboBox.Text);
-            if (products.Count <= 0)
+            try
             {
-                productsComboBox.Enabled = false;
-                productsComboBox.Text = "-Select-";
+                products = _purchaseManager.SearchProducts(categoryComboBox.Text);
+                if (products.Count <= 0)
+                {
+                    productsComboBox.Enabled = false;
+                    productsComboBox.Text = "-Select-";
+                }
+                else
+                {
+                    productsComboBox.Enabled = true;
+                    productsComboBox.DataSource = products;
+                    productsComboBox.Text = "-Select-";
+                }
             }
-            else
+            catch (Exception error)
             {
-                productsComboBox.Enabled = true;
-                productsComboBox.DataSource = products;
-                productsComboBox.Text = "-Select-";
+                MessageBox.Show(error.Message);
             }
         }
-
         private void productsComboBox_TextChanged(object sender, EventArgs e)
         {
             if (productsComboBox.Text != "-Select-")
@@ -64,7 +70,6 @@ namespace Small_Business_Management_System.UI
                         if (productsComboBox.Text == product.Name)
                         {
                             codeTextBox.Text = product.Code;
-                            availableQuantityTextBox.Text = product.ReorderLevel;
                         }
                     }
                 }
@@ -72,8 +77,9 @@ namespace Small_Business_Management_System.UI
             else
             {
                 codeTextBox.Text = null;
-                availableQuantityTextBox.Text = null;
             }
+
+            availableQuantityTextBox.Text = _purchaseManager.GetAvailableQuantity(codeTextBox.Text)+"";
         }
 
         //DATE FORMAT SET
@@ -90,10 +96,33 @@ namespace Small_Business_Management_System.UI
             expireDate.CustomFormat = "dd-MM-yyyy";
         }
 
+        List<Purchase> purchases = new List<Purchase>();
         //Buttons
         private void addButton_Click(object sender, EventArgs e)
         {
+            Purchase purchase = new Purchase();
+            purchase.PurchaseDate = supplierDate.Text;
+            purchase.InvoiceNo = invoiceTextBox.Text;
+            purchase.Supplier = supplierComboBox.Text;
 
+            purchase.Category = categoryComboBox.Text;
+            purchase.Product = productsComboBox.Text;
+            purchase.Code = codeTextBox.Text;
+            purchase.AvailableQuantity = int.Parse(availableQuantityTextBox.Text);
+            purchase.ManufactureDate = manufacturedDate.Text;
+            purchase.ExpireDate = expireDate.Text;
+            purchase.Quantity = int.Parse(quantityTextBox.Text);
+            purchase.UnitPrice = double.Parse(unitPriceTextBox.Text);
+            purchase.TotalPrice = double.Parse(totalPriceTextBox.Text);
+            purchase.PreviousUnitPrice = double.Parse(previousUnitPriceTextBox.Text);
+            purchase.PreviousMRP = double.Parse(previousMrpTextBox.Text);
+            purchase.MRP = double.Parse(mrpTextBox.Text);
+
+            purchase.Remarks = remarksTextBox.Text;
+
+            purchases.Add(purchase);
+
+            showDataGridView.DataSource = purchases;
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -111,6 +140,30 @@ namespace Small_Business_Management_System.UI
 
         }
 
+        //CRUD Functions
+
+        //private List<Supplier> GetRecords()
+        //{
+        //    return _purchaseManager.GetRecords();
+        //}
+
+        private void DisplayRecords(List<Purchase> purchases)
+        {
+            try
+            {
+                showDataGridView.ReadOnly = true;
+                showDataGridView.DataSource = purchases;
+
+                showDataGridView.Columns["idColumn"].Visible = false;
+                Helper.SetSerialNumber(showDataGridView);
+                Helper.SetActionColumn(showDataGridView);
+            }
+            catch (Exception error)
+            {
+                ExceptionMessage(error);
+            }
+        }
+
         private void quantityTextBox_TextChanged(object sender, EventArgs e)
         {
             CalculateAndGetPrevious();
@@ -119,7 +172,7 @@ namespace Small_Business_Management_System.UI
         {
             CalculateAndGetPrevious();
         }
-
+        Purchase _purchase = new Purchase();
         private void CalculateAndGetPrevious()
         {
             if (!String.IsNullOrEmpty(quantityTextBox.Text) && !String.IsNullOrEmpty(unitPriceTextBox.Text))
@@ -134,5 +187,10 @@ namespace Small_Business_Management_System.UI
             }
         }
 
+        private void ExceptionMessage(Exception error)
+        {
+            MessageBox.Show(error.Message);
+            _purchaseManager.CloseConnection();
+        }
     }
 }

@@ -25,3 +25,6 @@ Set Name='',Address=''
 WHERE Id=2;
 
 SELECT * FROM Customer WHERE Name='' OR Email='';
+
+SELECT * FROM Product
+SELECT * FROM Purchase
