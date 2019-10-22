@@ -26,3 +26,5 @@ WHERE Id=2;
 SELECT * FROM Supplier WHERE Name='' OR Email='';
 
 SELECT * FROM Supplier WHERE Id<>1002 AND Name='Ban';
+
+SELECT * FROM Customer

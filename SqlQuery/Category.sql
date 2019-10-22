@@ -18,3 +18,5 @@ VALUES
 SELECT Code FROM Category WHERE Code = 0001;
 
 SELECT * FROM Category WHERE Code LIKE '10%' OR Name LIKE 'Cam%'
+
+SELECT Id, Name FROM Category

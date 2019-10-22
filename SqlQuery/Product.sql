@@ -26,5 +26,5 @@ WHERE Id=2;
 
 SELECT * FROM Customer WHERE Name='' OR Email='';
 
-SELECT * FROM Product
+SELECT * FROM Product WHERE Category = 'Mobile'
 SELECT * FROM Purchase
