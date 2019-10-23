@@ -43,7 +43,7 @@ namespace Small_Business_Management_System.REPOSITORY
         internal double GetPrevious(string columnName, Purchase purchase)
         {
             String commandString = @"SELECT * FROM Purchase WHERE Category = '" + purchase.Category + "' AND Product = '" +
-                purchase.Product + "' AND Code = '" + purchase.Code + "'";
+                purchase.Product + "' AND ProductCode = '" + purchase.ProductCode + "'";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
 
             sqlConnection.Open();
@@ -134,7 +134,7 @@ namespace Small_Business_Management_System.REPOSITORY
         public int GetAvailableQuantity(string code)
         {
             int availableQuantity = 0;
-            string commandString = @"SELECT AvailableQuantity FROM Purchase WHERE Code = '"+code+"'";
+            string commandString = @"SELECT AvailableQuantity FROM Purchase WHERE ProductCode = '"+code+"'";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
 
             sqlConnection.Open();
@@ -164,6 +164,65 @@ namespace Small_Business_Management_System.REPOSITORY
                 Console.WriteLine(e);
                 throw;
             }
+        }
+
+        internal bool Add(Purchase purchase)
+        {
+            bool isAdded = false;
+
+            string commandString = @"INSERT INTO Purchase(PurchaseDate, InvoiceNo, Supplier, Category, Product, ProductCode, AvailableQuantity,
+ManufactureDate, ExpireDate, Quantity, UnitPrice, TotalPrice, PreviousUnitPrice, PreviousMRP, MRP, Remarks)
+VALUES('" + purchase.PurchaseDate + "','" + purchase.InvoiceNo + "','" + purchase.Supplier + "','" + purchase.Category + "','" + purchase.Product
++ "','" + purchase.ProductCode + "'," + purchase.AvailableQuantity + ",'" + purchase.ManufactureDate + "','" + purchase.ExpireDate
++ "'," + purchase.Quantity + "," + purchase.UnitPrice + "," + purchase.TotalPrice + "," + purchase.PreviousUnitPrice
++ "," + purchase.PreviousMRP + "," + purchase.MRP + ",'" + purchase.Remarks + "')";
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            if (sqlCommand.ExecuteNonQuery() > 0)
+            {
+                isAdded = true;
+            }
+
+            sqlConnection.Close();
+
+            return isAdded;
+        }
+
+        internal List<Purchase> GetRecords()
+        {
+            String commandString = @"SELECT * FROM Purchase";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            List<Purchase> purchases = new List<Purchase>();
+            while (dataReader.Read())
+            {
+                Purchase purchase = new Purchase();
+                purchase.Id = int.Parse(dataReader["Id"].ToString());
+                purchase.PurchaseDate = dataReader["PurchaseDate"].ToString();
+                purchase.InvoiceNo = dataReader["InvoiceNo"].ToString();
+                purchase.Supplier = dataReader["Supplier"].ToString();
+                purchase.Category = dataReader["Category"].ToString();
+                purchase.Product = dataReader["Product"].ToString();
+                purchase.ProductCode = dataReader["ProductCode"].ToString();
+                purchase.AvailableQuantity = int.Parse(dataReader["AvailableQuantity"].ToString());
+                purchase.ManufactureDate = dataReader["ManufactureDate"].ToString();
+                purchase.ExpireDate = dataReader["ExpireDate"].ToString();
+                purchase.Quantity = int.Parse(dataReader["Quantity"].ToString());
+                purchase.UnitPrice = double.Parse(dataReader["UnitPrice"].ToString());
+                purchase.TotalPrice = double.Parse(dataReader["TotalPricedouble"].ToString());
+                purchase.PreviousUnitPrice = double.Parse(dataReader["PreviousUnitPrice"].ToString());
+                purchase.PreviousMRP = double.Parse(dataReader["PreviousMRP"].ToString());
+                purchase.MRP = double.Parse(dataReader["MRP"].ToString());
+                purchase.Remarks = dataReader["Remarks"].ToString();
+
+                purchases.Add(purchase);
+            }
+            sqlConnection.Close();
+            return purchases;
         }
     }
 }

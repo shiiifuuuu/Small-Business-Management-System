@@ -14,7 +14,7 @@ namespace Small_Business_Management_System.MODEL
         public string Supplier { set; get; }
         public string Category { set; get; }
         public string Product { set; get; }
-        public string Code { set; get; }
+        public string ProductCode { set; get; }
         public Int64 AvailableQuantity { set; get; }
         public string ManufactureDate { set; get; }
         public string ExpireDate { set; get; }

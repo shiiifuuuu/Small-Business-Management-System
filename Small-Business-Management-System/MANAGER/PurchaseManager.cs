@@ -45,5 +45,15 @@ namespace Small_Business_Management_System.MANAGER
         {
             _purchaseRepository.CloseConnection();
         }
+
+        internal bool Add(Purchase purchase)
+        {
+            return _purchaseRepository.Add(purchase);
+        }
+
+        internal List<Purchase> GetRecords()
+        {
+            return _purchaseRepository.GetRecords();
+        }
     }
 }
