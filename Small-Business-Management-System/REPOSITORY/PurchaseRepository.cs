@@ -213,7 +213,7 @@ VALUES('" + purchase.PurchaseDate + "','" + purchase.InvoiceNo + "','" + purchas
                 purchase.ExpireDate = dataReader["ExpireDate"].ToString();
                 purchase.Quantity = int.Parse(dataReader["Quantity"].ToString());
                 purchase.UnitPrice = double.Parse(dataReader["UnitPrice"].ToString());
-                purchase.TotalPrice = double.Parse(dataReader["TotalPricedouble"].ToString());
+                purchase.TotalPrice = double.Parse(dataReader["TotalPrice"].ToString());
                 purchase.PreviousUnitPrice = double.Parse(dataReader["PreviousUnitPrice"].ToString());
                 purchase.PreviousMRP = double.Parse(dataReader["PreviousMRP"].ToString());
                 purchase.MRP = double.Parse(dataReader["MRP"].ToString());

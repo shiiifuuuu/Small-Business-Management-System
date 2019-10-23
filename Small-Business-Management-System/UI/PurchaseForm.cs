@@ -99,7 +99,6 @@ namespace Small_Business_Management_System.UI
             expireDate.CustomFormat = "dd-MM-yyyy";
         }
 
-        List<Purchase> purchases = new List<Purchase>();
         //Buttons
         private void addButton_Click(object sender, EventArgs e)
         {
@@ -122,7 +121,7 @@ namespace Small_Business_Management_System.UI
 
             _purchase.Remarks = remarksTextBox.Text;
 
-            purchases.Add(_purchase);
+            _purchases.Add(_purchase);
 
             DisplayRecords(_purchases, _itemList);
         }
@@ -169,7 +168,6 @@ namespace Small_Business_Management_System.UI
                 {
                     BindingSource purchaseTable = new BindingSource();
                     purchaseTable.DataSource = purchases;
-
                     showDataGridView.DataSource = purchaseTable;
 
                     SetSerialNumber(showDataGridView);
@@ -182,6 +180,7 @@ namespace Small_Business_Management_System.UI
                     Helper.SetActionColumn(showDataGridView);
                     Helper.SetSerialNumber(showDataGridView);
                 }
+
                 showDataGridView.Columns["idColumn"].Visible = false;
                 showDataGridView.Columns["purchaseDateColumn"].Visible = false;
                 showDataGridView.Columns["invoiceNoColumn"].Visible = false;
@@ -191,6 +190,7 @@ namespace Small_Business_Management_System.UI
                 showDataGridView.Columns["availableQuantityColumn"].Visible = false;
                 showDataGridView.Columns["previousUnitPriceColumn"].Visible = false;
                 showDataGridView.Columns["previousMRPColumn"].Visible = false;
+
             }
             catch (Exception error)
             {
@@ -253,6 +253,11 @@ namespace Small_Business_Management_System.UI
         {
             MessageBox.Show(error.Message);
             _purchaseManager.CloseConnection();
+        }
+
+        private void showPurchaseButton_Click(object sender, EventArgs e)
+        {
+            DisplayRecords(GetRecords(), _database);
         }
     }
 }

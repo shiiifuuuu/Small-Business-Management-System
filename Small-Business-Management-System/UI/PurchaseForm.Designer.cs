@@ -70,12 +70,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
-            this.purchaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.submitButton = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaseDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +89,12 @@
             this.mrpColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.remarksColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.submitButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.showPurchaseButton = new System.Windows.Forms.Button();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -511,57 +511,6 @@
             this.showDataGridView.Size = new System.Drawing.Size(902, 297);
             this.showDataGridView.TabIndex = 2;
             // 
-            // purchaseBindingSource
-            // 
-            this.purchaseBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Purchase);
-            // 
-            // submitButton
-            // 
-            this.submitButton.Location = new System.Drawing.Point(839, 632);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(75, 23);
-            this.submitButton.TabIndex = 26;
-            this.submitButton.Text = "Submit";
-            this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Location = new System.Drawing.Point(635, 190);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(279, 133);
-            this.groupBox3.TabIndex = 27;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Search";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(36, 102);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(214, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Show Purchase History";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(188, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(16, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(247, 20);
-            this.textBox1.TabIndex = 0;
-            // 
             // siColumn
             // 
             this.siColumn.HeaderText = "SI";
@@ -674,6 +623,58 @@
             this.actionColumn.HeaderText = "Action";
             this.actionColumn.Name = "actionColumn";
             // 
+            // purchaseBindingSource
+            // 
+            this.purchaseBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Purchase);
+            // 
+            // submitButton
+            // 
+            this.submitButton.Location = new System.Drawing.Point(839, 632);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(75, 23);
+            this.submitButton.TabIndex = 26;
+            this.submitButton.Text = "Submit";
+            this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.showPurchaseButton);
+            this.groupBox3.Controls.Add(this.searchButton);
+            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Location = new System.Drawing.Point(635, 190);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(279, 133);
+            this.groupBox3.TabIndex = 27;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Search";
+            // 
+            // showPurchaseButton
+            // 
+            this.showPurchaseButton.Location = new System.Drawing.Point(36, 102);
+            this.showPurchaseButton.Name = "showPurchaseButton";
+            this.showPurchaseButton.Size = new System.Drawing.Size(214, 23);
+            this.showPurchaseButton.TabIndex = 1;
+            this.showPurchaseButton.Text = "Show Purchase History";
+            this.showPurchaseButton.UseVisualStyleBackColor = true;
+            this.showPurchaseButton.Click += new System.EventHandler(this.showPurchaseButton_Click);
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(188, 51);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.TabIndex = 1;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(16, 25);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(247, 20);
+            this.textBox1.TabIndex = 0;
+            // 
             // PurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -747,8 +748,8 @@
         private System.Windows.Forms.BindingSource categoryBindingSource;
         private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button showPurchaseButton;
+        private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.BindingSource purchaseBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn siColumn;
