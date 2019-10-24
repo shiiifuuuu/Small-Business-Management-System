@@ -9,10 +9,9 @@ namespace Small_Business_Management_System.MODEL
     public class Sales
     {
         public int Id { get; set; }
-        public int PurchaseId { get; set; }
         public string Code { get; set; }
         public string Customer { get; set; }
-        public string SelasDate { get; set; }
+        public DateTime SelasDate { get; set; }
         public double LoyalityPoint { get; set; }
         public string Category { get; set; }
         public string Product { get; set; }
@@ -24,5 +23,18 @@ namespace Small_Business_Management_System.MODEL
         public double Discount { get; set; }
         public double DiscountAmount { get; set; }
         public double PayableAmount { get; set; }
+
+        //public string productCode(string code)
+        //{
+        //    DateTime myDate = DateTime.Now;
+        //    string strTime = myDate.ToString("ddMMyyyy");
+        //    int intValue = 111; // FROM DATABASE
+
+        //    code = DateTime.Now.Year + (intValue + 1).ToString();
+        //    Code = code;
+        //    return Code;
+        //}
+
+
     }
 }
