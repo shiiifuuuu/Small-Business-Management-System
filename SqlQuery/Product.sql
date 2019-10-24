@@ -13,6 +13,7 @@ Description VARCHAR(100) NOT NULL
 
 DROP TABLE Product;
 DELETE FROM Product;
+SELECT * FROM Product
 
 SELECT * FROM Product LEFT JOIN Category ON CategoryId=Category.Id
 
@@ -25,3 +26,6 @@ Set Name='',Address=''
 WHERE Id=2;
 
 SELECT * FROM Customer WHERE Name='' OR Email='';
+
+SELECT * FROM Product WHERE Category = 'Mobile'
+SELECT * FROM Purchase
