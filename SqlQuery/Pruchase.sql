@@ -4,15 +4,15 @@ USE SmallBusinessManagementSystem;
 CREATE TABLE Purchase
 (
 Id INT IDENTITY (1,1) PRIMARY KEY,
-PurchaseDate Date,
+PurchaseDate DATE,
 InvoiceNo VARCHAR(10) NOT NULL UNIQUE,
 Supplier VARCHAR(30) NOT NULL,
 Category VARCHAR(30) NOT NULL,
 Product VARCHAR(30) NOT NULL,
 ProductCode VARCHAR(5) NOT NULL,
 AvailableQuantity INT,
-ManufactureDate VARCHAR(12) NOT NULL,
-ExpireDate VARCHAR(12) NOT NULL,
+ManufactureDate DATE,
+ExpireDate DATE,
 Quantity INT,
 UnitPrice FLOAT,
 TotalPrice FLOAT,
@@ -33,3 +33,6 @@ SELECT * FROM Product WHERE Category = 'Mobile'
 INSERT INTO Purchase(PurchaseDate, InvoiceNo, Supplier, Category, Product, ProductCode, AvailableQuantity,
 ManufactureDate, ExpireDate, Quantity, UnitPrice, TotalPrice, PreviousUnitPrice, PreviousMRP, MRP, Remarks)
 VALUES('','','','','','',0,'','',0,0,0,0,0,0,'')
+DROP TABLE Purchase
+
+EXEC sp_rename 'Purchase.InvoidNo', 'InvoiceNo', 'COLUMN'

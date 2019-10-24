@@ -47,8 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MANAGER\PurchaseManager.cs" />
+    <Compile Include="MANAGER\SalesManager.cs" />
     <Compile Include="MODEL\Purchase.cs" />
+    <Compile Include="MODEL\Sales.cs" />
     <Compile Include="REPOSITORY\PurchaseRepository.cs" />
+    <Compile Include="REPOSITORY\SalesRepository.cs" />
+    <Compile Include="UI\DataBindings.cs" />
     <Compile Include="UI\PurchaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,7 +164,11 @@
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Customer.datasource" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Product.datasource" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Product1.datasource" />
+
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Purchase.datasource" />
+
+    <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Sales.datasource" />
+
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Supplier.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

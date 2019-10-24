@@ -118,7 +118,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(202, 203);
+            this.linkLabel1.Location = new System.Drawing.Point(203, 203);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(59, 13);
             this.linkLabel1.TabIndex = 5;
