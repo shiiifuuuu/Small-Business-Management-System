@@ -102,26 +102,27 @@ namespace Small_Business_Management_System.UI
         //Buttons
         private void addButton_Click(object sender, EventArgs e)
         {
-            _purchase.PurchaseDate = supplierDate.Text;
-            _purchase.InvoiceNo = invoiceTextBox.Text;
-            _purchase.Supplier = supplierComboBox.Text;
+            Purchase purchase = new Purchase();
+            purchase.PurchaseDate = Convert.ToDateTime(supplierDate.Text);
+            purchase.InvoiceNo = invoiceTextBox.Text;
+            purchase.Supplier = supplierComboBox.Text;
 
-            _purchase.Category = categoryComboBox.Text;
-            _purchase.Product = productsComboBox.Text;
-            _purchase.ProductCode = codeTextBox.Text;
-            _purchase.AvailableQuantity = int.Parse(availableQuantityTextBox.Text);
-            _purchase.ManufactureDate = manufacturedDate.Text;
-            _purchase.ExpireDate = expireDate.Text;
-            _purchase.Quantity = int.Parse(quantityTextBox.Text);
-            _purchase.UnitPrice = double.Parse(unitPriceTextBox.Text);
-            _purchase.TotalPrice = double.Parse(totalPriceTextBox.Text);
-            _purchase.PreviousUnitPrice = double.Parse(previousUnitPriceTextBox.Text);
-            _purchase.PreviousMRP = double.Parse(previousMrpTextBox.Text);
-            _purchase.MRP = double.Parse(mrpTextBox.Text);
+            purchase.Category = categoryComboBox.Text;
+            purchase.Product = productsComboBox.Text;
+            purchase.ProductCode = codeTextBox.Text;
+            purchase.AvailableQuantity = int.Parse(availableQuantityTextBox.Text);
+            purchase.ManufactureDate = manufacturedDate.Text;
+            purchase.ExpireDate = expireDate.Text;
+            purchase.Quantity = int.Parse(quantityTextBox.Text);
+            purchase.UnitPrice = double.Parse(unitPriceTextBox.Text);
+            purchase.TotalPrice = double.Parse(totalPriceTextBox.Text);
+            purchase.PreviousUnitPrice = double.Parse(previousUnitPriceTextBox.Text);
+            purchase.PreviousMRP = double.Parse(previousMrpTextBox.Text);
+            purchase.MRP = double.Parse(mrpTextBox.Text);
 
             _purchase.Remarks = remarksTextBox.Text;
 
-            _purchases.Add(_purchase);
+            _purchases.Add(purchase);
 
             DisplayRecords(_purchases, _itemList);
         }
@@ -156,8 +157,9 @@ namespace Small_Business_Management_System.UI
             return _purchaseManager.GetRecords();
         }
 
-        int _itemList = 0;
-        int _database = 1;
+        private const int _itemList = 0;
+        private const int _database = 1;
+
         private void DisplayRecords(List<Purchase> purchases, int check)
         {
             try
@@ -166,8 +168,7 @@ namespace Small_Business_Management_System.UI
 
                 if (check == 0)
                 {
-                    BindingSource purchaseTable = new BindingSource();
-                    purchaseTable.DataSource = purchases;
+                    BindingSource purchaseTable = new BindingSource {DataSource = purchases};
                     showDataGridView.DataSource = purchaseTable;
 
                     SetSerialNumber(showDataGridView);

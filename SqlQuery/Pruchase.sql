@@ -4,7 +4,7 @@ USE SmallBusinessManagementSystem;
 CREATE TABLE Purchase
 (
 Id INT IDENTITY (1,1) PRIMARY KEY,
-PurchaseDate VARCHAR(12) NOT NULL,
+PurchaseDate Date,
 InvoiceNo VARCHAR(10) NOT NULL UNIQUE,
 Supplier VARCHAR(30) NOT NULL,
 Category VARCHAR(30) NOT NULL,

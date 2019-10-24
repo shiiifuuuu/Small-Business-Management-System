@@ -9,7 +9,7 @@ namespace Small_Business_Management_System.MODEL
     public class Purchase
     {
         public int Id { set; get; }
-        public string PurchaseDate { set; get; }
+        public DateTime PurchaseDate { set; get; }
         public string InvoiceNo { set; get; }
         public string Supplier { set; get; }
         public string Category { set; get; }

@@ -13,6 +13,7 @@ Description VARCHAR(100) NOT NULL
 
 DROP TABLE Product;
 DELETE FROM Product;
+SELECT * FROM Product
 
 SELECT * FROM Product LEFT JOIN Category ON CategoryId=Category.Id
 

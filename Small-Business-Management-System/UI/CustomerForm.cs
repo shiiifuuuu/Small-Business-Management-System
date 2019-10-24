@@ -360,7 +360,7 @@ namespace Small_Business_Management_System.UI
             addressTextBox.Clear();
             emailTextBox.Clear();
             contactTextBox.Clear();
-            loyaltyPointTextBox.Clear();
+            loyaltyPointTextBox.Text = 0+"";
 
             saveButton.Text = "Save";
             deleteButton.Visible = false;

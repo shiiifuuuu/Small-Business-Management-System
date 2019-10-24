@@ -149,8 +149,8 @@
             // 
             // supplierDate
             // 
-            this.supplierDate.CustomFormat = " ";
-            this.supplierDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.supplierDate.CustomFormat = "";
+            this.supplierDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.supplierDate.Location = new System.Drawing.Point(101, 34);
             this.supplierDate.Name = "supplierDate";
             this.supplierDate.Size = new System.Drawing.Size(121, 20);

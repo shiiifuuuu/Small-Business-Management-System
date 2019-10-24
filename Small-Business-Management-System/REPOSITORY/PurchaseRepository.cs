@@ -202,7 +202,7 @@ VALUES('" + purchase.PurchaseDate + "','" + purchase.InvoiceNo + "','" + purchas
             {
                 Purchase purchase = new Purchase();
                 purchase.Id = int.Parse(dataReader["Id"].ToString());
-                purchase.PurchaseDate = dataReader["PurchaseDate"].ToString();
+                purchase.PurchaseDate = Convert.ToDateTime(dataReader["PurchaseDate"].ToString());
                 purchase.InvoiceNo = dataReader["InvoiceNo"].ToString();
                 purchase.Supplier = dataReader["Supplier"].ToString();
                 purchase.Category = dataReader["Category"].ToString();
