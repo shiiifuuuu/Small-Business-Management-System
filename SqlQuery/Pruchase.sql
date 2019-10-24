@@ -4,25 +4,15 @@ USE SmallBusinessManagementSystem;
 CREATE TABLE Purchase
 (
 Id INT IDENTITY (1,1) PRIMARY KEY,
-
 PurchaseDate DATE,
-
-PurchaseDate Date,
-
 InvoiceNo VARCHAR(10) NOT NULL UNIQUE,
 Supplier VARCHAR(30) NOT NULL,
 Category VARCHAR(30) NOT NULL,
 Product VARCHAR(30) NOT NULL,
-
-Code VARCHAR(5) NOT NULL,
-AvailableQuantity VARCHAR(10) NOT NULL,
-ManufactureDate DATE,
-ExpireDate DATE,
-Quantity VARCHAR(10) NOT NULL,
 ProductCode VARCHAR(5) NOT NULL,
 AvailableQuantity INT,
-ManufactureDate VARCHAR(12) NOT NULL,
-ExpireDate VARCHAR(12) NOT NULL,
+ManufactureDate Date,
+ExpireDate Date,
 Quantity INT,
 UnitPrice FLOAT,
 TotalPrice FLOAT,
