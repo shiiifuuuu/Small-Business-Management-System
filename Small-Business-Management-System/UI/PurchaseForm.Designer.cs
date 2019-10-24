@@ -236,7 +236,7 @@
             // expireDate
             // 
             this.expireDate.CustomFormat = " ";
-            this.expireDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.expireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.expireDate.Location = new System.Drawing.Point(111, 152);
             this.expireDate.Name = "expireDate";
             this.expireDate.Size = new System.Drawing.Size(157, 20);
@@ -264,7 +264,7 @@
             // manufacturedDate
             // 
             this.manufacturedDate.CustomFormat = " ";
-            this.manufacturedDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.manufacturedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.manufacturedDate.Location = new System.Drawing.Point(111, 126);
             this.manufacturedDate.Name = "manufacturedDate";
             this.manufacturedDate.Size = new System.Drawing.Size(157, 20);

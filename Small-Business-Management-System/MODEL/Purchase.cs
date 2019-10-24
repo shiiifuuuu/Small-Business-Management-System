@@ -16,8 +16,8 @@ namespace Small_Business_Management_System.MODEL
         public string Product { set; get; }
         public string ProductCode { set; get; }
         public Int64 AvailableQuantity { set; get; }
-        public string ManufactureDate { set; get; }
-        public string ExpireDate { set; get; }
+        public DateTime ManufactureDate { set; get; }
+        public DateTime ExpireDate { set; get; }
         public Int64 Quantity { set; get; }
         public double UnitPrice { set; get; }
         public double TotalPrice { set; get; }

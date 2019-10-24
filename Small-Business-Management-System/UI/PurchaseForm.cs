@@ -111,8 +111,8 @@ namespace Small_Business_Management_System.UI
             purchase.Product = productsComboBox.Text;
             purchase.ProductCode = codeTextBox.Text;
             purchase.AvailableQuantity = int.Parse(availableQuantityTextBox.Text);
-            purchase.ManufactureDate = manufacturedDate.Text;
-            purchase.ExpireDate = expireDate.Text;
+            purchase.ManufactureDate = Convert.ToDateTime(manufacturedDate.Text);
+            purchase.ExpireDate = Convert.ToDateTime(expireDate.Text);
             purchase.Quantity = int.Parse(quantityTextBox.Text);
             purchase.UnitPrice = double.Parse(unitPriceTextBox.Text);
             purchase.TotalPrice = double.Parse(totalPriceTextBox.Text);
