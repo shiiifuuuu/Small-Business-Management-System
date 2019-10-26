@@ -25,7 +25,7 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
                 DisplayRecords(GetRecords());
                 deleteButton.Visible = false;
                 cancelButton.Visible = false;
@@ -58,7 +58,7 @@ namespace Small_Business_Management_System.UI
                             {
                                 confirmationLabel.Text = "Supplier Information Saved Successfully!";
                                 DisplayRecords(GetRecords());
-                                ClearInputs();
+                                ResetInputs();
                             }
                         }
                         
@@ -71,7 +71,7 @@ namespace Small_Business_Management_System.UI
                             {
                                 confirmationLabel.Text = "Supplier Information Modified Successfully!";
                                 DisplayRecords(GetRecords());
-                                ClearInputs();
+                                ResetInputs();
                             }
                         }
                     }
@@ -91,7 +91,7 @@ namespace Small_Business_Management_System.UI
                 {
                     confirmationLabel.Text = "Supplier Deleted Successfully!";
                     DisplayRecords(GetRecords());
-                    ClearInputs();
+                    ResetInputs();
                 }
             }
             catch (Exception error)
@@ -129,8 +129,8 @@ namespace Small_Business_Management_System.UI
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            ClearInputs();
-            ClearErrorLabels();
+            ResetInputs();
+            ResetErrorLabels();
         }
 
 
@@ -193,7 +193,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
             if (String.IsNullOrEmpty(supplier.Name))
             {
@@ -202,7 +202,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
             if (String.IsNullOrEmpty(supplier.Email))
             {
@@ -211,7 +211,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
             if (String.IsNullOrEmpty(supplier.Contact))
             {
@@ -220,7 +220,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
 
             return isValid;
@@ -237,7 +237,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
             if (!_supplierManager.IsUnique(supplier.Name, "Name"))
             {
@@ -246,7 +246,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
             if (!_supplierManager.IsUnique(supplier.Email, "Email"))
             {
@@ -255,7 +255,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
             if (!_supplierManager.IsUnique(supplier.Contact, "Contact"))
             {
@@ -264,7 +264,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
 
             return isUnique;
@@ -280,7 +280,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
             if (!_supplierManager.IsUnique(supplier.Name, "Name", supplier.Id))
             {
@@ -289,7 +289,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
             if (!_supplierManager.IsUnique(supplier.Email, "Email", supplier.Id))
             {
@@ -298,7 +298,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
             if (!_supplierManager.IsUnique(supplier.Contact, "Contact", supplier.Id))
             {
@@ -307,7 +307,7 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
 
             return isUnique;
@@ -341,13 +341,13 @@ namespace Small_Business_Management_System.UI
             }
             else
             {
-                ClearErrorLabels();
+                ResetErrorLabels();
             }
         }
 
 
         //COMMON
-        private void ClearInputs()
+        private void ResetInputs()
         {
             codeTextBox.Clear();
             nameTextBox.Clear();
@@ -361,7 +361,7 @@ namespace Small_Business_Management_System.UI
             cancelButton.Visible = false;
         }
 
-        private void ClearErrorLabels()
+        private void ResetErrorLabels()
         {
             codeErrorLabel.Text = null;
             nameErrorLabel.Text = null;

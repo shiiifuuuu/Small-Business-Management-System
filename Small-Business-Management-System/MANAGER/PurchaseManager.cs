@@ -31,14 +31,9 @@ namespace Small_Business_Management_System.MANAGER
             return _purchaseRepository.SearchProducts(category);
         }
 
-        internal double GetPrevious(string columnName, Purchase purchase)
+        internal string GetPrevious(string columnName, string productCode)
         {
-            return _purchaseRepository.GetPrevious(columnName, purchase);
-        }
-
-        public int GetAvailableQuantity(string code)
-        {
-            return _purchaseRepository.GetAvailableQuantity(code);
+            return _purchaseRepository.GetPrevious(columnName, productCode);
         }
 
         public void CloseConnection()
@@ -54,6 +49,16 @@ namespace Small_Business_Management_System.MANAGER
         internal List<Purchase> GetRecords()
         {
             return _purchaseRepository.GetRecords();
+        }
+
+        internal bool IsUnique(string inputString, string columnName)
+        {
+            return _purchaseRepository.IsUnique(inputString, columnName);
+        }
+
+        internal string GetAvailableQuantity(string productCode)
+        {
+            return _purchaseRepository.GetAvailableQuantity(productCode);
         }
     }
 }
