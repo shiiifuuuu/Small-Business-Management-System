@@ -19,6 +19,9 @@ INSERT INTO Supplier (Code, Name, Address, Email, Contact, ContactPerson)
 VALUES
 ('sdf','fs','s','f','s','s');
 
+
+INSERT [dbo].[Supplier] ([Id], [Code], [Name], [Address], [Email], [Contact], [ContactPerson]) VALUES (2, N'1001', N'ComputerZone', N'Shani Akhra', N'cz@supplier.com', N'01211144477', N'mr.xyz')
+
 UPDATE Supplier 
 Set Name='',Address=''
 WHERE Id=2;
