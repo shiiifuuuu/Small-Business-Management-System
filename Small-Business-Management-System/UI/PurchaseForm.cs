@@ -16,7 +16,7 @@ namespace Small_Business_Management_System.UI
     {
         PurchaseManager _purchaseManager = new PurchaseManager();
         Purchase _purchase = new Purchase();
-        List<Purchase> _purchases = new List<Purchase>();
+        List<Purchase> _purchaseList = new List<Purchase>();
 
         public PurchaseForm()
         {
@@ -38,7 +38,7 @@ namespace Small_Business_Management_System.UI
             deleteButton.Visible = false;
             cancelButton.Visible = false;
 
-            DisplayRecords(_purchases, _itemList);
+            DisplayRecords(_purchaseList, _itemList);
         }
 
         //COMBO BOX DATA INITIALIZE
@@ -219,21 +219,30 @@ namespace Small_Business_Management_System.UI
                     {
                         return;
                     }
-                    if (samePurchase(_purchase.ProductCode, _purchases))
+                    if (samePurchase(_purchase.ProductCode, _purchaseList))
                     {
                         return;
                     }
 
-                    _purchases.Add(_purchase);
+                    _purchaseList.Add(_purchase);
 
                     ResetInputs();
                     ResetErrorLabels();
 
-                    DisplayRecords(_purchases, _itemList);
+                    DisplayRecords(_purchaseList, _itemList);
                 }
                 else if (addButton.Text.Equals("Modify"))
                 {
+                    int indexNo = GetItemIndexNo(_purchaseList);
+                    if (indexNo != -1)
+                    {
+                        _purchaseList.Insert(indexNo, _purchase);
 
+                        ResetInputs();
+                        ResetErrorLabels();
+
+                        DisplayRecords(_purchaseList, _itemList);
+                    }
                 }
             }catch(Exception error)
             {
@@ -241,13 +250,32 @@ namespace Small_Business_Management_System.UI
             }
         }
 
+        private int GetItemIndexNo(List<Purchase> purchaseList)
+        {
+            int indexNo = -1;
+            try
+            {
+                foreach (Purchase purchase in purchaseList)
+                {
+                    if (_purchase.ProductCode.Equals(purchase.ProductCode))
+                    {
+                        indexNo = purchaseList.IndexOf(purchase);
+                    }
+                }
+            }catch(Exception error)
+            {
+                ExceptionMessage(error);
+            }
+            return indexNo;
+        }
+
         private void submitButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (_purchases.Count > 0)
+                if (_purchaseList.Count > 0)
                 {
-                    foreach (Purchase purchase in _purchases)
+                    foreach (Purchase purchase in _purchaseList)
                     {
                         Add(purchase);
                     }
@@ -263,7 +291,20 @@ namespace Small_Business_Management_System.UI
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int indexNo = GetItemIndexNo(_purchaseList);
 
+                _purchaseList.RemoveAt(indexNo);
+
+                ResetInputs();
+                ResetErrorLabels();
+                DisplayRecords(_purchaseList, _itemList);
+            }
+            catch(Exception error)
+            {
+                ExceptionMessage(error);
+            }
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -313,16 +354,16 @@ namespace Small_Business_Management_System.UI
                     showDataGridView.Columns["Action"].Visible = false;
                 }
 
-                showDataGridView.Columns["Id"].Visible = false;
-                showDataGridView.Columns["Code"].Visible = false;
-                showDataGridView.Columns["Date"].Visible = false;
-                showDataGridView.Columns["InvoiceNo"].Visible = false;
-                showDataGridView.Columns["Supplier"].Visible = false;
-                showDataGridView.Columns["Category"].Visible = false;
-                showDataGridView.Columns["Product"].Visible = false;
-                showDataGridView.Columns["AvailableQuantity"].Visible = false;
-                showDataGridView.Columns["PreviousUnitPrice"].Visible = false;
-                showDataGridView.Columns["PreviousMRP"].Visible = false;
+                //showDataGridView.Columns["Id"].Visible = false;
+                //showDataGridView.Columns["Code"].Visible = false;
+                //showDataGridView.Columns["Date"].Visible = false;
+                //showDataGridView.Columns["InvoiceNo"].Visible = false;
+                //showDataGridView.Columns["Supplier"].Visible = false;
+                //showDataGridView.Columns["Category"].Visible = false;
+                //showDataGridView.Columns["Product"].Visible = false;
+                //showDataGridView.Columns["AvailableQuantity"].Visible = false;
+                //showDataGridView.Columns["PreviousUnitPrice"].Visible = false;
+                //showDataGridView.Columns["PreviousMRP"].Visible = false;
 
             }
             catch (Exception error)
@@ -426,7 +467,7 @@ namespace Small_Business_Management_System.UI
             ResetInputs();
             ResetErrorLabels();
 
-            _purchases.Clear();
+            _purchaseList.Clear();
             showDataGridView.DataSource = null;
         }
 
