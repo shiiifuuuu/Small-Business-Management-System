@@ -195,14 +195,14 @@ namespace Small_Business_Management_System.UI
                     _purchase = new Purchase();
 
                     _purchase.Date = Convert.ToDateTime(supplierDate.Text);
-                    _purchase.InvoiceNo = invoiceTextBox.Text;
+                    _purchase.InvoiceNo = invoiceNoTextBox.Text;
                     _purchase.Supplier = supplierComboBox.Text;
                     _purchase.Category = categoryComboBox.Text;
-                    _purchase.Product = productsComboBox.Text;
+                    _purchase.Products = productsComboBox.Text;
                     _purchase.ProductCode = productCodeTextBox.Text;
                     
-                    _purchase.ManufactureDate = manufacturedDate.Text;
-                    _purchase.ExpireDate = expireDate.Text;
+                    _purchase.ManufactureDate = DateTime.Parse(manufacturedDatePicker.Text);
+                    _purchase.ExpireDate = DateTime.Parse(expireDatePicker.Text);
                     _purchase.Quantity = int.Parse(quantityTextBox.Text);
                     _purchase.UnitPrice = double.Parse(unitPriceTextBox.Text);
                     _purchase.TotalPrice = double.Parse(totalPriceTextBox.Text);
@@ -243,11 +243,21 @@ namespace Small_Business_Management_System.UI
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            foreach (Purchase purchase in _purchases)
+            try
             {
-                Add(purchase);
+                if (_purchases.Count > 0)
+                {
+                    foreach (Purchase purchase in _purchases)
+                    {
+                        Add(purchase);
+                    }
 
-                showDataGridView.DataSource = null;
+                    ResetAll();
+                    confirmationLabel.Text = "Purchase complete";
+                }
+            }catch(Exception error)
+            {
+                ExceptionMessage(error);
             }
         }
 
@@ -258,13 +268,13 @@ namespace Small_Business_Management_System.UI
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            ResetAll();
+            ResetErrorLabels();
+            ResetInputs();
         }
 
         private void showPurchaseButton_Click(object sender, EventArgs e)
         {
             DisplayRecords(GetRecords(), _database);
-            cancelButton.Visible = true;
         }
 
         //CRUD Functions
@@ -293,26 +303,26 @@ namespace Small_Business_Management_System.UI
 
                     SetSerialNumber(showDataGridView);
                     SetActionColumn(showDataGridView);
-                    showDataGridView.Columns["actionColumn"].Visible = true;
+                    showDataGridView.Columns["Action"].Visible = true;
                 }
                 else if (check == 1)
                 {
                     showDataGridView.DataSource = purchases;
 
                     Helper.SetSerialNumber(showDataGridView);
-                    showDataGridView.Columns["actionColumn"].Visible = false;
+                    showDataGridView.Columns["Action"].Visible = false;
                 }
 
-                showDataGridView.Columns["idColumn"].Visible = false;
-                showDataGridView.Columns["codeColumn"].Visible = false;
-                showDataGridView.Columns["dateColumn"].Visible = false;
-                showDataGridView.Columns["invoiceNoColumn"].Visible = false;
-                showDataGridView.Columns["supplierColumn"].Visible = false;
-                showDataGridView.Columns["categoryColumn"].Visible = false;
-                showDataGridView.Columns["productColumn"].Visible = false;
-                //showDataGridView.Columns["availableQuantityColumn"].Visible = false;
-                showDataGridView.Columns["previousUnitPriceColumn"].Visible = false;
-                showDataGridView.Columns["previousMRPColumn"].Visible = false;
+                showDataGridView.Columns["Id"].Visible = false;
+                showDataGridView.Columns["Code"].Visible = false;
+                showDataGridView.Columns["Date"].Visible = false;
+                showDataGridView.Columns["InvoiceNo"].Visible = false;
+                showDataGridView.Columns["Supplier"].Visible = false;
+                showDataGridView.Columns["Category"].Visible = false;
+                showDataGridView.Columns["Product"].Visible = false;
+                showDataGridView.Columns["AvailableQuantity"].Visible = false;
+                showDataGridView.Columns["PreviousUnitPrice"].Visible = false;
+                showDataGridView.Columns["PreviousMRP"].Visible = false;
 
             }
             catch (Exception error)
@@ -327,12 +337,12 @@ namespace Small_Business_Management_System.UI
             {
                 if (rows.Index != dgv.Rows.Count - 1)
                 {
-                    rows.Cells["actionColumn"].Value = "Edit";
+                    rows.Cells["Action"].Value = "Edit";
                 }
             }
 
-            dgv.Columns["actionColumn"].DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
-            dgv.Columns["actionColumn"].DefaultCellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Underline);
+            dgv.Columns["Action"].DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
+            dgv.Columns["Action"].DefaultCellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Underline);
         }
 
         private void SetSerialNumber(DataGridView dgv) //only for this form
@@ -342,7 +352,7 @@ namespace Small_Business_Management_System.UI
             {
                 if (rows.Index != dgv.Rows.Count - 1)
                 {
-                    rows.Cells["siColumn"].Value = i;
+                    rows.Cells["SI"].Value = i;
                     i++;
                 }
 
@@ -389,17 +399,17 @@ namespace Small_Business_Management_System.UI
 
         private void ResetInputs()
         {
-            supplierDate.Format = DateTimePickerFormat.Short;
-            invoiceTextBox.Clear();
+            supplierDate.Value = DateTime.Today;
+            invoiceNoTextBox.Clear();
             supplierComboBox.Text = "-Select-";
             categoryComboBox.Text = "-Select-";
             productsComboBox.Text = "-Select-";
             productsComboBox.Enabled = false;
             productCodeTextBox.Clear();
-            manufacturedDate.Format = DateTimePickerFormat.Short;
-            expireDate.Format = DateTimePickerFormat.Short;
-            quantityTextBox.Text = 0+"";
-            unitPriceTextBox.Text = 0 + "";
+            manufacturedDatePicker.Value = DateTime.Today;
+            expireDatePicker.Value = DateTime.Today;
+            quantityTextBox.Text = null;
+            unitPriceTextBox.Text = null;
             totalPriceTextBox.Text = 0 + "";
             previousUnitPriceTextBox.Text = 0 + "";
             previousMrpTextBox.Text = 0 + "";
@@ -413,36 +423,10 @@ namespace Small_Business_Management_System.UI
 
         private void ResetAll()
         {
-            supplierDate.Format = DateTimePickerFormat.Short;
-            invoiceTextBox.Clear();
-            supplierComboBox.Text = "-Select-";
-            categoryComboBox.Text = "-Select-";
-            productsComboBox.Text = "-Select-";
-            productsComboBox.Enabled = false;
-            productCodeTextBox.Clear();
-            manufacturedDate.Format = DateTimePickerFormat.Short;
-            expireDate.Format = DateTimePickerFormat.Short;
-            quantityTextBox.Text = 0 + "";
-            unitPriceTextBox.Text = 0 + "";
-            totalPriceTextBox.Text = 0 + "";
-            previousUnitPriceTextBox.Text = 0 + "";
-            previousMrpTextBox.Text = 0 + "";
-            mrpTextBox.Text = 0 + "";
-            remarksTextBox.Clear();
+            ResetInputs();
+            ResetErrorLabels();
 
-            productsError.Text = null;
-            mrpError.Text = null;
-            unitPriceError.Text = null;
-            quantityError.Text = null;
-            categoryError.Text = null;
-            supplierError.Text = null;
-            invoiceError.Text = null;
-            confirmationLabel.Text = null;
-
-            cancelButton.Visible = false;
-            deleteButton.Visible = false;
-            addButton.Text = "Add";
-
+            _purchases.Clear();
             showDataGridView.DataSource = null;
         }
 
@@ -450,18 +434,23 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
-                if (e.ColumnIndex == showDataGridView.Columns["actionColumn"].Index && e.RowIndex != -1)
+                if (e.ColumnIndex == showDataGridView.Columns["Action"].Index && e.RowIndex != -1)
                 {
                     if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
-                        //codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["codeColumn"].Value.ToString();
-                        //nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["nameColumn"].Value.ToString();
-                        //addressTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["addressColumn"].Value.ToString();
-                        //emailTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["emailColumn"].Value.ToString();
-                        //contactTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["contactColumn"].Value.ToString();
-                        //contactPersonTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["contactPersonColumn"].Value.ToString();
 
-                        _purchase.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["idColumn"].Value.ToString());
+                        supplierDate.Value = DateTime.Parse(showDataGridView.Rows[e.RowIndex].Cells["Date"].Value.ToString());
+                        invoiceNoTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["InvoiceNo"].Value.ToString();
+                        supplierComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Supplier"].Value.ToString();
+                        categoryComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Category"].Value.ToString();
+                        productsComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Product"].Value.ToString();
+                        manufacturedDatePicker.Value = DateTime.Parse(showDataGridView.Rows[e.RowIndex].Cells["ManufactureDate"].Value.ToString());
+                        expireDatePicker.Value = DateTime.Parse(showDataGridView.Rows[e.RowIndex].Cells["ExpireDate"].Value.ToString());
+                        quantityTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Quantity"].Value.ToString();
+                        unitPriceTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString();
+                        remarksTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Remarks"].Value.ToString();
+
+                        _purchase.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["Id"].Value.ToString());
 
                         addButton.Text = "Modify";
                         deleteButton.Visible = true;
@@ -475,5 +464,9 @@ namespace Small_Business_Management_System.UI
             }
         }
 
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            ResetAll();
+        }
     }
 }

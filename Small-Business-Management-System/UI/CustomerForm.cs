@@ -170,7 +170,7 @@ namespace Small_Business_Management_System.UI
             {
                 showDataGridView.DataSource = customers;
 
-                showDataGridView.Columns["idColumn"].Visible = false;
+                showDataGridView.Columns["Id"].Visible = false;
                 Helper.SetSerialNumber(showDataGridView);
                 Helper.SetActionColumn(showDataGridView);
             }
@@ -390,18 +390,18 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
-                if (e.ColumnIndex == showDataGridView.Columns["actionColumn"].Index && e.RowIndex != -1)
+                if (e.ColumnIndex == showDataGridView.Columns["Action"].Index && e.RowIndex != -1)
                 {
                     if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
-                        codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["codeColumn"].Value.ToString();
-                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["nameColumn"].Value.ToString();
-                        addressTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["addressColumn"].Value.ToString();
-                        emailTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["emailColumn"].Value.ToString();
-                        contactTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["contactColumn"].Value.ToString();
-                        loyaltyPointTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["loyaltyPointColumn"].Value.ToString();
+                        codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
+                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                        addressTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Address"].Value.ToString();
+                        emailTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Email"].Value.ToString();
+                        contactTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Contact"].Value.ToString();
+                        loyaltyPointTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["LoyaltyPoint"].Value.ToString();
 
-                        _customer.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["idColumn"].Value.ToString());
+                        _customer.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["Id"].Value.ToString());
 
                         saveButton.Text = "Modify";
                         deleteButton.Visible = true;

@@ -32,7 +32,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.supplierComboBox = new System.Windows.Forms.ComboBox();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invoiceTextBox = new System.Windows.Forms.TextBox();
+            this.invoiceNoTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.supplierDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,12 +42,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.expireDate = new System.Windows.Forms.DateTimePicker();
+            this.expireDatePicker = new System.Windows.Forms.DateTimePicker();
             this.addButton = new System.Windows.Forms.Button();
             this.remarksTextBox = new System.Windows.Forms.RichTextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.manufacturedDate = new System.Windows.Forms.DateTimePicker();
+            this.manufacturedDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -84,25 +84,27 @@
             this.showPurchaseButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.invoiceNoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productCodeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.manufactureDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expireDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.previousUnitPriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.previousMRPColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mrpColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remarksColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ManufactureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpireDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AvailableQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreviousUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PreviousMRP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MRP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -116,7 +118,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.supplierComboBox);
-            this.groupBox1.Controls.Add(this.invoiceTextBox);
+            this.groupBox1.Controls.Add(this.invoiceNoTextBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.supplierDate);
             this.groupBox1.Controls.Add(this.label2);
@@ -141,12 +143,12 @@
             this.supplierComboBox.TabIndex = 4;
             this.supplierComboBox.ValueMember = "Id";
             // 
-            // invoiceTextBox
+            // invoiceNoTextBox
             // 
-            this.invoiceTextBox.Location = new System.Drawing.Point(252, 28);
-            this.invoiceTextBox.Name = "invoiceTextBox";
-            this.invoiceTextBox.Size = new System.Drawing.Size(121, 20);
-            this.invoiceTextBox.TabIndex = 3;
+            this.invoiceNoTextBox.Location = new System.Drawing.Point(252, 28);
+            this.invoiceNoTextBox.Name = "invoiceNoTextBox";
+            this.invoiceNoTextBox.Size = new System.Drawing.Size(121, 20);
+            this.invoiceNoTextBox.TabIndex = 3;
             // 
             // label3
             // 
@@ -208,12 +210,12 @@
             // 
             this.groupBox2.Controls.Add(this.deleteButton);
             this.groupBox2.Controls.Add(this.cancelButton);
-            this.groupBox2.Controls.Add(this.expireDate);
+            this.groupBox2.Controls.Add(this.expireDatePicker);
             this.groupBox2.Controls.Add(this.addButton);
             this.groupBox2.Controls.Add(this.remarksTextBox);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.manufacturedDate);
+            this.groupBox2.Controls.Add(this.manufacturedDatePicker);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.categoryComboBox);
             this.groupBox2.Controls.Add(this.mrpTextBox);
@@ -268,14 +270,14 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // expireDate
+            // expireDatePicker
             // 
-            this.expireDate.CustomFormat = " ";
-            this.expireDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.expireDate.Location = new System.Drawing.Point(112, 189);
-            this.expireDate.Name = "expireDate";
-            this.expireDate.Size = new System.Drawing.Size(156, 20);
-            this.expireDate.TabIndex = 28;
+            this.expireDatePicker.CustomFormat = " ";
+            this.expireDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.expireDatePicker.Location = new System.Drawing.Point(112, 189);
+            this.expireDatePicker.Name = "expireDatePicker";
+            this.expireDatePicker.Size = new System.Drawing.Size(156, 20);
+            this.expireDatePicker.TabIndex = 28;
             // 
             // addButton
             // 
@@ -313,14 +315,14 @@
             this.label14.TabIndex = 7;
             this.label14.Text = "Unit Price (Tk)";
             // 
-            // manufacturedDate
+            // manufacturedDatePicker
             // 
-            this.manufacturedDate.CustomFormat = " ";
-            this.manufacturedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.manufacturedDate.Location = new System.Drawing.Point(112, 163);
-            this.manufacturedDate.Name = "manufacturedDate";
-            this.manufacturedDate.Size = new System.Drawing.Size(156, 20);
-            this.manufacturedDate.TabIndex = 27;
+            this.manufacturedDatePicker.CustomFormat = " ";
+            this.manufacturedDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.manufacturedDatePicker.Location = new System.Drawing.Point(112, 163);
+            this.manufacturedDatePicker.Name = "manufacturedDatePicker";
+            this.manufacturedDatePicker.Size = new System.Drawing.Size(156, 20);
+            this.manufacturedDatePicker.TabIndex = 27;
             // 
             // label13
             // 
@@ -378,7 +380,6 @@
             this.availableQuantityTextBox.ReadOnly = true;
             this.availableQuantityTextBox.Size = new System.Drawing.Size(155, 20);
             this.availableQuantityTextBox.TabIndex = 15;
-            this.availableQuantityTextBox.Text = "<View>";
             // 
             // previousMrpTextBox
             // 
@@ -387,7 +388,6 @@
             this.previousMrpTextBox.ReadOnly = true;
             this.previousMrpTextBox.Size = new System.Drawing.Size(155, 20);
             this.previousMrpTextBox.TabIndex = 22;
-            this.previousMrpTextBox.Text = "<View>";
             // 
             // productCodeTextBox
             // 
@@ -396,7 +396,6 @@
             this.productCodeTextBox.ReadOnly = true;
             this.productCodeTextBox.Size = new System.Drawing.Size(155, 20);
             this.productCodeTextBox.TabIndex = 14;
-            this.productCodeTextBox.Text = "<View>";
             this.productCodeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
             // label11
@@ -424,7 +423,6 @@
             this.previousUnitPriceTextBox.ReadOnly = true;
             this.previousUnitPriceTextBox.Size = new System.Drawing.Size(155, 20);
             this.previousUnitPriceTextBox.TabIndex = 21;
-            this.previousUnitPriceTextBox.Text = "<View>";
             // 
             // label9
             // 
@@ -460,7 +458,6 @@
             this.totalPriceTextBox.ReadOnly = true;
             this.totalPriceTextBox.Size = new System.Drawing.Size(155, 20);
             this.totalPriceTextBox.TabIndex = 20;
-            this.totalPriceTextBox.Text = "<View>";
             // 
             // label7
             // 
@@ -580,25 +577,26 @@
             this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.siColumn,
-            this.idColumn,
-            this.codeColumn,
-            this.dateColumn,
-            this.invoiceNoColumn,
-            this.supplierColumn,
-            this.categoryColumn,
-            this.productColumn,
-            this.productCodeColumn,
-            this.manufactureDateColumn,
-            this.expireDateColumn,
-            this.quantityColumn,
-            this.unitPriceColumn,
-            this.totalPriceColumn,
-            this.previousUnitPriceColumn,
-            this.previousMRPColumn,
-            this.mrpColumn,
-            this.remarksColumn,
-            this.actionColumn});
+            this.SI,
+            this.Id,
+            this.Code,
+            this.Date,
+            this.InvoiceNo,
+            this.Supplier,
+            this.Category,
+            this.Product,
+            this.ProductCode,
+            this.ManufactureDate,
+            this.ExpireDate,
+            this.Quantity,
+            this.AvailableQuantity,
+            this.UnitPrice,
+            this.TotalPrice,
+            this.PreviousUnitPrice,
+            this.PreviousMRP,
+            this.MRP,
+            this.Remarks,
+            this.Action});
             this.showDataGridView.DataSource = this.purchaseBindingSource;
             this.showDataGridView.Location = new System.Drawing.Point(12, 480);
             this.showDataGridView.Name = "showDataGridView";
@@ -658,117 +656,133 @@
             this.textBox1.Size = new System.Drawing.Size(247, 20);
             this.textBox1.TabIndex = 0;
             // 
-            // siColumn
+            // resetButton
             // 
-            this.siColumn.HeaderText = "SI";
-            this.siColumn.Name = "siColumn";
+            this.resetButton.Location = new System.Drawing.Point(765, 12);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.TabIndex = 29;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
-            // idColumn
+            // SI
             // 
-            this.idColumn.DataPropertyName = "Id";
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
+            this.SI.HeaderText = "SI";
+            this.SI.Name = "SI";
             // 
-            // codeColumn
+            // Id
             // 
-            this.codeColumn.DataPropertyName = "Code";
-            this.codeColumn.HeaderText = "Code";
-            this.codeColumn.Name = "codeColumn";
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
             // 
-            // dateColumn
+            // Code
             // 
-            this.dateColumn.DataPropertyName = "Date";
-            this.dateColumn.HeaderText = "Date";
-            this.dateColumn.Name = "dateColumn";
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
             // 
-            // invoiceNoColumn
+            // Date
             // 
-            this.invoiceNoColumn.DataPropertyName = "InvoiceNo";
-            this.invoiceNoColumn.HeaderText = "InvoiceNo";
-            this.invoiceNoColumn.Name = "invoiceNoColumn";
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
             // 
-            // supplierColumn
+            // InvoiceNo
             // 
-            this.supplierColumn.DataPropertyName = "Supplier";
-            this.supplierColumn.HeaderText = "Supplier";
-            this.supplierColumn.Name = "supplierColumn";
+            this.InvoiceNo.DataPropertyName = "InvoiceNo";
+            this.InvoiceNo.HeaderText = "InvoiceNo";
+            this.InvoiceNo.Name = "InvoiceNo";
             // 
-            // categoryColumn
+            // Supplier
             // 
-            this.categoryColumn.DataPropertyName = "Category";
-            this.categoryColumn.HeaderText = "Category";
-            this.categoryColumn.Name = "categoryColumn";
+            this.Supplier.DataPropertyName = "Supplier";
+            this.Supplier.HeaderText = "Supplier";
+            this.Supplier.Name = "Supplier";
             // 
-            // productColumn
+            // Category
             // 
-            this.productColumn.DataPropertyName = "Product";
-            this.productColumn.HeaderText = "Product";
-            this.productColumn.Name = "productColumn";
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
             // 
-            // productCodeColumn
+            // Product
             // 
-            this.productCodeColumn.DataPropertyName = "ProductCode";
-            this.productCodeColumn.HeaderText = "ProductCode";
-            this.productCodeColumn.Name = "productCodeColumn";
+            this.Product.DataPropertyName = "Products";
+            this.Product.HeaderText = "Products";
+            this.Product.Name = "Product";
             // 
-            // manufactureDateColumn
+            // ProductCode
             // 
-            this.manufactureDateColumn.DataPropertyName = "ManufactureDate";
-            this.manufactureDateColumn.HeaderText = "ManufactureDate";
-            this.manufactureDateColumn.Name = "manufactureDateColumn";
+            this.ProductCode.DataPropertyName = "ProductCode";
+            this.ProductCode.HeaderText = "Product Code";
+            this.ProductCode.Name = "ProductCode";
             // 
-            // expireDateColumn
+            // ManufactureDate
             // 
-            this.expireDateColumn.DataPropertyName = "ExpireDate";
-            this.expireDateColumn.HeaderText = "ExpireDate";
-            this.expireDateColumn.Name = "expireDateColumn";
+            this.ManufactureDate.DataPropertyName = "ManufactureDate";
+            this.ManufactureDate.HeaderText = "Manufacture Date";
+            this.ManufactureDate.Name = "ManufactureDate";
             // 
-            // quantityColumn
+            // ExpireDate
             // 
-            this.quantityColumn.DataPropertyName = "Quantity";
-            this.quantityColumn.HeaderText = "Quantity";
-            this.quantityColumn.Name = "quantityColumn";
+            this.ExpireDate.DataPropertyName = "ExpireDate";
+            this.ExpireDate.HeaderText = "Expire Date";
+            this.ExpireDate.Name = "ExpireDate";
             // 
-            // unitPriceColumn
+            // Quantity
             // 
-            this.unitPriceColumn.DataPropertyName = "UnitPrice";
-            this.unitPriceColumn.HeaderText = "UnitPrice";
-            this.unitPriceColumn.Name = "unitPriceColumn";
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
             // 
-            // totalPriceColumn
+            // AvailableQuantity
             // 
-            this.totalPriceColumn.DataPropertyName = "TotalPrice";
-            this.totalPriceColumn.HeaderText = "TotalPrice";
-            this.totalPriceColumn.Name = "totalPriceColumn";
+            this.AvailableQuantity.DataPropertyName = "AvailableQuantity";
+            this.AvailableQuantity.HeaderText = "AvailableQuantity";
+            this.AvailableQuantity.Name = "AvailableQuantity";
             // 
-            // previousUnitPriceColumn
+            // UnitPrice
             // 
-            this.previousUnitPriceColumn.DataPropertyName = "PreviousUnitPrice";
-            this.previousUnitPriceColumn.HeaderText = "PreviousUnitPrice";
-            this.previousUnitPriceColumn.Name = "previousUnitPriceColumn";
+            this.UnitPrice.DataPropertyName = "UnitPrice";
+            this.UnitPrice.HeaderText = "Unit Price";
+            this.UnitPrice.Name = "UnitPrice";
             // 
-            // previousMRPColumn
+            // TotalPrice
             // 
-            this.previousMRPColumn.DataPropertyName = "PreviousMRP";
-            this.previousMRPColumn.HeaderText = "PreviousMRP";
-            this.previousMRPColumn.Name = "previousMRPColumn";
+            this.TotalPrice.DataPropertyName = "TotalPrice";
+            this.TotalPrice.HeaderText = "Total Price";
+            this.TotalPrice.Name = "TotalPrice";
             // 
-            // mrpColumn
+            // PreviousUnitPrice
             // 
-            this.mrpColumn.DataPropertyName = "MRP";
-            this.mrpColumn.HeaderText = "MRP";
-            this.mrpColumn.Name = "mrpColumn";
+            this.PreviousUnitPrice.DataPropertyName = "PreviousUnitPrice";
+            this.PreviousUnitPrice.HeaderText = "Previous Unit Price";
+            this.PreviousUnitPrice.Name = "PreviousUnitPrice";
             // 
-            // remarksColumn
+            // PreviousMRP
             // 
-            this.remarksColumn.DataPropertyName = "Remarks";
-            this.remarksColumn.HeaderText = "Remarks";
-            this.remarksColumn.Name = "remarksColumn";
+            this.PreviousMRP.DataPropertyName = "PreviousMRP";
+            this.PreviousMRP.HeaderText = "Previous MRP";
+            this.PreviousMRP.Name = "PreviousMRP";
             // 
-            // actionColumn
+            // MRP
             // 
-            this.actionColumn.HeaderText = "Action";
-            this.actionColumn.Name = "actionColumn";
+            this.MRP.DataPropertyName = "MRP";
+            this.MRP.HeaderText = "MRP";
+            this.MRP.Name = "MRP";
+            // 
+            // Remarks
+            // 
+            this.Remarks.DataPropertyName = "Remarks";
+            this.Remarks.HeaderText = "Remarks";
+            this.Remarks.Name = "Remarks";
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
             // 
             // PurchaseForm
             // 
@@ -776,6 +790,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 813);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.resetButton);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.showDataGridView);
             this.Controls.Add(this.groupBox2);
@@ -806,7 +821,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox supplierComboBox;
-        private System.Windows.Forms.TextBox invoiceTextBox;
+        private System.Windows.Forms.TextBox invoiceNoTextBox;
         private System.Windows.Forms.TextBox mrpTextBox;
         private System.Windows.Forms.TextBox previousMrpTextBox;
         private System.Windows.Forms.TextBox previousUnitPriceTextBox;
@@ -834,8 +849,8 @@
         private System.Windows.Forms.RichTextBox remarksTextBox;
         private System.Windows.Forms.DataGridView showDataGridView;
         private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.DateTimePicker manufacturedDate;
-        private System.Windows.Forms.DateTimePicker expireDate;
+        private System.Windows.Forms.DateTimePicker manufacturedDatePicker;
+        private System.Windows.Forms.DateTimePicker expireDatePicker;
         private System.Windows.Forms.DateTimePicker supplierDate;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button cancelButton;
@@ -855,24 +870,26 @@
         private System.Windows.Forms.Label invoiceError;
         private System.Windows.Forms.Label confirmationLabel;
         private System.Windows.Forms.BindingSource purchaseBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn siColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn invoiceNoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productCodeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn manufactureDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expireDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn previousUnitPriceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn previousMRPColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mrpColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn remarksColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn actionColumn;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InvoiceNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ManufactureDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExpireDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AvailableQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PreviousUnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PreviousMRP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MRP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remarks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
     }
 }

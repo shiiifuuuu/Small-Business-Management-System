@@ -14,15 +14,16 @@ namespace Small_Business_Management_System.MODEL
         public string InvoiceNo { set; get; }
         public string Supplier { set; get; }
         public string Category { set; get; }
-        public string Product { set; get; }
+        public string Products { set; get; }
         public string ProductCode { set; get; }
         
-        public string ManufactureDate { set; get; }
-        public string ExpireDate { set; get; }
+        public DateTime ManufactureDate { set; get; }
+        public DateTime ExpireDate { set; get; }
         public int Quantity { set; get; }
+        public int AvailableQuantity { set; get; }
         public double UnitPrice { set; get; }
         public double TotalPrice { set; get; }
-        public double PreviousUnitPrice { set; get; }
+        public double PreviousUnitPrice {set; get; }
         public double PreviousMRP { set; get; }
         public double MRP { set; get; }
         public string Remarks { set; get; }

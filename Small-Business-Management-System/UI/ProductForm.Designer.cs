@@ -42,14 +42,6 @@
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
-            this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reorderColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.confirmationLabel = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
@@ -61,6 +53,14 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.categoryErrorLabel = new System.Windows.Forms.Label();
+            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReorderLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
@@ -174,68 +174,20 @@
             this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.siColumn,
-            this.idColumn,
-            this.codeColumn,
-            this.nameColumn,
-            this.categoryColumn,
-            this.reorderColumn,
-            this.descriptionColumn,
-            this.actionColumn});
+            this.SI,
+            this.Id,
+            this.Code,
+            this.Name,
+            this.Category,
+            this.ReorderLevel,
+            this.Description,
+            this.Action});
             this.showDataGridView.DataSource = this.productBindingSource1;
             this.showDataGridView.Location = new System.Drawing.Point(12, 438);
             this.showDataGridView.Name = "showDataGridView";
             this.showDataGridView.Size = new System.Drawing.Size(622, 203);
             this.showDataGridView.TabIndex = 10;
             this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
-            // siColumn
-            // 
-            this.siColumn.HeaderText = "SI";
-            this.siColumn.Name = "siColumn";
-            this.siColumn.ReadOnly = true;
-            // 
-            // idColumn
-            // 
-            this.idColumn.DataPropertyName = "Id";
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            // 
-            // codeColumn
-            // 
-            this.codeColumn.DataPropertyName = "Code";
-            this.codeColumn.HeaderText = "Code";
-            this.codeColumn.Name = "codeColumn";
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.DataPropertyName = "Name";
-            this.nameColumn.HeaderText = "Name";
-            this.nameColumn.Name = "nameColumn";
-            // 
-            // categoryColumn
-            // 
-            this.categoryColumn.DataPropertyName = "Category";
-            this.categoryColumn.HeaderText = "Category";
-            this.categoryColumn.Name = "categoryColumn";
-            // 
-            // reorderColumn
-            // 
-            this.reorderColumn.DataPropertyName = "ReorderLevel";
-            this.reorderColumn.HeaderText = "ReorderLevel";
-            this.reorderColumn.Name = "reorderColumn";
-            // 
-            // descriptionColumn
-            // 
-            this.descriptionColumn.DataPropertyName = "Description";
-            this.descriptionColumn.HeaderText = "Description";
-            this.descriptionColumn.Name = "descriptionColumn";
-            // 
-            // actionColumn
-            // 
-            this.actionColumn.HeaderText = "Action";
-            this.actionColumn.Name = "actionColumn";
-            this.actionColumn.ReadOnly = true;
             // 
             // productBindingSource1
             // 
@@ -346,6 +298,54 @@
             this.categoryErrorLabel.TabIndex = 17;
             this.categoryErrorLabel.Text = "error";
             // 
+            // SI
+            // 
+            this.SI.HeaderText = "SI";
+            this.SI.Name = "SI";
+            this.SI.ReadOnly = true;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // Code
+            // 
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            // 
+            // ReorderLevel
+            // 
+            this.ReorderLevel.DataPropertyName = "ReorderLevel";
+            this.ReorderLevel.HeaderText = "ReorderLevel";
+            this.ReorderLevel.Name = "ReorderLevel";
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,7 +373,7 @@
             this.Controls.Add(this.namelabel);
             this.Controls.Add(this.codelabel);
             this.Controls.Add(this.categorylabel);
-            this.Name = "ProductForm";
+            
             this.Text = "Product";
             this.Load += new System.EventHandler(this.ProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
@@ -410,13 +410,13 @@
         private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.BindingSource productBindingSource1;
         private System.Windows.Forms.Label categoryErrorLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn siColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reorderColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn actionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReorderLevel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
     }
 }

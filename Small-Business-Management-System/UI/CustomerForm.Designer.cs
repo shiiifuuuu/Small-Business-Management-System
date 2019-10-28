@@ -30,15 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
-            this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loyaltyPointColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -65,6 +56,15 @@
             this.searchErrorLabel = new System.Windows.Forms.Label();
             this.codeErrorLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoyaltyPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -75,86 +75,22 @@
             this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.siColumn,
-            this.idColumn,
-            this.codeColumn,
-            this.nameColumn,
-            this.addressColumn,
-            this.emailColumn,
-            this.contactColumn,
-            this.loyaltyPointColumn,
-            this.actionColumn});
+            this.SI,
+            this.Id,
+            this.Code,
+            this.Name,
+            this.Address,
+            this.Email,
+            this.Contact,
+            this.LoyaltyPoint,
+            this.Action});
             this.showDataGridView.DataSource = this.customerBindingSource;
-            this.showDataGridView.Location = new System.Drawing.Point(16, 508);
-            this.showDataGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.showDataGridView.Location = new System.Drawing.Point(12, 413);
             this.showDataGridView.Name = "showDataGridView";
             this.showDataGridView.ReadOnly = true;
-            this.showDataGridView.Size = new System.Drawing.Size(953, 395);
+            this.showDataGridView.Size = new System.Drawing.Size(715, 321);
             this.showDataGridView.TabIndex = 37;
             this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDataGridView_CellContentClick);
-            // 
-            // siColumn
-            // 
-            this.siColumn.DataPropertyName = "SI";
-            this.siColumn.HeaderText = "SI";
-            this.siColumn.Name = "siColumn";
-            this.siColumn.ReadOnly = true;
-            // 
-            // idColumn
-            // 
-            this.idColumn.DataPropertyName = "Id";
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            // 
-            // codeColumn
-            // 
-            this.codeColumn.DataPropertyName = "Code";
-            this.codeColumn.HeaderText = "Code";
-            this.codeColumn.Name = "codeColumn";
-            this.codeColumn.ReadOnly = true;
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.DataPropertyName = "Name";
-            this.nameColumn.HeaderText = "Name";
-            this.nameColumn.Name = "nameColumn";
-            this.nameColumn.ReadOnly = true;
-            // 
-            // addressColumn
-            // 
-            this.addressColumn.DataPropertyName = "Address";
-            this.addressColumn.HeaderText = "Address";
-            this.addressColumn.Name = "addressColumn";
-            this.addressColumn.ReadOnly = true;
-            // 
-            // emailColumn
-            // 
-            this.emailColumn.DataPropertyName = "Email";
-            this.emailColumn.HeaderText = "Email";
-            this.emailColumn.Name = "emailColumn";
-            this.emailColumn.ReadOnly = true;
-            // 
-            // contactColumn
-            // 
-            this.contactColumn.DataPropertyName = "Contact";
-            this.contactColumn.HeaderText = "Contact";
-            this.contactColumn.Name = "contactColumn";
-            this.contactColumn.ReadOnly = true;
-            // 
-            // loyaltyPointColumn
-            // 
-            this.loyaltyPointColumn.DataPropertyName = "LoyaltyPoint";
-            this.loyaltyPointColumn.HeaderText = "Loyalty Point";
-            this.loyaltyPointColumn.Name = "loyaltyPointColumn";
-            this.loyaltyPointColumn.ReadOnly = true;
-            // 
-            // actionColumn
-            // 
-            this.actionColumn.DataPropertyName = "Action";
-            this.actionColumn.HeaderText = "Action";
-            this.actionColumn.Name = "actionColumn";
-            this.actionColumn.ReadOnly = true;
             // 
             // customerBindingSource
             // 
@@ -162,10 +98,9 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(547, 12);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(4);
+            this.searchButton.Location = new System.Drawing.Point(410, 10);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(100, 28);
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 36;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -173,10 +108,9 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(591, 401);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.cancelButton.Location = new System.Drawing.Point(443, 326);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(175, 28);
+            this.cancelButton.Size = new System.Drawing.Size(131, 23);
             this.cancelButton.TabIndex = 34;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -184,10 +118,9 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(225, 401);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteButton.Location = new System.Drawing.Point(169, 326);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(175, 28);
+            this.deleteButton.Size = new System.Drawing.Size(131, 23);
             this.deleteButton.TabIndex = 33;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -195,10 +128,9 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(408, 401);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
+            this.saveButton.Location = new System.Drawing.Point(306, 326);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(175, 28);
+            this.saveButton.Size = new System.Drawing.Size(131, 23);
             this.saveButton.TabIndex = 32;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -206,71 +138,63 @@
             // 
             // loyaltyPointTextBox
             // 
-            this.loyaltyPointTextBox.Location = new System.Drawing.Point(364, 341);
-            this.loyaltyPointTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.loyaltyPointTextBox.Location = new System.Drawing.Point(273, 277);
             this.loyaltyPointTextBox.Name = "loyaltyPointTextBox";
-            this.loyaltyPointTextBox.Size = new System.Drawing.Size(255, 22);
+            this.loyaltyPointTextBox.Size = new System.Drawing.Size(192, 20);
             this.loyaltyPointTextBox.TabIndex = 31;
             // 
             // contactTextBox
             // 
-            this.contactTextBox.Location = new System.Drawing.Point(364, 293);
-            this.contactTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.contactTextBox.Location = new System.Drawing.Point(273, 238);
             this.contactTextBox.Name = "contactTextBox";
-            this.contactTextBox.Size = new System.Drawing.Size(255, 22);
+            this.contactTextBox.Size = new System.Drawing.Size(192, 20);
             this.contactTextBox.TabIndex = 30;
             this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
             this.contactTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.contactTextBox_KeyPress);
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(364, 245);
-            this.emailTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.emailTextBox.Location = new System.Drawing.Point(273, 199);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(255, 22);
+            this.emailTextBox.Size = new System.Drawing.Size(192, 20);
             this.emailTextBox.TabIndex = 29;
             // 
             // addressTextBox
             // 
-            this.addressTextBox.Location = new System.Drawing.Point(364, 197);
-            this.addressTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.addressTextBox.Location = new System.Drawing.Point(273, 160);
             this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(255, 22);
+            this.addressTextBox.Size = new System.Drawing.Size(192, 20);
             this.addressTextBox.TabIndex = 28;
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(364, 149);
-            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.nameTextBox.Location = new System.Drawing.Point(273, 121);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(255, 22);
+            this.nameTextBox.Size = new System.Drawing.Size(192, 20);
             this.nameTextBox.TabIndex = 27;
             // 
             // codeTextBox
             // 
-            this.codeTextBox.Location = new System.Drawing.Point(364, 101);
-            this.codeTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.codeTextBox.Location = new System.Drawing.Point(273, 82);
             this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(255, 22);
+            this.codeTextBox.Size = new System.Drawing.Size(192, 20);
             this.codeTextBox.TabIndex = 26;
             this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(283, 15);
-            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.searchTextBox.Location = new System.Drawing.Point(212, 12);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(255, 22);
+            this.searchTextBox.Size = new System.Drawing.Size(192, 20);
             this.searchTextBox.TabIndex = 35;
             // 
             // confirmationLabel
             // 
             this.confirmationLabel.AutoSize = true;
             this.confirmationLabel.ForeColor = System.Drawing.Color.ForestGreen;
-            this.confirmationLabel.Location = new System.Drawing.Point(360, 450);
-            this.confirmationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.confirmationLabel.Location = new System.Drawing.Point(270, 366);
             this.confirmationLabel.Name = "confirmationLabel";
-            this.confirmationLabel.Size = new System.Drawing.Size(85, 17);
+            this.confirmationLabel.Size = new System.Drawing.Size(64, 13);
             this.confirmationLabel.TabIndex = 12;
             this.confirmationLabel.Text = "confirmation";
             // 
@@ -278,10 +202,9 @@
             // 
             this.emailErrorLabel.AutoSize = true;
             this.emailErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.emailErrorLabel.Location = new System.Drawing.Point(360, 273);
-            this.emailErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.emailErrorLabel.Location = new System.Drawing.Point(270, 222);
             this.emailErrorLabel.Name = "emailErrorLabel";
-            this.emailErrorLabel.Size = new System.Drawing.Size(39, 17);
+            this.emailErrorLabel.Size = new System.Drawing.Size(28, 13);
             this.emailErrorLabel.TabIndex = 23;
             this.emailErrorLabel.Text = "error";
             // 
@@ -289,10 +212,9 @@
             // 
             this.addressErrorLabel.AutoSize = true;
             this.addressErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.addressErrorLabel.Location = new System.Drawing.Point(360, 225);
-            this.addressErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.addressErrorLabel.Location = new System.Drawing.Point(270, 183);
             this.addressErrorLabel.Name = "addressErrorLabel";
-            this.addressErrorLabel.Size = new System.Drawing.Size(39, 17);
+            this.addressErrorLabel.Size = new System.Drawing.Size(28, 13);
             this.addressErrorLabel.TabIndex = 22;
             this.addressErrorLabel.Text = "error";
             // 
@@ -300,20 +222,18 @@
             // 
             this.loyaltyPointErrorLabel.AutoSize = true;
             this.loyaltyPointErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.loyaltyPointErrorLabel.Location = new System.Drawing.Point(360, 369);
-            this.loyaltyPointErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.loyaltyPointErrorLabel.Location = new System.Drawing.Point(270, 300);
             this.loyaltyPointErrorLabel.Name = "loyaltyPointErrorLabel";
-            this.loyaltyPointErrorLabel.Size = new System.Drawing.Size(39, 17);
+            this.loyaltyPointErrorLabel.Size = new System.Drawing.Size(28, 13);
             this.loyaltyPointErrorLabel.TabIndex = 21;
             this.loyaltyPointErrorLabel.Text = "error";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(249, 345);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(187, 280);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 17);
+            this.label7.Size = new System.Drawing.Size(67, 13);
             this.label7.TabIndex = 20;
             this.label7.Text = "Loyalty Point";
             // 
@@ -321,40 +241,36 @@
             // 
             this.contactErrorLabel.AutoSize = true;
             this.contactErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.contactErrorLabel.Location = new System.Drawing.Point(360, 321);
-            this.contactErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.contactErrorLabel.Location = new System.Drawing.Point(270, 261);
             this.contactErrorLabel.Name = "contactErrorLabel";
-            this.contactErrorLabel.Size = new System.Drawing.Size(39, 17);
+            this.contactErrorLabel.Size = new System.Drawing.Size(28, 13);
             this.contactErrorLabel.TabIndex = 19;
             this.contactErrorLabel.Text = "error";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(249, 297);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(187, 241);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 17);
+            this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 18;
             this.label6.Text = "Contact";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(249, 249);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(187, 202);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 17);
+            this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 17;
             this.label5.Text = "Email";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(249, 201);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(187, 163);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 17);
+            this.label4.Size = new System.Drawing.Size(45, 13);
             this.label4.TabIndex = 16;
             this.label4.Text = "Address";
             // 
@@ -362,20 +278,18 @@
             // 
             this.nameErrorLabel.AutoSize = true;
             this.nameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.nameErrorLabel.Location = new System.Drawing.Point(360, 177);
-            this.nameErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.nameErrorLabel.Location = new System.Drawing.Point(270, 144);
             this.nameErrorLabel.Name = "nameErrorLabel";
-            this.nameErrorLabel.Size = new System.Drawing.Size(39, 17);
+            this.nameErrorLabel.Size = new System.Drawing.Size(28, 13);
             this.nameErrorLabel.TabIndex = 15;
             this.nameErrorLabel.Text = "error";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(249, 153);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(187, 124);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 17);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 14;
             this.label3.Text = "Name";
             // 
@@ -383,10 +297,9 @@
             // 
             this.searchErrorLabel.AutoSize = true;
             this.searchErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.searchErrorLabel.Location = new System.Drawing.Point(279, 43);
-            this.searchErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.searchErrorLabel.Location = new System.Drawing.Point(209, 35);
             this.searchErrorLabel.Name = "searchErrorLabel";
-            this.searchErrorLabel.Size = new System.Drawing.Size(39, 17);
+            this.searchErrorLabel.Size = new System.Drawing.Size(28, 13);
             this.searchErrorLabel.TabIndex = 13;
             this.searchErrorLabel.Text = "error";
             // 
@@ -394,28 +307,89 @@
             // 
             this.codeErrorLabel.AutoSize = true;
             this.codeErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.codeErrorLabel.Location = new System.Drawing.Point(360, 129);
-            this.codeErrorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.codeErrorLabel.Location = new System.Drawing.Point(270, 105);
             this.codeErrorLabel.Name = "codeErrorLabel";
-            this.codeErrorLabel.Size = new System.Drawing.Size(39, 17);
+            this.codeErrorLabel.Size = new System.Drawing.Size(28, 13);
             this.codeErrorLabel.TabIndex = 24;
             this.codeErrorLabel.Text = "error";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(249, 105);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(187, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 17);
+            this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 25;
             this.label2.Text = "Code";
             // 
+            // SI
+            // 
+            this.SI.DataPropertyName = "SI";
+            this.SI.HeaderText = "SI";
+            this.SI.Name = "SI";
+            this.SI.ReadOnly = true;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Code
+            // 
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
+            this.Code.ReadOnly = true;
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Contact
+            // 
+            this.Contact.DataPropertyName = "Contact";
+            this.Contact.HeaderText = "Contact";
+            this.Contact.Name = "Contact";
+            this.Contact.ReadOnly = true;
+            // 
+            // LoyaltyPoint
+            // 
+            this.LoyaltyPoint.DataPropertyName = "LoyaltyPoint";
+            this.LoyaltyPoint.HeaderText = "Loyalty Point";
+            this.LoyaltyPoint.Name = "LoyaltyPoint";
+            this.LoyaltyPoint.ReadOnly = true;
+            // 
+            // Action
+            // 
+            this.Action.DataPropertyName = "Action";
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.ReadOnly = true;
+            // 
             // CustomerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 912);
+            this.ClientSize = new System.Drawing.Size(738, 741);
             this.Controls.Add(this.showDataGridView);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.cancelButton);
@@ -442,8 +416,7 @@
             this.Controls.Add(this.searchErrorLabel);
             this.Controls.Add(this.codeErrorLabel);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "CustomerForm";
+            
             this.Text = "Customer";
             this.Load += new System.EventHandler(this.CustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
@@ -481,15 +454,15 @@
         private System.Windows.Forms.Label searchErrorLabel;
         private System.Windows.Forms.Label codeErrorLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn siColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn loyaltyPointColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn actionColumn;
         private System.Windows.Forms.BindingSource customerBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoyaltyPoint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
     }
 }

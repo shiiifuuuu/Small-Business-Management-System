@@ -167,7 +167,7 @@ namespace Small_Business_Management_System
             {
                 showCategoriesGridView.DataSource = categories;
 
-                showCategoriesGridView.Columns["idColumn"].Visible = false;
+                showCategoriesGridView.Columns["Id"].Visible = false;
                 Helper.SetSerialNumber(showCategoriesGridView);
                 Helper.SetActionColumn(showCategoriesGridView);
             }
@@ -267,10 +267,10 @@ namespace Small_Business_Management_System
                 {
                     if (showCategoriesGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
-                        codeTextBox.Text = showCategoriesGridView.Rows[e.RowIndex].Cells["codeColumn"].Value.ToString();
-                        nameTextBox.Text = showCategoriesGridView.Rows[e.RowIndex].Cells["nameColumn"].Value.ToString();
+                        codeTextBox.Text = showCategoriesGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
+                        nameTextBox.Text = showCategoriesGridView.Rows[e.RowIndex].Cells["Name"].Value.ToString();
 
-                        _category.Id = int.Parse(showCategoriesGridView.Rows[e.RowIndex].Cells["idColumn"].Value.ToString());
+                        _category.Id = int.Parse(showCategoriesGridView.Rows[e.RowIndex].Cells["Id"].Value.ToString());
 
                         saveButton.Text = "Modify";
                         deleteButton.Visible = true;

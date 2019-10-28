@@ -52,7 +52,6 @@
     <Compile Include="MODEL\Sales.cs" />
     <Compile Include="REPOSITORY\PurchaseRepository.cs" />
     <Compile Include="REPOSITORY\SalesRepository.cs" />
-    <Compile Include="UI\DataBindings.cs" />
     <Compile Include="UI\PurchaseForm.cs">
       <SubType>Form</SubType>
     </Compile>

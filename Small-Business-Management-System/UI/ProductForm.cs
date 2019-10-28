@@ -190,7 +190,7 @@ namespace Small_Business_Management_System.UI
             {
                 showDataGridView.DataSource = products;
 
-                showDataGridView.Columns["idColumn"].Visible = false;
+                showDataGridView.Columns["Id"].Visible = false;
                 Helper.SetSerialNumber(showDataGridView);
                 Helper.SetActionColumn(showDataGridView);
             }
@@ -364,17 +364,17 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
-                if (e.ColumnIndex == showDataGridView.Columns["actionColumn"].Index && e.RowIndex != -1)
+                if (e.ColumnIndex == showDataGridView.Columns["Action"].Index && e.RowIndex != -1)
                 {
                     if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
-                        categoryComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["categoryColumn"].Value.ToString();
-                        codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["codeColumn"].Value.ToString();
-                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["nameColumn"].Value.ToString();
-                        reorderTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["reorderColumn"].Value.ToString();
-                        descriptionTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["descriptionColumn"].Value.ToString();
+                        categoryComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Category"].Value.ToString();
+                        codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
+                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                        reorderTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["ReorderLevel"].Value.ToString();
+                        descriptionTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Description"].Value.ToString();
 
-                        _product.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["idColumn"].Value.ToString());
+                        _product.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["Id"].Value.ToString());
 
                         saveButton.Text = "Modify";
                         deleteButton.Visible = true;

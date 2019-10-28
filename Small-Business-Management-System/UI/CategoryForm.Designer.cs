@@ -44,11 +44,10 @@
             this.confirmLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.showCategoriesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -85,21 +84,16 @@
             this.showCategoriesGridView.AutoGenerateColumns = false;
             this.showCategoriesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showCategoriesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.siColumn,
-            this.idColumn,
-            this.codeColumn,
-            this.nameColumn,
-            this.actionColumn});
+            this.SI,
+            this.Id,
+            this.Name,
+            this.Action});
             this.showCategoriesGridView.DataSource = this.categoryBindingSource;
             this.showCategoriesGridView.Location = new System.Drawing.Point(12, 233);
             this.showCategoriesGridView.Name = "showCategoriesGridView";
             this.showCategoriesGridView.Size = new System.Drawing.Size(444, 185);
             this.showCategoriesGridView.TabIndex = 3;
             this.showCategoriesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showCategoriesGridView_CellContentClick);
-            // 
-            // categoryBindingSource
-            // 
-//            this.categoryBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Category);
             // 
             // label2
             // 
@@ -191,35 +185,29 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // siColumn
+            // SI
             // 
-            this.siColumn.FillWeight = 20F;
-            this.siColumn.HeaderText = "SI";
-            this.siColumn.Name = "siColumn";
-            this.siColumn.ReadOnly = true;
+            this.SI.FillWeight = 20F;
+            this.SI.HeaderText = "SI";
+            this.SI.Name = "SI";
+            this.SI.ReadOnly = true;
             // 
-            // idColumn
+            // Id
             // 
-            this.idColumn.DataPropertyName = "Id";
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
             // 
-            // codeColumn
+            // Name
             // 
-            this.codeColumn.DataPropertyName = "Code";
-            this.codeColumn.HeaderText = "Code";
-            this.codeColumn.Name = "codeColumn";
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
             // 
-            // nameColumn
+            // Action
             // 
-            this.nameColumn.DataPropertyName = "Name";
-            this.nameColumn.HeaderText = "Name";
-            this.nameColumn.Name = "nameColumn";
-            // 
-            // actionColumn
-            // 
-            this.actionColumn.HeaderText = "Action";
-            this.actionColumn.Name = "actionColumn";
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
             // 
             // CategoryForm
             // 
@@ -240,7 +228,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.searchErrorLabel);
             this.Controls.Add(this.label1);
-            this.Name = "CategoryForm";
+            
             this.Text = "Category";
             this.Load += new System.EventHandler(this.CategoryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.showCategoriesGridView)).EndInit();
@@ -267,11 +255,10 @@
         private System.Windows.Forms.BindingSource categoryBindingSource;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn siColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn actionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
     }
 }
 
