@@ -14,6 +14,7 @@ namespace Small_Business_Management_System
             //string serverName = @"SHIIIFUUUU";
             string serverName = @"DESKTOP-PGSVAVG\MSSQLSERVER2014";
             //string serverName = @"PC-301-21\SQLEXPRESS";
+
             string databaseName = @"SmallBusinessManagementSystem";
 
             String connectionString = "Server=" + serverName + "; Database=" + databaseName + "; Integrated Security=true";

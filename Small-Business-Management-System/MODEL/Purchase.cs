@@ -9,16 +9,18 @@ namespace Small_Business_Management_System.MODEL
     public class Purchase
     {
         public int Id { set; get; }
+        public string Code { set; get; }
+        public int ProductId { set; get; }
         public DateTime PurchaseDate { set; get; }
         public string InvoiceNo { set; get; }
         public string Supplier { set; get; }
         public string Category { set; get; }
         public string Product { set; get; }
         public string ProductCode { set; get; }
-        public Int64 AvailableQuantity { set; get; }
+        public int AvailableQuantity { set; get; }
         public DateTime ManufactureDate { set; get; }
         public DateTime ExpireDate { set; get; }
-        public Int64 Quantity { set; get; }
+        public int Quantity { set; get; }
         public double UnitPrice { set; get; }
         public double TotalPrice { set; get; }
         public double PreviousUnitPrice { set; get; }

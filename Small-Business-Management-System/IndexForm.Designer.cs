@@ -36,6 +36,7 @@
             this.ReportingPurchaseLinkLabel = new System.Windows.Forms.LinkLabel();
             this.purchaseFormLink = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // categoryFormLink
@@ -85,7 +86,7 @@
             // ReportSaleslinkLabel
             // 
             this.ReportSaleslinkLabel.AutoSize = true;
-            this.ReportSaleslinkLabel.Location = new System.Drawing.Point(203, 231);
+            this.ReportSaleslinkLabel.Location = new System.Drawing.Point(203, 269);
             this.ReportSaleslinkLabel.Name = "ReportSaleslinkLabel";
             this.ReportSaleslinkLabel.Size = new System.Drawing.Size(88, 13);
             this.ReportSaleslinkLabel.TabIndex = 4;
@@ -96,7 +97,7 @@
             // ReportingPurchaseLinkLabel
             // 
             this.ReportingPurchaseLinkLabel.AutoSize = true;
-            this.ReportingPurchaseLinkLabel.Location = new System.Drawing.Point(202, 259);
+            this.ReportingPurchaseLinkLabel.Location = new System.Drawing.Point(203, 295);
             this.ReportingPurchaseLinkLabel.Name = "ReportingPurchaseLinkLabel";
             this.ReportingPurchaseLinkLabel.Size = new System.Drawing.Size(107, 13);
             this.ReportingPurchaseLinkLabel.TabIndex = 4;
@@ -126,11 +127,22 @@
             this.linkLabel1.Text = "Sales Form";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(203, 240);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(87, 13);
+            this.linkLabel2.TabIndex = 6;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Stock View Form";
+            // 
             // IndexForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 386);
+            this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.ReportingPurchaseLinkLabel);
             this.Controls.Add(this.ReportSaleslinkLabel);
@@ -156,5 +168,6 @@
         private System.Windows.Forms.LinkLabel ReportingPurchaseLinkLabel;
         private System.Windows.Forms.LinkLabel purchaseFormLink;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }

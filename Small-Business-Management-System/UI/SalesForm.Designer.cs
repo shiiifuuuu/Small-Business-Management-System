@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.loyalityPointTextBox = new System.Windows.Forms.TextBox();
             this.customerComboBox = new System.Windows.Forms.ComboBox();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -52,6 +53,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.productErrorLabel = new System.Windows.Forms.Label();
             this.categoryErrorLabel = new System.Windows.Forms.Label();
+            this.salesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.confirmationLabel = new System.Windows.Forms.Label();
             this.payableAmountTextBox = new System.Windows.Forms.TextBox();
@@ -64,39 +66,26 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
-            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.selasDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loyalityPointDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avabileQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalMRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grandTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discountAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payableAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.salesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.codeErrorLabel = new System.Windows.Forms.Label();
             this.salesCodeTextBox = new System.Windows.Forms.TextBox();
             this.searchErrorLabel = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalMRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.actionColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesBindingSource)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -114,13 +103,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer";
             // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker.Location = new System.Drawing.Point(133, 65);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(121, 20);
+            this.dateTimePicker.TabIndex = 7;
+            // 
             // loyalityPointTextBox
             // 
             this.loyalityPointTextBox.Location = new System.Drawing.Point(133, 105);
             this.loyalityPointTextBox.Name = "loyalityPointTextBox";
             this.loyalityPointTextBox.Size = new System.Drawing.Size(121, 20);
             this.loyalityPointTextBox.TabIndex = 5;
-            this.loyalityPointTextBox.TextChanged += new System.EventHandler(this.loyalityPointTextBox_TextChanged);
             // 
             // customerComboBox
             // 
@@ -132,6 +128,7 @@
             this.customerComboBox.Size = new System.Drawing.Size(121, 21);
             this.customerComboBox.TabIndex = 3;
             this.customerComboBox.ValueMember = "Id";
+            this.customerComboBox.SelectedIndexChanged += new System.EventHandler(this.customerComboBox_SelectedIndexChanged);
             // 
             // customerBindingSource
             // 
@@ -226,6 +223,7 @@
             this.productComboBox.Size = new System.Drawing.Size(121, 21);
             this.productComboBox.TabIndex = 8;
             this.productComboBox.ValueMember = "Id";
+            this.productComboBox.TextChanged += new System.EventHandler(this.productComboBox_TextChanged);
             // 
             // productBindingSource
             // 
@@ -241,6 +239,7 @@
             this.categoryComboBox.Size = new System.Drawing.Size(121, 21);
             this.categoryComboBox.TabIndex = 7;
             this.categoryComboBox.ValueMember = "Id";
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
             // categoryBindingSource
             // 
@@ -310,6 +309,10 @@
             this.categoryErrorLabel.TabIndex = 0;
             this.categoryErrorLabel.Text = "Category";
             // 
+            // salesBindingSource
+            // 
+            this.salesBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Sales);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.confirmationLabel);
@@ -326,7 +329,7 @@
             this.groupBox3.Location = new System.Drawing.Point(12, 236);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(992, 417);
+            this.groupBox3.Size = new System.Drawing.Size(820, 257);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Product Details";
@@ -335,7 +338,7 @@
             // 
             this.confirmationLabel.AutoSize = true;
             this.confirmationLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.confirmationLabel.Location = new System.Drawing.Point(111, 367);
+            this.confirmationLabel.Location = new System.Drawing.Point(107, 182);
             this.confirmationLabel.Name = "confirmationLabel";
             this.confirmationLabel.Size = new System.Drawing.Size(65, 13);
             this.confirmationLabel.TabIndex = 10;
@@ -343,38 +346,35 @@
             // 
             // payableAmountTextBox
             // 
-            this.payableAmountTextBox.Location = new System.Drawing.Point(761, 328);
+            this.payableAmountTextBox.Location = new System.Drawing.Point(705, 196);
             this.payableAmountTextBox.Name = "payableAmountTextBox";
             this.payableAmountTextBox.Size = new System.Drawing.Size(100, 20);
             this.payableAmountTextBox.TabIndex = 9;
             // 
             // discountTextBox
             // 
-            this.discountTextBox.Location = new System.Drawing.Point(761, 260);
+            this.discountTextBox.Location = new System.Drawing.Point(705, 128);
             this.discountTextBox.Name = "discountTextBox";
             this.discountTextBox.Size = new System.Drawing.Size(100, 20);
             this.discountTextBox.TabIndex = 8;
-            this.discountTextBox.TextChanged += new System.EventHandler(this.discountTextBox_TextChanged);
             // 
             // discountAmountTextBox
             // 
-            this.discountAmountTextBox.Location = new System.Drawing.Point(761, 298);
+            this.discountAmountTextBox.Location = new System.Drawing.Point(705, 166);
             this.discountAmountTextBox.Name = "discountAmountTextBox";
             this.discountAmountTextBox.Size = new System.Drawing.Size(100, 20);
             this.discountAmountTextBox.TabIndex = 7;
-            this.discountAmountTextBox.TextChanged += new System.EventHandler(this.discountAmountTextBox_TextChanged);
             // 
             // grandTotalTextBox
             // 
-            this.grandTotalTextBox.Location = new System.Drawing.Point(761, 226);
+            this.grandTotalTextBox.Location = new System.Drawing.Point(705, 94);
             this.grandTotalTextBox.Name = "grandTotalTextBox";
             this.grandTotalTextBox.Size = new System.Drawing.Size(100, 20);
             this.grandTotalTextBox.TabIndex = 6;
-            this.grandTotalTextBox.TextChanged += new System.EventHandler(this.grandTotalTextBox_TextChanged);
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(786, 360);
+            this.submitButton.Location = new System.Drawing.Point(730, 228);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 5;
@@ -385,7 +385,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(612, 330);
+            this.label13.Location = new System.Drawing.Point(556, 198);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(106, 13);
             this.label13.TabIndex = 4;
@@ -394,7 +394,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(612, 297);
+            this.label12.Location = new System.Drawing.Point(556, 165);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(110, 13);
             this.label12.TabIndex = 3;
@@ -403,7 +403,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(612, 262);
+            this.label11.Location = new System.Drawing.Point(556, 130);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(66, 13);
             this.label11.TabIndex = 2;
@@ -412,7 +412,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(612, 232);
+            this.label10.Location = new System.Drawing.Point(556, 100);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(85, 13);
             this.label10.TabIndex = 1;
@@ -423,152 +423,20 @@
             this.showDataGridView.AutoGenerateColumns = false;
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SI,
-            this.idDataGridViewTextBoxColumn,
-            this.codeDataGridViewTextBoxColumn,
-            this.customerDataGridViewTextBoxColumn,
-            this.selasDateDataGridViewTextBoxColumn,
-            this.loyalityPointDataGridViewTextBoxColumn,
-            this.categoryDataGridViewTextBoxColumn,
+            this.siColumn,
             this.productDataGridViewTextBoxColumn,
-            this.avabileQuantityDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn,
             this.mRPDataGridViewTextBoxColumn,
             this.totalMRPDataGridViewTextBoxColumn,
-            this.grandTotalDataGridViewTextBoxColumn,
-            this.discountDataGridViewTextBoxColumn,
-            this.discountAmountDataGridViewTextBoxColumn,
-            this.payableAmountDataGridViewTextBoxColumn,
             this.actionColumn});
             this.showDataGridView.DataSource = this.salesBindingSource;
             this.showDataGridView.Location = new System.Drawing.Point(0, 18);
             this.showDataGridView.Name = "showDataGridView";
             this.showDataGridView.RowHeadersWidth = 35;
-            this.showDataGridView.Size = new System.Drawing.Size(1062, 197);
+            this.showDataGridView.Size = new System.Drawing.Size(815, 46);
             this.showDataGridView.TabIndex = 0;
             this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDataGridView_CellContentClick);
             this.showDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.showDataGridView_RowPostPaint);
-            // 
-            // SI
-            // 
-            this.SI.HeaderText = "Sl";
-            this.SI.Name = "SI";
-            this.SI.Width = 40;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // customerDataGridViewTextBoxColumn
-            // 
-            this.customerDataGridViewTextBoxColumn.DataPropertyName = "Customer";
-            this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
-            this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
-            this.customerDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // selasDateDataGridViewTextBoxColumn
-            // 
-            this.selasDateDataGridViewTextBoxColumn.DataPropertyName = "SelasDate";
-            this.selasDateDataGridViewTextBoxColumn.HeaderText = "SelasDate";
-            this.selasDateDataGridViewTextBoxColumn.Name = "selasDateDataGridViewTextBoxColumn";
-            this.selasDateDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // loyalityPointDataGridViewTextBoxColumn
-            // 
-            this.loyalityPointDataGridViewTextBoxColumn.DataPropertyName = "LoyalityPoint";
-            this.loyalityPointDataGridViewTextBoxColumn.HeaderText = "LoyalityPoint";
-            this.loyalityPointDataGridViewTextBoxColumn.Name = "loyalityPointDataGridViewTextBoxColumn";
-            this.loyalityPointDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            this.categoryDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // productDataGridViewTextBoxColumn
-            // 
-            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
-            this.productDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // avabileQuantityDataGridViewTextBoxColumn
-            // 
-            this.avabileQuantityDataGridViewTextBoxColumn.DataPropertyName = "AvabileQuantity";
-            this.avabileQuantityDataGridViewTextBoxColumn.HeaderText = "AvabileQuantity";
-            this.avabileQuantityDataGridViewTextBoxColumn.Name = "avabileQuantityDataGridViewTextBoxColumn";
-            this.avabileQuantityDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // mRPDataGridViewTextBoxColumn
-            // 
-            this.mRPDataGridViewTextBoxColumn.DataPropertyName = "MRP";
-            this.mRPDataGridViewTextBoxColumn.HeaderText = "MRP";
-            this.mRPDataGridViewTextBoxColumn.Name = "mRPDataGridViewTextBoxColumn";
-            this.mRPDataGridViewTextBoxColumn.Width = 65;
-            // 
-            // totalMRPDataGridViewTextBoxColumn
-            // 
-            this.totalMRPDataGridViewTextBoxColumn.DataPropertyName = "TotalMRP";
-            this.totalMRPDataGridViewTextBoxColumn.HeaderText = "TotalMRP";
-            this.totalMRPDataGridViewTextBoxColumn.Name = "totalMRPDataGridViewTextBoxColumn";
-            this.totalMRPDataGridViewTextBoxColumn.Width = 65;
-            // 
-            // grandTotalDataGridViewTextBoxColumn
-            // 
-            this.grandTotalDataGridViewTextBoxColumn.DataPropertyName = "GrandTotal";
-            this.grandTotalDataGridViewTextBoxColumn.HeaderText = "GrandTotal";
-            this.grandTotalDataGridViewTextBoxColumn.Name = "grandTotalDataGridViewTextBoxColumn";
-            this.grandTotalDataGridViewTextBoxColumn.Width = 65;
-            // 
-            // discountDataGridViewTextBoxColumn
-            // 
-            this.discountDataGridViewTextBoxColumn.DataPropertyName = "Discount";
-            this.discountDataGridViewTextBoxColumn.HeaderText = "Discount";
-            this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
-            this.discountDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // discountAmountDataGridViewTextBoxColumn
-            // 
-            this.discountAmountDataGridViewTextBoxColumn.DataPropertyName = "DiscountAmount";
-            this.discountAmountDataGridViewTextBoxColumn.HeaderText = "DiscountAmount";
-            this.discountAmountDataGridViewTextBoxColumn.Name = "discountAmountDataGridViewTextBoxColumn";
-            this.discountAmountDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // payableAmountDataGridViewTextBoxColumn
-            // 
-            this.payableAmountDataGridViewTextBoxColumn.DataPropertyName = "PayableAmount";
-            this.payableAmountDataGridViewTextBoxColumn.HeaderText = "PayableAmount";
-            this.payableAmountDataGridViewTextBoxColumn.Name = "payableAmountDataGridViewTextBoxColumn";
-            this.payableAmountDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // actionColumn
-            // 
-            this.actionColumn.HeaderText = "Action";
-            this.actionColumn.Name = "actionColumn";
-            this.actionColumn.Width = 70;
-            // 
-            // salesBindingSource
-            // 
-            this.salesBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Sales);
             // 
             // codeErrorLabel
             // 
@@ -613,19 +481,51 @@
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // dateTimePicker
+            // siColumn
             // 
-            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker.Location = new System.Drawing.Point(133, 65);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(121, 20);
-            this.dateTimePicker.TabIndex = 7;
+            this.siColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.siColumn.HeaderText = "Sl";
+            this.siColumn.Name = "siColumn";
+            // 
+            // productDataGridViewTextBoxColumn
+            // 
+            this.productDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            this.quantityDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            // 
+            // mRPDataGridViewTextBoxColumn
+            // 
+            this.mRPDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mRPDataGridViewTextBoxColumn.DataPropertyName = "MRP";
+            this.mRPDataGridViewTextBoxColumn.HeaderText = "MRP";
+            this.mRPDataGridViewTextBoxColumn.Name = "mRPDataGridViewTextBoxColumn";
+            // 
+            // totalMRPDataGridViewTextBoxColumn
+            // 
+            this.totalMRPDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.totalMRPDataGridViewTextBoxColumn.DataPropertyName = "TotalMRP";
+            this.totalMRPDataGridViewTextBoxColumn.HeaderText = "TotalMRP";
+            this.totalMRPDataGridViewTextBoxColumn.Name = "totalMRPDataGridViewTextBoxColumn";
+            // 
+            // actionColumn
+            // 
+            this.actionColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.actionColumn.HeaderText = "Action";
+            this.actionColumn.Name = "actionColumn";
             // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 630);
+            this.ClientSize = new System.Drawing.Size(845, 505);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.searchErrorLabel);
@@ -644,10 +544,10 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesBindingSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.salesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -697,23 +597,12 @@
         private System.Windows.Forms.BindingSource categoryBindingSource;
         private System.Windows.Forms.Label confirmationLabel;
         private System.Windows.Forms.BindingSource salesBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn selasDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn loyalityPointDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.DataGridViewTextBoxColumn siColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn avabileQuantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mRPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalMRPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grandTotalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn discountAmountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn payableAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn actionColumn;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }

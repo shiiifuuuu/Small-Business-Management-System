@@ -31,23 +31,20 @@ namespace Small_Business_Management_System.MANAGER
         {
             return salesRepository.SalesCode( code);
         }
-        internal bool SubmitAll(Sales sales)
-        {
-            return salesRepository.SubmitAll(sales);
-        }
+        //internal bool SubmitAll(Sales sales)
+        //{
+        //    return salesRepository.SubmitAll(sales);
+        //}
         internal bool Modify(Sales sales)
         {
             return salesRepository.Modify(sales);
         }
-        public int GetAvailableQuantity()
-        {
-            return salesRepository.GetAvailableQuantity();
-        }
+       
 
-        internal bool Delete(Sales sales)
-        {
-            return salesRepository.Delete(sales);
-        }
+        //internal bool Delete(Sales sales)
+        //{
+        //    return salesRepository.Delete(sales);
+        //}
         internal void CloseConnection()
         {
             salesRepository.CloseConnection();
@@ -56,19 +53,28 @@ namespace Small_Business_Management_System.MANAGER
         {
             return salesRepository.Search(sales);
         }
-        
-       
-
-        internal double DiscountAmount(Sales sales)
+        internal int GetLoyalityPoint(int custerId)
         {
-            sales.DiscountAmount = sales.GrandTotal * sales.Discount;
-            return sales.DiscountAmount;
+            return salesRepository.LoyatityPoint(custerId);
         }
 
-        internal double PayableAmount(Sales sales)
+        internal List<Product> ProductComboLoadByCategory(int categoryId)
         {
-            sales.PayableAmount = sales.GrandTotal - sales.DiscountAmount;
-            return sales.PayableAmount;
+            return salesRepository.ProductComboLoadByCategory(categoryId);
+        }
+
+        internal string GetAvailableQuantity(string product)
+        {
+            return salesRepository.GetAvailableQuantity(product);
+        }
+        internal string GetMRP(string product)
+        {
+            return salesRepository.GetMRP(product);
+        }
+
+        internal bool Add(Sales sales)
+        {
+            return salesRepository.Add(sales);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Small_Business_Management_System.MODEL
         public int Id { get; set; }
         public string Code { get; set; }
         public string Customer { get; set; }
+        public int CustomerId { get; set; }
         public DateTime SelasDate { get; set; }
         public double LoyalityPoint { get; set; }
         public string Category { get; set; }
