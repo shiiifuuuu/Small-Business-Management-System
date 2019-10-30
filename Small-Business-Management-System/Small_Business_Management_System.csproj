@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="MANAGER\PurchaseManager.cs" />
     <Compile Include="MANAGER\SalesManager.cs" />
     <Compile Include="MODEL\Purchase.cs" />
@@ -59,12 +68,6 @@
       <DependentUpon>PurchaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ServerConnection.cs" />
-    <Compile Include="IndexForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IndexForm.Designer.cs">
-      <DependentUpon>IndexForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MANAGER\CategoryManager.cs" />
     <Compile Include="MANAGER\CustomerManager.cs" />
     <Compile Include="MANAGER\ProductManager.cs" />
@@ -122,8 +125,8 @@
     <Compile Include="UI\SupplierForm.Designer.cs">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="IndexForm.resx">
-      <DependentUpon>IndexForm.cs</DependentUpon>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -158,6 +161,7 @@
     <EmbeddedResource Include="UI\SupplierForm.resx">
       <DependentUpon>SupplierForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Category.datasource" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Category1.datasource" />
     <None Include="Properties\DataSources\Small_Business_Management_System.MODEL.Customer.datasource" />

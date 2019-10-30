@@ -38,7 +38,8 @@ namespace Small_Business_Management_System.UI
             deleteButton.Visible = false;
             cancelButton.Visible = false;
 
-            DisplayRecords(_purchaseList, _itemList);
+            DisplayRecords(GetRecords(), _database);
+            confirmationLabel.Text = "Your Purchase History";
         }
 
         //COMBO BOX DATA INITIALIZE
@@ -234,6 +235,25 @@ namespace Small_Business_Management_System.UI
                 else if (addButton.Text.Equals("Modify"))
                 {
                     int indexNo = GetItemIndexNo(_purchaseList);
+
+                    _purchase.Date = Convert.ToDateTime(supplierDate.Text);
+                    _purchase.InvoiceNo = invoiceNoTextBox.Text;
+                    _purchase.Supplier = supplierComboBox.Text;
+                    _purchase.Category = categoryComboBox.Text;
+                    _purchase.Products = productsComboBox.Text;
+                    _purchase.ProductCode = productCodeTextBox.Text;
+
+                    _purchase.ManufactureDate = DateTime.Parse(manufacturedDatePicker.Text);
+                    _purchase.ExpireDate = DateTime.Parse(expireDatePicker.Text);
+                    _purchase.Quantity = int.Parse(quantityTextBox.Text);
+                    _purchase.UnitPrice = double.Parse(unitPriceTextBox.Text);
+                    _purchase.TotalPrice = double.Parse(totalPriceTextBox.Text);
+                    _purchase.PreviousUnitPrice = double.Parse(previousUnitPriceTextBox.Text);
+                    _purchase.PreviousMRP = double.Parse(previousMrpTextBox.Text);
+                    _purchase.MRP = double.Parse(mrpTextBox.Text);
+                    _purchase.Remarks = remarksTextBox.Text;
+
+
                     if (indexNo != -1)
                     {
                         _purchaseList.Insert(indexNo, _purchase);
@@ -257,7 +277,7 @@ namespace Small_Business_Management_System.UI
             {
                 foreach (Purchase purchase in purchaseList)
                 {
-                    if (_purchase.ProductCode.Equals(purchase.ProductCode))
+                    if (_purchase.InvoiceNo.Equals(purchase.InvoiceNo))
                     {
                         indexNo = purchaseList.IndexOf(purchase);
                     }
@@ -480,8 +500,9 @@ namespace Small_Business_Management_System.UI
                     if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
 
-                        supplierDate.Value = DateTime.Parse(showDataGridView.Rows[e.RowIndex].Cells["Date"].Value.ToString());
                         invoiceNoTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["InvoiceNo"].Value.ToString();
+
+                        supplierDate.Value = DateTime.Parse(showDataGridView.Rows[e.RowIndex].Cells["Date"].Value.ToString());
                         supplierComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Supplier"].Value.ToString();
                         categoryComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Category"].Value.ToString();
                         productsComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Product"].Value.ToString();
@@ -491,7 +512,8 @@ namespace Small_Business_Management_System.UI
                         unitPriceTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["UnitPrice"].Value.ToString();
                         remarksTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Remarks"].Value.ToString();
 
-                        _purchase.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["Id"].Value.ToString());
+                        _purchase.InvoiceNo = showDataGridView.Rows[e.RowIndex].Cells["InvoiceNo"].Value.ToString();
+                        //_purchase.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["Id"].Value.ToString());
 
                         addButton.Text = "Modify";
                         deleteButton.Visible = true;
