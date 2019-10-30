@@ -66,18 +66,18 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.codeErrorLabel = new System.Windows.Forms.Label();
-            this.salesCodeTextBox = new System.Windows.Forms.TextBox();
-            this.searchErrorLabel = new System.Windows.Forms.Label();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.searchButton = new System.Windows.Forms.Button();
             this.siColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalMRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actionColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.codeErrorLabel = new System.Windows.Forms.Label();
+            this.salesCodeTextBox = new System.Windows.Forms.TextBox();
+            this.searchErrorLabel = new System.Windows.Forms.Label();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -329,7 +329,7 @@
             this.groupBox3.Location = new System.Drawing.Point(12, 236);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox3.Size = new System.Drawing.Size(820, 257);
+            this.groupBox3.Size = new System.Drawing.Size(820, 293);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Product Details";
@@ -338,7 +338,7 @@
             // 
             this.confirmationLabel.AutoSize = true;
             this.confirmationLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.confirmationLabel.Location = new System.Drawing.Point(107, 182);
+            this.confirmationLabel.Location = new System.Drawing.Point(110, 216);
             this.confirmationLabel.Name = "confirmationLabel";
             this.confirmationLabel.Size = new System.Drawing.Size(65, 13);
             this.confirmationLabel.TabIndex = 10;
@@ -346,35 +346,35 @@
             // 
             // payableAmountTextBox
             // 
-            this.payableAmountTextBox.Location = new System.Drawing.Point(705, 196);
+            this.payableAmountTextBox.Location = new System.Drawing.Point(708, 230);
             this.payableAmountTextBox.Name = "payableAmountTextBox";
             this.payableAmountTextBox.Size = new System.Drawing.Size(100, 20);
             this.payableAmountTextBox.TabIndex = 9;
             // 
             // discountTextBox
             // 
-            this.discountTextBox.Location = new System.Drawing.Point(705, 128);
+            this.discountTextBox.Location = new System.Drawing.Point(708, 162);
             this.discountTextBox.Name = "discountTextBox";
             this.discountTextBox.Size = new System.Drawing.Size(100, 20);
             this.discountTextBox.TabIndex = 8;
             // 
             // discountAmountTextBox
             // 
-            this.discountAmountTextBox.Location = new System.Drawing.Point(705, 166);
+            this.discountAmountTextBox.Location = new System.Drawing.Point(708, 200);
             this.discountAmountTextBox.Name = "discountAmountTextBox";
             this.discountAmountTextBox.Size = new System.Drawing.Size(100, 20);
             this.discountAmountTextBox.TabIndex = 7;
             // 
             // grandTotalTextBox
             // 
-            this.grandTotalTextBox.Location = new System.Drawing.Point(705, 94);
+            this.grandTotalTextBox.Location = new System.Drawing.Point(708, 128);
             this.grandTotalTextBox.Name = "grandTotalTextBox";
             this.grandTotalTextBox.Size = new System.Drawing.Size(100, 20);
             this.grandTotalTextBox.TabIndex = 6;
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(730, 228);
+            this.submitButton.Location = new System.Drawing.Point(733, 262);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 5;
@@ -385,7 +385,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(556, 198);
+            this.label13.Location = new System.Drawing.Point(559, 232);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(106, 13);
             this.label13.TabIndex = 4;
@@ -394,7 +394,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(556, 165);
+            this.label12.Location = new System.Drawing.Point(559, 199);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(110, 13);
             this.label12.TabIndex = 3;
@@ -403,7 +403,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(556, 130);
+            this.label11.Location = new System.Drawing.Point(559, 164);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(66, 13);
             this.label11.TabIndex = 2;
@@ -412,7 +412,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(556, 100);
+            this.label10.Location = new System.Drawing.Point(559, 134);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(85, 13);
             this.label10.TabIndex = 1;
@@ -433,53 +433,10 @@
             this.showDataGridView.Location = new System.Drawing.Point(0, 18);
             this.showDataGridView.Name = "showDataGridView";
             this.showDataGridView.RowHeadersWidth = 35;
-            this.showDataGridView.Size = new System.Drawing.Size(815, 46);
+            this.showDataGridView.Size = new System.Drawing.Size(805, 104);
             this.showDataGridView.TabIndex = 0;
             this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDataGridView_CellContentClick);
             this.showDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.showDataGridView_RowPostPaint);
-            // 
-            // codeErrorLabel
-            // 
-            this.codeErrorLabel.AutoSize = true;
-            this.codeErrorLabel.Location = new System.Drawing.Point(36, 6);
-            this.codeErrorLabel.Name = "codeErrorLabel";
-            this.codeErrorLabel.Size = new System.Drawing.Size(61, 13);
-            this.codeErrorLabel.TabIndex = 3;
-            this.codeErrorLabel.Text = "Sales Code";
-            // 
-            // salesCodeTextBox
-            // 
-            this.salesCodeTextBox.Location = new System.Drawing.Point(101, 6);
-            this.salesCodeTextBox.Name = "salesCodeTextBox";
-            this.salesCodeTextBox.Size = new System.Drawing.Size(105, 20);
-            this.salesCodeTextBox.TabIndex = 7;
-            this.salesCodeTextBox.TextChanged += new System.EventHandler(this.salesCodeTextBox_TextChanged);
-            // 
-            // searchErrorLabel
-            // 
-            this.searchErrorLabel.AutoSize = true;
-            this.searchErrorLabel.Location = new System.Drawing.Point(36, 35);
-            this.searchErrorLabel.Name = "searchErrorLabel";
-            this.searchErrorLabel.Size = new System.Drawing.Size(41, 13);
-            this.searchErrorLabel.TabIndex = 8;
-            this.searchErrorLabel.Text = "Search";
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Location = new System.Drawing.Point(83, 35);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(256, 20);
-            this.searchTextBox.TabIndex = 9;
-            // 
-            // searchButton
-            // 
-            this.searchButton.Location = new System.Drawing.Point(347, 32);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
-            this.searchButton.TabIndex = 10;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // siColumn
             // 
@@ -521,11 +478,55 @@
             this.actionColumn.HeaderText = "Action";
             this.actionColumn.Name = "actionColumn";
             // 
+            // codeErrorLabel
+            // 
+            this.codeErrorLabel.AutoSize = true;
+            this.codeErrorLabel.Location = new System.Drawing.Point(36, 6);
+            this.codeErrorLabel.Name = "codeErrorLabel";
+            this.codeErrorLabel.Size = new System.Drawing.Size(61, 13);
+            this.codeErrorLabel.TabIndex = 3;
+            this.codeErrorLabel.Text = "Sales Code";
+            this.codeErrorLabel.Click += new System.EventHandler(this.codeErrorLabel_Click);
+            // 
+            // salesCodeTextBox
+            // 
+            this.salesCodeTextBox.Location = new System.Drawing.Point(104, 3);
+            this.salesCodeTextBox.Name = "salesCodeTextBox";
+            this.salesCodeTextBox.Size = new System.Drawing.Size(105, 20);
+            this.salesCodeTextBox.TabIndex = 7;
+            this.salesCodeTextBox.TextChanged += new System.EventHandler(this.salesCodeTextBox_TextChanged);
+            // 
+            // searchErrorLabel
+            // 
+            this.searchErrorLabel.AutoSize = true;
+            this.searchErrorLabel.Location = new System.Drawing.Point(36, 35);
+            this.searchErrorLabel.Name = "searchErrorLabel";
+            this.searchErrorLabel.Size = new System.Drawing.Size(41, 13);
+            this.searchErrorLabel.TabIndex = 8;
+            this.searchErrorLabel.Text = "Search";
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Location = new System.Drawing.Point(83, 35);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(256, 20);
+            this.searchTextBox.TabIndex = 9;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(347, 32);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.TabIndex = 10;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 505);
+            this.ClientSize = new System.Drawing.Size(845, 541);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.searchErrorLabel);

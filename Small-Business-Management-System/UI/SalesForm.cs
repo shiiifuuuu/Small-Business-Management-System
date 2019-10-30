@@ -22,7 +22,7 @@ namespace Small_Business_Management_System.UI
         {
             InitializeComponent();
         }
-        List<Sales> _sales = new List<Sales>();
+        List<Sales> _salesListed = new List<Sales>();
         double grandTotal = 0;
         double discount = 0;
         double discountAmount = 0;
@@ -49,8 +49,8 @@ namespace Small_Business_Management_System.UI
             }
 
             loyalityPointTextBox.Text = 0+"";
-            AvabileQuantityTextBox.Text = "0";
-            mrpTextBox.Text = "0";
+            AvabileQuantityTextBox.Text = 0 + "";
+            mrpTextBox.Text = 0 + "";
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace Small_Business_Management_System.UI
                     sales.LoyalityPoint = double.Parse(loyalityPointTextBox.Text);
                     sales.Category = (categoryComboBox.SelectedValue).ToString();
                     sales.Product = (productComboBox.SelectedValue).ToString();
-                    sales.AvabileQuantity = Convert.ToInt32(AvabileQuantityTextBox.Text);
+                    AvabileQuantityTextBox.Text = (Convert.ToInt32(AvabileQuantityTextBox.Text))-(Convert.ToInt32(quantityTextBox.Text))+"";
                     sales.Quantity = Convert.ToInt32(quantityTextBox.Text);
                     sales.MRP = Convert.ToDouble(mrpTextBox.Text);
                     sales.TotalMRP = Convert.ToDouble(totalMRPTextBox.Text);
@@ -83,19 +83,19 @@ namespace Small_Business_Management_System.UI
                     {
                         return;
                     }
-                    if (sameSales(sales.Product, _sales))
-                    {
-                        return;
-                    }
+                    //if (sameSales(sales.Code, _salesListed ))
+                    //{
+                    //    return;
+                    //}
 
-                    _sales.Add(sales);
+                    _salesListed.Add(sales);
 
                     //ResetInputs();
                     //ResetErrorLabels();
 
-                    DisplayRecords(_sales, _itemList);
+                    DisplayRecords(_salesListed, _itemList);
                     //GrandTotal Calculation
-                    foreach (Sales sales in _sales)
+                    foreach (Sales sales in _salesListed)
                     {
                         grandTotal += sales.TotalMRP;
                     }
@@ -105,6 +105,9 @@ namespace Small_Business_Management_System.UI
                     discountAmountTextBox.Text = (grandTotal * ((Convert.ToDouble(loyalityPointTextBox.Text) / 10)/100)).ToString();
                     //loyalityPointTextBox.Text = (Convert.ToDouble(loyalityPointTextBox.Text)) - (Convert.ToDouble(loyalityPointTextBox.Text) / 10) + "";
                     payableAmountTextBox.Text = (grandTotal - (grandTotal * ((Convert.ToDouble(loyalityPointTextBox.Text) / 10) / 100))).ToString();
+
+                     ResetInputs();
+
                 }
                 else if (addButton.Text.Equals("Modify"))
                 {
@@ -120,20 +123,19 @@ namespace Small_Business_Management_System.UI
         }
         private void submitButton_Click(object sender, EventArgs e)
         {
-            sales.GrandTotal = double.Parse(grandTotalTextBox.Text);
-            sales.Discount = double.Parse(discountTextBox.Text);
-            sales.DiscountAmount = double.Parse(discountAmountTextBox.Text);
-            sales.PayableAmount = double.Parse(payableAmountTextBox.Text);
-            _sales.Add(sales);
+            List<Sales> salesList = new List<Sales>();
+            salesList.Add(sales);
 
-            //foreach (Sales sales in _sales)
-            //{
-                Add(sales);
-
-                showDataGridView.DataSource = null;
-                confirmationLabel.Text = "Successfully Inserted.";
-                //}
-
+            foreach (Sales sale in salesList)
+            {
+                Add(sale);
+ 
+            }
+            showDataGridView.DataSource = null;
+            confirmationLabel.Text = "Successfully Inserted.";
+            salesCodeTextBox.Text = _salesManager.SalesCode(sales.Code);
+            //ResetInputs();
+            ResetAll();
         }
 
         private bool Add(Sales sales)
@@ -272,11 +274,11 @@ namespace Small_Business_Management_System.UI
         }
         private const int _itemList = 0;
         private const int _database = 1;
-        private void DisplayRecord(List<Sales> sales)
+        private void DisplayRecord(List<Sales> salese)
         {
             try
             {
-                showDataGridView.DataSource = sales;
+                showDataGridView.DataSource = salese;
 
                 showDataGridView.Columns["idColumn"].Visible = false;
                 Helper.SetSerialNumber(showDataGridView);
@@ -496,13 +498,13 @@ namespace Small_Business_Management_System.UI
 
         }
 
-        private bool sameSales(string product, List<Sales> salesList)
+        private bool sameSales(string code, List<Sales> salesList)
         {
             bool salesExist = false;
 
             foreach (Sales sales in salesList)
             {
-                if (product == sales.Product)
+                if (code == sales.Code)
                 {
                     salesExist = true;
                     confirmationLabel.Text = "This product is already in your sales list";
@@ -541,13 +543,14 @@ namespace Small_Business_Management_System.UI
             quantityTextBox.Text = 0 + "";
             mrpTextBox.Text = 0 + "";
             totalMRPTextBox.Text = 0 + "";
-            grandTotalTextBox.Text = 0 + "";
-            discountTextBox.Text = 0 + "";
-            discountAmountTextBox.Text = 0 + "";
-            payableAmountTextBox.Text = 0 + "";
+            //grandTotalTextBox.Text = 0 + "";
+            //discountTextBox.Text = 0 + "";
+            //discountAmountTextBox.Text = 0 + "";
+            //payableAmountTextBox.Text = 0 + "";
 
 
             addButton.Text = "Add";
+            
         }
 
         private void ResetAll()
@@ -577,9 +580,14 @@ namespace Small_Business_Management_System.UI
                 //confirmationLabel.Text = null;
 
                 
-                addButton.Text = "Add";
+                submitButton.Text = "Add";
 
                 showDataGridView.DataSource = null;
+        }
+
+        private void codeErrorLabel_Click(object sender, EventArgs e)
+        {
+            confirmationLabel.Text = "This Code is already exist!";
         }
         //private void ResetErrorLabels()
         //{

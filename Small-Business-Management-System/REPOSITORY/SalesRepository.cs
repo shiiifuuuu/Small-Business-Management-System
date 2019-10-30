@@ -112,6 +112,14 @@ namespace Small_Business_Management_System.REPOSITORY
                 {
                     availableQuantity += int.Parse(dataReader["Quantity"].ToString());
                 }
+
+                //if (!String.IsNullOrEmpty(availableQuantity.ToString()))
+                //{
+                //    if (availableQuantity > 0)
+                //    {
+                //        availableQuantity -= int.Parse(dataReader["Quantity"].ToString());
+                //    }
+                //}
             }
 
             sqlConnection.Close();
