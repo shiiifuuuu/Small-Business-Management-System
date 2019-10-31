@@ -43,14 +43,17 @@ namespace Small_Business_Management_System.UI
                 productComboBox.Text = "-Select-";
 
                 salesCodeTextBox.Text = _salesManager.SalesCode(sales.Code);
-            }catch(Exception error)
+                DisplayRecords(_salesListed, _itemList);
+
+                loyalityPointTextBox.Text = 0 + "";
+                AvabileQuantityTextBox.Text = 0 + "";
+                mrpTextBox.Text = 0 + "";
+            }
+            catch(Exception error)
             {
                 ExceptionMessage(error);
             }
-
-            loyalityPointTextBox.Text = 0+"";
-            AvabileQuantityTextBox.Text = 0 + "";
-            mrpTextBox.Text = 0 + "";
+ 
         }
 
         private void addButton_Click(object sender, EventArgs e)
@@ -61,6 +64,7 @@ namespace Small_Business_Management_System.UI
                 if (addButton.Text.Equals("Add"))
                 {
 
+                    Sales sales = new Sales();
 
                     sales.Code = salesCodeTextBox.Text;
                     sales.Customer = customerComboBox.Text;
@@ -69,7 +73,7 @@ namespace Small_Business_Management_System.UI
                     sales.LoyalityPoint = double.Parse(loyalityPointTextBox.Text);
                     sales.Category = (categoryComboBox.SelectedValue).ToString();
                     sales.Product = (productComboBox.SelectedValue).ToString();
-                    AvabileQuantityTextBox.Text = (Convert.ToInt32(AvabileQuantityTextBox.Text))-(Convert.ToInt32(quantityTextBox.Text))+"";
+                    sales.AvabileQuantity = (Convert.ToInt32(AvabileQuantityTextBox.Text));
                     sales.Quantity = Convert.ToInt32(quantityTextBox.Text);
                     sales.MRP = Convert.ToDouble(mrpTextBox.Text);
                     sales.TotalMRP = Convert.ToDouble(totalMRPTextBox.Text);
@@ -95,9 +99,9 @@ namespace Small_Business_Management_System.UI
 
                     DisplayRecords(_salesListed, _itemList);
                     //GrandTotal Calculation
-                    foreach (Sales sales in _salesListed)
+                    foreach (Sales sale in _salesListed)
                     {
-                        grandTotal += sales.TotalMRP;
+                        grandTotal += sale.TotalMRP;
                     }
                     grandTotalTextBox.Text = grandTotal + "";
 
@@ -123,15 +127,17 @@ namespace Small_Business_Management_System.UI
         }
         private void submitButton_Click(object sender, EventArgs e)
         {
-            List<Sales> salesList = new List<Sales>();
-            salesList.Add(sales);
+            //List<Sales> salesList = new List<Sales>();
+            //salesList.Add(sales);
 
-            foreach (Sales sale in salesList)
+            foreach (Sales sal in _salesListed)
             {
-                Add(sale);
- 
+                Add(sal);
+
+                showDataGridView.DataSource = null;
             }
-            showDataGridView.DataSource = null;
+
+           
             confirmationLabel.Text = "Successfully Inserted.";
             salesCodeTextBox.Text = _salesManager.SalesCode(sales.Code);
             //ResetInputs();
@@ -219,79 +225,23 @@ namespace Small_Business_Management_System.UI
             return isValid;
         }
 
-        private bool IsModifiedUnique(Sales sales)
-        {
-            bool isUnique = true;
-            try
-            {
-                if (!_salesManager.IsUnique(sales.Code, "Code")) //(inputString, columnName)
-                {
-                    codeErrorLabel.Text = "This code already exists!";
-                    isUnique = false;
-                }
-                else
-                {
-                    codeErrorLabel.Text = null;
-                }
-            }
-            catch (Exception error)
-            {
-                ExceptionMessage(error);
-            }
-            return isUnique;
-        }
        
-        private void ClearInputs()
+       
+      
+        private void showSalesButton_Click(object sender, EventArgs e)
         {
-            categoryComboBox.Text = "-Select-";
-            salesCodeTextBox.Clear();
-           
-            customerComboBox.Text = "-Select-";
-            productComboBox.Text = "-Select-";
-            quantityTextBox.Clear();
-            mrpTextBox.Clear();
-            totalMRPTextBox.Clear();
-
-            submitButton.Text = "Save";
-           
+            DisplayRecords(GetRecords(), _database);
         }
 
-        private void ClearErrorLabels()
+        private List<Sales> GetRecords()
         {
-            categoryErrorLabel.Text = null;
-            codeErrorLabel.Text = null;
-            searchErrorLabel.Text = null;
-            confirmationLabel.Text = null;
+            return _salesManager.GetRecords();
         }
 
-        private bool Modify(Sales sales)
-        {
-            return _salesManager.Modify(sales);
-        }
-        private List<Sales> Search(string sales)
-        {
-            return _salesManager.Search(sales);
-        }
+        
         private const int _itemList = 0;
         private const int _database = 1;
-        private void DisplayRecord(List<Sales> salese)
-        {
-            try
-            {
-                showDataGridView.DataSource = salese;
-
-                showDataGridView.Columns["idColumn"].Visible = false;
-                Helper.SetSerialNumber(showDataGridView);
-                Helper.SetActionColumn(showDataGridView);
-            }
-            catch (Exception error)
-            {
-                ExceptionMessage(error);
-            }
-            
-        }
-
-        private void DisplayRecords(List<Sales> _sales, int check)
+        private void DisplayRecords(List<Sales> _sale, int check)
         {
             try
             {
@@ -299,7 +249,7 @@ namespace Small_Business_Management_System.UI
 
                 if (check == 0)
                 {
-                    BindingSource salesTable = new BindingSource { DataSource = _sales };
+                    BindingSource salesTable = new BindingSource { DataSource = _sale };
                     showDataGridView.DataSource = salesTable;
 
                     SetSerialNumber(showDataGridView);
@@ -308,7 +258,7 @@ namespace Small_Business_Management_System.UI
                 }
                 else if (check == 1)
                 {
-                    showDataGridView.DataSource = _sales;
+                    showDataGridView.DataSource = _sale;
 
                     Helper.SetSerialNumber(showDataGridView);
                     showDataGridView.Columns["actionColumn"].Visible = false;
@@ -332,6 +282,26 @@ namespace Small_Business_Management_System.UI
             }
         }
 
+        private List<Sales> Search(string sales)
+        {
+            return _salesManager.Search(sales);
+        }
+        private void DisplayRecord(List<Sales> salese)
+        {
+            try
+            {
+                showDataGridView.DataSource = salese;
+
+                showDataGridView.Columns["idColumn"].Visible = false;
+                Helper.SetSerialNumber(showDataGridView);
+                Helper.SetActionColumn(showDataGridView);
+            }
+            catch (Exception error)
+            {
+                ExceptionMessage(error);
+            }
+
+        }
         private void SetActionColumn(DataGridView dgv) //only for this form
         {
             foreach (DataGridViewRow rows in dgv.Rows)
@@ -438,33 +408,7 @@ namespace Small_Business_Management_System.UI
 
         }
 
-        private void showDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.ColumnIndex == showDataGridView.Columns["actionColumn"].Index && e.RowIndex != -1)
-                {
-                    if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-                    {
-                        //codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["codeColumn"].Value.ToString();
-                        //nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["nameColumn"].Value.ToString();
-                        //addressTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["addressColumn"].Value.ToString();
-                        //emailTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["emailColumn"].Value.ToString();
-                        //contactTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["contactColumn"].Value.ToString();
-                        //contactPersonTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["contactPersonColumn"].Value.ToString();
-
-                        sales.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["idColumn"].Value.ToString());
-
-                        addButton.Text = "Modify";
-                        
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                ExceptionMessage(error);
-            }
-        }
+        
 
         private void customerComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -516,7 +460,7 @@ namespace Small_Business_Management_System.UI
 
         private void productComboBox_TextChanged(object sender, EventArgs e)
         {
-            AvabileQuantityTextBox.Text = SetAvailableQuantity(productComboBox.Text);
+            AvabileQuantityTextBox.Text = SetAvailableQty(productComboBox.Text);
             mrpTextBox.Text = SetMRP(productComboBox.Text);
         }
 
@@ -525,11 +469,11 @@ namespace Small_Business_Management_System.UI
             return _salesManager.GetMRP(product);
         }
 
-        private string SetAvailableQuantity(string product)
+        private string SetAvailableQty(string product)
         {
             return _salesManager.GetAvailableQuantity(product);
         }
-
+        
         private void ResetInputs()
         {
 
@@ -585,10 +529,9 @@ namespace Small_Business_Management_System.UI
                 showDataGridView.DataSource = null;
         }
 
-        private void codeErrorLabel_Click(object sender, EventArgs e)
-        {
-            confirmationLabel.Text = "This Code is already exist!";
-        }
+        
+
+
         //private void ResetErrorLabels()
         //{
         //    productsError.Text = null;

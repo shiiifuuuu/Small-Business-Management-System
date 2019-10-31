@@ -249,6 +249,8 @@ namespace Small_Business_Management_System.UI
 
                 showDataGridView.DataSource = null;
             }
+
+            ResetAll();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)

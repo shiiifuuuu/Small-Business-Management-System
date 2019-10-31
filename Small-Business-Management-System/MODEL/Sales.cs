@@ -25,16 +25,7 @@ namespace Small_Business_Management_System.MODEL
         public double DiscountAmount { get; set; }
         public double PayableAmount { get; set; }
 
-        //public string productCode(string code)
-        //{
-        //    DateTime myDate = DateTime.Now;
-        //    string strTime = myDate.ToString("ddMMyyyy");
-        //    int intValue = 111; // FROM DATABASE
-
-        //    code = DateTime.Now.Year + (intValue + 1).ToString();
-        //    Code = code;
-        //    return Code;
-        //}
+       
 
 
     }

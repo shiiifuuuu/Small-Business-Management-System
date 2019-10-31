@@ -100,7 +100,7 @@ namespace Small_Business_Management_System.REPOSITORY
         internal string GetAvailableQuantity(string product)
         {
             int availableQuantity = 0;
-            string commandString = @"SELECT Quantity FROM Purchase WHERE Product = '" + product + "'";
+            string commandString = @"SELECT Quantity FROM Purchase WHERE Product = '" + product+"'";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
 
             sqlConnection.Open();
@@ -113,19 +113,42 @@ namespace Small_Business_Management_System.REPOSITORY
                     availableQuantity += int.Parse(dataReader["Quantity"].ToString());
                 }
 
-                //if (!String.IsNullOrEmpty(availableQuantity.ToString()))
-                //{
-                //    if (availableQuantity > 0)
-                //    {
-                //        availableQuantity -= int.Parse(dataReader["Quantity"].ToString());
-                //    }
-                //}
+               
             }
 
             sqlConnection.Close();
 
             return availableQuantity+"" ;
         }
+        //internal string SetAvailableQuantity(string product)
+        //{
+        //    int availableQuantity = 0;
+        //    string commandString = @"SELECT Quantity FROM Sales WHERE Product = '" + product + "'";
+        //    SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+        //    sqlConnection.Open();
+
+        //    SqlDataReader dataReader = sqlCommand.ExecuteReader();
+        //    while (dataReader.Read())
+        //    {
+        //        //if (!String.IsNullOrEmpty(dataReader["Quantity"].ToString()))
+        //        //{
+        //        //    availableQuantity += int.Parse(dataReader["Quantity"].ToString());
+        //        //}
+
+        //        if (!String.IsNullOrEmpty(dataReader["Quantity"].ToString()))
+        //        {
+        //            if (availableQuantity > 0)
+        //            {
+        //                availableQuantity -= int.Parse(dataReader["Quantity"].ToString());
+        //            }
+        //        }
+        //    }
+
+        //    sqlConnection.Close();
+
+        //    return availableQuantity + "";
+        //}
         internal string GetMRP(string product)
         {
             double mrp = 0;
@@ -246,8 +269,8 @@ namespace Small_Business_Management_System.REPOSITORY
             while (dataReader.Read())
             {
                 Sales _sales = new Sales();
-                //_sales.Code = dataReader["Code"].ToString();
-                //_sales.Customer = dataReader["Customer"].ToString();
+                _sales.Code = dataReader["Code"].ToString();
+                _sales.Customer = dataReader["Customer"].ToString();
                 _sales.Product = dataReader["Product"].ToString();
                 _sales.Quantity = Convert.ToInt32(dataReader["Quantity"]);
                 _sales.MRP = Convert.ToDouble(dataReader["MRP"]);
@@ -315,24 +338,24 @@ namespace Small_Business_Management_System.REPOSITORY
             List<Sales> _sales = new List<Sales>();
             while (dataReader.Read())
             {
-                Sales sales = new Sales();
-                sales.Id = int.Parse(dataReader["Id"].ToString());
-                sales.Code = (dataReader["Code"].ToString());
-                sales.Customer =(dataReader["Customer"].ToString());
-                sales.SelasDate = Convert.ToDateTime(dataReader["SalesDate"].ToString());
-                sales.LoyalityPoint = double.Parse(dataReader["Supplier"].ToString());
-                sales.Category = dataReader["Category"].ToString();
-                sales.Product = dataReader["Product"].ToString();
-                sales.AvabileQuantity = int.Parse(dataReader["AvabileQuantity"].ToString());
-                sales.Quantity = int.Parse(dataReader["Quantity"].ToString());
-                sales.MRP = double.Parse(dataReader["MRP"].ToString());
-                sales.TotalMRP = double.Parse(dataReader["TotalMRP"].ToString());
-                sales.GrandTotal = double.Parse(dataReader["GrandTotal"].ToString());
-                sales.Discount = double.Parse(dataReader["Discount"].ToString());
-                sales.DiscountAmount = double.Parse(dataReader["DiscountAmount"].ToString());
-                sales.PayableAmount = double.Parse(dataReader["PayableAmount"].ToString());
+                Sales sale = new Sales();
+                sale.Id = int.Parse(dataReader["Id"].ToString());
+                sale.Code = (dataReader["Code"].ToString());
+                sale.Customer =(dataReader["Customer"].ToString());
+                sale.SelasDate = Convert.ToDateTime(dataReader["SalesDate"].ToString());
+                sale.LoyalityPoint = double.Parse(dataReader["LoyalityPoint"].ToString());
+                sale.Category = dataReader["Category"].ToString();
+                sale.Product = dataReader["Product"].ToString();
+                sale.AvabileQuantity = int.Parse(dataReader["AvabileQuantity"].ToString());
+                sale.Quantity = int.Parse(dataReader["Quantity"].ToString());
+                sale.MRP = double.Parse(dataReader["MRP"].ToString());
+                sale.TotalMRP = double.Parse(dataReader["TotalMRP"].ToString());
+                sale.GrandTotal = double.Parse(dataReader["GrandTotal"].ToString());
+                sale.Discount = double.Parse(dataReader["Discount"].ToString());
+                sale.DiscountAmount = double.Parse(dataReader["DiscountAmount"].ToString());
+                sale.PayableAmount = double.Parse(dataReader["PayableAmount"].ToString());
 
-                _sales.Add(sales);
+                _sales.Add(sale);
             }
             sqlConnection.Close();
             return _sales;

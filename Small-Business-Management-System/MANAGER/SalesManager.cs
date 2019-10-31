@@ -67,6 +67,11 @@ namespace Small_Business_Management_System.MANAGER
         {
             return salesRepository.GetAvailableQuantity(product);
         }
+
+        internal List<Sales> GetRecords()
+        {
+            return salesRepository.GetRecords();
+        }
         internal string GetMRP(string product)
         {
             return salesRepository.GetMRP(product);

@@ -78,6 +78,7 @@
             this.searchErrorLabel = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.showSalesButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -315,6 +316,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.showSalesButton);
             this.groupBox3.Controls.Add(this.confirmationLabel);
             this.groupBox3.Controls.Add(this.payableAmountTextBox);
             this.groupBox3.Controls.Add(this.discountTextBox);
@@ -435,8 +437,6 @@
             this.showDataGridView.RowHeadersWidth = 35;
             this.showDataGridView.Size = new System.Drawing.Size(805, 104);
             this.showDataGridView.TabIndex = 0;
-            this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDataGridView_CellContentClick);
-            this.showDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.showDataGridView_RowPostPaint);
             // 
             // siColumn
             // 
@@ -481,16 +481,15 @@
             // codeErrorLabel
             // 
             this.codeErrorLabel.AutoSize = true;
-            this.codeErrorLabel.Location = new System.Drawing.Point(36, 6);
+            this.codeErrorLabel.Location = new System.Drawing.Point(41, 18);
             this.codeErrorLabel.Name = "codeErrorLabel";
             this.codeErrorLabel.Size = new System.Drawing.Size(61, 13);
             this.codeErrorLabel.TabIndex = 3;
             this.codeErrorLabel.Text = "Sales Code";
-            this.codeErrorLabel.Click += new System.EventHandler(this.codeErrorLabel_Click);
             // 
             // salesCodeTextBox
             // 
-            this.salesCodeTextBox.Location = new System.Drawing.Point(104, 3);
+            this.salesCodeTextBox.Location = new System.Drawing.Point(115, 15);
             this.salesCodeTextBox.Name = "salesCodeTextBox";
             this.salesCodeTextBox.Size = new System.Drawing.Size(105, 20);
             this.salesCodeTextBox.TabIndex = 7;
@@ -499,7 +498,7 @@
             // searchErrorLabel
             // 
             this.searchErrorLabel.AutoSize = true;
-            this.searchErrorLabel.Location = new System.Drawing.Point(36, 35);
+            this.searchErrorLabel.Location = new System.Drawing.Point(41, 45);
             this.searchErrorLabel.Name = "searchErrorLabel";
             this.searchErrorLabel.Size = new System.Drawing.Size(41, 13);
             this.searchErrorLabel.TabIndex = 8;
@@ -507,20 +506,30 @@
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(83, 35);
+            this.searchTextBox.Location = new System.Drawing.Point(115, 45);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(256, 20);
+            this.searchTextBox.Size = new System.Drawing.Size(231, 20);
             this.searchTextBox.TabIndex = 9;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(347, 32);
+            this.searchButton.Location = new System.Drawing.Point(365, 43);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 10;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // showSalesButton
+            // 
+            this.showSalesButton.Location = new System.Drawing.Point(343, 255);
+            this.showSalesButton.Name = "showSalesButton";
+            this.showSalesButton.Size = new System.Drawing.Size(173, 30);
+            this.showSalesButton.TabIndex = 11;
+            this.showSalesButton.Text = "Show Sales Details";
+            this.showSalesButton.UseVisualStyleBackColor = true;
+            this.showSalesButton.Click += new System.EventHandler(this.showSalesButton_Click);
             // 
             // SalesForm
             // 
@@ -605,5 +614,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn mRPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalMRPDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn actionColumn;
+        private System.Windows.Forms.Button showSalesButton;
     }
 }
