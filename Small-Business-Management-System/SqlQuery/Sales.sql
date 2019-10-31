@@ -22,3 +22,5 @@ Discount FLOAT,
 DiscountAmount FLOAT,
 PayableAmount FLOAT,
 );
+
+Select * from Sales;

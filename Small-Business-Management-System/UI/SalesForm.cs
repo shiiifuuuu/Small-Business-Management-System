@@ -21,69 +21,57 @@ namespace Small_Business_Management_System.UI
         {
             InitializeComponent();
         }
-        List<Sales> _sales = new List<Sales>();
+        List<Sales> _salesList = new List<Sales>();
         double grandTotal = 0;
         private void addButton_Click(object sender, EventArgs e)
         {
-            try
+            sales = new Sales();
+            sales.Code = salesCodeTextBox.Text;
+            sales.Customer = (customerComboBox.SelectedValue).ToString();
+            //sales.SelasDate = DateTime.Parse(dateTimePicker.ToString("MM/dd/yyyy"));
+            sales.SelasDate = Convert.ToDateTime(dateTimePicker.Text); 
+            sales.LoyalityPoint = double.Parse(loyalityPointTextBox.Text);
+            sales.Category = (categoryComboBox.SelectedValue).ToString();
+            sales.Product = (productComboBox.SelectedValue).ToString();
+            AvabileQuantityTextBox.Text = _salesManager.GetAvailableQuantity() + "";
+            sales.Quantity = Convert.ToInt32(quantityTextBox.Text);
+            sales.MRP = Convert.ToDouble(mrpTextBox.Text);
+            sales.TotalMRP = Convert.ToDouble(totalMRPTextBox.Text);
+
+            _salesList.Add(sales);
+
+            BindingSource salesTable = new BindingSource();
+            salesTable.DataSource = _salesList;
+            showDataGridView.DataSource = salesTable;
+            Helper.SetActionColumn(showDataGridView);
+            //Helper.SetSerialNumber(showDataGridView);
+
+            foreach(Sales sales in _salesList)
             {
-                sales.Code = salesCodeTextBox.Text;
-                sales.Customer = (customerComboBox.SelectedValue).ToString();
-                //sales.SelasDate = DateTime.Parse(dateTimePicker.ToString("MM/dd/yyyy"));
-                sales.SelasDate = Convert.ToDateTime(dateTimePicker.Text);
-                sales.LoyalityPoint = double.Parse(loyalityPointTextBox.Text);
-                sales.Category = (categoryComboBox.SelectedValue).ToString();
-                sales.Product = (productComboBox.SelectedValue).ToString();
-                AvabileQuantityTextBox.Text = _salesManager.GetAvailableQuantity() + "";
-                sales.Quantity = Convert.ToInt32(quantityTextBox.Text);
-                sales.MRP = Convert.ToDouble(mrpTextBox.Text);
-                sales.TotalMRP = Convert.ToDouble(totalMRPTextBox.Text);
-
-                _sales.Add(sales);
-
-                BindingSource salesTable = new BindingSource();
-                salesTable.DataSource = _sales;
-                showDataGridView.DataSource = salesTable;
-                Helper.SetActionColumn(showDataGridView);
-                //Helper.SetSerialNumber(showDataGridView);
-
-                foreach (Sales sales in _sales)
-                {
-                    grandTotal += sales.TotalMRP;
-                }
-                grandTotalTextBox.Text = grandTotal + "";
+                grandTotal += sales.TotalMRP;
             }
-            catch(Exception error)
-            {
-                ExceptionMessage(error);
-            }
-            
+            grandTotalTextBox.Text = grandTotal + "";
          }
 
         
         private void SalesForm_Load(object sender, EventArgs e)
         {
-            try
-            {
-                categoryComboBox.DataSource = _salesManager.CategoryComboLoad();
-                categoryComboBox.Text = "-Select-";
+            categoryComboBox.DataSource = _salesManager.CategoryComboLoad();
+            categoryComboBox.Text = "-Select-";
 
-                customerComboBox.DataSource = _salesManager.CustomerComboLoad();
-                customerComboBox.Text = "-Select-";
+            customerComboBox.DataSource = _salesManager.CustomerComboLoad();
+            customerComboBox.Text = "-Select-";
 
-                productComboBox.DataSource = _salesManager.ProductComboLoad();
-                productComboBox.Text = "-Select-";
+            productComboBox.DataSource = _salesManager.ProductComboLoad();
+            productComboBox.Text = "-Select-";
 
-                salesCodeTextBox.Text = _salesManager.SalesCode(sales.Code);
-            }catch(Exception error)
-            {
-                ExceptionMessage(error);
-            }
+            salesCodeTextBox.Text = _salesManager.SalesCode(sales.Code);
         }
         
         
         private void submitButton_Click(object sender, EventArgs e)
         {
+           
             try
             {
                 sales.Code = salesCodeTextBox.Text;
@@ -181,29 +169,23 @@ namespace Small_Business_Management_System.UI
                 categoryErrorLabel.Text = null;
             }
             
+
             return isValid;
         }
         private bool IsUnique(Sales sales)
         {
             bool isUnique = true;
-            
-            try
+            if (!_salesManager.IsUnique(sales.Code, "Code")) //(inputString, columnName)
             {
-                if (!_salesManager.IsUnique(sales.Code, "Code")) //(inputString, columnName)
-                {
-                    codeErrorLabel.Text = "This code already exists!";
-                    isUnique = false;
-                }
-                else
-                {
-                    codeErrorLabel.Text = null;
-                }
+                codeErrorLabel.Text = "This code already exists!";
+                isUnique = false;
             }
-            catch(Exception error)
+            else
             {
+                codeErrorLabel.Text = null;
+            }
 
-            }
-            
+
             return isUnique;
         }
 
@@ -227,22 +209,17 @@ namespace Small_Business_Management_System.UI
         private bool IsModifiedUnique(Sales sales)
         {
             bool isUnique = true;
-            try
+            if (!_salesManager.IsUnique(sales.Code, "Code")) //(inputString, columnName)
             {
-                if (!_salesManager.IsUnique(sales.Code, "Code")) //(inputString, columnName)
-                {
-                    codeErrorLabel.Text = "This code already exists!";
-                    isUnique = false;
-                }
-                else
-                {
-                    codeErrorLabel.Text = null;
-                }
+                codeErrorLabel.Text = "This code already exists!";
+                isUnique = false;
             }
-            catch (Exception error)
+            else
             {
-                ExceptionMessage(error);
+                codeErrorLabel.Text = null;
             }
+            
+
             return isUnique;
         }
        
