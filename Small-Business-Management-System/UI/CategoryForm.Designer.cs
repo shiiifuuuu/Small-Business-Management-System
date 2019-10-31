@@ -32,10 +32,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.codeTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
-            this.showCategoriesGridView = new System.Windows.Forms.DataGridView();
+            this.showDataGridView = new System.Windows.Forms.DataGridView();
             this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
@@ -48,62 +49,62 @@
             this.confirmLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.showCategoriesGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(398, 82);
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(26, 201);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(52, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Code";
             // 
             // codeTextBox
             // 
-            this.codeTextBox.Location = new System.Drawing.Point(450, 79);
+            this.codeTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeTextBox.Location = new System.Drawing.Point(84, 198);
             this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(165, 20);
+            this.codeTextBox.Size = new System.Drawing.Size(256, 30);
             this.codeTextBox.TabIndex = 1;
             this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(462, 202);
+            this.saveButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.saveButton.Location = new System.Drawing.Point(883, 543);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(119, 23);
+            this.saveButton.Size = new System.Drawing.Size(119, 33);
             this.saveButton.TabIndex = 2;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // showCategoriesGridView
+            // showDataGridView
             // 
-            this.showCategoriesGridView.AutoGenerateColumns = false;
-            this.showCategoriesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.showCategoriesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.showCategoriesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.showDataGridView.AutoGenerateColumns = false;
+            this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SI,
             this.Id,
-            this.Name,
+            this.Code,
+            this._Name,
             this.Action});
-            this.showCategoriesGridView.DataSource = this.categoryBindingSource;
-            this.showCategoriesGridView.Location = new System.Drawing.Point(0, 278);
-            this.showCategoriesGridView.Name = "showCategoriesGridView";
-            this.showCategoriesGridView.Size = new System.Drawing.Size(1003, 289);
-            this.showCategoriesGridView.TabIndex = 3;
-            this.showCategoriesGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showCategoriesGridView_CellContentClick);
+            this.showDataGridView.DataSource = this.categoryBindingSource;
+            this.showDataGridView.Location = new System.Drawing.Point(353, 75);
+            this.showDataGridView.Name = "showDataGridView";
+            this.showDataGridView.Size = new System.Drawing.Size(649, 445);
+            this.showDataGridView.TabIndex = 3;
+            this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showCategoriesGridView_CellContentClick);
             // 
             // SI
             // 
-            this.SI.FillWeight = 20F;
             this.SI.HeaderText = "SI";
             this.SI.Name = "SI";
-            this.SI.ReadOnly = true;
             // 
             // Id
             // 
@@ -111,45 +112,59 @@
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             // 
-            // Name
+            // Code
             // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
+            // 
+            // _Name
+            // 
+            this._Name.DataPropertyName = "Name";
+            this._Name.HeaderText = "Name";
+            this._Name.Name = "_Name";
             // 
             // Action
             // 
             this.Action.HeaderText = "Action";
             this.Action.Name = "Action";
             // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Category);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(398, 132);
+            this.label2.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(15, 259);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(63, 24);
             this.label2.TabIndex = 0;
             this.label2.Text = "Name";
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(450, 129);
+            this.nameTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.nameTextBox.Location = new System.Drawing.Point(84, 256);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(165, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(256, 30);
             this.nameTextBox.TabIndex = 1;
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(3, 12);
+            this.searchTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.searchTextBox.Location = new System.Drawing.Point(107, 12);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(899, 20);
+            this.searchTextBox.Size = new System.Drawing.Size(638, 30);
             this.searchTextBox.TabIndex = 1;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(908, 9);
+            this.searchButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.searchButton.Location = new System.Drawing.Point(761, 12);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(92, 23);
+            this.searchButton.Size = new System.Drawing.Size(152, 30);
             this.searchButton.TabIndex = 2;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -158,45 +173,54 @@
             // searchErrorLabel
             // 
             this.searchErrorLabel.AutoSize = true;
+            this.searchErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.searchErrorLabel.Location = new System.Drawing.Point(348, 44);
+            this.searchErrorLabel.Location = new System.Drawing.Point(104, 51);
             this.searchErrorLabel.Name = "searchErrorLabel";
-            this.searchErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.searchErrorLabel.Size = new System.Drawing.Size(43, 16);
             this.searchErrorLabel.TabIndex = 0;
+            this.searchErrorLabel.Text = "error";
             // 
             // codeErrorLabel
             // 
             this.codeErrorLabel.AutoSize = true;
+            this.codeErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codeErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.codeErrorLabel.Location = new System.Drawing.Point(478, 107);
+            this.codeErrorLabel.Location = new System.Drawing.Point(81, 231);
             this.codeErrorLabel.Name = "codeErrorLabel";
-            this.codeErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.codeErrorLabel.Size = new System.Drawing.Size(43, 16);
             this.codeErrorLabel.TabIndex = 0;
+            this.codeErrorLabel.Text = "error";
             // 
             // nameErrorLabel
             // 
             this.nameErrorLabel.AutoSize = true;
+            this.nameErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.nameErrorLabel.Location = new System.Drawing.Point(433, 174);
+            this.nameErrorLabel.Location = new System.Drawing.Point(81, 289);
             this.nameErrorLabel.Name = "nameErrorLabel";
-            this.nameErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.nameErrorLabel.Size = new System.Drawing.Size(43, 16);
             this.nameErrorLabel.TabIndex = 0;
+            this.nameErrorLabel.Text = "error";
             // 
             // confirmLabel
             // 
             this.confirmLabel.AutoSize = true;
+            this.confirmLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmLabel.ForeColor = System.Drawing.Color.ForestGreen;
-            this.confirmLabel.Location = new System.Drawing.Point(167, 229);
+            this.confirmLabel.Location = new System.Drawing.Point(16, 543);
             this.confirmLabel.Name = "confirmLabel";
-            this.confirmLabel.Size = new System.Drawing.Size(0, 13);
+            this.confirmLabel.Size = new System.Drawing.Size(64, 16);
             this.confirmLabel.TabIndex = 0;
+            this.confirmLabel.Text = "confirm";
             this.confirmLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(337, 202);
+            this.deleteButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.deleteButton.Location = new System.Drawing.Point(758, 543);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(119, 23);
+            this.deleteButton.Size = new System.Drawing.Size(119, 33);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -204,49 +228,42 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(587, 202);
+            this.cancelButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.cancelButton.Location = new System.Drawing.Point(633, 543);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(119, 23);
+            this.cancelButton.Size = new System.Drawing.Size(119, 33);
             this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.cancelButton);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.searchButton);
-            this.panel1.Controls.Add(this.searchErrorLabel);
-            this.panel1.Controls.Add(this.deleteButton);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.codeErrorLabel);
-            this.panel1.Controls.Add(this.saveButton);
-            this.panel1.Controls.Add(this.nameErrorLabel);
-            this.panel1.Controls.Add(this.nameTextBox);
-            this.panel1.Controls.Add(this.confirmLabel);
-            this.panel1.Controls.Add(this.searchTextBox);
-            this.panel1.Controls.Add(this.codeTextBox);
-            this.panel1.Location = new System.Drawing.Point(0, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1003, 260);
-            this.panel1.TabIndex = 4;
-            // 
             // CategoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 565);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.showCategoriesGridView);
-            
+            this.ClientSize = new System.Drawing.Size(1014, 588);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.showDataGridView);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.searchTextBox);
+            this.Controls.Add(this.searchErrorLabel);
+            this.Controls.Add(this.codeTextBox);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.confirmLabel);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.nameTextBox);
+            this.Controls.Add(this.codeErrorLabel);
+            this.Controls.Add(this.nameErrorLabel);
+            this.Controls.Add(this.saveButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "CategoryForm";
             this.Text = "Category";
             this.Load += new System.EventHandler(this.CategoryForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.showCategoriesGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -255,7 +272,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox codeTextBox;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.DataGridView showCategoriesGridView;
+        private System.Windows.Forms.DataGridView showDataGridView;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox searchTextBox;
@@ -264,14 +281,14 @@
         private System.Windows.Forms.Label codeErrorLabel;
         private System.Windows.Forms.Label nameErrorLabel;
         private System.Windows.Forms.Label confirmLabel;
-        private System.Windows.Forms.BindingSource categoryBindingSource;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.BindingSource categoryBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn SI;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Action;
-        private System.Windows.Forms.Panel panel1;
     }
 }
 

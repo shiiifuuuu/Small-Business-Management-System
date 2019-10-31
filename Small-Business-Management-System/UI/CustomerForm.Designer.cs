@@ -30,6 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
+            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoyaltyPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -56,15 +65,6 @@
             this.searchErrorLabel = new System.Windows.Forms.Label();
             this.codeErrorLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoyaltyPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -78,249 +78,19 @@
             this.SI,
             this.Id,
             this.Code,
-            this.Name,
+            this._Name,
             this.Address,
             this.Email,
             this.Contact,
             this.LoyaltyPoint,
             this.Action});
             this.showDataGridView.DataSource = this.customerBindingSource;
-            this.showDataGridView.Location = new System.Drawing.Point(12, 413);
+            this.showDataGridView.Location = new System.Drawing.Point(12, 192);
             this.showDataGridView.Name = "showDataGridView";
             this.showDataGridView.ReadOnly = true;
-            this.showDataGridView.Size = new System.Drawing.Size(715, 321);
+            this.showDataGridView.Size = new System.Drawing.Size(990, 343);
             this.showDataGridView.TabIndex = 37;
             this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDataGridView_CellContentClick);
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Customer);
-            // 
-            // searchButton
-            // 
-            this.searchButton.Location = new System.Drawing.Point(410, 10);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
-            this.searchButton.TabIndex = 36;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(443, 326);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(131, 23);
-            this.cancelButton.TabIndex = 34;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Location = new System.Drawing.Point(169, 326);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(131, 23);
-            this.deleteButton.TabIndex = 33;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // saveButton
-            // 
-            this.saveButton.Location = new System.Drawing.Point(306, 326);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(131, 23);
-            this.saveButton.TabIndex = 32;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // loyaltyPointTextBox
-            // 
-            this.loyaltyPointTextBox.Location = new System.Drawing.Point(273, 277);
-            this.loyaltyPointTextBox.Name = "loyaltyPointTextBox";
-            this.loyaltyPointTextBox.Size = new System.Drawing.Size(192, 20);
-            this.loyaltyPointTextBox.TabIndex = 31;
-            // 
-            // contactTextBox
-            // 
-            this.contactTextBox.Location = new System.Drawing.Point(273, 238);
-            this.contactTextBox.Name = "contactTextBox";
-            this.contactTextBox.Size = new System.Drawing.Size(192, 20);
-            this.contactTextBox.TabIndex = 30;
-            this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
-            this.contactTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.contactTextBox_KeyPress);
-            // 
-            // emailTextBox
-            // 
-            this.emailTextBox.Location = new System.Drawing.Point(273, 199);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(192, 20);
-            this.emailTextBox.TabIndex = 29;
-            // 
-            // addressTextBox
-            // 
-            this.addressTextBox.Location = new System.Drawing.Point(273, 160);
-            this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(192, 20);
-            this.addressTextBox.TabIndex = 28;
-            // 
-            // nameTextBox
-            // 
-            this.nameTextBox.Location = new System.Drawing.Point(273, 121);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(192, 20);
-            this.nameTextBox.TabIndex = 27;
-            // 
-            // codeTextBox
-            // 
-            this.codeTextBox.Location = new System.Drawing.Point(273, 82);
-            this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(192, 20);
-            this.codeTextBox.TabIndex = 26;
-            this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Location = new System.Drawing.Point(212, 12);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(192, 20);
-            this.searchTextBox.TabIndex = 35;
-            // 
-            // confirmationLabel
-            // 
-            this.confirmationLabel.AutoSize = true;
-            this.confirmationLabel.ForeColor = System.Drawing.Color.ForestGreen;
-            this.confirmationLabel.Location = new System.Drawing.Point(270, 366);
-            this.confirmationLabel.Name = "confirmationLabel";
-            this.confirmationLabel.Size = new System.Drawing.Size(64, 13);
-            this.confirmationLabel.TabIndex = 12;
-            this.confirmationLabel.Text = "confirmation";
-            // 
-            // emailErrorLabel
-            // 
-            this.emailErrorLabel.AutoSize = true;
-            this.emailErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.emailErrorLabel.Location = new System.Drawing.Point(270, 222);
-            this.emailErrorLabel.Name = "emailErrorLabel";
-            this.emailErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.emailErrorLabel.TabIndex = 23;
-            this.emailErrorLabel.Text = "error";
-            // 
-            // addressErrorLabel
-            // 
-            this.addressErrorLabel.AutoSize = true;
-            this.addressErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.addressErrorLabel.Location = new System.Drawing.Point(270, 183);
-            this.addressErrorLabel.Name = "addressErrorLabel";
-            this.addressErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.addressErrorLabel.TabIndex = 22;
-            this.addressErrorLabel.Text = "error";
-            // 
-            // loyaltyPointErrorLabel
-            // 
-            this.loyaltyPointErrorLabel.AutoSize = true;
-            this.loyaltyPointErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.loyaltyPointErrorLabel.Location = new System.Drawing.Point(270, 300);
-            this.loyaltyPointErrorLabel.Name = "loyaltyPointErrorLabel";
-            this.loyaltyPointErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.loyaltyPointErrorLabel.TabIndex = 21;
-            this.loyaltyPointErrorLabel.Text = "error";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(187, 280);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 13);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Loyalty Point";
-            // 
-            // contactErrorLabel
-            // 
-            this.contactErrorLabel.AutoSize = true;
-            this.contactErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.contactErrorLabel.Location = new System.Drawing.Point(270, 261);
-            this.contactErrorLabel.Name = "contactErrorLabel";
-            this.contactErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.contactErrorLabel.TabIndex = 19;
-            this.contactErrorLabel.Text = "error";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(187, 241);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Contact";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(187, 202);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "Email";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(187, 163);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Address";
-            // 
-            // nameErrorLabel
-            // 
-            this.nameErrorLabel.AutoSize = true;
-            this.nameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.nameErrorLabel.Location = new System.Drawing.Point(270, 144);
-            this.nameErrorLabel.Name = "nameErrorLabel";
-            this.nameErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.nameErrorLabel.TabIndex = 15;
-            this.nameErrorLabel.Text = "error";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(187, 124);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Name";
-            // 
-            // searchErrorLabel
-            // 
-            this.searchErrorLabel.AutoSize = true;
-            this.searchErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.searchErrorLabel.Location = new System.Drawing.Point(209, 35);
-            this.searchErrorLabel.Name = "searchErrorLabel";
-            this.searchErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.searchErrorLabel.TabIndex = 13;
-            this.searchErrorLabel.Text = "error";
-            // 
-            // codeErrorLabel
-            // 
-            this.codeErrorLabel.AutoSize = true;
-            this.codeErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.codeErrorLabel.Location = new System.Drawing.Point(270, 105);
-            this.codeErrorLabel.Name = "codeErrorLabel";
-            this.codeErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.codeErrorLabel.TabIndex = 24;
-            this.codeErrorLabel.Text = "error";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(187, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Code";
             // 
             // SI
             // 
@@ -343,12 +113,12 @@
             this.Code.Name = "Code";
             this.Code.ReadOnly = true;
             // 
-            // Name
+            // _Name
             // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
+            this._Name.DataPropertyName = "Name";
+            this._Name.HeaderText = "Name";
+            this._Name.Name = "_Name";
+            this._Name.ReadOnly = true;
             // 
             // Address
             // 
@@ -385,11 +155,266 @@
             this.Action.Name = "Action";
             this.Action.ReadOnly = true;
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(Small_Business_Management_System.MODEL.Customer);
+            // 
+            // searchButton
+            // 
+            this.searchButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.searchButton.Location = new System.Drawing.Point(682, 12);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(102, 32);
+            this.searchButton.TabIndex = 36;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.cancelButton.Location = new System.Drawing.Point(597, 541);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(131, 35);
+            this.cancelButton.TabIndex = 34;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.deleteButton.Location = new System.Drawing.Point(734, 541);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(131, 35);
+            this.deleteButton.TabIndex = 33;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.saveButton.Location = new System.Drawing.Point(871, 541);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(131, 35);
+            this.saveButton.TabIndex = 32;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // loyaltyPointTextBox
+            // 
+            this.loyaltyPointTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.loyaltyPointTextBox.Location = new System.Drawing.Point(773, 126);
+            this.loyaltyPointTextBox.Name = "loyaltyPointTextBox";
+            this.loyaltyPointTextBox.Size = new System.Drawing.Size(192, 30);
+            this.loyaltyPointTextBox.TabIndex = 31;
+            // 
+            // contactTextBox
+            // 
+            this.contactTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.contactTextBox.Location = new System.Drawing.Point(773, 74);
+            this.contactTextBox.Name = "contactTextBox";
+            this.contactTextBox.Size = new System.Drawing.Size(192, 30);
+            this.contactTextBox.TabIndex = 30;
+            this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
+            this.contactTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.contactTextBox_KeyPress);
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.emailTextBox.Location = new System.Drawing.Point(395, 126);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(192, 30);
+            this.emailTextBox.TabIndex = 29;
+            // 
+            // addressTextBox
+            // 
+            this.addressTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.addressTextBox.Location = new System.Drawing.Point(395, 74);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.Size = new System.Drawing.Size(192, 30);
+            this.addressTextBox.TabIndex = 28;
+            // 
+            // nameTextBox
+            // 
+            this.nameTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.nameTextBox.Location = new System.Drawing.Point(81, 126);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(192, 30);
+            this.nameTextBox.TabIndex = 27;
+            // 
+            // codeTextBox
+            // 
+            this.codeTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.codeTextBox.Location = new System.Drawing.Point(81, 74);
+            this.codeTextBox.Name = "codeTextBox";
+            this.codeTextBox.Size = new System.Drawing.Size(192, 30);
+            this.codeTextBox.TabIndex = 26;
+            this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.searchTextBox.Location = new System.Drawing.Point(181, 14);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(478, 30);
+            this.searchTextBox.TabIndex = 35;
+            // 
+            // confirmationLabel
+            // 
+            this.confirmationLabel.AutoSize = true;
+            this.confirmationLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.confirmationLabel.ForeColor = System.Drawing.Color.ForestGreen;
+            this.confirmationLabel.Location = new System.Drawing.Point(12, 552);
+            this.confirmationLabel.Name = "confirmationLabel";
+            this.confirmationLabel.Size = new System.Drawing.Size(100, 16);
+            this.confirmationLabel.TabIndex = 12;
+            this.confirmationLabel.Text = "confirmation";
+            // 
+            // emailErrorLabel
+            // 
+            this.emailErrorLabel.AutoSize = true;
+            this.emailErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.emailErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.emailErrorLabel.Location = new System.Drawing.Point(392, 159);
+            this.emailErrorLabel.Name = "emailErrorLabel";
+            this.emailErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.emailErrorLabel.TabIndex = 23;
+            this.emailErrorLabel.Text = "error";
+            // 
+            // addressErrorLabel
+            // 
+            this.addressErrorLabel.AutoSize = true;
+            this.addressErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.addressErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.addressErrorLabel.Location = new System.Drawing.Point(392, 107);
+            this.addressErrorLabel.Name = "addressErrorLabel";
+            this.addressErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.addressErrorLabel.TabIndex = 22;
+            this.addressErrorLabel.Text = "error";
+            // 
+            // loyaltyPointErrorLabel
+            // 
+            this.loyaltyPointErrorLabel.AutoSize = true;
+            this.loyaltyPointErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.loyaltyPointErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.loyaltyPointErrorLabel.Location = new System.Drawing.Point(770, 159);
+            this.loyaltyPointErrorLabel.Name = "loyaltyPointErrorLabel";
+            this.loyaltyPointErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.loyaltyPointErrorLabel.TabIndex = 21;
+            this.loyaltyPointErrorLabel.Text = "error";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(627, 129);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(140, 24);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Loyalty Point";
+            // 
+            // contactErrorLabel
+            // 
+            this.contactErrorLabel.AutoSize = true;
+            this.contactErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.contactErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.contactErrorLabel.Location = new System.Drawing.Point(770, 107);
+            this.contactErrorLabel.Name = "contactErrorLabel";
+            this.contactErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.contactErrorLabel.TabIndex = 19;
+            this.contactErrorLabel.Text = "error";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(689, 77);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 24);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Contact";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(319, 129);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 24);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Email";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(309, 77);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 24);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Address";
+            // 
+            // nameErrorLabel
+            // 
+            this.nameErrorLabel.AutoSize = true;
+            this.nameErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.nameErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.nameErrorLabel.Location = new System.Drawing.Point(78, 159);
+            this.nameErrorLabel.Name = "nameErrorLabel";
+            this.nameErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.nameErrorLabel.TabIndex = 15;
+            this.nameErrorLabel.Text = "error";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(12, 129);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 24);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Name";
+            // 
+            // searchErrorLabel
+            // 
+            this.searchErrorLabel.AutoSize = true;
+            this.searchErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.searchErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.searchErrorLabel.Location = new System.Drawing.Point(178, 47);
+            this.searchErrorLabel.Name = "searchErrorLabel";
+            this.searchErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.searchErrorLabel.TabIndex = 13;
+            this.searchErrorLabel.Text = "error";
+            // 
+            // codeErrorLabel
+            // 
+            this.codeErrorLabel.AutoSize = true;
+            this.codeErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.codeErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.codeErrorLabel.Location = new System.Drawing.Point(78, 107);
+            this.codeErrorLabel.Name = "codeErrorLabel";
+            this.codeErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.codeErrorLabel.TabIndex = 24;
+            this.codeErrorLabel.Text = "error";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(23, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 24);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Code";
+            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 741);
+            this.ClientSize = new System.Drawing.Size(1014, 588);
             this.Controls.Add(this.showDataGridView);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.cancelButton);
@@ -416,7 +441,8 @@
             this.Controls.Add(this.searchErrorLabel);
             this.Controls.Add(this.codeErrorLabel);
             this.Controls.Add(this.label2);
-            
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "CustomerForm";
             this.Text = "Customer";
             this.Load += new System.EventHandler(this.CustomerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
@@ -458,7 +484,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SI;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contact;

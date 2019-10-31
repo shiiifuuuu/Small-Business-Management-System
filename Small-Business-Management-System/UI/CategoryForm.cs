@@ -25,8 +25,7 @@ namespace Small_Business_Management_System
         private void CategoryForm_Load(object sender, EventArgs e)
         {
             DisplayRecords(GetRecords());
-            deleteButton.Visible = false;
-            cancelButton.Visible = false;
+            CleanAll();
         }
 
         //BUTTONS
@@ -165,11 +164,11 @@ namespace Small_Business_Management_System
         {
             try
             {
-                showCategoriesGridView.DataSource = categories;
+                showDataGridView.DataSource = categories;
 
-                showCategoriesGridView.Columns["Id"].Visible = false;
-                Helper.SetSerialNumber(showCategoriesGridView);
-                Helper.SetActionColumn(showCategoriesGridView);
+                showDataGridView.Columns["Id"].Visible = false;
+                Helper.SetSerialNumber(showDataGridView);
+                Helper.SetActionColumn(showDataGridView);
             }
             catch (Exception error)
             {
@@ -263,14 +262,14 @@ namespace Small_Business_Management_System
         {
             try
             {
-                if (e.ColumnIndex == 4 && e.RowIndex != -1)
+                if (e.ColumnIndex == showDataGridView.Columns["Action"].Index && e.RowIndex != -1)
                 {
-                    if (showCategoriesGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                    if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
-                        codeTextBox.Text = showCategoriesGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
-                        nameTextBox.Text = showCategoriesGridView.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                        codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
+                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["_Name"].Value.ToString();
 
-                        _category.Id = int.Parse(showCategoriesGridView.Rows[e.RowIndex].Cells["Id"].Value.ToString());
+                        _category.Id = int.Parse(showDataGridView.Rows[e.RowIndex].Cells["Id"].Value.ToString());
 
                         saveButton.Text = "Modify";
                         deleteButton.Visible = true;

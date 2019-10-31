@@ -42,6 +42,14 @@
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
+            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReorderLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.confirmationLabel = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
@@ -53,61 +61,60 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.categoryErrorLabel = new System.Windows.Forms.Label();
-            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReorderLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // categorylabel
             // 
             this.categorylabel.AutoSize = true;
-            this.categorylabel.Location = new System.Drawing.Point(159, 75);
+            this.categorylabel.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.categorylabel.Location = new System.Drawing.Point(67, 48);
             this.categorylabel.Name = "categorylabel";
-            this.categorylabel.Size = new System.Drawing.Size(49, 13);
+            this.categorylabel.Size = new System.Drawing.Size(88, 24);
             this.categorylabel.TabIndex = 0;
             this.categorylabel.Text = "Category";
             // 
             // codelabel
             // 
             this.codelabel.AutoSize = true;
-            this.codelabel.Location = new System.Drawing.Point(162, 119);
+            this.codelabel.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.codelabel.Location = new System.Drawing.Point(103, 115);
             this.codelabel.Name = "codelabel";
-            this.codelabel.Size = new System.Drawing.Size(32, 13);
+            this.codelabel.Size = new System.Drawing.Size(52, 24);
             this.codelabel.TabIndex = 1;
             this.codelabel.Text = "Code";
             // 
             // namelabel
             // 
             this.namelabel.AutoSize = true;
-            this.namelabel.Location = new System.Drawing.Point(162, 160);
+            this.namelabel.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.namelabel.Location = new System.Drawing.Point(92, 181);
             this.namelabel.Name = "namelabel";
-            this.namelabel.Size = new System.Drawing.Size(35, 13);
+            this.namelabel.Size = new System.Drawing.Size(63, 24);
             this.namelabel.TabIndex = 2;
             this.namelabel.Text = "Name";
             // 
             // reorderlabel
             // 
             this.reorderlabel.AutoSize = true;
-            this.reorderlabel.Location = new System.Drawing.Point(162, 199);
+            this.reorderlabel.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.reorderlabel.Location = new System.Drawing.Point(14, 246);
             this.reorderlabel.Name = "reorderlabel";
-            this.reorderlabel.Size = new System.Drawing.Size(74, 13);
+            this.reorderlabel.Size = new System.Drawing.Size(141, 24);
             this.reorderlabel.TabIndex = 3;
             this.reorderlabel.Text = "Reorder Level";
             // 
             // descriptionlabel
             // 
             this.descriptionlabel.AutoSize = true;
-            this.descriptionlabel.Location = new System.Drawing.Point(162, 241);
+            this.descriptionlabel.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.descriptionlabel.Location = new System.Drawing.Point(38, 315);
             this.descriptionlabel.Name = "descriptionlabel";
-            this.descriptionlabel.Size = new System.Drawing.Size(60, 13);
+            this.descriptionlabel.Size = new System.Drawing.Size(117, 24);
             this.descriptionlabel.TabIndex = 4;
             this.descriptionlabel.Text = "Description";
             // 
@@ -115,10 +122,11 @@
             // 
             this.categoryComboBox.DataSource = this.productBindingSource;
             this.categoryComboBox.DisplayMember = "Name";
+            this.categoryComboBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(295, 72);
+            this.categoryComboBox.Location = new System.Drawing.Point(161, 48);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(182, 21);
+            this.categoryComboBox.Size = new System.Drawing.Size(208, 28);
             this.categoryComboBox.TabIndex = 4;
             this.categoryComboBox.ValueMember = "Id";
             // 
@@ -128,41 +136,46 @@
             // 
             // codeTextBox
             // 
-            this.codeTextBox.Location = new System.Drawing.Point(295, 115);
+            this.codeTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.codeTextBox.Location = new System.Drawing.Point(161, 115);
             this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(182, 20);
+            this.codeTextBox.Size = new System.Drawing.Size(208, 30);
             this.codeTextBox.TabIndex = 0;
             this.codeTextBox.TextChanged += new System.EventHandler(this.codetextBox_TextChanged);
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(295, 158);
+            this.nameTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.nameTextBox.Location = new System.Drawing.Point(161, 181);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(182, 20);
+            this.nameTextBox.Size = new System.Drawing.Size(208, 30);
             this.nameTextBox.TabIndex = 1;
             // 
             // reorderTextBox
             // 
-            this.reorderTextBox.Location = new System.Drawing.Point(295, 199);
+            this.reorderTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.reorderTextBox.Location = new System.Drawing.Point(161, 246);
             this.reorderTextBox.Name = "reorderTextBox";
-            this.reorderTextBox.Size = new System.Drawing.Size(182, 20);
+            this.reorderTextBox.Size = new System.Drawing.Size(208, 30);
             this.reorderTextBox.TabIndex = 2;
             this.reorderTextBox.Text = "10";
             this.reorderTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.reorderTextBox_KeyPress);
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Location = new System.Drawing.Point(295, 241);
+            this.descriptionTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.descriptionTextBox.Location = new System.Drawing.Point(161, 315);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(182, 116);
+            this.descriptionTextBox.Size = new System.Drawing.Size(208, 103);
             this.descriptionTextBox.TabIndex = 3;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(330, 363);
+            this.saveButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.saveButton.Location = new System.Drawing.Point(880, 541);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(122, 23);
+            this.saveButton.Size = new System.Drawing.Size(122, 35);
             this.saveButton.TabIndex = 5;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -177,126 +190,17 @@
             this.SI,
             this.Id,
             this.Code,
-            this.Name,
+            this._Name,
             this.Category,
             this.ReorderLevel,
             this.Description,
             this.Action});
             this.showDataGridView.DataSource = this.productBindingSource1;
-            this.showDataGridView.Location = new System.Drawing.Point(12, 438);
+            this.showDataGridView.Location = new System.Drawing.Point(395, 70);
             this.showDataGridView.Name = "showDataGridView";
-            this.showDataGridView.Size = new System.Drawing.Size(622, 203);
+            this.showDataGridView.Size = new System.Drawing.Size(607, 465);
             this.showDataGridView.TabIndex = 10;
             this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
-            // productBindingSource1
-            // 
-            this.productBindingSource1.DataSource = typeof(Small_Business_Management_System.MODEL.Product);
-            // 
-            // confirmationLabel
-            // 
-            this.confirmationLabel.AutoSize = true;
-            this.confirmationLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.confirmationLabel.Location = new System.Drawing.Point(215, 393);
-            this.confirmationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.confirmationLabel.Name = "confirmationLabel";
-            this.confirmationLabel.Size = new System.Drawing.Size(65, 13);
-            this.confirmationLabel.TabIndex = 12;
-            this.confirmationLabel.Text = "Confirmation";
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Location = new System.Drawing.Point(161, 17);
-            this.searchTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(198, 20);
-            this.searchTextBox.TabIndex = 8;
-            // 
-            // searchButton
-            // 
-            this.searchButton.Location = new System.Drawing.Point(363, 15);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(2);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(114, 22);
-            this.searchButton.TabIndex = 9;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchbutton_Click);
-            // 
-            // searchErrorLabel
-            // 
-            this.searchErrorLabel.AutoSize = true;
-            this.searchErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.searchErrorLabel.Location = new System.Drawing.Point(162, 37);
-            this.searchErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.searchErrorLabel.Name = "searchErrorLabel";
-            this.searchErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.searchErrorLabel.TabIndex = 15;
-            this.searchErrorLabel.Text = "error";
-            // 
-            // codeErrorLabel
-            // 
-            this.codeErrorLabel.AutoSize = true;
-            this.codeErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.codeErrorLabel.Location = new System.Drawing.Point(296, 136);
-            this.codeErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.codeErrorLabel.Name = "codeErrorLabel";
-            this.codeErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.codeErrorLabel.TabIndex = 17;
-            this.codeErrorLabel.Text = "error";
-            // 
-            // nameErrorLabel
-            // 
-            this.nameErrorLabel.AutoSize = true;
-            this.nameErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.nameErrorLabel.Location = new System.Drawing.Point(296, 179);
-            this.nameErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.nameErrorLabel.Name = "nameErrorLabel";
-            this.nameErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.nameErrorLabel.TabIndex = 18;
-            this.nameErrorLabel.Text = "error";
-            // 
-            // reorderErrorLabel
-            // 
-            this.reorderErrorLabel.AutoSize = true;
-            this.reorderErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.reorderErrorLabel.Location = new System.Drawing.Point(296, 220);
-            this.reorderErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.reorderErrorLabel.Name = "reorderErrorLabel";
-            this.reorderErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.reorderErrorLabel.TabIndex = 19;
-            this.reorderErrorLabel.Text = "error";
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Location = new System.Drawing.Point(202, 363);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(122, 23);
-            this.deleteButton.TabIndex = 6;
-            this.deleteButton.Text = "Delete";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(458, 363);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(122, 23);
-            this.cancelButton.TabIndex = 7;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
-            // categoryErrorLabel
-            // 
-            this.categoryErrorLabel.AutoSize = true;
-            this.categoryErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.categoryErrorLabel.Location = new System.Drawing.Point(292, 96);
-            this.categoryErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.categoryErrorLabel.Name = "categoryErrorLabel";
-            this.categoryErrorLabel.Size = new System.Drawing.Size(28, 13);
-            this.categoryErrorLabel.TabIndex = 17;
-            this.categoryErrorLabel.Text = "error";
             // 
             // SI
             // 
@@ -316,11 +220,11 @@
             this.Code.HeaderText = "Code";
             this.Code.Name = "Code";
             // 
-            // Name
+            // _Name
             // 
-            this.Name.DataPropertyName = "Name";
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
+            this._Name.DataPropertyName = "Name";
+            this._Name.HeaderText = "Name";
+            this._Name.Name = "_Name";
             // 
             // Category
             // 
@@ -346,15 +250,152 @@
             this.Action.Name = "Action";
             this.Action.ReadOnly = true;
             // 
+            // productBindingSource1
+            // 
+            this.productBindingSource1.DataSource = typeof(Small_Business_Management_System.MODEL.Product);
+            // 
+            // confirmationLabel
+            // 
+            this.confirmationLabel.AutoSize = true;
+            this.confirmationLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.confirmationLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.confirmationLabel.Location = new System.Drawing.Point(11, 552);
+            this.confirmationLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.confirmationLabel.Name = "confirmationLabel";
+            this.confirmationLabel.Size = new System.Drawing.Size(104, 16);
+            this.confirmationLabel.TabIndex = 12;
+            this.confirmationLabel.Text = "Confirmation";
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.searchTextBox.Location = new System.Drawing.Point(175, 11);
+            this.searchTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(517, 30);
+            this.searchTextBox.TabIndex = 8;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.searchButton.Location = new System.Drawing.Point(723, 11);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(2);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(114, 30);
+            this.searchButton.TabIndex = 9;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchbutton_Click);
+            // 
+            // searchErrorLabel
+            // 
+            this.searchErrorLabel.AutoSize = true;
+            this.searchErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.searchErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.searchErrorLabel.Location = new System.Drawing.Point(172, 43);
+            this.searchErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.searchErrorLabel.Name = "searchErrorLabel";
+            this.searchErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.searchErrorLabel.TabIndex = 15;
+            this.searchErrorLabel.Text = "error";
+            // 
+            // codeErrorLabel
+            // 
+            this.codeErrorLabel.AutoSize = true;
+            this.codeErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.codeErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.codeErrorLabel.Location = new System.Drawing.Point(158, 148);
+            this.codeErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.codeErrorLabel.Name = "codeErrorLabel";
+            this.codeErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.codeErrorLabel.TabIndex = 17;
+            this.codeErrorLabel.Text = "error";
+            // 
+            // nameErrorLabel
+            // 
+            this.nameErrorLabel.AutoSize = true;
+            this.nameErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.nameErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.nameErrorLabel.Location = new System.Drawing.Point(158, 214);
+            this.nameErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.nameErrorLabel.Name = "nameErrorLabel";
+            this.nameErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.nameErrorLabel.TabIndex = 18;
+            this.nameErrorLabel.Text = "error";
+            // 
+            // reorderErrorLabel
+            // 
+            this.reorderErrorLabel.AutoSize = true;
+            this.reorderErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.reorderErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.reorderErrorLabel.Location = new System.Drawing.Point(158, 279);
+            this.reorderErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.reorderErrorLabel.Name = "reorderErrorLabel";
+            this.reorderErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.reorderErrorLabel.TabIndex = 19;
+            this.reorderErrorLabel.Text = "error";
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.deleteButton.Location = new System.Drawing.Point(752, 541);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(122, 35);
+            this.deleteButton.TabIndex = 6;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.cancelButton.Location = new System.Drawing.Point(624, 541);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(122, 35);
+            this.cancelButton.TabIndex = 7;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // categoryErrorLabel
+            // 
+            this.categoryErrorLabel.AutoSize = true;
+            this.categoryErrorLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
+            this.categoryErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.categoryErrorLabel.Location = new System.Drawing.Point(158, 79);
+            this.categoryErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.categoryErrorLabel.Name = "categoryErrorLabel";
+            this.categoryErrorLabel.Size = new System.Drawing.Size(43, 16);
+            this.categoryErrorLabel.TabIndex = 17;
+            this.categoryErrorLabel.Text = "error";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.descriptionTextBox);
+            this.panel1.Controls.Add(this.reorderErrorLabel);
+            this.panel1.Controls.Add(this.categorylabel);
+            this.panel1.Controls.Add(this.nameErrorLabel);
+            this.panel1.Controls.Add(this.codelabel);
+            this.panel1.Controls.Add(this.categoryErrorLabel);
+            this.panel1.Controls.Add(this.namelabel);
+            this.panel1.Controls.Add(this.codeErrorLabel);
+            this.panel1.Controls.Add(this.reorderlabel);
+            this.panel1.Controls.Add(this.descriptionlabel);
+            this.panel1.Controls.Add(this.categoryComboBox);
+            this.panel1.Controls.Add(this.codeTextBox);
+            this.panel1.Controls.Add(this.nameTextBox);
+            this.panel1.Controls.Add(this.reorderTextBox);
+            this.panel1.Location = new System.Drawing.Point(1, 70);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(388, 465);
+            this.panel1.TabIndex = 20;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 653);
-            this.Controls.Add(this.reorderErrorLabel);
-            this.Controls.Add(this.nameErrorLabel);
-            this.Controls.Add(this.categoryErrorLabel);
-            this.Controls.Add(this.codeErrorLabel);
+            this.ClientSize = new System.Drawing.Size(1014, 588);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.searchErrorLabel);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.searchTextBox);
@@ -363,22 +404,15 @@
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.descriptionTextBox);
-            this.Controls.Add(this.reorderTextBox);
-            this.Controls.Add(this.nameTextBox);
-            this.Controls.Add(this.codeTextBox);
-            this.Controls.Add(this.categoryComboBox);
-            this.Controls.Add(this.descriptionlabel);
-            this.Controls.Add(this.reorderlabel);
-            this.Controls.Add(this.namelabel);
-            this.Controls.Add(this.codelabel);
-            this.Controls.Add(this.categorylabel);
-            
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "ProductForm";
             this.Text = "Product";
             this.Load += new System.EventHandler(this.ProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.showDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,10 +447,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SI;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReorderLevel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn Action;
+        private System.Windows.Forms.Panel panel1;
     }
 }

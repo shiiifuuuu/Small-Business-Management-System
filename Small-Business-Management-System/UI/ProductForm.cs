@@ -370,7 +370,7 @@ namespace Small_Business_Management_System.UI
                     {
                         categoryComboBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Category"].Value.ToString();
                         codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
-                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["_Name"].Value.ToString();
                         reorderTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["ReorderLevel"].Value.ToString();
                         descriptionTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Description"].Value.ToString();
 
@@ -387,6 +387,5 @@ namespace Small_Business_Management_System.UI
                 ExceptionMessage(error);
             }
         }
-
     }
 }
