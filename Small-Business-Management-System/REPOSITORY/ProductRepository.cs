@@ -139,9 +139,9 @@ namespace Small_Business_Management_System.REPOSITORY
         internal bool Add(Product product)
         {
             bool isAdded = false;
-            String commandString = @"INSERT INTO Product (Code,Name,Category,ReorderLevel,Description) 
+            String commandString = @"INSERT INTO Product (Code,Name,Category,ReorderLevel,Description,AvailableQuantity) 
                                    VALUES ('" + product.Code + "', '" + product.Name + "', '"+product.Category+"','" +
-                                   product.ReorderLevel + "','" + product.Description +"')";
+                                   product.ReorderLevel + "','" + product.Description +"', 0)";
 
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();

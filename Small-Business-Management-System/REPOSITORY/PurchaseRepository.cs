@@ -65,12 +65,12 @@ namespace Small_Business_Management_System.REPOSITORY
             string commandString;
             if (date != null)
             {
-                commandString = @"SELECT * FROM Purchase WHERE Date = '" + date + "' AND (ProductCode LIKE '%" + text + "%' OR AvailableQuantity LIKE '%" + text
+                commandString = @"SELECT * FROM Purchase LEFT JOIN Product ON Purchase.ProductId=Product.Id WHERE Date = '" + date + "' AND (ProductCode LIKE '%" + text + "%' OR Product.AvailableQuantity LIKE '%" + text
                 + "%' OR TotalPrice LIKE '%" + text + "%' OR PreviousUnitPrice LIKE '%" + text + "%' OR PreviousMRP LIKE '%" + text + "%')";
             }
             else
             {
-                commandString = @"SELECT * FROM Purchase WHERE ProductCode LIKE '%" + text + "%' OR AvailableQuantity LIKE '%" + text
+                commandString = @"SELECT * FROM Purchase LEFT JOIN Product ON Purchase.ProductId=Product.Id WHERE ProductCode LIKE '%" + text + "%' OR Product.AvailableQuantity LIKE '%" + text
                 + "%' OR TotalPrice LIKE '%" + text + "%' OR PreviousUnitPrice LIKE '%" + text + "%' OR PreviousMRP LIKE '%" + text + "%'";
             }
             
@@ -106,27 +106,6 @@ namespace Small_Business_Management_System.REPOSITORY
             return purchases;
         }
 
-        internal string GetAvailableQuantity(string productCode)
-        {
-            int availableQuantity = 0;
-            string commandString = @"SELECT Quantity FROM Purchase WHERE ProductCode = '" + productCode + "'";
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-            sqlConnection.Open();
-
-            SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            while (dataReader.Read())
-            {
-                if (!String.IsNullOrEmpty(dataReader["Quantity"].ToString()))
-                {
-                    availableQuantity += int.Parse(dataReader["Quantity"].ToString());
-                }
-            }
-
-            sqlConnection.Close();
-
-            return availableQuantity+"";
-        }
 
         internal bool IsUnique(string inputString, string columnName)
         {
@@ -164,29 +143,7 @@ namespace Small_Business_Management_System.REPOSITORY
                 product.Id = int.Parse(dataReader["Id"].ToString());
                 product.Name = dataReader["Name"].ToString();
                 product.Code = dataReader["Code"].ToString();
-
-                products.Add(product);
-            }
-
-            sqlConnection.Close();
-
-            return products;
-        }
-
-        internal List<Product> ProductComboLoad()
-        {
-            List<Product> products = new List<Product>();
-            String commandString = @"SELECT Id, Name FROM Product";
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-            sqlConnection.Open();
-
-            SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            while (dataReader.Read())
-            {
-                Product product = new Product();
-                product.Id = int.Parse(dataReader["Id"].ToString());
-                product.Name = dataReader["Name"].ToString();
+                product.AvailableQuantity = int.Parse(dataReader["AvailableQuantity"].ToString());
 
                 products.Add(product);
             }
@@ -236,9 +193,9 @@ namespace Small_Business_Management_System.REPOSITORY
         {
             bool isAdded = false;
 
-            string commandString = @"INSERT INTO Purchase(Date, InvoiceNo, Supplier, Category, Product, ProductCode, 
+            string commandString = @"INSERT INTO Purchase(ProductId, Date, InvoiceNo, Supplier, Category, Product, ProductCode, 
                         ManufactureDate, ExpireDate, Quantity, UnitPrice, TotalPrice, PreviousUnitPrice, PreviousMRP, MRP, Remarks)
-                        VALUES('" + purchase.Date + "','" + purchase.InvoiceNo + "','" + purchase.Supplier + "','" + purchase.Category 
+                        VALUES('"+purchase.ProductId+"', '" + purchase.Date + "','" + purchase.InvoiceNo + "','" + purchase.Supplier + "','" + purchase.Category 
                         + "','" + purchase.Products + "','" + purchase.ProductCode + "', '" + purchase.ManufactureDate 
                         + "','" + purchase.ExpireDate + "'," + purchase.Quantity + "," + purchase.UnitPrice + "," + purchase.TotalPrice 
                         + "," + purchase.PreviousUnitPrice + "," + purchase.PreviousMRP + "," + purchase.MRP + ",'" + purchase.Remarks + "')";
@@ -256,8 +213,8 @@ namespace Small_Business_Management_System.REPOSITORY
 
             if (isAdded == true)
             {
-                int availableQuantity = int.Parse(GetAvailableQuantity(purchase.ProductCode));
-                commandString = @"UPDATE Purchase SET AvailableQuantity = "+availableQuantity+" WHERE ProductCode = '"+purchase.ProductCode+"'";
+                int availableQuantity = int.Parse(CalculateTotalProductQuantity(purchase.ProductCode));
+                commandString = @"UPDATE Product SET AvailableQuantity = "+availableQuantity+" WHERE Code = '"+purchase.ProductCode+"'";
                 sqlCommand = new SqlCommand(commandString, sqlConnection);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
@@ -266,10 +223,31 @@ namespace Small_Business_Management_System.REPOSITORY
 
             return isAdded;
         }
+        private string CalculateTotalProductQuantity(string productCode)
+        {
+            int availableQuantity = 0;
+            string commandString = @"SELECT Quantity FROM Purchase WHERE ProductCode = '" + productCode + "'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                if (!String.IsNullOrEmpty(dataReader["Quantity"].ToString()))
+                {
+                    availableQuantity += int.Parse(dataReader["Quantity"].ToString());
+                }
+            }
+
+            sqlConnection.Close();
+
+            return availableQuantity + "";
+        }
 
         internal List<Purchase> GetRecords()
         {
-            String commandString = @"SELECT * FROM Purchase";
+            String commandString = @"SELECT * FROM Purchase Left JOIN Product ON Purchase.ProductId=Product.Id";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
             sqlConnection.Open();
             SqlDataReader dataReader = sqlCommand.ExecuteReader();

@@ -4,13 +4,13 @@ USE SmallBusinessManagementSystem;
 CREATE TABLE Purchase
 (
 Id INT IDENTITY (1,1) PRIMARY KEY,
+ProductId INT FOREIGN KEY REFERENCES Product(Id),
 Date DATE,
 InvoiceNo VARCHAR(10) NOT NULL UNIQUE,
 Supplier VARCHAR(30) NOT NULL,
 Category VARCHAR(30) NOT NULL,
 Product VARCHAR(30) NOT NULL,
 ProductCode VARCHAR(5) NOT NULL,
-AvailableQuantity INT,
 ManufactureDate DATE,
 ExpireDate DATE,
 Quantity INT,

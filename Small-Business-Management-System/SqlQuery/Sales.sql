@@ -5,15 +5,10 @@ USE SmallBusinessManagementSystem;
 CREATE TABLE Sales
 (
 Id INT IDENTITY(1,1) PRIMARY KEY,
-PurchaseId INT FOREIGN KEY REFERENCES Purchase(Id),
+ProductId INT FOREIGN KEY REFERENCES Product(Id),
 CustomerId INT FOREIGN KEY REFERENCES Customer(Id),
-Code VARCHAR(11) UNIQUE NOT NULL,
 Customer VARCHAR(30)  NOT NULL,
-SalesDate    Date,
-LoyalityPoint FLOAT,
-Category VARCHAR(30) NOT NULL,
-Product VARCHAR(30) NOT NULL,
-AvabileQuantity INT,
+Date    DATE,
 Quantity INT,
 MRP FLOAT,
 TotalMRP FLOAT,
@@ -23,4 +18,10 @@ DiscountAmount FLOAT,
 PayableAmount FLOAT,
 );
 
+
+DROP TABLE Sales
 Select * from Sales;
+Select * from Purchase
+
+Select * from Sales as S left join Product as P on S.ProductId = P.Id
+Select * from Sales as S left join Customer as C on S.CustomerId = C.Id

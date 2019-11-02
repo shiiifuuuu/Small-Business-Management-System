@@ -16,27 +16,6 @@ namespace Small_Business_Management_System.REPOSITORY
 
         SqlConnection sqlConnection = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
 
-        internal bool IsUnique(string inputString, string columnName)
-        {
-            bool isUnique = false;
-            string searchString = null;
-            //SELECT * FROM Supplier WHERE Code = '"+supplier.Code+"'
-            String commandString = "SELECT * FROM Sales WHERE " + columnName + " = '" + inputString + "'";
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-            sqlConnection.Open();
-            SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            while (dataReader.Read())
-            {
-                searchString = dataReader[columnName].ToString();
-            }
-            if (String.IsNullOrEmpty(searchString))
-            {
-                isUnique = true;
-            }
-            sqlConnection.Close();
-            return isUnique;
-        }
-
         internal  string SalesCode( string code)
         {
             int a = 0;
@@ -69,6 +48,90 @@ namespace Small_Business_Management_System.REPOSITORY
             return code;
         }
 
+        internal double GetProductMRP(string productName)
+        {
+            string commandString = @"SELECT * FROM Purchase WHERE Product = '" + productName + "'";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            double mrp = 0;
+            while (dataReader.Read())
+            {
+                mrp = double.Parse(dataReader["MRP"].ToString());
+            }
+            sqlConnection.Close();
+            return mrp;
+        }
+
+        internal List<Product> SearchProducts(string category)
+        {
+            List<Product> products = new List<Product>();
+            String commandString = @"SELECT * FROM Product WHERE Category = '" + category + "' ";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                Product product = new Product();
+                product.Id = int.Parse(dataReader["Id"].ToString());
+                product.Name = dataReader["Name"].ToString();
+                product.Code = dataReader["Code"].ToString();
+                product.AvailableQuantity = int.Parse(dataReader["AvailableQuantity"].ToString());
+
+                products.Add(product);
+            }
+
+            sqlConnection.Close();
+
+            return products;
+        }
+
+        internal void DecreaseProductQuantity(Sales sales)
+        {
+            int availableQuantity = sales.AvabileQuantity - sales.Quantity;
+            string commandString = @"UPDATE Product SET AvailableQuantity = '" + availableQuantity + "' WHERE Id = " + sales.ProductId + "";
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            sqlCommand.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        internal bool Add(Sales sales)
+        {
+            bool isAdded = false;
+
+            string commandString = @"INSERT INTO Sales(ProductId, CustomerId, Customer, Date, GrandTotal, Discount, DiscountAmount, PayableAmount)
+                        VALUES('" + sales.ProductId + "', '" + sales.CustomerId + "','" + sales.Customer + "','" + sales.Date + "','" + sales.GrandTotal
+                        + "','" + sales.Discount + "','" + sales.DiscountAmount + "', '" + sales.PayableAmount + "')";
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            if (sqlCommand.ExecuteNonQuery() > 0)
+            {
+                isAdded = true;
+            }
+
+            sqlConnection.Close();
+
+            if (isAdded == true)
+            {
+                double resetLoyaltyPoint = sales.LoyalityPoint - sales.LoyalityPoint / 10;
+                double increaseLoyaltyPoint = sales.GrandTotal / 1000;
+                double totalLoyaltyPoint = resetLoyaltyPoint + increaseLoyaltyPoint;
+                commandString = @"UPDATE Customer SET LoyaltyPoint = " + totalLoyaltyPoint + " WHERE Id = '" + sales.CustomerId + "'";
+                sqlCommand = new SqlCommand(commandString, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+            }
+
+            return isAdded;
+        }
 
         internal List<Category> CategoryComboLoad()
         {
@@ -95,7 +158,7 @@ namespace Small_Business_Management_System.REPOSITORY
         internal List<Customer> CustomerComboLoad()
         {
             List<Customer> customers = new List<Customer>();
-            String commandString = @"SELECT Id, Name FROM Customer";
+            String commandString = @"SELECT * FROM Customer";
             SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
 
             sqlConnection.Open();
@@ -106,6 +169,7 @@ namespace Small_Business_Management_System.REPOSITORY
                 Customer customer = new Customer();
                 customer.Id = int.Parse(dataReader["Id"].ToString());
                 customer.Name = dataReader["Name"].ToString();
+                customer.LoyaltyPoint = double.Parse(dataReader["LoyaltyPoint"].ToString());
 
                 customers.Add(customer);
             }
@@ -114,28 +178,7 @@ namespace Small_Business_Management_System.REPOSITORY
 
             return customers;
         }
-        internal List<Product> ProductComboLoad()
-        {
-            List<Product> products = new List<Product>();
-            String commandString = @"SELECT Id, Name FROM Product";
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
 
-            sqlConnection.Open();
-
-            SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            while (dataReader.Read())
-            {
-                Product product = new Product();
-                product.Id = int.Parse(dataReader["Id"].ToString());
-                product.Name = dataReader["Name"].ToString();
-
-                products.Add(product);
-            }
-
-            sqlConnection.Close();
-
-            return products;
-        }
         internal List<Sales> Search(string searchText)
         {
             string commandString = @"SELECT * FROM Sales WHERE SalesDate LIKE '%" + searchText + "%' " +
@@ -160,79 +203,6 @@ namespace Small_Business_Management_System.REPOSITORY
             sqlConnection.Close();
 
             return sales;
-        }
-        internal bool Modify(Sales sales)
-        {
-            bool isModified = false;
-            String commandString = @"UPDATE Sales SET Product = '" + _sales.Product + "', Quantity = '" +
-                   _sales.Quantity + "', MRP = '" + _sales.MRP + "', TotalMRP = '" +
-                   _sales.TotalMRP + "' WHERE Id = " + _sales.Id + "";
-
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-            sqlConnection.Open();
-            if (sqlCommand.ExecuteNonQuery() > 0)
-            {
-                isModified = true;
-
-            }
-            sqlConnection.Close();
-            return isModified;
-        }
-
-        internal bool Delete(Sales sales)
-        {
-            bool isDeleted = false;
-            String commandString = @"DELETE FROM Product WHERE Id = " + sales.Id + "";
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-            sqlConnection.Open();
-            if (sqlCommand.ExecuteNonQuery() > 0)
-            {
-                isDeleted = true;
-            }
-            sqlConnection.Close();
-            return isDeleted;
-        }
-        internal bool SubmitAll(Sales sales)
-        {
-            bool isAdded = false;
-            String commandString = @"INSERT INTO Sales (Code,Customer,SalesDate,LoyalityPoint,Category,Product,AvabileQuantity,Quantity,MRP,TotalMRP,Discount,DiscountAmount,PayableAmount) 
-                                   VALUES ('" + sales.Code + "', '" + sales.Customer + "','" + sales.SelasDate + "','" + sales.Customer + "', '" + sales.LoyalityPoint + "','" +
-                                   sales.Category + "','" + sales.Product + "','" + sales.AvabileQuantity + "','" + sales.Quantity + "','" + sales.MRP + "','" +
-                                    +sales.TotalMRP + "','" + sales.GrandTotal + "','" + sales.Discount + "','" + sales.DiscountAmount + "','" + sales.PayableAmount + "')";
-
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-            sqlConnection.Open();
-            if (sqlCommand.ExecuteNonQuery() > 0)
-            {
-                isAdded = true;
-            }
-            sqlConnection.Close();
-            return isAdded;
-        }
-        public int GetAvailableQuantity()
-        {
-            int availableQuantity = 0;
-            string commandString = @"SELECT AvailableQuantity FROM Purchase As 'p', sales As 's' WHERE p.Id = s.PurchaseId";
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-            sqlConnection.Open();
-
-            SqlDataReader dataReader = sqlCommand.ExecuteReader();
-            while (dataReader.Read())
-            {
-                if (String.IsNullOrEmpty(dataReader["AvailableQuantity"].ToString()))
-                {
-                    availableQuantity = int.Parse(dataReader["AvailableQuantity"].ToString());
-                }
-                if (String.IsNullOrEmpty(dataReader["Quantity"].ToString())) ;
-                {
-                    availableQuantity -= int.Parse(dataReader["Quantity"].ToString());
-                }
-            }
-
-            sqlConnection.Close();
-
-            return availableQuantity;
         }
 
         internal void CloseConnection()

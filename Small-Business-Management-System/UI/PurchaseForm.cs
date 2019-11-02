@@ -53,6 +53,9 @@ namespace Small_Business_Management_System.UI
                 {
                     productsComboBox.Enabled = false;
                     productsComboBox.Text = "-Select-";
+                    availableQuantityTextBox.Clear();
+                    previousUnitPriceTextBox.Clear();
+                    previousMrpTextBox.Clear();
                 }
                 else
                 {
@@ -67,6 +70,7 @@ namespace Small_Business_Management_System.UI
             }
         }
 
+        int _productId, _productQuantity;
         private void productsComboBox_TextChanged(object sender, EventArgs e)
         {
             if (productsComboBox.Text != "-Select-")
@@ -77,6 +81,8 @@ namespace Small_Business_Management_System.UI
                     {
                         if (productsComboBox.Text == product.Name)
                         {
+                            _productId = product.Id;
+                            _productQuantity = product.AvailableQuantity;
                             productCodeTextBox.Text = product.Code;
                         }
                     }
@@ -85,20 +91,28 @@ namespace Small_Business_Management_System.UI
             else
             {
                 productCodeTextBox.Text = null;
+                availableQuantityTextBox.Clear();
+                previousUnitPriceTextBox.Clear();
+                previousMrpTextBox.Clear();
             }
         }
 
         //Previous VALUES INITIALIZE
         private void codeTextBox_TextChanged(object sender, EventArgs e)
         {
-            availableQuantityTextBox.Text = SetAvailableQuantity(productCodeTextBox.Text);
-            previousUnitPriceTextBox.Text = SetPreviousValues("UnitPrice");
-            previousMrpTextBox.Text = SetPreviousValues("MRP");
-        }
-
-        private string SetAvailableQuantity(string productCode)
-        {
-            return _purchaseManager.GetAvailableQuantity(productCode);
+            if (!String.IsNullOrEmpty(productCodeTextBox.Text))
+            {
+                if (_productQuantity != 0)
+                {
+                    availableQuantityTextBox.Text = _productQuantity.ToString();
+                }
+                else
+                {
+                    availableQuantityTextBox.Text = "0";
+                }
+                previousUnitPriceTextBox.Text = SetPreviousValues("UnitPrice");
+                previousMrpTextBox.Text = SetPreviousValues("MRP");
+            }
         }
 
         private string SetPreviousValues(string columnName)
@@ -192,6 +206,7 @@ namespace Small_Business_Management_System.UI
             try
             {
                 _purchase = new Purchase();
+                _purchase.ProductId = _productId;
                 _purchase.Date = Convert.ToDateTime(supplierDate.Text);
                 _purchase.InvoiceNo = invoiceNoTextBox.Text;
                 _purchase.Supplier = supplierComboBox.Text;

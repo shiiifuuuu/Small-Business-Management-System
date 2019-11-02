@@ -15,118 +15,299 @@ namespace Small_Business_Management_System.UI
 {
     public partial class SalesForm : Form
     {
-        Sales sales = new Sales();
+        Sales _sales = new Sales();
         SalesManager _salesManager = new SalesManager();
+
         public SalesForm()
         {
             InitializeComponent();
         }
-        List<Sales> _salesList = new List<Sales>();
-        double grandTotal = 0;
-        private void addButton_Click(object sender, EventArgs e)
-        {
-            sales = new Sales();
-            sales.Code = salesCodeTextBox.Text;
-            sales.Customer = (customerComboBox.SelectedValue).ToString();
-            //sales.SelasDate = DateTime.Parse(dateTimePicker.ToString("MM/dd/yyyy"));
-            sales.SelasDate = Convert.ToDateTime(dateTimePicker.Text); 
-            sales.LoyalityPoint = double.Parse(loyalityPointTextBox.Text);
-            sales.Category = (categoryComboBox.SelectedValue).ToString();
-            sales.Product = (productComboBox.SelectedValue).ToString();
-            AvabileQuantityTextBox.Text = _salesManager.GetAvailableQuantity() + "";
-            sales.Quantity = Convert.ToInt32(quantityTextBox.Text);
-            sales.MRP = Convert.ToDouble(mrpTextBox.Text);
-            sales.TotalMRP = Convert.ToDouble(totalMRPTextBox.Text);
 
-            _salesList.Add(sales);
-
-            BindingSource salesTable = new BindingSource();
-            salesTable.DataSource = _salesList;
-            showDataGridView.DataSource = salesTable;
-            Helper.SetActionColumn(showDataGridView);
-            //Helper.SetSerialNumber(showDataGridView);
-
-            foreach(Sales sales in _salesList)
-            {
-                grandTotal += sales.TotalMRP;
-            }
-            grandTotalTextBox.Text = grandTotal + "";
-         }
-
-        
+        List<Customer> _customers;
         private void SalesForm_Load(object sender, EventArgs e)
         {
+            _customers = _salesManager.CustomerComboLoad();
+            customerComboBox.DataSource = _customers;
+            customerComboBox.Text = "-Select-";
+
             categoryComboBox.DataSource = _salesManager.CategoryComboLoad();
             categoryComboBox.Text = "-Select-";
 
-            customerComboBox.DataSource = _salesManager.CustomerComboLoad();
-            customerComboBox.Text = "-Select-";
-
-            productComboBox.DataSource = _salesManager.ProductComboLoad();
+            productComboBox.Enabled = false;
             productComboBox.Text = "-Select-";
 
-            salesCodeTextBox.Text = _salesManager.SalesCode(sales.Code);
+            salesCodeTextBox.Text = _salesManager.SalesCode(_sales.Code);
         }
-        
-        
-        private void submitButton_Click(object sender, EventArgs e)
+
+        int _customerId;
+        private void customerComboBox_TextChanged(object sender, EventArgs e)
         {
-           
+            if(customerComboBox.Text != "-Select-")
+            {
+                foreach(Customer customer in _customers)
+                {
+                    if (customerComboBox.Text == customer.Name)
+                    {
+                        loyalityPointTextBox.Text = customer.LoyaltyPoint.ToString();
+                        _customerId = customer.Id;
+                    }
+                }
+            }
+            else
+            {
+                loyalityPointTextBox.Clear();
+            }
+        }
+        int _discountPercent;
+        private void loyalityPointTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _discountPercent = 0;
+            if (!String.IsNullOrEmpty(loyalityPointTextBox.Text))
+            {
+                _discountPercent = CalculateDiscountPercent(int.Parse(loyalityPointTextBox.Text));
+                discountTextBox.Text = _discountPercent.ToString();
+            }
+            else
+            {
+                discountTextBox.Clear();
+            }
+            
+        }
+
+        private int CalculateDiscountPercent(int loyaltyPoint)
+        {
+            int discountPercent = 0;
+
+            if (loyaltyPoint > 0)
+            {
+                discountPercent = loyaltyPoint / 10;
+            }
+
+            return discountPercent;
+        }
+
+        List<Product> _productList = new List<Product>();
+        private void categoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
             try
             {
-                sales.Code = salesCodeTextBox.Text;
-                sales.Customer = (customerComboBox.SelectedValue).ToString();
-                sales.SelasDate = Convert.ToDateTime( dateTimePicker.Text);
-                sales.LoyalityPoint = double.Parse(loyalityPointTextBox.Text); 
-                sales.Category = (categoryComboBox.SelectedValue).ToString();
-                sales.Product = (productComboBox.SelectedValue).ToString();
-                AvabileQuantityTextBox.Text = _salesManager.GetAvailableQuantity()+"";
-                sales.Quantity = Convert.ToInt32(quantityTextBox.Text);
-                sales.MRP = Convert.ToDouble(mrpTextBox.Text);
-                sales.TotalMRP = Convert.ToDouble(totalMRPTextBox.Text);
-                sales.GrandTotal= double.Parse(grandTotalTextBox.Text) ;
-                sales.Discount = double.Parse(discountTextBox.Text);
-                sales.DiscountAmount = double.Parse(discountAmountTextBox.Text);
-                sales.PayableAmount = double.Parse(payableAmountTextBox.Text);
-
-
-                if (IsValid(sales))
+                _productList = _salesManager.SearchProducts(categoryComboBox.Text);
+                if (_productList.Count <= 0)
                 {
-                    if (submitButton.Text == "Save")
-                    {
-                        if (IsUnique(sales))
-                        {
-                            if (_salesManager.SubmitAll(sales)) //ADDED SUCCESSFULLY
-                            {
-                                confirmationLabel.Text = "Sales Information Saved Successfully!";
-                                
-                                ClearInputs();
-                            }
-                        }
+                    productComboBox.Enabled = false;
+                }
+                else
+                {
+                    productComboBox.Enabled = true;
+                    productComboBox.DataSource = _productList;
+                }
+                productComboBox.Text = "-Select-";
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
 
-                    }
-                    else if (submitButton.Text == "Modify")
+        int _productId;
+        private void productComboBox_TextChanged(object sender, EventArgs e)
+        {
+            if (productComboBox.Text != "-Select-")
+            {
+                if (_productList.Count != 0)
+                {
+                    foreach (Product product in _productList)
                     {
-                        if (IsModifiedUnique(sales))
+                        if (productComboBox.Text == product.Name)
                         {
-                            DialogResult dialogResult = MessageBox.Show("Are you sure you want to modify?", "Modify Confirmation", MessageBoxButtons.YesNo);
-                            if (dialogResult == DialogResult.Yes)
-                            {
-                                if (Modify(sales)) //MODIFIED SUCCESSFULLY
-                                {
-                                    confirmationLabel.Text = "Product Information Modified Successfully!";
-                                    
-                                    ClearInputs();
-                                }
-                            }
-                            else if (dialogResult == DialogResult.No)
-                            {
-                                ClearInputs();
-                                ClearErrorLabels();
-                            }
+                            AvabileQuantityTextBox.Text = product.AvailableQuantity.ToString();
+                            _productId = product.Id;
                         }
-
                     }
+                }
+                double mrp = GetProductMRP(productComboBox.Text);
+                mrpTextBox.Text = mrp.ToString();
+            }
+            else
+            {
+                AvabileQuantityTextBox.Clear();
+                mrpTextBox.Clear();
+            }
+        }
+
+        private double GetProductMRP(string productName)
+        {
+            double mrp =_salesManager.GetProductMRP(productName);
+            return mrp;
+        }
+
+        private void quantityTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTotalPrice();
+        }
+
+        private void mrpTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CalculateTotalPrice();
+        }
+
+        private void CalculateTotalPrice()
+        {
+            if (!String.IsNullOrEmpty(quantityTextBox.Text) && !String.IsNullOrEmpty(mrpTextBox.Text))
+            {
+                totalMRPTextBox.Text = (int.Parse(quantityTextBox.Text) * double.Parse(mrpTextBox.Text)) + "";
+            }
+        }
+
+        List<Sales> _salesList = new List<Sales>();
+        
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            _sales = new Sales();
+            _sales.ProductId = _productId;
+            _sales.Customer = (customerComboBox.SelectedValue).ToString();
+            _sales.Date = Convert.ToDateTime(dateTimePicker.Text); 
+            _sales.LoyalityPoint = double.Parse(loyalityPointTextBox.Text);
+            _sales.Category = categoryComboBox.Text;
+            _sales.Product = productComboBox.Text;
+            _sales.AvabileQuantity = int.Parse(AvabileQuantityTextBox.Text);
+            _sales.Quantity = int.Parse(quantityTextBox.Text);
+            _sales.MRP = double.Parse(mrpTextBox.Text);
+            _sales.TotalMRP = double.Parse(totalMRPTextBox.Text);
+
+            _salesList.Add(_sales);
+
+            DisplayRecords(_salesList, _itemList);
+            CalculateGrandTotal(_salesList);
+         }
+
+        double _grandTotal;
+        double _discountAmount;
+        double _payableAmount;
+        private double CalculateGrandTotal(List<Sales> salesList)
+        {
+            _grandTotal = 0;
+            foreach (Sales sales in salesList)
+            {
+                _grandTotal += sales.TotalMRP;
+            }
+            grandTotalTextBox.Text = _grandTotal.ToString();
+            return _grandTotal;
+        }
+
+        private void grandTotalTextBox_TextChanged(object sender, EventArgs e)
+        {
+            _discountAmount = 0;
+            _payableAmount = 0;
+            CalculateAmount();
+        }
+
+        private void CalculateAmount()
+        {
+            if (!String.IsNullOrEmpty(grandTotalTextBox.Text) && _grandTotal != 0)
+            {
+                _discountAmount = _grandTotal * int.Parse(loyalityPointTextBox.Text) / 100;
+                discountAmountTextBox.Text = _discountAmount.ToString();
+
+                _payableAmount = _grandTotal - _discountAmount;
+                payableAmountTextBox.Text = _payableAmount.ToString();
+            }
+        }
+        private void discountTextBox_TextChanged(object sender, EventArgs e)
+        {
+            CalculateAmount();
+        }
+
+        private const int _itemList = 0;
+        private const int _database = 1;
+        private void DisplayRecords(List<Sales> salesList, int check)
+        {
+            for (int i = 0; i < showDataGridView.Columns.Count; i++)
+            {
+                showDataGridView.Columns[i].Visible = false;
+            }
+            try
+            {
+                showDataGridView.ReadOnly = true;
+
+                if (check == 0)
+                {
+                    BindingSource purchaseTable = new BindingSource { DataSource = salesList };
+                    showDataGridView.DataSource = purchaseTable;
+
+                    showDataGridView.Columns["Action"].Visible = true;
+                    SetSerialNumber(showDataGridView);
+                    SetActionColumn(showDataGridView);
+                }
+                else if (check == 1)
+                {
+                    showDataGridView.DataSource = salesList;
+
+                    Helper.SetSerialNumber(showDataGridView);
+                    showDataGridView.Columns["Action"].Visible = false;
+                }
+
+                showDataGridView.Columns["SI"].Visible = true;
+                showDataGridView.Columns["Product"].Visible = true;
+                showDataGridView.Columns["Quantity"].Visible = true;
+                showDataGridView.Columns["MRP"].Visible = true;
+                showDataGridView.Columns["TotalMRP"].Visible = true;
+            }
+            catch (Exception error)
+            {
+                ExceptionMessage(error);
+            }
+        }
+        private void SetActionColumn(DataGridView dgv) //only for this form
+        {
+            foreach (DataGridViewRow rows in dgv.Rows)
+            {
+                if (rows.Index != dgv.Rows.Count - 1)
+                {
+                    rows.Cells["Action"].Value = "Edit";
+                }
+            }
+
+            dgv.Columns["Action"].DefaultCellStyle.ForeColor = System.Drawing.Color.Blue;
+            dgv.Columns["Action"].DefaultCellStyle.Font = new Font(dgv.DefaultCellStyle.Font, FontStyle.Underline);
+        }
+
+        private void SetSerialNumber(DataGridView dgv) //only for this form
+        {
+            int i = 1;
+            foreach (DataGridViewRow rows in dgv.Rows)
+            {
+                if (rows.Index != dgv.Rows.Count - 1)
+                {
+                    rows.Cells["SI"].Value = i;
+                    i++;
+                }
+
+            }
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_salesList.Count > 0)
+                {
+                    _sales.CustomerId = _customerId;
+
+                    _sales.GrandTotal = _grandTotal;
+                    _sales.Discount = _discountPercent;
+                    _sales.DiscountAmount = _discountAmount;
+                    _sales.PayableAmount = _payableAmount;
+
+                    foreach(Sales sales in _salesList)
+                    {
+                        _salesManager.DecreaseProductQuantity(sales);
+                    }
+
+                    Add(_sales);
+
+                    //ResetAll();
+                    confirmationLabel.Text = "Sales complete for Customer: " + _sales.Customer;
                 }
             }
             catch (Exception error)
@@ -134,59 +315,10 @@ namespace Small_Business_Management_System.UI
                 ExceptionMessage(error);
             }
         }
-        private bool IsValid(Sales sales)
+
+        private bool Add(Sales sales)
         {
-            bool isValid = true;
-
-            if (String.IsNullOrEmpty(sales.Code))
-            {
-                codeErrorLabel.Text = "Code can not be empty!!";
-                isValid = false;
-            }
-            else if (!CodeLengthValidation(sales.Code))
-            {
-                isValid = false;
-            }
-            else
-            {
-                codeErrorLabel.Text = null;
-            }
-            if (productComboBox.Text == "-Select-")
-            {
-                productErrorLabel.Text = "Select a category";
-                
-            }
-            else
-            {
-                productErrorLabel.Text = null;
-            }
-            if (categoryComboBox.Text == "-Select-")
-            {
-                categoryErrorLabel.Text = "Select a category";
-            }
-            else
-            {
-                categoryErrorLabel.Text = null;
-            }
-            
-
-            return isValid;
-        }
-        private bool IsUnique(Sales sales)
-        {
-            bool isUnique = true;
-            if (!_salesManager.IsUnique(sales.Code, "Code")) //(inputString, columnName)
-            {
-                codeErrorLabel.Text = "This code already exists!";
-                isUnique = false;
-            }
-            else
-            {
-                codeErrorLabel.Text = null;
-            }
-
-
-            return isUnique;
+            return _salesManager.Add(sales);
         }
 
         private bool CodeLengthValidation(string codeText)
@@ -205,51 +337,6 @@ namespace Small_Business_Management_System.UI
             return isValid;
         }
 
-
-        private bool IsModifiedUnique(Sales sales)
-        {
-            bool isUnique = true;
-            if (!_salesManager.IsUnique(sales.Code, "Code")) //(inputString, columnName)
-            {
-                codeErrorLabel.Text = "This code already exists!";
-                isUnique = false;
-            }
-            else
-            {
-                codeErrorLabel.Text = null;
-            }
-            
-
-            return isUnique;
-        }
-       
-        private void ClearInputs()
-        {
-            categoryComboBox.Text = "-Select-";
-            salesCodeTextBox.Clear();
-           
-            customerComboBox.Text = "-Select-";
-            productComboBox.Text = "-Select-";
-            quantityTextBox.Clear();
-            mrpTextBox.Clear();
-            totalMRPTextBox.Clear();
-
-            submitButton.Text = "Save";
-           
-        }
-
-        private void ClearErrorLabels()
-        {
-            categoryErrorLabel.Text = null;
-            codeErrorLabel.Text = null;
-            searchErrorLabel.Text = null;
-            confirmationLabel.Text = null;
-        }
-
-        private bool Modify(Sales sales)
-        {
-            return _salesManager.Modify(sales);
-        }
         private List<Sales> Search(string sales)
         {
             return _salesManager.Search(sales);
@@ -275,11 +362,6 @@ namespace Small_Business_Management_System.UI
         {
             MessageBox.Show(error.Message);
             _salesManager.CloseConnection();
-        }
-
-        private void showDataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            showDataGridView.Rows[e.RowIndex].Cells[0].Value = (e.RowIndex + 1).ToString();
         }
 
         private void salesCodeTextBox_TextChanged(object sender, EventArgs e)
@@ -310,86 +392,6 @@ namespace Small_Business_Management_System.UI
             {
                 ExceptionMessage(error);
             }
-        }
-
-        private void quantityTextBox_TextChanged(object sender, EventArgs e)
-        {
-            CalculateAndGetPrevious();
-        }
-
-        private void mrpTextBox_TextChanged(object sender, EventArgs e)
-        {
-            CalculateAndGetPrevious();
-        }
-
-        private void CalculateAndGetPrevious()
-        {
-            if (!String.IsNullOrEmpty(quantityTextBox.Text) && !String.IsNullOrEmpty(mrpTextBox.Text))
-            {
-                totalMRPTextBox.Text = (int.Parse(quantityTextBox.Text) * double.Parse(mrpTextBox.Text)) + "";
-            }
-        }
-
-        private void grandTotalTextBox_TextChanged(object sender, EventArgs e)
-        {
-            loyalitycal();
-            DiscountAmount();
-            PayableAmount();
-        }
-
-        private void discountTextBox_TextChanged(object sender, EventArgs e)
-        {
-            DiscountAmount();
-        }
-
-        private void loyalityPointTextBox_TextChanged(object sender, EventArgs e)
-        {
-            Discount();
-        }
-
-        private void discountAmountTextBox_TextChanged(object sender, EventArgs e)
-        {
-            PayableAmount();
-        }
-        private void loyalitycal()
-        {
-            if (!String.IsNullOrEmpty(loyalityPointTextBox.Text))
-            {
-                loyalityPointTextBox.Text = (Convert.ToDouble(grandTotalTextBox.Text) / 1000) + "";
-
-            }
-
-        }
-        internal void Discount()
-        {
-            if (!String.IsNullOrEmpty(loyalityPointTextBox.Text))
-            {
-                discountTextBox.Text = (Convert.ToDouble(loyalityPointTextBox.Text) / 10) + ""; 
-                loyalityPointTextBox.Text = (Convert.ToDouble(loyalityPointTextBox.Text))-(Convert.ToDouble(loyalityPointTextBox.Text) / 10) + ""; 
-            }
-  
-        }
-
-        internal void DiscountAmount()
-        {
-            if (!String.IsNullOrEmpty(discountAmountTextBox.Text))
-            {
-                discountAmountTextBox.Text = (Convert.ToDouble(grandTotalTextBox.Text))*(Convert.ToDouble(discountTextBox.Text)) + ""; 
-            }
-
-        }
-        internal void PayableAmount()
-        {
-            if (!String.IsNullOrEmpty(payableAmountTextBox.Text))
-            {
-                payableAmountTextBox.Text = (Convert.ToDouble(grandTotalTextBox.Text)) - (Convert.ToDouble(discountAmountTextBox.Text)) + "";
-            }
-
-        }
-
-        private void showDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

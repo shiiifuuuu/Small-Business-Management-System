@@ -10,65 +10,49 @@ namespace Small_Business_Management_System.MANAGER
 {
     public class SalesManager
     {
-        SalesRepository salesRepository = new SalesRepository();
-        internal bool IsUnique(string inputString, string columnName)
-        {
-            return salesRepository.IsUnique(inputString, columnName);
-        }
+        SalesRepository _salesRepository = new SalesRepository();
+
         internal List<Category> CategoryComboLoad()
         {
-            return salesRepository.CategoryComboLoad();
+            return _salesRepository.CategoryComboLoad();
         }
         internal List<Customer> CustomerComboLoad()
         {
-            return salesRepository.CustomerComboLoad();
-        }
-        internal List<Product> ProductComboLoad()
-        {
-            return salesRepository.ProductComboLoad();
-        }
-        internal string SalesCode(string code)
-        {
-            return salesRepository.SalesCode( code);
-        }
-        internal bool SubmitAll(Sales sales)
-        {
-            return salesRepository.SubmitAll(sales);
-        }
-        internal bool Modify(Sales sales)
-        {
-            return salesRepository.Modify(sales);
-        }
-        public int GetAvailableQuantity()
-        {
-            return salesRepository.GetAvailableQuantity();
+            return _salesRepository.CustomerComboLoad();
         }
 
-        internal bool Delete(Sales sales)
+        internal string SalesCode(string code)
         {
-            return salesRepository.Delete(sales);
+            return _salesRepository.SalesCode( code);
         }
+
+        internal List<Product> SearchProducts(string text)
+        {
+            return _salesRepository.SearchProducts(text);
+        }
+
         internal void CloseConnection()
         {
-            salesRepository.CloseConnection();
+            _salesRepository.CloseConnection();
         }
         internal List<Sales> Search(string sales)
         {
-            return salesRepository.Search(sales);
-        }
-        
-       
-
-        internal double DiscountAmount(Sales sales)
-        {
-            sales.DiscountAmount = sales.GrandTotal * sales.Discount;
-            return sales.DiscountAmount;
+            return _salesRepository.Search(sales);
         }
 
-        internal double PayableAmount(Sales sales)
+        internal bool Add(Sales sales)
         {
-            sales.PayableAmount = sales.GrandTotal - sales.DiscountAmount;
-            return sales.PayableAmount;
+            return _salesRepository.Add(sales);
+        }
+
+        internal void DecreaseProductQuantity(Sales sales)
+        {
+            _salesRepository.DecreaseProductQuantity(sales);
+        }
+
+        internal double GetProductMRP(string productName)
+        {
+            return _salesRepository.GetProductMRP(productName);
         }
     }
 }

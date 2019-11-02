@@ -38,6 +38,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.totalMRPTextBox = new System.Windows.Forms.TextBox();
             this.mrpTextBox = new System.Windows.Forms.TextBox();
             this.quantityTextBox = new System.Windows.Forms.TextBox();
@@ -56,22 +58,24 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
             this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.selasDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loyalityPointDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.avabileQuantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalMRPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.grandTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discountAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payableAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.actionColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoyaltyPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AvailableQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MRP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalMRP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GrandTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PayableAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.confirmationLabel = new System.Windows.Forms.Label();
             this.payableAmountTextBox = new System.Windows.Forms.TextBox();
@@ -143,6 +147,7 @@
             this.customerComboBox.Size = new System.Drawing.Size(159, 24);
             this.customerComboBox.TabIndex = 3;
             this.customerComboBox.ValueMember = "Id";
+            this.customerComboBox.TextChanged += new System.EventHandler(this.customerComboBox_TextChanged);
             // 
             // customerBindingSource
             // 
@@ -180,6 +185,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cancelButton);
+            this.groupBox2.Controls.Add(this.deleteButton);
             this.groupBox2.Controls.Add(this.totalMRPTextBox);
             this.groupBox2.Controls.Add(this.mrpTextBox);
             this.groupBox2.Controls.Add(this.quantityTextBox);
@@ -193,25 +200,46 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.productErrorLabel);
             this.groupBox2.Controls.Add(this.categoryErrorLabel);
-            this.groupBox2.Location = new System.Drawing.Point(12, 209);
+            this.groupBox2.Location = new System.Drawing.Point(12, 203);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(325, 255);
+            this.groupBox2.Size = new System.Drawing.Size(325, 261);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Product";
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.cancelButton.Location = new System.Drawing.Point(6, 221);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(89, 33);
+            this.cancelButton.TabIndex = 13;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.deleteButton.Location = new System.Drawing.Point(101, 221);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(84, 33);
+            this.deleteButton.TabIndex = 13;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            // 
             // totalMRPTextBox
             // 
             this.totalMRPTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalMRPTextBox.Location = new System.Drawing.Point(154, 188);
+            this.totalMRPTextBox.Location = new System.Drawing.Point(154, 185);
             this.totalMRPTextBox.Name = "totalMRPTextBox";
+            this.totalMRPTextBox.ReadOnly = true;
             this.totalMRPTextBox.Size = new System.Drawing.Size(160, 22);
             this.totalMRPTextBox.TabIndex = 12;
             // 
             // mrpTextBox
             // 
             this.mrpTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mrpTextBox.Location = new System.Drawing.Point(154, 154);
+            this.mrpTextBox.Location = new System.Drawing.Point(154, 151);
             this.mrpTextBox.Name = "mrpTextBox";
             this.mrpTextBox.Size = new System.Drawing.Size(160, 22);
             this.mrpTextBox.TabIndex = 11;
@@ -220,7 +248,7 @@
             // quantityTextBox
             // 
             this.quantityTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityTextBox.Location = new System.Drawing.Point(154, 122);
+            this.quantityTextBox.Location = new System.Drawing.Point(154, 119);
             this.quantityTextBox.Name = "quantityTextBox";
             this.quantityTextBox.Size = new System.Drawing.Size(160, 22);
             this.quantityTextBox.TabIndex = 10;
@@ -229,8 +257,9 @@
             // AvabileQuantityTextBox
             // 
             this.AvabileQuantityTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AvabileQuantityTextBox.Location = new System.Drawing.Point(154, 90);
+            this.AvabileQuantityTextBox.Location = new System.Drawing.Point(154, 87);
             this.AvabileQuantityTextBox.Name = "AvabileQuantityTextBox";
+            this.AvabileQuantityTextBox.ReadOnly = true;
             this.AvabileQuantityTextBox.Size = new System.Drawing.Size(160, 22);
             this.AvabileQuantityTextBox.TabIndex = 9;
             // 
@@ -240,11 +269,12 @@
             this.productComboBox.DisplayMember = "Name";
             this.productComboBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productComboBox.FormattingEnabled = true;
-            this.productComboBox.Location = new System.Drawing.Point(154, 51);
+            this.productComboBox.Location = new System.Drawing.Point(154, 48);
             this.productComboBox.Name = "productComboBox";
             this.productComboBox.Size = new System.Drawing.Size(160, 24);
             this.productComboBox.TabIndex = 8;
             this.productComboBox.ValueMember = "Id";
+            this.productComboBox.TextChanged += new System.EventHandler(this.productComboBox_TextChanged);
             // 
             // productBindingSource
             // 
@@ -256,11 +286,12 @@
             this.categoryComboBox.DisplayMember = "Name";
             this.categoryComboBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(154, 14);
+            this.categoryComboBox.Location = new System.Drawing.Point(154, 11);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(160, 24);
             this.categoryComboBox.TabIndex = 7;
             this.categoryComboBox.ValueMember = "Id";
+            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
             // categoryBindingSource
             // 
@@ -269,7 +300,7 @@
             // addButton
             // 
             this.addButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
-            this.addButton.Location = new System.Drawing.Point(229, 216);
+            this.addButton.Location = new System.Drawing.Point(229, 221);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(85, 31);
             this.addButton.TabIndex = 6;
@@ -281,7 +312,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(9, 189);
+            this.label9.Location = new System.Drawing.Point(9, 186);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(139, 21);
             this.label9.TabIndex = 5;
@@ -291,7 +322,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(56, 155);
+            this.label8.Location = new System.Drawing.Point(56, 152);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 21);
             this.label8.TabIndex = 4;
@@ -301,7 +332,7 @@
             // 
             this.quantityLabel.AutoSize = true;
             this.quantityLabel.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityLabel.Location = new System.Drawing.Point(70, 123);
+            this.quantityLabel.Location = new System.Drawing.Point(70, 120);
             this.quantityLabel.Name = "quantityLabel";
             this.quantityLabel.Size = new System.Drawing.Size(78, 21);
             this.quantityLabel.TabIndex = 3;
@@ -311,7 +342,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 91);
+            this.label6.Location = new System.Drawing.Point(6, 88);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(142, 21);
             this.label6.TabIndex = 2;
@@ -321,7 +352,7 @@
             // 
             this.productErrorLabel.AutoSize = true;
             this.productErrorLabel.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productErrorLabel.Location = new System.Drawing.Point(77, 54);
+            this.productErrorLabel.Location = new System.Drawing.Point(77, 51);
             this.productErrorLabel.Name = "productErrorLabel";
             this.productErrorLabel.Size = new System.Drawing.Size(71, 21);
             this.productErrorLabel.TabIndex = 1;
@@ -331,7 +362,7 @@
             // 
             this.categoryErrorLabel.AutoSize = true;
             this.categoryErrorLabel.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoryErrorLabel.Location = new System.Drawing.Point(72, 17);
+            this.categoryErrorLabel.Location = new System.Drawing.Point(72, 14);
             this.categoryErrorLabel.Name = "categoryErrorLabel";
             this.categoryErrorLabel.Size = new System.Drawing.Size(76, 21);
             this.categoryErrorLabel.TabIndex = 0;
@@ -355,130 +386,141 @@
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SI,
-            this.idDataGridViewTextBoxColumn,
-            this.codeDataGridViewTextBoxColumn,
-            this.customerDataGridViewTextBoxColumn,
-            this.selasDateDataGridViewTextBoxColumn,
-            this.loyalityPointDataGridViewTextBoxColumn,
-            this.categoryDataGridViewTextBoxColumn,
-            this.productDataGridViewTextBoxColumn,
-            this.avabileQuantityDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn,
-            this.mRPDataGridViewTextBoxColumn,
-            this.totalMRPDataGridViewTextBoxColumn,
-            this.grandTotalDataGridViewTextBoxColumn,
-            this.discountDataGridViewTextBoxColumn,
-            this.discountAmountDataGridViewTextBoxColumn,
-            this.payableAmountDataGridViewTextBoxColumn,
-            this.actionColumn});
+            this.Id,
+            this.ProductId,
+            this.CustomerId,
+            this.Code,
+            this.Customer,
+            this.Date,
+            this.LoyaltyPoint,
+            this.Category,
+            this.Product,
+            this.AvailableQuantity,
+            this.Quantity,
+            this.MRP,
+            this.TotalMRP,
+            this.GrandTotal,
+            this.Discount,
+            this.DiscountAmount,
+            this.PayableAmount,
+            this.Action});
             this.showDataGridView.DataSource = this.salesBindingSource;
-            this.showDataGridView.Location = new System.Drawing.Point(10, 18);
+            this.showDataGridView.Location = new System.Drawing.Point(5, 18);
             this.showDataGridView.Name = "showDataGridView";
-            this.showDataGridView.RowHeadersWidth = 35;
-            this.showDataGridView.Size = new System.Drawing.Size(652, 367);
+            this.showDataGridView.Size = new System.Drawing.Size(657, 370);
             this.showDataGridView.TabIndex = 0;
-            this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDataGridView_CellContentClick);
-            this.showDataGridView.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.showDataGridView_RowPostPaint);
             // 
             // SI
             // 
-            this.SI.HeaderText = "Sl";
+            this.SI.HeaderText = "SI";
             this.SI.Name = "SI";
             // 
-            // idDataGridViewTextBoxColumn
+            // Id
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
             // 
-            // codeDataGridViewTextBoxColumn
+            // ProductId
             // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.ProductId.DataPropertyName = "ProductId";
+            this.ProductId.HeaderText = "ProductId";
+            this.ProductId.Name = "ProductId";
             // 
-            // customerDataGridViewTextBoxColumn
+            // CustomerId
             // 
-            this.customerDataGridViewTextBoxColumn.DataPropertyName = "Customer";
-            this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
-            this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
+            this.CustomerId.DataPropertyName = "CustomerId";
+            this.CustomerId.HeaderText = "CustomerId";
+            this.CustomerId.Name = "CustomerId";
             // 
-            // selasDateDataGridViewTextBoxColumn
+            // Code
             // 
-            this.selasDateDataGridViewTextBoxColumn.DataPropertyName = "SelasDate";
-            this.selasDateDataGridViewTextBoxColumn.HeaderText = "SelasDate";
-            this.selasDateDataGridViewTextBoxColumn.Name = "selasDateDataGridViewTextBoxColumn";
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
             // 
-            // loyalityPointDataGridViewTextBoxColumn
+            // Customer
             // 
-            this.loyalityPointDataGridViewTextBoxColumn.DataPropertyName = "LoyalityPoint";
-            this.loyalityPointDataGridViewTextBoxColumn.HeaderText = "LoyalityPoint";
-            this.loyalityPointDataGridViewTextBoxColumn.Name = "loyalityPointDataGridViewTextBoxColumn";
+            this.Customer.DataPropertyName = "Customer";
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
             // 
-            // categoryDataGridViewTextBoxColumn
+            // Date
             // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
             // 
-            // productDataGridViewTextBoxColumn
+            // LoyaltyPoint
             // 
-            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
-            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            this.LoyaltyPoint.DataPropertyName = "LoyalityPoint";
+            this.LoyaltyPoint.HeaderText = "LoyalityPoint";
+            this.LoyaltyPoint.Name = "LoyaltyPoint";
             // 
-            // avabileQuantityDataGridViewTextBoxColumn
+            // Category
             // 
-            this.avabileQuantityDataGridViewTextBoxColumn.DataPropertyName = "AvabileQuantity";
-            this.avabileQuantityDataGridViewTextBoxColumn.HeaderText = "AvabileQuantity";
-            this.avabileQuantityDataGridViewTextBoxColumn.Name = "avabileQuantityDataGridViewTextBoxColumn";
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
             // 
-            // quantityDataGridViewTextBoxColumn
+            // Product
             // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            this.Product.DataPropertyName = "Product";
+            this.Product.HeaderText = "Product";
+            this.Product.Name = "Product";
             // 
-            // mRPDataGridViewTextBoxColumn
+            // AvailableQuantity
             // 
-            this.mRPDataGridViewTextBoxColumn.DataPropertyName = "MRP";
-            this.mRPDataGridViewTextBoxColumn.HeaderText = "MRP";
-            this.mRPDataGridViewTextBoxColumn.Name = "mRPDataGridViewTextBoxColumn";
+            this.AvailableQuantity.DataPropertyName = "AvabileQuantity";
+            this.AvailableQuantity.HeaderText = "AvabileQuantity";
+            this.AvailableQuantity.Name = "AvailableQuantity";
             // 
-            // totalMRPDataGridViewTextBoxColumn
+            // Quantity
             // 
-            this.totalMRPDataGridViewTextBoxColumn.DataPropertyName = "TotalMRP";
-            this.totalMRPDataGridViewTextBoxColumn.HeaderText = "TotalMRP";
-            this.totalMRPDataGridViewTextBoxColumn.Name = "totalMRPDataGridViewTextBoxColumn";
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
             // 
-            // grandTotalDataGridViewTextBoxColumn
+            // MRP
             // 
-            this.grandTotalDataGridViewTextBoxColumn.DataPropertyName = "GrandTotal";
-            this.grandTotalDataGridViewTextBoxColumn.HeaderText = "GrandTotal";
-            this.grandTotalDataGridViewTextBoxColumn.Name = "grandTotalDataGridViewTextBoxColumn";
+            this.MRP.DataPropertyName = "MRP";
+            this.MRP.HeaderText = "MRP";
+            this.MRP.Name = "MRP";
             // 
-            // discountDataGridViewTextBoxColumn
+            // TotalMRP
             // 
-            this.discountDataGridViewTextBoxColumn.DataPropertyName = "Discount";
-            this.discountDataGridViewTextBoxColumn.HeaderText = "Discount";
-            this.discountDataGridViewTextBoxColumn.Name = "discountDataGridViewTextBoxColumn";
+            this.TotalMRP.DataPropertyName = "TotalMRP";
+            this.TotalMRP.HeaderText = "TotalMRP";
+            this.TotalMRP.Name = "TotalMRP";
             // 
-            // discountAmountDataGridViewTextBoxColumn
+            // GrandTotal
             // 
-            this.discountAmountDataGridViewTextBoxColumn.DataPropertyName = "DiscountAmount";
-            this.discountAmountDataGridViewTextBoxColumn.HeaderText = "DiscountAmount";
-            this.discountAmountDataGridViewTextBoxColumn.Name = "discountAmountDataGridViewTextBoxColumn";
+            this.GrandTotal.DataPropertyName = "GrandTotal";
+            this.GrandTotal.HeaderText = "GrandTotal";
+            this.GrandTotal.Name = "GrandTotal";
             // 
-            // payableAmountDataGridViewTextBoxColumn
+            // Discount
             // 
-            this.payableAmountDataGridViewTextBoxColumn.DataPropertyName = "PayableAmount";
-            this.payableAmountDataGridViewTextBoxColumn.HeaderText = "PayableAmount";
-            this.payableAmountDataGridViewTextBoxColumn.Name = "payableAmountDataGridViewTextBoxColumn";
+            this.Discount.DataPropertyName = "Discount";
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
             // 
-            // actionColumn
+            // DiscountAmount
             // 
-            this.actionColumn.HeaderText = "Action";
-            this.actionColumn.Name = "actionColumn";
+            this.DiscountAmount.DataPropertyName = "DiscountAmount";
+            this.DiscountAmount.HeaderText = "DiscountAmount";
+            this.DiscountAmount.Name = "DiscountAmount";
+            // 
+            // PayableAmount
+            // 
+            this.PayableAmount.DataPropertyName = "PayableAmount";
+            this.PayableAmount.HeaderText = "PayableAmount";
+            this.PayableAmount.Name = "PayableAmount";
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
             // 
             // salesBindingSource
             // 
@@ -498,7 +540,7 @@
             // payableAmountTextBox
             // 
             this.payableAmountTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.payableAmountTextBox.Location = new System.Drawing.Point(863, 483);
+            this.payableAmountTextBox.Location = new System.Drawing.Point(863, 486);
             this.payableAmountTextBox.Name = "payableAmountTextBox";
             this.payableAmountTextBox.Size = new System.Drawing.Size(139, 22);
             this.payableAmountTextBox.TabIndex = 9;
@@ -506,7 +548,7 @@
             // discountTextBox
             // 
             this.discountTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.discountTextBox.Location = new System.Drawing.Point(522, 483);
+            this.discountTextBox.Location = new System.Drawing.Point(500, 483);
             this.discountTextBox.Name = "discountTextBox";
             this.discountTextBox.Size = new System.Drawing.Size(139, 22);
             this.discountTextBox.TabIndex = 8;
@@ -515,16 +557,15 @@
             // discountAmountTextBox
             // 
             this.discountAmountTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.discountAmountTextBox.Location = new System.Drawing.Point(522, 511);
+            this.discountAmountTextBox.Location = new System.Drawing.Point(210, 511);
             this.discountAmountTextBox.Name = "discountAmountTextBox";
             this.discountAmountTextBox.Size = new System.Drawing.Size(139, 22);
             this.discountAmountTextBox.TabIndex = 7;
-            this.discountAmountTextBox.TextChanged += new System.EventHandler(this.discountAmountTextBox_TextChanged);
             // 
             // grandTotalTextBox
             // 
             this.grandTotalTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grandTotalTextBox.Location = new System.Drawing.Point(166, 483);
+            this.grandTotalTextBox.Location = new System.Drawing.Point(210, 483);
             this.grandTotalTextBox.Name = "grandTotalTextBox";
             this.grandTotalTextBox.Size = new System.Drawing.Size(139, 22);
             this.grandTotalTextBox.TabIndex = 6;
@@ -545,7 +586,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(677, 483);
+            this.label13.Location = new System.Drawing.Point(677, 486);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(180, 21);
             this.label13.TabIndex = 4;
@@ -555,7 +596,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(328, 512);
+            this.label12.Location = new System.Drawing.Point(16, 512);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(188, 21);
             this.label12.TabIndex = 3;
@@ -565,7 +606,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(408, 484);
+            this.label11.Location = new System.Drawing.Point(386, 484);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 21);
             this.label11.TabIndex = 2;
@@ -575,7 +616,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(14, 484);
+            this.label10.Location = new System.Drawing.Point(58, 484);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(146, 21);
             this.label10.TabIndex = 1;
@@ -696,7 +737,6 @@
         private System.Windows.Forms.Label productErrorLabel;
         private System.Windows.Forms.Label categoryErrorLabel;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView showDataGridView;
         private System.Windows.Forms.TextBox payableAmountTextBox;
         private System.Windows.Forms.TextBox discountTextBox;
         private System.Windows.Forms.TextBox discountAmountTextBox;
@@ -715,25 +755,31 @@
         private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.BindingSource categoryBindingSource;
         private System.Windows.Forms.Label confirmationLabel;
-        private System.Windows.Forms.BindingSource salesBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn selasDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn loyalityPointDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn avabileQuantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mRPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalMRPDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn grandTotalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn discountAmountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn payableAmountDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn actionColumn;
+        
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Label searchErrorLabel;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.DataGridView showDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LoyaltyPoint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AvailableQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MRP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalMRP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GrandTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiscountAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PayableAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Action;
+        private System.Windows.Forms.BindingSource salesBindingSource;
     }
 }

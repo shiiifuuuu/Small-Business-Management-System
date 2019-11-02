@@ -22,11 +22,6 @@ namespace Small_Business_Management_System.MANAGER
             return _purchaseRepository.CategoryComboLoad();
         }
 
-        internal List<Product> ProductComboLoad()
-        {
-            return _purchaseRepository.ProductComboLoad();
-        }
-
         internal List<Product> SearchProducts(string category)
         {
             return _purchaseRepository.SearchProducts(category);
@@ -55,11 +50,6 @@ namespace Small_Business_Management_System.MANAGER
         internal bool IsUnique(string inputString, string columnName)
         {
             return _purchaseRepository.IsUnique(inputString, columnName);
-        }
-
-        internal string GetAvailableQuantity(string productCode)
-        {
-            return _purchaseRepository.GetAvailableQuantity(productCode);
         }
 
         internal List<Purchase> Search(string text, Nullable<DateTime> date)

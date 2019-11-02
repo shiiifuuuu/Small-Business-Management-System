@@ -8,7 +8,8 @@ Code VARCHAR(4) UNIQUE NOT NULL,
 Name VARCHAR(30) UNIQUE NOT NULL,
 Category VARCHAR(30) NOT NULL,
 ReorderLevel INT,
-Description VARCHAR(100) NOT NULL
+Description VARCHAR(100) NOT NULL,
+AvailableQuantity INT
 )
 
 DROP TABLE Product;
@@ -21,11 +22,11 @@ INSERT INTO Product (Code, Name, ReorderLevel, Description)
 VALUES
 ('sdf','fs','s','s');
 
-INSERT [dbo].[Product] ([Id], [Code], [Name], [Category], [ReorderLevel], [Description]) VALUES (1, N'H81M', N'Asrock', N'Motherboard', 10, N'4th Gen')
-INSERT [dbo].[Product] ([Id], [Code], [Name], [Category], [ReorderLevel], [Description]) VALUES (2, N'B250', N'MSI', N'Motherboard', 10, N'4th Gen')
-INSERT [dbo].[Product] ([Id], [Code], [Name], [Category], [ReorderLevel], [Description]) VALUES (3, N'3220', N'Intel', N'Processor', 25, N'Pentium dual core 4th gen')
-INSERT [dbo].[Product] ([Id], [Code], [Name], [Category], [ReorderLevel], [Description]) VALUES (5, N'CR10', N'Creative', N'Speaker', 10, N'Creative Sterio')
-INSERT [dbo].[Product] ([Id], [Code], [Name], [Category], [ReorderLevel], [Description]) VALUES (6, N'B150', N'Gigabyte', N'Motherboard', 10, N'4th Gen')
+INSERT [dbo].[Product] ([Code], [Name], [Category], [ReorderLevel], [Description], [AvailableQuantity]) VALUES (N'H81M', N'Asrock', N'Motherboard', 10, N'4th Gen', 0)
+INSERT [dbo].[Product] ([Code], [Name], [Category], [ReorderLevel], [Description], [AvailableQuantity]) VALUES (N'B250', N'MSI', N'Motherboard', 10, N'4th Gen', 0)
+INSERT [dbo].[Product] ([Code], [Name], [Category], [ReorderLevel], [Description], [AvailableQuantity]) VALUES (N'3220', N'Intel', N'Processor', 25, N'Pentium dual core 4th gen', 0)
+INSERT [dbo].[Product] ([Code], [Name], [Category], [ReorderLevel], [Description], [AvailableQuantity]) VALUES (N'CR10', N'Creative', N'Speaker', 10, N'Creative Sterio', 0)
+INSERT [dbo].[Product] ([Code], [Name], [Category], [ReorderLevel], [Description], [AvailableQuantity]) VALUES (N'B150', N'Gigabyte', N'Motherboard', 10, N'4th Gen', 0)
 
 UPDATE Customer 
 Set Name='',Address=''
@@ -35,3 +36,5 @@ SELECT * FROM Customer WHERE Name='' OR Email='';
 
 SELECT * FROM Product WHERE Category = 'Mobile'
 SELECT * FROM Purchase
+
+SELECT * FROM Purchase Left JOIN Product ON Purchase.ProductId=Product.Id
