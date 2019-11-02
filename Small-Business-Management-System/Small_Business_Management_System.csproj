@@ -67,7 +67,6 @@
     <Compile Include="UI\PurchaseForm.designer.cs">
       <DependentUpon>PurchaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServerConnection.cs" />
     <Compile Include="MANAGER\CategoryManager.cs" />
     <Compile Include="MANAGER\CustomerManager.cs" />
     <Compile Include="MANAGER\ProductManager.cs" />

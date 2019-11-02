@@ -32,12 +32,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.supplierComboBox = new System.Windows.Forms.ComboBox();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.invoiceNoTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.supplierDate = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.invoiceNoTextBox = new System.Windows.Forms.TextBox();
             this.supplierError = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.invoiceError = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.showPurchaseButton = new System.Windows.Forms.Button();
@@ -48,25 +48,25 @@
             this.remarksTextBox = new System.Windows.Forms.RichTextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.manufacturedDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label13 = new System.Windows.Forms.Label();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label16 = new System.Windows.Forms.Label();
+            this.previousMrpTextBox = new System.Windows.Forms.TextBox();
             this.mrpTextBox = new System.Windows.Forms.TextBox();
+            this.previousUnitPriceTextBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.productsComboBox = new System.Windows.Forms.ComboBox();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label12 = new System.Windows.Forms.Label();
-            this.availableQuantityTextBox = new System.Windows.Forms.TextBox();
-            this.previousMrpTextBox = new System.Windows.Forms.TextBox();
-            this.productCodeTextBox = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.previousUnitPriceTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.availableQuantityTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.manufacturedDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.productCodeTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.totalPriceTextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.quantityTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.unitPriceTextBox = new System.Windows.Forms.TextBox();
@@ -102,8 +102,10 @@
             this.purchaseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.submitButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.resetButton = new System.Windows.Forms.Button();
+            this.searchDate = new System.Windows.Forms.DateTimePicker();
+            this.enableDateButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -116,16 +118,16 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.supplierComboBox);
-            this.groupBox1.Controls.Add(this.invoiceNoTextBox);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.supplierDate);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.invoiceNoTextBox);
             this.groupBox1.Controls.Add(this.supplierError);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.invoiceError);
-            this.groupBox1.Location = new System.Drawing.Point(2, 37);
+            this.groupBox1.Location = new System.Drawing.Point(2, 49);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1009, 59);
+            this.groupBox1.Size = new System.Drawing.Size(1009, 62);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Supplier";
@@ -134,73 +136,81 @@
             // 
             this.supplierComboBox.DataSource = this.supplierBindingSource;
             this.supplierComboBox.DisplayMember = "Name";
+            this.supplierComboBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
             this.supplierComboBox.FormattingEnabled = true;
-            this.supplierComboBox.Location = new System.Drawing.Point(646, 12);
+            this.supplierComboBox.Location = new System.Drawing.Point(678, 19);
             this.supplierComboBox.Name = "supplierComboBox";
-            this.supplierComboBox.Size = new System.Drawing.Size(161, 21);
+            this.supplierComboBox.Size = new System.Drawing.Size(161, 24);
             this.supplierComboBox.TabIndex = 4;
             this.supplierComboBox.ValueMember = "Id";
-            // 
-            // invoiceNoTextBox
-            // 
-            this.invoiceNoTextBox.Location = new System.Drawing.Point(407, 13);
-            this.invoiceNoTextBox.Name = "invoiceNoTextBox";
-            this.invoiceNoTextBox.Size = new System.Drawing.Size(153, 20);
-            this.invoiceNoTextBox.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(592, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Supplier:";
             // 
             // supplierDate
             // 
             this.supplierDate.CustomFormat = "";
+            this.supplierDate.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
             this.supplierDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.supplierDate.Location = new System.Drawing.Point(211, 14);
+            this.supplierDate.Location = new System.Drawing.Point(194, 20);
             this.supplierDate.Name = "supplierDate";
-            this.supplierDate.Size = new System.Drawing.Size(121, 20);
+            this.supplierDate.Size = new System.Drawing.Size(121, 22);
             this.supplierDate.TabIndex = 27;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(338, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Bill/Invoice:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(172, 16);
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label1.Location = new System.Drawing.Point(137, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(51, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Date:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label3.Location = new System.Drawing.Point(593, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 21);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Supplier:";
+            // 
+            // invoiceNoTextBox
+            // 
+            this.invoiceNoTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.invoiceNoTextBox.Location = new System.Drawing.Point(434, 19);
+            this.invoiceNoTextBox.Name = "invoiceNoTextBox";
+            this.invoiceNoTextBox.Size = new System.Drawing.Size(153, 22);
+            this.invoiceNoTextBox.TabIndex = 3;
             // 
             // supplierError
             // 
             this.supplierError.AutoSize = true;
+            this.supplierError.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
             this.supplierError.ForeColor = System.Drawing.Color.Red;
-            this.supplierError.Location = new System.Drawing.Point(612, 40);
+            this.supplierError.Location = new System.Drawing.Point(594, 41);
             this.supplierError.Name = "supplierError";
-            this.supplierError.Size = new System.Drawing.Size(28, 13);
+            this.supplierError.Size = new System.Drawing.Size(43, 16);
             this.supplierError.TabIndex = 0;
             this.supplierError.Text = "error";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label2.Location = new System.Drawing.Point(321, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 21);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Bill/Invoice:";
             // 
             // invoiceError
             // 
             this.invoiceError.AutoSize = true;
+            this.invoiceError.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
             this.invoiceError.ForeColor = System.Drawing.Color.Red;
-            this.invoiceError.Location = new System.Drawing.Point(349, 40);
+            this.invoiceError.Location = new System.Drawing.Point(323, 41);
             this.invoiceError.Name = "invoiceError";
-            this.invoiceError.Size = new System.Drawing.Size(28, 13);
+            this.invoiceError.Size = new System.Drawing.Size(43, 16);
             this.invoiceError.TabIndex = 0;
             this.invoiceError.Text = "error";
             // 
@@ -214,23 +224,23 @@
             this.groupBox2.Controls.Add(this.remarksTextBox);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.manufacturedDatePicker);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.categoryComboBox);
-            this.groupBox2.Controls.Add(this.mrpTextBox);
-            this.groupBox2.Controls.Add(this.productsComboBox);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.availableQuantityTextBox);
-            this.groupBox2.Controls.Add(this.previousMrpTextBox);
-            this.groupBox2.Controls.Add(this.productCodeTextBox);
-            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.previousMrpTextBox);
+            this.groupBox2.Controls.Add(this.mrpTextBox);
             this.groupBox2.Controls.Add(this.previousUnitPriceTextBox);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.totalPriceTextBox);
+            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.productsComboBox);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.availableQuantityTextBox);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.manufacturedDatePicker);
+            this.groupBox2.Controls.Add(this.productCodeTextBox);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.totalPriceTextBox);
             this.groupBox2.Controls.Add(this.quantityTextBox);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.unitPriceTextBox);
@@ -241,18 +251,19 @@
             this.groupBox2.Controls.Add(this.quantityError);
             this.groupBox2.Controls.Add(this.categoryError);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(2, 102);
+            this.groupBox2.Location = new System.Drawing.Point(2, 111);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1009, 190);
+            this.groupBox2.Size = new System.Drawing.Size(1009, 228);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Products";
             // 
             // showPurchaseButton
             // 
-            this.showPurchaseButton.Location = new System.Drawing.Point(19, 161);
+            this.showPurchaseButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.showPurchaseButton.Location = new System.Drawing.Point(6, 186);
             this.showPurchaseButton.Name = "showPurchaseButton";
-            this.showPurchaseButton.Size = new System.Drawing.Size(169, 23);
+            this.showPurchaseButton.Size = new System.Drawing.Size(248, 32);
             this.showPurchaseButton.TabIndex = 1;
             this.showPurchaseButton.Text = "Show Purchase History";
             this.showPurchaseButton.UseVisualStyleBackColor = true;
@@ -260,9 +271,10 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(756, 161);
+            this.deleteButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.deleteButton.Location = new System.Drawing.Point(751, 186);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.Size = new System.Drawing.Size(99, 32);
             this.deleteButton.TabIndex = 30;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -270,9 +282,10 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(675, 161);
+            this.cancelButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.cancelButton.Location = new System.Drawing.Point(670, 186);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.Size = new System.Drawing.Size(75, 32);
             this.cancelButton.TabIndex = 29;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -281,17 +294,19 @@
             // expireDatePicker
             // 
             this.expireDatePicker.CustomFormat = " ";
+            this.expireDatePicker.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
             this.expireDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.expireDatePicker.Location = new System.Drawing.Point(683, 104);
+            this.expireDatePicker.Location = new System.Drawing.Point(878, 44);
             this.expireDatePicker.Name = "expireDatePicker";
-            this.expireDatePicker.Size = new System.Drawing.Size(156, 20);
+            this.expireDatePicker.Size = new System.Drawing.Size(125, 22);
             this.expireDatePicker.TabIndex = 28;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(837, 161);
+            this.addButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.addButton.Location = new System.Drawing.Point(856, 186);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(147, 23);
+            this.addButton.Size = new System.Drawing.Size(147, 32);
             this.addButton.TabIndex = 25;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
@@ -299,45 +314,40 @@
             // 
             // remarksTextBox
             // 
-            this.remarksTextBox.Location = new System.Drawing.Point(626, 18);
+            this.remarksTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.remarksTextBox.Location = new System.Drawing.Point(306, 111);
             this.remarksTextBox.Name = "remarksTextBox";
-            this.remarksTextBox.Size = new System.Drawing.Size(213, 54);
+            this.remarksTextBox.Size = new System.Drawing.Size(375, 54);
             this.remarksTextBox.TabIndex = 24;
             this.remarksTextBox.Text = "";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(79, 125);
+            this.label15.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label15.Location = new System.Drawing.Point(472, 66);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 13);
+            this.label15.Size = new System.Drawing.Size(78, 21);
             this.label15.TabIndex = 6;
             this.label15.Text = "Quantity";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(332, 19);
+            this.label14.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label14.Location = new System.Drawing.Point(740, 72);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(75, 13);
+            this.label14.Size = new System.Drawing.Size(132, 21);
             this.label14.TabIndex = 7;
             this.label14.Text = "Unit Price (Tk)";
-            // 
-            // manufacturedDatePicker
-            // 
-            this.manufacturedDatePicker.CustomFormat = " ";
-            this.manufacturedDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.manufacturedDatePicker.Location = new System.Drawing.Point(683, 78);
-            this.manufacturedDatePicker.Name = "manufacturedDatePicker";
-            this.manufacturedDatePicker.Size = new System.Drawing.Size(156, 20);
-            this.manufacturedDatePicker.TabIndex = 27;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(327, 59);
+            this.label13.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label13.Location = new System.Drawing.Point(733, 115);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 13);
+            this.label13.Size = new System.Drawing.Size(139, 21);
             this.label13.TabIndex = 8;
             this.label13.Text = "Total Price (Tk)";
             // 
@@ -345,237 +355,273 @@
             // 
             this.categoryComboBox.DataSource = this.categoryBindingSource;
             this.categoryComboBox.DisplayMember = "Name";
+            this.categoryComboBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(131, 16);
+            this.categoryComboBox.Location = new System.Drawing.Point(306, 19);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(156, 21);
+            this.categoryComboBox.Size = new System.Drawing.Size(156, 24);
             this.categoryComboBox.TabIndex = 5;
             this.categoryComboBox.ValueMember = "Id";
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label16.Location = new System.Drawing.Point(222, 111);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(78, 21);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "Remarks";
+            // 
+            // previousMrpTextBox
+            // 
+            this.previousMrpTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.previousMrpTextBox.Location = new System.Drawing.Point(6, 149);
+            this.previousMrpTextBox.Name = "previousMrpTextBox";
+            this.previousMrpTextBox.ReadOnly = true;
+            this.previousMrpTextBox.Size = new System.Drawing.Size(105, 22);
+            this.previousMrpTextBox.TabIndex = 22;
+            // 
             // mrpTextBox
             // 
-            this.mrpTextBox.Location = new System.Drawing.Point(413, 82);
+            this.mrpTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.mrpTextBox.Location = new System.Drawing.Point(878, 142);
             this.mrpTextBox.Name = "mrpTextBox";
-            this.mrpTextBox.Size = new System.Drawing.Size(125, 20);
+            this.mrpTextBox.Size = new System.Drawing.Size(125, 22);
             this.mrpTextBox.TabIndex = 23;
+            // 
+            // previousUnitPriceTextBox
+            // 
+            this.previousUnitPriceTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.previousUnitPriceTextBox.Location = new System.Drawing.Point(6, 100);
+            this.previousUnitPriceTextBox.Name = "previousUnitPriceTextBox";
+            this.previousUnitPriceTextBox.ReadOnly = true;
+            this.previousUnitPriceTextBox.Size = new System.Drawing.Size(110, 22);
+            this.previousUnitPriceTextBox.TabIndex = 21;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label11.Location = new System.Drawing.Point(2, 125);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(164, 21);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Previous MRP (Tk)";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label7.Location = new System.Drawing.Point(2, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(157, 21);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Available Quantity";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label12.Location = new System.Drawing.Point(2, 76);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(204, 21);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Previous Unit Price (Tk)";
             // 
             // productsComboBox
             // 
             this.productsComboBox.DataSource = this.productBindingSource;
             this.productsComboBox.DisplayMember = "Name";
+            this.productsComboBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
             this.productsComboBox.FormattingEnabled = true;
-            this.productsComboBox.Location = new System.Drawing.Point(131, 56);
+            this.productsComboBox.Location = new System.Drawing.Point(306, 65);
             this.productsComboBox.Name = "productsComboBox";
-            this.productsComboBox.Size = new System.Drawing.Size(136, 21);
+            this.productsComboBox.Size = new System.Drawing.Size(136, 24);
             this.productsComboBox.TabIndex = 6;
             this.productsComboBox.ValueMember = "Id";
             this.productsComboBox.TextChanged += new System.EventHandler(this.productsComboBox_TextChanged);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(865, 55);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(119, 13);
-            this.label12.TabIndex = 9;
-            this.label12.Text = "Previous Unit Price (Tk)";
-            // 
-            // availableQuantityTextBox
-            // 
-            this.availableQuantityTextBox.Location = new System.Drawing.Point(899, 32);
-            this.availableQuantityTextBox.Name = "availableQuantityTextBox";
-            this.availableQuantityTextBox.ReadOnly = true;
-            this.availableQuantityTextBox.Size = new System.Drawing.Size(85, 20);
-            this.availableQuantityTextBox.TabIndex = 15;
-            // 
-            // previousMrpTextBox
-            // 
-            this.previousMrpTextBox.Location = new System.Drawing.Point(879, 111);
-            this.previousMrpTextBox.Name = "previousMrpTextBox";
-            this.previousMrpTextBox.ReadOnly = true;
-            this.previousMrpTextBox.Size = new System.Drawing.Size(105, 20);
-            this.previousMrpTextBox.TabIndex = 22;
-            // 
-            // productCodeTextBox
-            // 
-            this.productCodeTextBox.Location = new System.Drawing.Point(131, 96);
-            this.productCodeTextBox.Name = "productCodeTextBox";
-            this.productCodeTextBox.ReadOnly = true;
-            this.productCodeTextBox.Size = new System.Drawing.Size(125, 20);
-            this.productCodeTextBox.TabIndex = 14;
-            this.productCodeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(887, 95);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(97, 13);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Previous MRP (Tk)";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(574, 21);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(49, 13);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "Remarks";
-            // 
-            // previousUnitPriceTextBox
-            // 
-            this.previousUnitPriceTextBox.Location = new System.Drawing.Point(874, 72);
-            this.previousUnitPriceTextBox.Name = "previousUnitPriceTextBox";
-            this.previousUnitPriceTextBox.ReadOnly = true;
-            this.previousUnitPriceTextBox.Size = new System.Drawing.Size(110, 20);
-            this.previousUnitPriceTextBox.TabIndex = 21;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(615, 107);
+            this.label9.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label9.Location = new System.Drawing.Point(765, 44);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 13);
+            this.label9.Size = new System.Drawing.Size(104, 21);
             this.label9.TabIndex = 5;
             this.label9.Text = "Expire Date";
             // 
-            // label10
+            // availableQuantityTextBox
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(354, 85);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 13);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "MRP (Tk)";
+            this.availableQuantityTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.availableQuantityTextBox.Location = new System.Drawing.Point(6, 51);
+            this.availableQuantityTextBox.Name = "availableQuantityTextBox";
+            this.availableQuantityTextBox.ReadOnly = true;
+            this.availableQuantityTextBox.Size = new System.Drawing.Size(85, 22);
+            this.availableQuantityTextBox.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(578, 81);
+            this.label8.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label8.Location = new System.Drawing.Point(708, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(99, 13);
+            this.label8.Size = new System.Drawing.Size(161, 21);
             this.label8.TabIndex = 4;
             this.label8.Text = "Manufactured Date";
             // 
+            // manufacturedDatePicker
+            // 
+            this.manufacturedDatePicker.CustomFormat = " ";
+            this.manufacturedDatePicker.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.manufacturedDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.manufacturedDatePicker.Location = new System.Drawing.Point(878, 15);
+            this.manufacturedDatePicker.Name = "manufacturedDatePicker";
+            this.manufacturedDatePicker.Size = new System.Drawing.Size(125, 22);
+            this.manufacturedDatePicker.TabIndex = 27;
+            // 
+            // productCodeTextBox
+            // 
+            this.productCodeTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.productCodeTextBox.Location = new System.Drawing.Point(556, 24);
+            this.productCodeTextBox.Name = "productCodeTextBox";
+            this.productCodeTextBox.ReadOnly = true;
+            this.productCodeTextBox.Size = new System.Drawing.Size(125, 22);
+            this.productCodeTextBox.TabIndex = 14;
+            this.productCodeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label10.Location = new System.Drawing.Point(780, 143);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(92, 21);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "MRP (Tk)";
+            // 
             // totalPriceTextBox
             // 
-            this.totalPriceTextBox.Location = new System.Drawing.Point(413, 56);
+            this.totalPriceTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.totalPriceTextBox.Location = new System.Drawing.Point(878, 114);
             this.totalPriceTextBox.Name = "totalPriceTextBox";
             this.totalPriceTextBox.ReadOnly = true;
-            this.totalPriceTextBox.Size = new System.Drawing.Size(125, 20);
+            this.totalPriceTextBox.Size = new System.Drawing.Size(125, 22);
             this.totalPriceTextBox.TabIndex = 20;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(892, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Available Quantity";
             // 
             // quantityTextBox
             // 
-            this.quantityTextBox.Location = new System.Drawing.Point(131, 122);
+            this.quantityTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.quantityTextBox.Location = new System.Drawing.Point(556, 65);
             this.quantityTextBox.Name = "quantityTextBox";
-            this.quantityTextBox.Size = new System.Drawing.Size(125, 20);
+            this.quantityTextBox.Size = new System.Drawing.Size(125, 22);
             this.quantityTextBox.TabIndex = 18;
             this.quantityTextBox.TextChanged += new System.EventHandler(this.quantityTextBox_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(93, 99);
+            this.label6.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label6.Location = new System.Drawing.Point(504, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.Size = new System.Drawing.Size(46, 21);
             this.label6.TabIndex = 2;
             this.label6.Text = "Code";
             // 
             // unitPriceTextBox
             // 
-            this.unitPriceTextBox.Location = new System.Drawing.Point(413, 16);
+            this.unitPriceTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.unitPriceTextBox.Location = new System.Drawing.Point(878, 72);
             this.unitPriceTextBox.Name = "unitPriceTextBox";
-            this.unitPriceTextBox.Size = new System.Drawing.Size(125, 20);
+            this.unitPriceTextBox.Size = new System.Drawing.Size(125, 22);
             this.unitPriceTextBox.TabIndex = 19;
             this.unitPriceTextBox.TextChanged += new System.EventHandler(this.unitPriceTextBox_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(76, 59);
+            this.label5.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label5.Location = new System.Drawing.Point(222, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.Size = new System.Drawing.Size(78, 21);
             this.label5.TabIndex = 1;
             this.label5.Text = "Products";
             // 
             // productsError
             // 
             this.productsError.AutoSize = true;
+            this.productsError.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
             this.productsError.ForeColor = System.Drawing.Color.Red;
-            this.productsError.Location = new System.Drawing.Point(128, 80);
+            this.productsError.Location = new System.Drawing.Point(303, 92);
             this.productsError.Name = "productsError";
-            this.productsError.Size = new System.Drawing.Size(28, 13);
+            this.productsError.Size = new System.Drawing.Size(43, 16);
             this.productsError.TabIndex = 0;
             this.productsError.Text = "error";
             // 
             // mrpError
             // 
             this.mrpError.AutoSize = true;
+            this.mrpError.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
             this.mrpError.ForeColor = System.Drawing.Color.Red;
-            this.mrpError.Location = new System.Drawing.Point(378, 107);
+            this.mrpError.Location = new System.Drawing.Point(875, 167);
             this.mrpError.Name = "mrpError";
-            this.mrpError.Size = new System.Drawing.Size(28, 13);
+            this.mrpError.Size = new System.Drawing.Size(43, 16);
             this.mrpError.TabIndex = 0;
             this.mrpError.Text = "error";
             // 
             // unitPriceError
             // 
             this.unitPriceError.AutoSize = true;
+            this.unitPriceError.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
             this.unitPriceError.ForeColor = System.Drawing.Color.Red;
-            this.unitPriceError.Location = new System.Drawing.Point(410, 39);
+            this.unitPriceError.Location = new System.Drawing.Point(875, 95);
             this.unitPriceError.Name = "unitPriceError";
-            this.unitPriceError.Size = new System.Drawing.Size(28, 13);
+            this.unitPriceError.Size = new System.Drawing.Size(43, 16);
             this.unitPriceError.TabIndex = 0;
             this.unitPriceError.Text = "error";
             // 
             // quantityError
             // 
             this.quantityError.AutoSize = true;
+            this.quantityError.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
             this.quantityError.ForeColor = System.Drawing.Color.Red;
-            this.quantityError.Location = new System.Drawing.Point(128, 145);
+            this.quantityError.Location = new System.Drawing.Point(553, 90);
             this.quantityError.Name = "quantityError";
-            this.quantityError.Size = new System.Drawing.Size(28, 13);
+            this.quantityError.Size = new System.Drawing.Size(43, 16);
             this.quantityError.TabIndex = 0;
             this.quantityError.Text = "error";
             // 
             // categoryError
             // 
             this.categoryError.AutoSize = true;
+            this.categoryError.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
             this.categoryError.ForeColor = System.Drawing.Color.Red;
-            this.categoryError.Location = new System.Drawing.Point(128, 40);
+            this.categoryError.Location = new System.Drawing.Point(303, 46);
             this.categoryError.Name = "categoryError";
-            this.categoryError.Size = new System.Drawing.Size(28, 13);
+            this.categoryError.Size = new System.Drawing.Size(43, 16);
             this.categoryError.TabIndex = 0;
             this.categoryError.Text = "error";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(76, 19);
+            this.label4.Font = new System.Drawing.Font("Modern No. 20", 14.25F);
+            this.label4.Location = new System.Drawing.Point(224, 22);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(76, 21);
             this.label4.TabIndex = 0;
             this.label4.Text = "Category";
             // 
             // confirmationLabel
             // 
             this.confirmationLabel.AutoSize = true;
+            this.confirmationLabel.Font = new System.Drawing.Font("Mongolian Baiti", 12F, System.Drawing.FontStyle.Bold);
             this.confirmationLabel.ForeColor = System.Drawing.Color.ForestGreen;
             this.confirmationLabel.Location = new System.Drawing.Point(9, 563);
             this.confirmationLabel.Name = "confirmationLabel";
-            this.confirmationLabel.Size = new System.Drawing.Size(64, 13);
+            this.confirmationLabel.Size = new System.Drawing.Size(100, 16);
             this.confirmationLabel.TabIndex = 0;
             this.confirmationLabel.Text = "confirmation";
             // 
@@ -606,9 +652,9 @@
             this.Remarks,
             this.Action});
             this.showDataGridView.DataSource = this.purchaseBindingSource;
-            this.showDataGridView.Location = new System.Drawing.Point(2, 292);
+            this.showDataGridView.Location = new System.Drawing.Point(2, 345);
             this.showDataGridView.Name = "showDataGridView";
-            this.showDataGridView.Size = new System.Drawing.Size(1009, 259);
+            this.showDataGridView.Size = new System.Drawing.Size(1009, 195);
             this.showDataGridView.TabIndex = 2;
             this.showDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.showDataGridView_CellContentClick);
             // 
@@ -638,7 +684,7 @@
             // InvoiceNo
             // 
             this.InvoiceNo.DataPropertyName = "InvoiceNo";
-            this.InvoiceNo.HeaderText = "InvoiceNo";
+            this.InvoiceNo.HeaderText = "Invoice No";
             this.InvoiceNo.Name = "InvoiceNo";
             // 
             // Supplier
@@ -686,7 +732,7 @@
             // AvailableQuantity
             // 
             this.AvailableQuantity.DataPropertyName = "AvailableQuantity";
-            this.AvailableQuantity.HeaderText = "AvailableQuantity";
+            this.AvailableQuantity.HeaderText = "Available Quantity";
             this.AvailableQuantity.Name = "AvailableQuantity";
             // 
             // UnitPrice
@@ -736,9 +782,10 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(831, 553);
+            this.submitButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.submitButton.Location = new System.Drawing.Point(871, 546);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(171, 23);
+            this.submitButton.Size = new System.Drawing.Size(131, 33);
             this.submitButton.TabIndex = 26;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -746,38 +793,64 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(927, 5);
+            this.searchButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.searchButton.Location = new System.Drawing.Point(907, 3);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.Size = new System.Drawing.Size(95, 33);
             this.searchButton.TabIndex = 1;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // textBox1
+            // searchTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(464, 8);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(450, 20);
-            this.textBox1.TabIndex = 0;
+            this.searchTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
+            this.searchTextBox.Location = new System.Drawing.Point(672, 6);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(229, 22);
+            this.searchTextBox.TabIndex = 0;
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(12, 5);
+            this.resetButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.resetButton.Location = new System.Drawing.Point(8, 8);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(75, 23);
+            this.resetButton.Size = new System.Drawing.Size(97, 30);
             this.resetButton.TabIndex = 29;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
+            // searchDate
+            // 
+            this.searchDate.Enabled = false;
+            this.searchDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.searchDate.Location = new System.Drawing.Point(558, 6);
+            this.searchDate.Name = "searchDate";
+            this.searchDate.Size = new System.Drawing.Size(108, 20);
+            this.searchDate.TabIndex = 30;
+            // 
+            // enableDateButton
+            // 
+            this.enableDateButton.Location = new System.Drawing.Point(558, 29);
+            this.enableDateButton.Name = "enableDateButton";
+            this.enableDateButton.Size = new System.Drawing.Size(75, 23);
+            this.enableDateButton.TabIndex = 31;
+            this.enableDateButton.Text = "Enable Date";
+            this.enableDateButton.UseVisualStyleBackColor = true;
+            this.enableDateButton.Click += new System.EventHandler(this.enableDateButton_Click);
+            // 
             // PurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(252)))), ((int)(((byte)(211)))));
             this.ClientSize = new System.Drawing.Size(1014, 588);
+            this.Controls.Add(this.enableDateButton);
+            this.Controls.Add(this.searchDate);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.resetButton);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.showDataGridView);
             this.Controls.Add(this.groupBox2);
@@ -847,7 +920,7 @@
         private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.Button showPurchaseButton;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchTextBox;
         private System.Windows.Forms.Label productsError;
         private System.Windows.Forms.Label mrpError;
         private System.Windows.Forms.Label unitPriceError;
@@ -878,5 +951,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MRP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn Action;
+        private System.Windows.Forms.DateTimePicker searchDate;
+        private System.Windows.Forms.Button enableDateButton;
     }
 }

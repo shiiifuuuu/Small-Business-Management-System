@@ -1,6 +1,7 @@
 ﻿using Small_Business_Management_System.MODEL;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,8 @@ namespace Small_Business_Management_System.REPOSITORY
     {
         Sales _sales = new Sales();
 
-        SqlConnection sqlConnection;
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
 
-        public SalesRepository()
-        {
-            sqlConnection = ServerConnection.Connect();
-        }
         internal bool IsUnique(string inputString, string columnName)
         {
             bool isUnique = false;

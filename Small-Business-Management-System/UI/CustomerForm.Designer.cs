@@ -205,61 +205,61 @@
             // 
             // loyaltyPointTextBox
             // 
-            this.loyaltyPointTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.loyaltyPointTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.loyaltyPointTextBox.Location = new System.Drawing.Point(773, 126);
             this.loyaltyPointTextBox.Name = "loyaltyPointTextBox";
-            this.loyaltyPointTextBox.Size = new System.Drawing.Size(192, 30);
+            this.loyaltyPointTextBox.Size = new System.Drawing.Size(192, 31);
             this.loyaltyPointTextBox.TabIndex = 31;
             // 
             // contactTextBox
             // 
-            this.contactTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.contactTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.contactTextBox.Location = new System.Drawing.Point(773, 74);
             this.contactTextBox.Name = "contactTextBox";
-            this.contactTextBox.Size = new System.Drawing.Size(192, 30);
+            this.contactTextBox.Size = new System.Drawing.Size(192, 31);
             this.contactTextBox.TabIndex = 30;
             this.contactTextBox.TextChanged += new System.EventHandler(this.contactTextBox_TextChanged);
             this.contactTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.contactTextBox_KeyPress);
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.emailTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.emailTextBox.Location = new System.Drawing.Point(395, 126);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(192, 30);
+            this.emailTextBox.Size = new System.Drawing.Size(192, 31);
             this.emailTextBox.TabIndex = 29;
             // 
             // addressTextBox
             // 
-            this.addressTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.addressTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.addressTextBox.Location = new System.Drawing.Point(395, 74);
             this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(192, 30);
+            this.addressTextBox.Size = new System.Drawing.Size(192, 31);
             this.addressTextBox.TabIndex = 28;
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.nameTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.nameTextBox.Location = new System.Drawing.Point(81, 126);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(192, 30);
+            this.nameTextBox.Size = new System.Drawing.Size(192, 31);
             this.nameTextBox.TabIndex = 27;
             // 
             // codeTextBox
             // 
-            this.codeTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.codeTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.codeTextBox.Location = new System.Drawing.Point(81, 74);
             this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(192, 30);
+            this.codeTextBox.Size = new System.Drawing.Size(192, 31);
             this.codeTextBox.TabIndex = 26;
             this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.searchTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.searchTextBox.Location = new System.Drawing.Point(181, 14);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(478, 30);
+            this.searchTextBox.Size = new System.Drawing.Size(478, 31);
             this.searchTextBox.TabIndex = 35;
             // 
             // confirmationLabel

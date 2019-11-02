@@ -5,18 +5,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Small_Business_Management_System.REPOSITORY
 {
     class CategoryRepository
     {
-        SqlConnection sqlConnection;
-
-        public CategoryRepository()
-        {
-            sqlConnection = ServerConnection.Connect();
-        }
-
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
+        
         internal bool AddCategory(Category _category)
         {
             bool isAdded = false;

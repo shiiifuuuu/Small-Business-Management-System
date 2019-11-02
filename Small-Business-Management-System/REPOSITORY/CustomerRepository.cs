@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,7 @@ namespace Small_Business_Management_System.REPOSITORY
 {
     class CustomerRepository
     {
-        SqlConnection sqlConnection;
-
-        public CustomerRepository()
-        {
-            sqlConnection = ServerConnection.Connect();
-        }
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
 
         internal bool IsUnique(string inputString, string columnName)
         {

@@ -389,7 +389,7 @@ namespace Small_Business_Management_System.UI
                     if (showDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
                         codeTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Code"].Value.ToString();
-                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Name"].Value.ToString();
+                        nameTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["_Name"].Value.ToString();
                         addressTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Address"].Value.ToString();
                         emailTextBox.Text= showDataGridView.Rows[e.RowIndex].Cells["Email"].Value.ToString();
                         contactTextBox.Text = showDataGridView.Rows[e.RowIndex].Cells["Contact"].Value.ToString(); 

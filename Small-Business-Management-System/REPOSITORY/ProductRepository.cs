@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 using Small_Business_Management_System.MODEL;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Small_Business_Management_System.REPOSITORY
 {
     class ProductRepository
     {
-        SqlConnection sqlConnection;
-       
-        public ProductRepository()
-        {
-            sqlConnection = ServerConnection.Connect();
-        }
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
 
         internal bool IsUnique(string inputString, string columnName)
         {

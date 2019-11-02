@@ -1,6 +1,7 @@
 ﻿using Small_Business_Management_System.MODEL;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,7 @@ namespace Small_Business_Management_System.REPOSITORY
 {
     class PurchaseRepository
     {
-        SqlConnection sqlConnection;
-
-        public PurchaseRepository()
-        {
-            sqlConnection = ServerConnection.Connect();
-        }
+        SqlConnection sqlConnection = new SqlConnection(ConfigurationSettings.AppSettings["ConnectionString"]);
 
         internal List<Supplier> SupplierComboLoad()
         {
@@ -62,6 +58,52 @@ namespace Small_Business_Management_System.REPOSITORY
             sqlConnection.Close();
 
             return previous;
+        }
+
+        internal List<Purchase> Search(string text, Nullable<DateTime> date)
+        {
+            string commandString;
+            if (date != null)
+            {
+                commandString = @"SELECT * FROM Purchase WHERE Date = '" + date + "' AND (ProductCode LIKE '%" + text + "%' OR AvailableQuantity LIKE '%" + text
+                + "%' OR TotalPrice LIKE '%" + text + "%' OR PreviousUnitPrice LIKE '%" + text + "%' OR PreviousMRP LIKE '%" + text + "%')";
+            }
+            else
+            {
+                commandString = @"SELECT * FROM Purchase WHERE ProductCode LIKE '%" + text + "%' OR AvailableQuantity LIKE '%" + text
+                + "%' OR TotalPrice LIKE '%" + text + "%' OR PreviousUnitPrice LIKE '%" + text + "%' OR PreviousMRP LIKE '%" + text + "%'";
+            }
+            
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            List<Purchase> purchases = new List<Purchase>();
+            while (dataReader.Read())
+            {
+                Purchase purchase = new Purchase();
+                purchase.Id = int.Parse(dataReader["Id"].ToString());
+                purchase.Date = Convert.ToDateTime(dataReader["Date"].ToString());
+                purchase.InvoiceNo = dataReader["InvoiceNo"].ToString();
+                purchase.Supplier = dataReader["Supplier"].ToString();
+                purchase.Category = dataReader["Category"].ToString();
+                purchase.Products = dataReader["Product"].ToString();
+                purchase.ProductCode = dataReader["ProductCode"].ToString();
+
+                purchase.ManufactureDate = Convert.ToDateTime(dataReader["ManufactureDate"].ToString());
+                purchase.ExpireDate = Convert.ToDateTime(dataReader["ExpireDate"].ToString());
+                purchase.Quantity = int.Parse(dataReader["Quantity"].ToString());
+                purchase.AvailableQuantity = int.Parse(dataReader["AvailableQuantity"].ToString());
+                purchase.UnitPrice = double.Parse(dataReader["UnitPrice"].ToString());
+                purchase.TotalPrice = double.Parse(dataReader["TotalPrice"].ToString());
+                purchase.PreviousUnitPrice = double.Parse(dataReader["PreviousUnitPrice"].ToString());
+                purchase.PreviousMRP = double.Parse(dataReader["PreviousMRP"].ToString());
+                purchase.MRP = double.Parse(dataReader["MRP"].ToString());
+                purchase.Remarks = dataReader["Remarks"].ToString();
+
+                purchases.Add(purchase);
+            }
+            sqlConnection.Close();
+            return purchases;
         }
 
         internal string GetAvailableQuantity(string productCode)

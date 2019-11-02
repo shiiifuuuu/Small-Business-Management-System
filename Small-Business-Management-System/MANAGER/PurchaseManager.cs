@@ -11,6 +11,7 @@ namespace Small_Business_Management_System.MANAGER
     class PurchaseManager
     {
         PurchaseRepository _purchaseRepository = new PurchaseRepository();
+
         internal List<Supplier> SupplierComboLoad()
         {
             return _purchaseRepository.SupplierComboLoad();
@@ -59,6 +60,11 @@ namespace Small_Business_Management_System.MANAGER
         internal string GetAvailableQuantity(string productCode)
         {
             return _purchaseRepository.GetAvailableQuantity(productCode);
+        }
+
+        internal List<Purchase> Search(string text, Nullable<DateTime> date)
+        {
+            return _purchaseRepository.Search(text, date);
         }
     }
 }

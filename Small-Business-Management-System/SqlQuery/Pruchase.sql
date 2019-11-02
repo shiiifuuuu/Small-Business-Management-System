@@ -43,3 +43,5 @@ UPDATE Purchase SET Date = '', InvoiceNo='',Supplier='',Category='',Product='',P
 ManufactureDate = '', ExpireDate='', Quantity=0, UnitPrice=0,TotalPrice=0,PreviousUnitPrice=0,PreviousMRP=0,MRP=0,Remarks='' Where Id = ''
 
 UPDATE Purchase SEt AvailableQuantity = 15 WHERE ProductCode = 'H81M'
+
+Select * FROM Purchase where Date=''

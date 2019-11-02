@@ -65,10 +65,10 @@
             // 
             // codeTextBox
             // 
-            this.codeTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.codeTextBox.Location = new System.Drawing.Point(84, 198);
             this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(256, 30);
+            this.codeTextBox.Size = new System.Drawing.Size(256, 31);
             this.codeTextBox.TabIndex = 1;
             this.codeTextBox.TextChanged += new System.EventHandler(this.codeTextBox_TextChanged);
             // 
@@ -145,18 +145,18 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.nameTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.nameTextBox.Location = new System.Drawing.Point(84, 256);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(256, 30);
+            this.nameTextBox.Size = new System.Drawing.Size(256, 31);
             this.nameTextBox.TabIndex = 1;
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.searchTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.searchTextBox.Location = new System.Drawing.Point(107, 12);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(638, 30);
+            this.searchTextBox.Size = new System.Drawing.Size(638, 31);
             this.searchTextBox.TabIndex = 1;
             // 
             // searchButton

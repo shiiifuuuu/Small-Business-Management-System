@@ -191,27 +191,26 @@ namespace Small_Business_Management_System.UI
         {
             try
             {
+                _purchase = new Purchase();
+                _purchase.Date = Convert.ToDateTime(supplierDate.Text);
+                _purchase.InvoiceNo = invoiceNoTextBox.Text;
+                _purchase.Supplier = supplierComboBox.Text;
+                _purchase.Category = categoryComboBox.Text;
+                _purchase.Products = productsComboBox.Text;
+                _purchase.ProductCode = productCodeTextBox.Text;
+
+                _purchase.ManufactureDate = DateTime.Parse(manufacturedDatePicker.Text);
+                _purchase.ExpireDate = DateTime.Parse(expireDatePicker.Text);
+                _purchase.Quantity = int.Parse(quantityTextBox.Text);
+                _purchase.UnitPrice = double.Parse(unitPriceTextBox.Text);
+                _purchase.TotalPrice = double.Parse(totalPriceTextBox.Text);
+                _purchase.PreviousUnitPrice = double.Parse(previousUnitPriceTextBox.Text);
+                _purchase.PreviousMRP = double.Parse(previousMrpTextBox.Text);
+                _purchase.MRP = double.Parse(mrpTextBox.Text);
+                _purchase.Remarks = remarksTextBox.Text;
+
                 if (addButton.Text.Equals("Add"))
                 {
-                    _purchase = new Purchase();
-
-                    _purchase.Date = Convert.ToDateTime(supplierDate.Text);
-                    _purchase.InvoiceNo = invoiceNoTextBox.Text;
-                    _purchase.Supplier = supplierComboBox.Text;
-                    _purchase.Category = categoryComboBox.Text;
-                    _purchase.Products = productsComboBox.Text;
-                    _purchase.ProductCode = productCodeTextBox.Text;
-                    
-                    _purchase.ManufactureDate = DateTime.Parse(manufacturedDatePicker.Text);
-                    _purchase.ExpireDate = DateTime.Parse(expireDatePicker.Text);
-                    _purchase.Quantity = int.Parse(quantityTextBox.Text);
-                    _purchase.UnitPrice = double.Parse(unitPriceTextBox.Text);
-                    _purchase.TotalPrice = double.Parse(totalPriceTextBox.Text);
-                    _purchase.PreviousUnitPrice = double.Parse(previousUnitPriceTextBox.Text);
-                    _purchase.PreviousMRP = double.Parse(previousMrpTextBox.Text);
-                    _purchase.MRP = double.Parse(mrpTextBox.Text);
-                    _purchase.Remarks = remarksTextBox.Text;
-
                     if (!IsValid(_purchase))
                     {
                         return;
@@ -234,28 +233,12 @@ namespace Small_Business_Management_System.UI
                 }
                 else if (addButton.Text.Equals("Modify"))
                 {
+
                     int indexNo = GetItemIndexNo(_purchaseList);
-
-                    _purchase.Date = Convert.ToDateTime(supplierDate.Text);
-                    _purchase.InvoiceNo = invoiceNoTextBox.Text;
-                    _purchase.Supplier = supplierComboBox.Text;
-                    _purchase.Category = categoryComboBox.Text;
-                    _purchase.Products = productsComboBox.Text;
-                    _purchase.ProductCode = productCodeTextBox.Text;
-
-                    _purchase.ManufactureDate = DateTime.Parse(manufacturedDatePicker.Text);
-                    _purchase.ExpireDate = DateTime.Parse(expireDatePicker.Text);
-                    _purchase.Quantity = int.Parse(quantityTextBox.Text);
-                    _purchase.UnitPrice = double.Parse(unitPriceTextBox.Text);
-                    _purchase.TotalPrice = double.Parse(totalPriceTextBox.Text);
-                    _purchase.PreviousUnitPrice = double.Parse(previousUnitPriceTextBox.Text);
-                    _purchase.PreviousMRP = double.Parse(previousMrpTextBox.Text);
-                    _purchase.MRP = double.Parse(mrpTextBox.Text);
-                    _purchase.Remarks = remarksTextBox.Text;
-
 
                     if (indexNo != -1)
                     {
+                        _purchaseList.RemoveAt(indexNo);
                         _purchaseList.Insert(indexNo, _purchase);
 
                         ResetInputs();
@@ -269,24 +252,53 @@ namespace Small_Business_Management_System.UI
                 ExceptionMessage(error);
             }
         }
-
-        private int GetItemIndexNo(List<Purchase> purchaseList)
+        private void enableDateButton_Click(object sender, EventArgs e)
         {
-            int indexNo = -1;
+            if(enableDateButton.Text.Equals("Enable Date"))
+            {
+                searchDate.Enabled = true;
+                enableDateButton.Text = "Disable Date";
+            }
+            else if(enableDateButton.Text.Equals("Disable Date"))
+            {
+                searchDate.Enabled = false;
+                enableDateButton.Text = "Enable Date";
+            }
+        }
+        private void searchButton_Click(object sender, EventArgs e)
+        {
             try
             {
-                foreach (Purchase purchase in purchaseList)
+                Nullable<DateTime> date = null;
+                string text="";
+                List<Purchase> purchaseList;
+
+                if (searchDate.Enabled == true)
                 {
-                    if (_purchase.InvoiceNo.Equals(purchase.InvoiceNo))
-                    {
-                        indexNo = purchaseList.IndexOf(purchase);
-                    }
+                    date = DateTime.Parse(searchDate.Text);
+                    text = searchTextBox.Text;
                 }
-            }catch(Exception error)
+                else
+                {
+                    date = null;
+                    text = searchTextBox.Text;
+                }
+                purchaseList = Search(text, date);
+                if (purchaseList.Count > 0)
+                {
+                    DisplayRecords(purchaseList, 1);
+                    confirmationLabel.Text = purchaseList.Count + " result found";
+                }
+                else
+                {
+                    showDataGridView.DataSource = null;
+                    confirmationLabel.Text = "0 result found";
+                }
+            }
+            catch(Exception error)
             {
                 ExceptionMessage(error);
             }
-            return indexNo;
         }
 
         private void submitButton_Click(object sender, EventArgs e)
@@ -344,6 +356,10 @@ namespace Small_Business_Management_System.UI
             return _purchaseManager.Add(purchase);
         }
 
+        private List<Purchase> Search(string text, Nullable<DateTime> date)
+        {
+            return _purchaseManager.Search(text, date);
+        }
         private List<Purchase> GetRecords()
         {
             return _purchaseManager.GetRecords();
@@ -374,22 +390,42 @@ namespace Small_Business_Management_System.UI
                     showDataGridView.Columns["Action"].Visible = false;
                 }
 
-                //showDataGridView.Columns["Id"].Visible = false;
-                //showDataGridView.Columns["Code"].Visible = false;
+                showDataGridView.Columns["Id"].Visible = false;
+                showDataGridView.Columns["Code"].Visible = false;
                 //showDataGridView.Columns["Date"].Visible = false;
                 //showDataGridView.Columns["InvoiceNo"].Visible = false;
-                //showDataGridView.Columns["Supplier"].Visible = false;
-                //showDataGridView.Columns["Category"].Visible = false;
-                //showDataGridView.Columns["Product"].Visible = false;
-                //showDataGridView.Columns["AvailableQuantity"].Visible = false;
-                //showDataGridView.Columns["PreviousUnitPrice"].Visible = false;
-                //showDataGridView.Columns["PreviousMRP"].Visible = false;
+                showDataGridView.Columns["Supplier"].Visible = false;
+                showDataGridView.Columns["Category"].Visible = false;
+                showDataGridView.Columns["Product"].Visible = false;
+                showDataGridView.Columns["AvailableQuantity"].Visible = false;
+                showDataGridView.Columns["PreviousUnitPrice"].Visible = false;
+                showDataGridView.Columns["PreviousMRP"].Visible = false;
 
             }
             catch (Exception error)
             {
                 ExceptionMessage(error);
             }
+        }
+
+        private int GetItemIndexNo(List<Purchase> purchaseList)
+        {
+            int indexNo = -1;
+            try
+            {
+                foreach (Purchase purchase in purchaseList)
+                {
+                    if (_purchase.InvoiceNo.Equals(purchase.InvoiceNo))
+                    {
+                        indexNo = purchaseList.IndexOf(purchase);
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                ExceptionMessage(error);
+            }
+            return indexNo;
         }
 
         private void SetActionColumn(DataGridView dgv) //only for this form

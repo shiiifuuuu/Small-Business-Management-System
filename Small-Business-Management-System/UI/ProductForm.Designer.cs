@@ -122,11 +122,11 @@
             // 
             this.categoryComboBox.DataSource = this.productBindingSource;
             this.categoryComboBox.DisplayMember = "Name";
-            this.categoryComboBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.categoryComboBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(161, 48);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(208, 28);
+            this.categoryComboBox.Size = new System.Drawing.Size(208, 31);
             this.categoryComboBox.TabIndex = 4;
             this.categoryComboBox.ValueMember = "Id";
             // 
@@ -136,34 +136,34 @@
             // 
             // codeTextBox
             // 
-            this.codeTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.codeTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.codeTextBox.Location = new System.Drawing.Point(161, 115);
             this.codeTextBox.Name = "codeTextBox";
-            this.codeTextBox.Size = new System.Drawing.Size(208, 30);
+            this.codeTextBox.Size = new System.Drawing.Size(208, 31);
             this.codeTextBox.TabIndex = 0;
             this.codeTextBox.TextChanged += new System.EventHandler(this.codetextBox_TextChanged);
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.nameTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.nameTextBox.Location = new System.Drawing.Point(161, 181);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(208, 30);
+            this.nameTextBox.Size = new System.Drawing.Size(208, 31);
             this.nameTextBox.TabIndex = 1;
             // 
             // reorderTextBox
             // 
-            this.reorderTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.reorderTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.reorderTextBox.Location = new System.Drawing.Point(161, 246);
             this.reorderTextBox.Name = "reorderTextBox";
-            this.reorderTextBox.Size = new System.Drawing.Size(208, 30);
+            this.reorderTextBox.Size = new System.Drawing.Size(208, 31);
             this.reorderTextBox.TabIndex = 2;
             this.reorderTextBox.Text = "10";
             this.reorderTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.reorderTextBox_KeyPress);
             // 
             // descriptionTextBox
             // 
-            this.descriptionTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.descriptionTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.descriptionTextBox.Location = new System.Drawing.Point(161, 315);
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
@@ -268,11 +268,11 @@
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Font = new System.Drawing.Font("OCR A Std", 14.25F);
+            this.searchTextBox.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold);
             this.searchTextBox.Location = new System.Drawing.Point(175, 11);
             this.searchTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(517, 30);
+            this.searchTextBox.Size = new System.Drawing.Size(517, 31);
             this.searchTextBox.TabIndex = 8;
             // 
             // searchButton
