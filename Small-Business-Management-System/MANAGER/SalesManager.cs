@@ -54,5 +54,10 @@ namespace Small_Business_Management_System.MANAGER
         {
             return _salesRepository.GetProductMRP(productName);
         }
+
+        internal List<Sales> GetRecords()
+        {
+            return _salesRepository.GetRecords();
+        }
     }
 }

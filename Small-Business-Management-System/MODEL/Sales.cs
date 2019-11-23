@@ -9,9 +9,9 @@ namespace Small_Business_Management_System.MODEL
     public class Sales
     {
         public int Id { get; set; }
+        public string Code { get; set; }
         public int ProductId { set; get; }
         public int CustomerId { set; get; }
-        public string Code { get; set; }
         public string Customer { get; set; }
         public DateTime Date { get; set; }
         public double LoyalityPoint { get; set; }

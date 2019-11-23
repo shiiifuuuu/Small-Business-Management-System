@@ -99,40 +99,6 @@ namespace Small_Business_Management_System.REPOSITORY
             sqlConnection.Close();
         }
 
-        internal bool Add(Sales sales)
-        {
-            bool isAdded = false;
-
-            string commandString = @"INSERT INTO Sales(ProductId, CustomerId, Customer, Date, GrandTotal, Discount, DiscountAmount, PayableAmount)
-                        VALUES('" + sales.ProductId + "', '" + sales.CustomerId + "','" + sales.Customer + "','" + sales.Date + "','" + sales.GrandTotal
-                        + "','" + sales.Discount + "','" + sales.DiscountAmount + "', '" + sales.PayableAmount + "')";
-
-            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
-
-            sqlConnection.Open();
-
-            if (sqlCommand.ExecuteNonQuery() > 0)
-            {
-                isAdded = true;
-            }
-
-            sqlConnection.Close();
-
-            if (isAdded == true)
-            {
-                double resetLoyaltyPoint = sales.LoyalityPoint - sales.LoyalityPoint / 10;
-                double increaseLoyaltyPoint = sales.GrandTotal / 1000;
-                double totalLoyaltyPoint = resetLoyaltyPoint + increaseLoyaltyPoint;
-                commandString = @"UPDATE Customer SET LoyaltyPoint = " + totalLoyaltyPoint + " WHERE Id = '" + sales.CustomerId + "'";
-                sqlCommand = new SqlCommand(commandString, sqlConnection);
-                sqlConnection.Open();
-                sqlCommand.ExecuteNonQuery();
-                sqlConnection.Close();
-            }
-
-            return isAdded;
-        }
-
         internal List<Category> CategoryComboLoad()
         {
             List<Category> categories = new List<Category>();
@@ -205,6 +171,66 @@ namespace Small_Business_Management_System.REPOSITORY
             return sales;
         }
 
+        internal bool Add(Sales sales)
+        {
+            bool isAdded = false;
+
+            string commandString = @"INSERT INTO Sales(ProductId, CustomerId, Customer, Date, GrandTotal, Discount, DiscountAmount, PayableAmount, Quantity, MRP, TotalMRP)
+                        VALUES('" + sales.ProductId + "', '" + sales.CustomerId + "','" + sales.Customer + "','" + sales.Date + "','" + sales.GrandTotal
+                        + "','" + sales.Discount + "','" + sales.DiscountAmount + "', '" + sales.PayableAmount + "', '"+sales.Quantity
+                        +"', '"+sales.MRP+"', '"+sales.TotalMRP+"')";
+
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+
+            sqlConnection.Open();
+
+            if (sqlCommand.ExecuteNonQuery() > 0)
+            {
+                isAdded = true;
+            }
+
+            sqlConnection.Close();
+
+            if (isAdded == true)
+            {
+                double resetLoyaltyPoint = sales.LoyalityPoint - sales.LoyalityPoint / 10;
+                double increaseLoyaltyPoint = sales.GrandTotal / 1000;
+                double totalLoyaltyPoint = resetLoyaltyPoint + increaseLoyaltyPoint;
+                commandString = @"UPDATE Customer SET LoyaltyPoint = " + totalLoyaltyPoint + " WHERE Id = '" + sales.CustomerId + "'";
+                sqlCommand = new SqlCommand(commandString, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+            }
+
+            return isAdded;
+        }
+
+        internal List<Sales> GetRecords()
+        {
+            String commandString = @"SELECT * FROM Sales Left JOIN Product ON Sales.ProductId=Product.Id";
+            SqlCommand sqlCommand = new SqlCommand(commandString, sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader dataReader = sqlCommand.ExecuteReader();
+            List<Sales> salesList = new List<Sales>();
+            while (dataReader.Read())
+            {
+                Sales sales = new Sales();
+                sales.Customer = dataReader["Customer"].ToString();
+                sales.Date = DateTime.Parse(dataReader["Date"].ToString());
+                sales.GrandTotal = double.Parse(dataReader["GrandTotal"].ToString());
+                sales.PayableAmount = double.Parse(dataReader["PayableAmount"].ToString());
+                sales.Product = dataReader["Name"].ToString();
+                sales.Quantity = int.Parse(dataReader["Quantity"].ToString());
+                sales.MRP = double.Parse(dataReader["MRP"].ToString());
+                sales.TotalMRP = double.Parse(dataReader["TotalMRP"].ToString());
+
+                salesList.Add(sales);
+            }
+            sqlConnection.Close();
+            return salesList;
+        }
+
         internal void CloseConnection()
         {
             try
@@ -213,5 +239,7 @@ namespace Small_Business_Management_System.REPOSITORY
             }
             catch (Exception) { }
         }
+
+
     }
 }

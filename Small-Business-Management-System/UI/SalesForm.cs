@@ -36,7 +36,12 @@ namespace Small_Business_Management_System.UI
             productComboBox.Enabled = false;
             productComboBox.Text = "-Select-";
 
-            salesCodeTextBox.Text = _salesManager.SalesCode(_sales.Code);
+            //salesCodeTextBox.Text = _salesManager.SalesCode(_sales.Code);
+        }
+
+        private void salesHistoryButton_Click(object sender, EventArgs e)
+        {
+            DisplayRecords(GetRecords(), 1);
         }
 
         int _customerId;
@@ -58,13 +63,14 @@ namespace Small_Business_Management_System.UI
                 loyalityPointTextBox.Clear();
             }
         }
-        int _discountPercent;
+
+        double _discountPercent;
         private void loyalityPointTextBox_TextChanged(object sender, EventArgs e)
         {
             _discountPercent = 0;
             if (!String.IsNullOrEmpty(loyalityPointTextBox.Text))
             {
-                _discountPercent = CalculateDiscountPercent(int.Parse(loyalityPointTextBox.Text));
+                _discountPercent = double.Parse(loyalityPointTextBox.Text)/10;
                 discountTextBox.Text = _discountPercent.ToString();
             }
             else
@@ -72,18 +78,6 @@ namespace Small_Business_Management_System.UI
                 discountTextBox.Clear();
             }
             
-        }
-
-        private int CalculateDiscountPercent(int loyaltyPoint)
-        {
-            int discountPercent = 0;
-
-            if (loyaltyPoint > 0)
-            {
-                discountPercent = loyaltyPoint / 10;
-            }
-
-            return discountPercent;
         }
 
         List<Product> _productList = new List<Product>();
@@ -165,7 +159,7 @@ namespace Small_Business_Management_System.UI
         {
             _sales = new Sales();
             _sales.ProductId = _productId;
-            _sales.Customer = (customerComboBox.SelectedValue).ToString();
+            _sales.Customer = customerComboBox.Text;
             _sales.Date = Convert.ToDateTime(dateTimePicker.Text); 
             _sales.LoyalityPoint = double.Parse(loyalityPointTextBox.Text);
             _sales.Category = categoryComboBox.Text;
@@ -206,7 +200,7 @@ namespace Small_Business_Management_System.UI
         {
             if (!String.IsNullOrEmpty(grandTotalTextBox.Text) && _grandTotal != 0)
             {
-                _discountAmount = _grandTotal * int.Parse(loyalityPointTextBox.Text) / 100;
+                _discountAmount = _grandTotal * _discountPercent / 100;
                 discountAmountTextBox.Text = _discountAmount.ToString();
 
                 _payableAmount = _grandTotal - _discountAmount;
@@ -216,6 +210,11 @@ namespace Small_Business_Management_System.UI
         private void discountTextBox_TextChanged(object sender, EventArgs e)
         {
             CalculateAmount();
+        }
+
+        private List<Sales> GetRecords()
+        {
+            return _salesManager.GetRecords();
         }
 
         private const int _itemList = 0;
@@ -245,9 +244,14 @@ namespace Small_Business_Management_System.UI
 
                     Helper.SetSerialNumber(showDataGridView);
                     showDataGridView.Columns["Action"].Visible = false;
+                    showDataGridView.Columns["Customer"].Visible = true;
+                    showDataGridView.Columns["Date"].Visible = true;
+                    showDataGridView.Columns["GrandTotal"].Visible = true;
+                    showDataGridView.Columns["PayableAmount"].Visible = true;
                 }
 
                 showDataGridView.Columns["SI"].Visible = true;
+
                 showDataGridView.Columns["Product"].Visible = true;
                 showDataGridView.Columns["Quantity"].Visible = true;
                 showDataGridView.Columns["MRP"].Visible = true;
@@ -302,9 +306,8 @@ namespace Small_Business_Management_System.UI
                     foreach(Sales sales in _salesList)
                     {
                         _salesManager.DecreaseProductQuantity(sales);
+                        Add(_sales);
                     }
-
-                    Add(_sales);
 
                     //ResetAll();
                     confirmationLabel.Text = "Sales complete for Customer: " + _sales.Customer;
@@ -393,5 +396,6 @@ namespace Small_Business_Management_System.UI
                 ExceptionMessage(error);
             }
         }
+
     }
 }

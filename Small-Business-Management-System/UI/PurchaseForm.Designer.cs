@@ -106,6 +106,8 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.searchDate = new System.Windows.Forms.DateTimePicker();
             this.enableDateButton = new System.Windows.Forms.Button();
+            this.purchaseCodeTextBox = new System.Windows.Forms.TextBox();
+            this.codeErrorLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -397,7 +399,7 @@
             this.previousUnitPriceTextBox.Location = new System.Drawing.Point(6, 100);
             this.previousUnitPriceTextBox.Name = "previousUnitPriceTextBox";
             this.previousUnitPriceTextBox.ReadOnly = true;
-            this.previousUnitPriceTextBox.Size = new System.Drawing.Size(110, 22);
+            this.previousUnitPriceTextBox.Size = new System.Drawing.Size(105, 22);
             this.previousUnitPriceTextBox.TabIndex = 21;
             // 
             // label11
@@ -805,7 +807,7 @@
             // searchTextBox
             // 
             this.searchTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold);
-            this.searchTextBox.Location = new System.Drawing.Point(672, 6);
+            this.searchTextBox.Location = new System.Drawing.Point(672, 5);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(229, 22);
             this.searchTextBox.TabIndex = 0;
@@ -840,12 +842,32 @@
             this.enableDateButton.UseVisualStyleBackColor = true;
             this.enableDateButton.Click += new System.EventHandler(this.enableDateButton_Click);
             // 
+            // purchaseCodeTextBox
+            // 
+            this.purchaseCodeTextBox.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.purchaseCodeTextBox.Location = new System.Drawing.Point(263, 6);
+            this.purchaseCodeTextBox.Name = "purchaseCodeTextBox";
+            this.purchaseCodeTextBox.Size = new System.Drawing.Size(105, 22);
+            this.purchaseCodeTextBox.TabIndex = 33;
+            // 
+            // codeErrorLabel
+            // 
+            this.codeErrorLabel.AutoSize = true;
+            this.codeErrorLabel.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codeErrorLabel.Location = new System.Drawing.Point(205, 6);
+            this.codeErrorLabel.Name = "codeErrorLabel";
+            this.codeErrorLabel.Size = new System.Drawing.Size(46, 21);
+            this.codeErrorLabel.TabIndex = 32;
+            this.codeErrorLabel.Text = "Code";
+            // 
             // PurchaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(252)))), ((int)(((byte)(211)))));
             this.ClientSize = new System.Drawing.Size(1014, 588);
+            this.Controls.Add(this.purchaseCodeTextBox);
+            this.Controls.Add(this.codeErrorLabel);
             this.Controls.Add(this.enableDateButton);
             this.Controls.Add(this.searchDate);
             this.Controls.Add(this.searchButton);
@@ -953,5 +975,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Action;
         private System.Windows.Forms.DateTimePicker searchDate;
         private System.Windows.Forms.Button enableDateButton;
+        private System.Windows.Forms.TextBox purchaseCodeTextBox;
+        private System.Windows.Forms.Label codeErrorLabel;
     }
 }

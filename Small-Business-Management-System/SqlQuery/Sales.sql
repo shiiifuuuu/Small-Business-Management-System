@@ -22,6 +22,9 @@ PayableAmount FLOAT,
 DROP TABLE Sales
 Select * from Sales;
 Select * from Purchase
+DELETE FROM Sales;
 
 Select * from Sales as S left join Product as P on S.ProductId = P.Id
 Select * from Sales as S left join Customer as C on S.CustomerId = C.Id
+
+SELECT Name FROM Sales Left JOIN Product ON Sales.ProductId=Product.Id

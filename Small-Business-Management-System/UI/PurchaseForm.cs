@@ -38,8 +38,8 @@ namespace Small_Business_Management_System.UI
             deleteButton.Visible = false;
             cancelButton.Visible = false;
 
-            DisplayRecords(GetRecords(), _database);
-            confirmationLabel.Text = "Your Purchase History";
+            //DisplayRecords(GetRecords(), _database);
+            //confirmationLabel.Text = "Your Purchase History";
         }
 
         //COMBO BOX DATA INITIALIZE

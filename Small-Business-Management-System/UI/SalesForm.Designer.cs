@@ -57,25 +57,6 @@
             this.categoryErrorLabel = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.showDataGridView = new System.Windows.Forms.DataGridView();
-            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LoyaltyPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AvailableQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MRP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalMRP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GrandTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PayableAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.confirmationLabel = new System.Windows.Forms.Label();
             this.payableAmountTextBox = new System.Windows.Forms.TextBox();
@@ -93,6 +74,26 @@
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.searchErrorLabel = new System.Windows.Forms.Label();
+            this.salesHistoryButton = new System.Windows.Forms.Button();
+            this.SI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LoyaltyPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AvailableQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MRP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalMRP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GrandTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PayableAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Action = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -382,14 +383,14 @@
             // showDataGridView
             // 
             this.showDataGridView.AutoGenerateColumns = false;
-            this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.showDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.showDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.showDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SI,
             this.Id,
-            this.ProductId,
-            this.CustomerId,
             this.Code,
+            this.CustomerId,
+            this.ProductId,
             this.Customer,
             this.Date,
             this.LoyaltyPoint,
@@ -409,118 +410,6 @@
             this.showDataGridView.Name = "showDataGridView";
             this.showDataGridView.Size = new System.Drawing.Size(657, 370);
             this.showDataGridView.TabIndex = 0;
-            // 
-            // SI
-            // 
-            this.SI.HeaderText = "SI";
-            this.SI.Name = "SI";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // ProductId
-            // 
-            this.ProductId.DataPropertyName = "ProductId";
-            this.ProductId.HeaderText = "ProductId";
-            this.ProductId.Name = "ProductId";
-            // 
-            // CustomerId
-            // 
-            this.CustomerId.DataPropertyName = "CustomerId";
-            this.CustomerId.HeaderText = "CustomerId";
-            this.CustomerId.Name = "CustomerId";
-            // 
-            // Code
-            // 
-            this.Code.DataPropertyName = "Code";
-            this.Code.HeaderText = "Code";
-            this.Code.Name = "Code";
-            // 
-            // Customer
-            // 
-            this.Customer.DataPropertyName = "Customer";
-            this.Customer.HeaderText = "Customer";
-            this.Customer.Name = "Customer";
-            // 
-            // Date
-            // 
-            this.Date.DataPropertyName = "Date";
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            // 
-            // LoyaltyPoint
-            // 
-            this.LoyaltyPoint.DataPropertyName = "LoyalityPoint";
-            this.LoyaltyPoint.HeaderText = "LoyalityPoint";
-            this.LoyaltyPoint.Name = "LoyaltyPoint";
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "Category";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            // 
-            // Product
-            // 
-            this.Product.DataPropertyName = "Product";
-            this.Product.HeaderText = "Product";
-            this.Product.Name = "Product";
-            // 
-            // AvailableQuantity
-            // 
-            this.AvailableQuantity.DataPropertyName = "AvabileQuantity";
-            this.AvailableQuantity.HeaderText = "AvabileQuantity";
-            this.AvailableQuantity.Name = "AvailableQuantity";
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "Quantity";
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // MRP
-            // 
-            this.MRP.DataPropertyName = "MRP";
-            this.MRP.HeaderText = "MRP";
-            this.MRP.Name = "MRP";
-            // 
-            // TotalMRP
-            // 
-            this.TotalMRP.DataPropertyName = "TotalMRP";
-            this.TotalMRP.HeaderText = "TotalMRP";
-            this.TotalMRP.Name = "TotalMRP";
-            // 
-            // GrandTotal
-            // 
-            this.GrandTotal.DataPropertyName = "GrandTotal";
-            this.GrandTotal.HeaderText = "GrandTotal";
-            this.GrandTotal.Name = "GrandTotal";
-            // 
-            // Discount
-            // 
-            this.Discount.DataPropertyName = "Discount";
-            this.Discount.HeaderText = "Discount";
-            this.Discount.Name = "Discount";
-            // 
-            // DiscountAmount
-            // 
-            this.DiscountAmount.DataPropertyName = "DiscountAmount";
-            this.DiscountAmount.HeaderText = "DiscountAmount";
-            this.DiscountAmount.Name = "DiscountAmount";
-            // 
-            // PayableAmount
-            // 
-            this.PayableAmount.DataPropertyName = "PayableAmount";
-            this.PayableAmount.HeaderText = "PayableAmount";
-            this.PayableAmount.Name = "PayableAmount";
-            // 
-            // Action
-            // 
-            this.Action.HeaderText = "Action";
-            this.Action.Name = "Action";
             // 
             // salesBindingSource
             // 
@@ -671,12 +560,153 @@
             this.searchErrorLabel.TabIndex = 11;
             this.searchErrorLabel.Text = "error";
             // 
+            // salesHistoryButton
+            // 
+            this.salesHistoryButton.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold);
+            this.salesHistoryButton.Location = new System.Drawing.Point(181, 12);
+            this.salesHistoryButton.Name = "salesHistoryButton";
+            this.salesHistoryButton.Size = new System.Drawing.Size(232, 33);
+            this.salesHistoryButton.TabIndex = 12;
+            this.salesHistoryButton.Text = "Show Sales History";
+            this.salesHistoryButton.UseVisualStyleBackColor = true;
+            this.salesHistoryButton.Click += new System.EventHandler(this.salesHistoryButton_Click);
+            // 
+            // SI
+            // 
+            this.SI.HeaderText = "SI";
+            this.SI.Name = "SI";
+            this.SI.Width = 42;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Width = 41;
+            // 
+            // Code
+            // 
+            this.Code.DataPropertyName = "Code";
+            this.Code.HeaderText = "Code";
+            this.Code.Name = "Code";
+            this.Code.Width = 57;
+            // 
+            // CustomerId
+            // 
+            this.CustomerId.DataPropertyName = "CustomerId";
+            this.CustomerId.HeaderText = "CustomerId";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.Width = 85;
+            // 
+            // ProductId
+            // 
+            this.ProductId.DataPropertyName = "ProductId";
+            this.ProductId.HeaderText = "ProductId";
+            this.ProductId.Name = "ProductId";
+            this.ProductId.Width = 78;
+            // 
+            // Customer
+            // 
+            this.Customer.DataPropertyName = "Customer";
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
+            this.Customer.Width = 76;
+            // 
+            // Date
+            // 
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.Width = 55;
+            // 
+            // LoyaltyPoint
+            // 
+            this.LoyaltyPoint.DataPropertyName = "LoyalityPoint";
+            this.LoyaltyPoint.HeaderText = "Loyality Point";
+            this.LoyaltyPoint.Name = "LoyaltyPoint";
+            this.LoyaltyPoint.Width = 94;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.Width = 74;
+            // 
+            // Product
+            // 
+            this.Product.DataPropertyName = "Product";
+            this.Product.HeaderText = "Product";
+            this.Product.Name = "Product";
+            this.Product.Width = 69;
+            // 
+            // AvailableQuantity
+            // 
+            this.AvailableQuantity.DataPropertyName = "AvabileQuantity";
+            this.AvailableQuantity.HeaderText = "Avabile Quantity";
+            this.AvailableQuantity.Name = "AvailableQuantity";
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Quantity";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 71;
+            // 
+            // MRP
+            // 
+            this.MRP.DataPropertyName = "MRP";
+            this.MRP.HeaderText = "MRP";
+            this.MRP.Name = "MRP";
+            this.MRP.Width = 56;
+            // 
+            // TotalMRP
+            // 
+            this.TotalMRP.DataPropertyName = "TotalMRP";
+            this.TotalMRP.HeaderText = "Total MRP";
+            this.TotalMRP.Name = "TotalMRP";
+            this.TotalMRP.Width = 77;
+            // 
+            // GrandTotal
+            // 
+            this.GrandTotal.DataPropertyName = "GrandTotal";
+            this.GrandTotal.HeaderText = "Grand Total";
+            this.GrandTotal.Name = "GrandTotal";
+            this.GrandTotal.Width = 81;
+            // 
+            // Discount
+            // 
+            this.Discount.DataPropertyName = "Discount";
+            this.Discount.HeaderText = "Discount";
+            this.Discount.Name = "Discount";
+            this.Discount.Width = 74;
+            // 
+            // DiscountAmount
+            // 
+            this.DiscountAmount.DataPropertyName = "DiscountAmount";
+            this.DiscountAmount.HeaderText = "Discount Amount";
+            this.DiscountAmount.Name = "DiscountAmount";
+            this.DiscountAmount.Width = 104;
+            // 
+            // PayableAmount
+            // 
+            this.PayableAmount.DataPropertyName = "PayableAmount";
+            this.PayableAmount.HeaderText = "Payable Amount";
+            this.PayableAmount.Name = "PayableAmount";
+            // 
+            // Action
+            // 
+            this.Action.HeaderText = "Action";
+            this.Action.Name = "Action";
+            this.Action.Width = 62;
+            // 
             // SalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(252)))), ((int)(((byte)(211)))));
             this.ClientSize = new System.Drawing.Size(1014, 588);
+            this.Controls.Add(this.salesHistoryButton);
             this.Controls.Add(this.searchErrorLabel);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.payableAmountTextBox);
@@ -761,11 +791,13 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DataGridView showDataGridView;
+        private System.Windows.Forms.BindingSource salesBindingSource;
+        private System.Windows.Forms.Button salesHistoryButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn SI;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Code;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoyaltyPoint;
@@ -780,6 +812,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiscountAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn PayableAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Action;
-        private System.Windows.Forms.BindingSource salesBindingSource;
     }
 }
